@@ -86,6 +86,23 @@ Click any team name to open its page.
 
 **Rank over the season (line chart):** Predictive rank (blue) and Résumé rank (orange) day by day. Rank 1 is at the top, so a rising line means improvement. Hover for a given day's ranks. It needs at least two days of history before it draws.
 
+**Four factors (table):** the four stats that best explain winning, for offense (this team) and defense (what opponents do against it), each with its D1 rank (1 = best).
+
+| Factor | Meaning | Better offense |
+|---|---|---|
+| **Effective FG %** | Field-goal % with 3-pointers counted 1.5×, since they're worth more | Higher |
+| **Turnover %** | Share of possessions ending in a turnover | Lower |
+| **Offensive rebound %** | Share of the team's missed shots it rebounds | Higher |
+| **Free throw rate** | Free-throw attempts per 100 field-goal attempts | Higher |
+
+For defense, each is reversed: a low opponent eFG%, a high opponent turnover % and so on rank best.
+
+**Game log (table):** every game so far with the result and score, plus games in the next week. "vs" is a home game, "@" an away game, and "(N)" a neutral site; "conf" marks a conference game. The grey number is the opponent's Predictive rank, and opponents link to their own pages. Hover over a row for the event name (e.g. a holiday tournament).
+
+**Season stats (table):** points, shooting percentages (FG, 2-point, 3-point, free throw, true shooting), 3-point attempts, rebounds, offensive rebounds, assists, turnovers, steals and blocks. Values are per game except percentages. Each has a D1 rank for the team and for its **opponents** (what teams have done against it), where a low opponent figure ranks well.
+
+The four factors, game log and season stats come from CollegeBasketballData, so they need the `CBBD_API_KEY` secret.
+
 **Ratings by source (table):** each system's raw numbers.
 
 | Column | Meaning |
@@ -138,6 +155,7 @@ Output (only the history snapshots are committed; the rest is rebuilt each run):
 - `site/data/latest.json`: every team's composite ranks, averaged stats and each source's numbers.
 - `site/data/history/YYYY-MM-DD.json`: a daily snapshot of ranks, for trend charts.
 - `site/data/meta.json`: when it ran, each source's status (`ok`, `stale`, `failed` or `not_current`) and the weights used.
+- `site/data/team/<team_id>.json`: each team's season stats, four factors and game log (loaded only by its team page).
 - `data/latest/<source>.csv`: the last good data from each source. If a source fails, this is reused for up to 3 days.
 
 Composite weights live in `config/weights.yaml`, and the source URLs in `config/sources.yaml`.

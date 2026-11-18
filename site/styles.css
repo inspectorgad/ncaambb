@@ -161,7 +161,7 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .team-cell a { color: var(--text-primary); font-weight: 600; }
 .team-cell .conf { color: var(--text-muted); font-size: 12px; margin-left: 6px; font-weight: 400; }
 /* inset fill leaves a 2px surface gap between neighbouring shaded cells */
-.rank td.heat {
+.rank td.heat, .plain td.heat {
   background-image: linear-gradient(var(--h), var(--h));
   background-size: calc(100% - 2px) calc(100% - 2px);
   background-position: center; background-repeat: no-repeat;
@@ -215,8 +215,11 @@ svg .gridline { stroke: var(--grid); }
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.18); max-width: 260px; display: none;
 }
 
+.opp-cell .site { display: inline-block; min-width: 1.4em; color: var(--text-muted); }
 @media (max-width: 600px) {
   .count { margin-left: 0; width: 100%; }
+  .plain th, .plain td { padding: 5px 4px; font-size: 13px; }
+  .card { padding: 10px 10px; }
   .rank th, .rank td { padding: 6px 6px; }
   .rank td.rk { width: 36px; min-width: 36px; }
   .rank .sticky2 { left: 36px; }
