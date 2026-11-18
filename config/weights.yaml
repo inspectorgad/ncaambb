@@ -1,0 +1,44 @@
+# Composite settings. Edit weights freely; they are rescaled to sum to 1
+# over whichever inputs a team actually has.
+#
+# Each input:
+#   sources: list of sources; the first one with data for a team is used
+#   metric:  metric name from the parsers (see src/ncaambb/sources)
+#   kind:    value (a rating; standardized to z-scores) or rank (1 = best)
+#   weight:  relative weight
+
+# Drop each team's highest and lowest input when it has at least this many.
+trim_min_inputs: 4
+
+predictive:            # how good is the team?
+  - {sources: [torvik],       metric: rating, kind: value, weight: 0.25}
+  - {sources: [haslametrics], metric: rating, kind: value, weight: 0.25}
+  - {sources: [espn_bpi],     metric: rating, kind: value, weight: 0.25}
+  - {sources: [teamrankings], metric: rating, kind: value, weight: 0.25}
+
+resume:                # what has the team earned?
+  - {sources: [ncaa_net, warrennolan], metric: net_rank, kind: rank,  weight: 0.40}
+  - {sources: [espn_bpi],              metric: sor_rank, kind: rank,  weight: 0.30}
+  - {sources: [torvik],                metric: wab,      kind: value, weight: 0.30}
+
+# Stats averaged across sources. Each input is standardized; "invert"
+# flips a metric whose direction is opposite to the stat (ESPN's BPI
+# defense is points prevented, the stat is points allowed). The average
+# is put back on the typical scale of the `scale_from` sources; without
+# scale_from only a rank is shown.
+stats:
+  adj_o:
+    inputs: [[torvik, adj_o], [haslametrics, adj_o], [espn_bpi, bpi_off]]
+    scale_from: [torvik, haslametrics]
+    best: high
+  adj_d:
+    inputs: [[torvik, adj_d], [haslametrics, adj_d], [espn_bpi, bpi_def, invert]]
+    scale_from: [torvik, haslametrics]
+    best: low
+  tempo:
+    inputs: [[torvik, tempo], [haslametrics, tempo]]
+    scale_from: [torvik, haslametrics]
+    best: high          # rank 1 = fastest
+  sos:
+    inputs: [[torvik, sos], [haslametrics, sos], [espn_bpi, sos_past_rank, rank]]
+    best: high          # rank 1 = toughest schedule

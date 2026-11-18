@@ -1,0 +1,37 @@
+# Season is identified by its END year: 2027 = the 2026-27 season.
+# "auto" picks it from today's date (August onward counts as the next season).
+season: auto
+
+# The daily job only runs between these dates (MM-DD); the site keeps the
+# final rankings during the off-season. A manual run ignores this.
+active_window:
+  start: "11-01"
+  end: "04-15"
+
+# The pipeline exits non-zero when this many sources (or more) fail in one run.
+max_failed_sources: 3
+
+# A failed source falls back to its last good download for up to this many days.
+stale_max_days: 3
+
+sources:
+  torvik:
+    enabled: true
+    url: "https://barttorvik.com/{season}_team_results.csv"
+  haslametrics:
+    enabled: true
+    # ratings.xml always holds the current season (served Brotli-compressed).
+    url: "https://haslametrics.com/ratings.xml"
+  espn_bpi:
+    enabled: true
+    url: "https://site.web.api.espn.com/apis/fitt/v3/sports/basketball/mens-college-basketball/powerindex?limit=400"
+  teamrankings:
+    enabled: true
+    url: "https://www.teamrankings.com/ncaa-basketball/ranking/predictive-by-other"
+  warrennolan:
+    enabled: true
+    url: "https://www.warrennolan.com/basketball/{season}/net"
+  ncaa_net:
+    enabled: true
+    # Usually first published in early December; skipped until it covers this season.
+    url: "https://www.ncaa.com/rankings/basketball-men/d1/ncaa-mens-basketball-net-rankings"

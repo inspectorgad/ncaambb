@@ -1,0 +1,96 @@
+source,source_conference,conference
+torvik,A10,A-10
+torvik,ACC,ACC
+torvik,AE,Am. East
+torvik,ASun,Atlantic Sun
+torvik,Amer,American
+torvik,B10,Big Ten
+torvik,B12,Big 12
+torvik,BE,Big East
+torvik,BSky,Big Sky
+torvik,BSth,Big South
+torvik,BW,Big West
+torvik,CAA,CAA
+torvik,CUSA,CUSA
+torvik,Horz,Horizon
+torvik,Ivy,Ivy
+torvik,MAC,MAC
+torvik,MEAC,MEAC
+torvik,MVC,MVC
+torvik,MWC,Mountain West
+torvik,Metro,Metro
+torvik,NEC,NEC
+torvik,OVC,OVC
+torvik,P12,Pac-12
+torvik,Pat,Patriot
+torvik,SB,Sun Belt
+torvik,SC,SoCon
+torvik,SEC,SEC
+torvik,SWAC,SWAC
+torvik,Slnd,Southland
+torvik,Sum,Summit
+torvik,UAC,UAC
+torvik,WCC,WCC
+haslametrics,ACC,ACC
+haslametrics,America East,Am. East
+haslametrics,American,American
+haslametrics,Atlantic 10,A-10
+haslametrics,Atlantic Sun,Atlantic Sun
+haslametrics,Big 12,Big 12
+haslametrics,Big East,Big East
+haslametrics,Big Sky,Big Sky
+haslametrics,Big South,Big South
+haslametrics,Big Ten,Big Ten
+haslametrics,Big West,Big West
+haslametrics,CAA,CAA
+haslametrics,Conference USA,CUSA
+haslametrics,Horizon,Horizon
+haslametrics,Ivy,Ivy
+haslametrics,MEAC,MEAC
+haslametrics,Metro,Metro
+haslametrics,Mid-American,MAC
+haslametrics,Missouri Valley,MVC
+haslametrics,Mountain West,Mountain West
+haslametrics,Northeast,NEC
+haslametrics,Ohio Valley,OVC
+haslametrics,Pac-12,Pac-12
+haslametrics,Patriot League,Patriot
+haslametrics,SEC,SEC
+haslametrics,SWAC,SWAC
+haslametrics,Southern,SoCon
+haslametrics,Southland,Southland
+haslametrics,Summit League,Summit
+haslametrics,Sun Belt,Sun Belt
+haslametrics,UAC,UAC
+haslametrics,West Coast,WCC
+ncaa_net,ACC,ACC
+ncaa_net,ASUN,Atlantic Sun
+ncaa_net,America East,Am. East
+ncaa_net,American,American
+ncaa_net,Atlantic 10,A-10
+ncaa_net,Big 12,Big 12
+ncaa_net,Big East,Big East
+ncaa_net,Big Sky,Big Sky
+ncaa_net,Big South,Big South
+ncaa_net,Big Ten,Big Ten
+ncaa_net,Big West,Big West
+ncaa_net,CAA,CAA
+ncaa_net,CUSA,CUSA
+ncaa_net,Horizon,Horizon
+ncaa_net,Ivy League,Ivy
+ncaa_net,MAAC,Metro
+ncaa_net,MAC,MAC
+ncaa_net,MEAC,MEAC
+ncaa_net,MVC,MVC
+ncaa_net,Mountain West,Mountain West
+ncaa_net,NEC,NEC
+ncaa_net,OVC,OVC
+ncaa_net,Patriot,Patriot
+ncaa_net,SEC,SEC
+ncaa_net,SWAC,SWAC
+ncaa_net,SoCon,SoCon
+ncaa_net,Southland,Southland
+ncaa_net,Summit League,Summit
+ncaa_net,Sun Belt,Sun Belt
+ncaa_net,WAC,UAC
+ncaa_net,WCC,WCC

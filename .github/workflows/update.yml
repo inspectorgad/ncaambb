@@ -1,0 +1,97 @@
+name: Daily update
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # 11:17 UTC ≈ 6:17 AM ET, after the overnight rating updates
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even outside the season window"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write   # commit the daily history snapshot
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    outputs:
+      active: ${{ steps.season.outputs.active }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install
+        run: pip install -e .
+
+      - name: In season?
+        id: season
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force }}" = "true" ]; then
+            echo "active=true" >> "$GITHUB_OUTPUT"; echo "manual run: forced"
+          else
+            python -m ncaambb.season --github-output
+          fi
+
+      # Last good data per source, used when a site fails (up to 3 days old).
+      - name: Restore source cache
+        if: steps.season.outputs.active == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: data/latest
+          key: source-cache-${{ github.run_id }}
+          restore-keys: source-cache-
+
+      - name: Run pipeline
+        if: steps.season.outputs.active == 'true'
+        run: python -m ncaambb.pipeline
+
+      - name: Save source cache
+        if: always() && steps.season.outputs.active == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: data/latest
+          key: source-cache-${{ github.run_id }}
+
+      - name: Commit history snapshot
+        if: steps.season.outputs.active == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/history
+          if git diff --cached --quiet; then
+            echo "no new history"
+          else
+            git commit -m "data: $(date -u +%F)"
+            git pull --rebase --autostash
+            git push
+          fi
+
+      - name: Upload site
+        if: steps.season.outputs.active == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: update
+    if: needs.update.outputs.active == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

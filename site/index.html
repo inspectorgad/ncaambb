@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D1 Composite Rankings</title>
+  <meta name="description" content="Composite NCAA D1 men's basketball rankings built from free public rating systems.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23eb6834'/><path d='M2 16h28M16 2v28M6 6c6 6 6 14 0 20M26 6c-6 6-6 14 0 20' stroke='%23111' stroke-width='2' fill='none'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="top-row">
+        <h1><a href="#/">D1 Composite Rankings</a></h1>
+        <span class="updated" id="updated">Loading…</span>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">◐ Theme</button>
+      </div>
+      <details class="sources-box" id="sources-box">
+        <summary id="sources-summary">Sources</summary>
+        <div class="badges" id="badges" aria-label="Source status"></div>
+      </details>
+    </div>
+  </header>
+  <main class="wrap" id="app"><p class="empty">Loading rankings…</p></main>
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+  <script src="app.js"></script>
+</body>
+</html>
