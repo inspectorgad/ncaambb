@@ -1,0 +1,731 @@
+source,source_name,team_id
+haslametrics,AR-Pine Bluff,arkansas-pine-bluff
+haslametrics,Abil. Christian,abilene-christian
+haslametrics,Air Force,air-force
+haslametrics,Akron,akron
+haslametrics,Alabama,alabama
+haslametrics,Alabama A&M,alabama-am
+haslametrics,Alabama State,alabama-state
+haslametrics,Albany,ualbany
+haslametrics,Alcorn State,alcorn-state
+haslametrics,American,american-university
+haslametrics,Appalachian St.,app-state
+haslametrics,Arizona,arizona
+haslametrics,Arizona State,arizona-state
+haslametrics,Arkansas,arkansas
+haslametrics,Arkansas State,arkansas-state
+haslametrics,Army,army
+haslametrics,Auburn,auburn
+haslametrics,Austin Peay,austin-peay
+haslametrics,BYU,byu
+haslametrics,Ball State,ball-state
+haslametrics,Baylor,baylor
+haslametrics,Bellarmine,bellarmine
+haslametrics,Belmont,belmont
+haslametrics,Bethune-Cookman,bethune-cookman
+haslametrics,Binghamton,binghamton
+haslametrics,Boise State,boise-state
+haslametrics,Boston College,boston-college
+haslametrics,Boston U,boston-university
+haslametrics,Bowling Green,bowling-green
+haslametrics,Bradley,bradley
+haslametrics,Brown,brown
+haslametrics,Bryant,bryant
+haslametrics,Bucknell,bucknell
+haslametrics,Buffalo,buffalo
+haslametrics,Butler,butler
+haslametrics,CSU Bakersfield,cal-state-bakersfield
+haslametrics,CSU Fullerton,cal-state-fullerton
+haslametrics,CSU Northridge,cal-state-northridge
+haslametrics,Cal Baptist,california-baptist
+haslametrics,Cal Poly,cal-poly
+haslametrics,California,california
+haslametrics,Campbell,campbell
+haslametrics,Canisius,canisius
+haslametrics,Cent. Arkansas,central-arkansas
+haslametrics,Cent. Conn. St.,central-connecticut
+haslametrics,Cent. Michigan,central-michigan
+haslametrics,Charleston,charleston
+haslametrics,Charleston So.,charleston-southern
+haslametrics,Charlotte,charlotte
+haslametrics,Chattanooga,chattanooga
+haslametrics,Chicago State,chicago-state
+haslametrics,Cincinnati,cincinnati
+haslametrics,Clemson,clemson
+haslametrics,Cleveland State,cleveland-state
+haslametrics,Coast. Carolina,coastal-carolina
+haslametrics,Colgate,colgate
+haslametrics,Colorado,colorado
+haslametrics,Colorado State,colorado-state
+haslametrics,Columbia,columbia
+haslametrics,Coppin State,coppin-state
+haslametrics,Cornell,cornell
+haslametrics,Creighton,creighton
+haslametrics,Dartmouth,dartmouth
+haslametrics,Davidson,davidson
+haslametrics,Dayton,dayton
+haslametrics,DePaul,depaul
+haslametrics,Delaware,delaware
+haslametrics,Delaware State,delaware-state
+haslametrics,Denver,denver
+haslametrics,Detroit Mercy,detroit-mercy
+haslametrics,Drake,drake
+haslametrics,Drexel,drexel
+haslametrics,Duke,duke
+haslametrics,Duquesne,duquesne
+haslametrics,E. Illinois,eastern-illinois
+haslametrics,E. Kentucky,eastern-kentucky
+haslametrics,E. Michigan,eastern-michigan
+haslametrics,E. Washington,eastern-washington
+haslametrics,ECU,east-carolina
+haslametrics,ETSU,east-tennessee-state
+haslametrics,East Texas A&M,east-texas-am
+haslametrics,Elon,elon
+haslametrics,Evansville,evansville
+haslametrics,FAU,florida-atlantic
+haslametrics,FGCU,florida-gulf-coast
+haslametrics,FIU,florida-international
+haslametrics,Fair. Dickinson,fairleigh-dickinson
+haslametrics,Fairfield,fairfield
+haslametrics,Florida,florida
+haslametrics,Florida A&M,florida-am
+haslametrics,Florida State,florida-state
+haslametrics,Fordham,fordham
+haslametrics,Fort Wayne,purdue-fort-wayne
+haslametrics,Fresno State,fresno-state
+haslametrics,Furman,furman
+haslametrics,G. Washington,george-washington
+haslametrics,GA Southern,georgia-southern
+haslametrics,Gardner-Webb,gardner-webb
+haslametrics,George Mason,george-mason
+haslametrics,Georgetown,georgetown
+haslametrics,Georgia,georgia
+haslametrics,Georgia State,georgia-state
+haslametrics,Georgia Tech,georgia-tech
+haslametrics,Gonzaga,gonzaga
+haslametrics,Grambling State,grambling
+haslametrics,Grand Canyon,grand-canyon
+haslametrics,Green Bay,green-bay
+haslametrics,Hampton,hampton
+haslametrics,Harvard,harvard
+haslametrics,Hawaii,hawaii
+haslametrics,High Point,high-point
+haslametrics,Hofstra,hofstra
+haslametrics,Holy Cross,holy-cross
+haslametrics,Houston,houston
+haslametrics,Houston Christian,houston-christian
+haslametrics,Howard,howard
+haslametrics,IU Indianapolis,iu-indianapolis
+haslametrics,Idaho,idaho
+haslametrics,Idaho State,idaho-state
+haslametrics,Illinois,illinois
+haslametrics,Illinois State,illinois-state
+haslametrics,Incarnate Word,incarnate-word
+haslametrics,Indiana,indiana
+haslametrics,Indiana State,indiana-state
+haslametrics,Iona,iona
+haslametrics,Iowa,iowa
+haslametrics,Iowa State,iowa-state
+haslametrics,JMU,james-madison
+haslametrics,Jackson State,jackson-state
+haslametrics,Jacksonville,jacksonville
+haslametrics,Jacksonville St.,jacksonville-state
+haslametrics,Kansas,kansas
+haslametrics,Kansas City,kansas-city
+haslametrics,Kansas State,kansas-state
+haslametrics,Kennesaw State,kennesaw-state
+haslametrics,Kent State,kent-state
+haslametrics,Kentucky,kentucky
+haslametrics,LA Tech,louisiana-tech
+haslametrics,LSU,lsu
+haslametrics,La Salle,la-salle
+haslametrics,Lafayette,lafayette
+haslametrics,Lamar,lamar
+haslametrics,Le Moyne,le-moyne
+haslametrics,Lehigh,lehigh
+haslametrics,Liberty,liberty
+haslametrics,Lindenwood,lindenwood
+haslametrics,Lipscomb,lipscomb
+haslametrics,Little Rock,little-rock
+haslametrics,Long Beach St.,long-beach-state
+haslametrics,Long Island,long-island-university
+haslametrics,Longwood,longwood
+haslametrics,Louisiana,louisiana
+haslametrics,Louisville,louisville
+haslametrics,Loyola (MD),loyola-maryland
+haslametrics,Loyola Marymount,loyola-marymount
+haslametrics,Loyola-Chicago,loyola-chicago
+haslametrics,MTSU,middle-tennessee
+haslametrics,Maine,maine
+haslametrics,Manhattan,manhattan
+haslametrics,Marist,marist
+haslametrics,Marquette,marquette
+haslametrics,Marshall,marshall
+haslametrics,Maryland,maryland
+haslametrics,McNeese,mcneese
+haslametrics,Memphis,memphis
+haslametrics,Mercer,mercer
+haslametrics,Mercyhurst,mercyhurst
+haslametrics,Merrimack,merrimack
+haslametrics,Miami,miami
+haslametrics,Miami (OH),miami-oh
+haslametrics,Michigan,michigan
+haslametrics,Michigan State,michigan-state
+haslametrics,Milwaukee,milwaukee
+haslametrics,Minnesota,minnesota
+haslametrics,Miss. Valley St.,mississippi-valley-state
+haslametrics,Mississippi St.,mississippi-state
+haslametrics,Missouri,missouri
+haslametrics,Missouri State,missouri-state
+haslametrics,Monmouth,monmouth
+haslametrics,Montana,montana
+haslametrics,Montana State,montana-state
+haslametrics,Morehead State,morehead-state
+haslametrics,Morgan State,morgan-state
+haslametrics,Mt. St. Mary's,mount-st-marys
+haslametrics,Murray State,murray-state
+haslametrics,N. Arizona,northern-arizona
+haslametrics,N. Colorado,northern-colorado
+haslametrics,N. Illinois,northern-illinois
+haslametrics,N. Kentucky,northern-kentucky
+haslametrics,NC A&T,north-carolina-at
+haslametrics,NC Central,north-carolina-central
+haslametrics,NC State,nc-state
+haslametrics,NJIT,njit
+haslametrics,Navy,navy
+haslametrics,Nebraska,nebraska
+haslametrics,Nevada,nevada
+haslametrics,New Haven,new-haven
+haslametrics,New Mexico,new-mexico
+haslametrics,New Mexico St.,new-mexico-state
+haslametrics,New Orleans,lsu-new-orleans
+haslametrics,Niagara,niagara
+haslametrics,Nicholls,nicholls
+haslametrics,Norfolk State,norfolk-state
+haslametrics,North Alabama,north-alabama
+haslametrics,North Carolina,north-carolina
+haslametrics,North Dakota,north-dakota
+haslametrics,North Dakota St.,north-dakota-state
+haslametrics,North Florida,north-florida
+haslametrics,North Texas,north-texas
+haslametrics,Northeastern,northeastern
+haslametrics,Northern Iowa,northern-iowa
+haslametrics,Northwestern,northwestern
+haslametrics,Northwestern St.,northwestern-state
+haslametrics,Notre Dame,notre-dame
+haslametrics,Oakland,oakland
+haslametrics,Ohio,ohio
+haslametrics,Ohio State,ohio-state
+haslametrics,Oklahoma,oklahoma
+haslametrics,Oklahoma State,oklahoma-state
+haslametrics,Old Dominion,old-dominion
+haslametrics,Ole Miss,ole-miss
+haslametrics,Omaha,omaha
+haslametrics,Oral Roberts,oral-roberts
+haslametrics,Oregon,oregon
+haslametrics,Oregon State,oregon-state
+haslametrics,PV A&M,prairie-view-am
+haslametrics,Pacific,pacific
+haslametrics,Penn,pennsylvania
+haslametrics,Penn State,penn-state
+haslametrics,Pepperdine,pepperdine
+haslametrics,Pittsburgh,pittsburgh
+haslametrics,Portland,portland
+haslametrics,Portland State,portland-state
+haslametrics,Presbyterian,presbyterian
+haslametrics,Princeton,princeton
+haslametrics,Providence,providence
+haslametrics,Purdue,purdue
+haslametrics,Queens,queens-university
+haslametrics,Quinnipiac,quinnipiac
+haslametrics,Radford,radford
+haslametrics,Rice,rice
+haslametrics,Richmond,richmond
+haslametrics,Rider,rider
+haslametrics,Robert Morris,robert-morris
+haslametrics,Rutgers,rutgers
+haslametrics,S. Carolina St.,south-carolina-state
+haslametrics,S. Illinois,southern-illinois
+haslametrics,S. Indiana,southern-indiana
+haslametrics,SE Louisiana,se-louisiana
+haslametrics,SE Missouri St.,southeast-missouri-state
+haslametrics,SIUE,siu-edwardsville
+haslametrics,SMU,smu
+haslametrics,Sacramento St.,sacramento-state
+haslametrics,Sacred Heart,sacred-heart
+haslametrics,Saint Joe's,saint-josephs
+haslametrics,Saint Louis,saint-louis
+haslametrics,Saint Mary's,saint-marys
+haslametrics,Sam Houston,sam-houston
+haslametrics,Samford,samford
+haslametrics,San Diego,san-diego
+haslametrics,San Diego State,san-diego-state
+haslametrics,San Francisco,san-francisco
+haslametrics,San Jose State,san-jose-state
+haslametrics,Santa Clara,santa-clara
+haslametrics,Seattle,seattle-u
+haslametrics,Seton Hall,seton-hall
+haslametrics,Siena,siena
+haslametrics,South Alabama,south-alabama
+haslametrics,South Carolina,south-carolina
+haslametrics,South Dakota,south-dakota
+haslametrics,South Dakota St.,south-dakota-state
+haslametrics,Southern,southern
+haslametrics,Southern Miss,southern-miss
+haslametrics,Southern Utah,southern-utah
+haslametrics,St. Bonaventure,st-bonaventure
+haslametrics,St. John's,st-johns
+haslametrics,St. Peter's,saint-peters
+haslametrics,St. Thomas,st-thomas
+haslametrics,Stanford,stanford
+haslametrics,Stephen F. Austin,stephen-f-austin
+haslametrics,Stetson,stetson
+haslametrics,Stonehill,stonehill
+haslametrics,Stony Brook,stony-brook
+haslametrics,Syracuse,syracuse
+haslametrics,TCU,tcu
+haslametrics,Tarleton,tarleton-state
+haslametrics,Temple,temple
+haslametrics,Tenn. Tech,tennessee-tech
+haslametrics,Tennessee,tennessee
+haslametrics,Tennessee St.,tennessee-state
+haslametrics,Texas,texas
+haslametrics,Texas A&M,texas-am
+haslametrics,Texas A&M-CC,texas-am-corpus-christi
+haslametrics,Texas Southern,texas-southern
+haslametrics,Texas State,texas-state
+haslametrics,Texas Tech,texas-tech
+haslametrics,The Citadel,the-citadel
+haslametrics,Toledo,toledo
+haslametrics,Towson,towson
+haslametrics,Troy,troy
+haslametrics,Tulane,tulane
+haslametrics,Tulsa,tulsa
+haslametrics,UAB,uab
+haslametrics,UC Davis,uc-davis
+haslametrics,UC Irvine,uc-irvine
+haslametrics,UC Riverside,uc-riverside
+haslametrics,UC San Diego,uc-san-diego
+haslametrics,UCF,ucf
+haslametrics,UCLA,ucla
+haslametrics,UCSB,uc-santa-barbara
+haslametrics,UConn,uconn
+haslametrics,UIC,uic
+haslametrics,UL Monroe,ul-monroe
+haslametrics,UMBC,umbc
+haslametrics,UMES,maryland-eastern-shore
+haslametrics,UMass,massachusetts
+haslametrics,UMass Lowell,umass-lowell
+haslametrics,UNC Asheville,unc-asheville
+haslametrics,UNC Wilmington,unc-wilmington
+haslametrics,UNCG,unc-greensboro
+haslametrics,UNH,new-hampshire
+haslametrics,UNLV,unlv
+haslametrics,URI,rhode-island
+haslametrics,USC,usc
+haslametrics,USC Upstate,south-carolina-upstate
+haslametrics,USF,south-florida
+haslametrics,UT Arlington,ut-arlington
+haslametrics,UT Martin,ut-martin
+haslametrics,UTEP,utep
+haslametrics,UTRGV,ut-rio-grande-valley
+haslametrics,UTSA,utsa
+haslametrics,Utah,utah
+haslametrics,Utah State,utah-state
+haslametrics,Utah Tech,utah-tech
+haslametrics,Utah Valley,utah-valley
+haslametrics,VCU,vcu
+haslametrics,VMI,vmi
+haslametrics,Valparaiso,valparaiso
+haslametrics,Vanderbilt,vanderbilt
+haslametrics,Vermont,vermont
+haslametrics,Villanova,villanova
+haslametrics,Virginia,virginia
+haslametrics,Virginia Tech,virginia-tech
+haslametrics,W. Carolina,western-carolina
+haslametrics,W. Illinois,western-illinois
+haslametrics,W. Kentucky,western-kentucky
+haslametrics,W. Michigan,western-michigan
+haslametrics,Wagner,wagner
+haslametrics,Wake Forest,wake-forest
+haslametrics,Washington,washington
+haslametrics,Washington St.,washington-state
+haslametrics,Weber State,weber-state
+haslametrics,West Florida,west-florida
+haslametrics,West Georgia,west-georgia
+haslametrics,West Virginia,west-virginia
+haslametrics,Wichita State,wichita-state
+haslametrics,William & Mary,william-mary
+haslametrics,Winthrop,winthrop
+haslametrics,Wisconsin,wisconsin
+haslametrics,Wofford,wofford
+haslametrics,Wright State,wright-state
+haslametrics,Wyoming,wyoming
+haslametrics,Xavier,xavier
+haslametrics,Yale,yale
+haslametrics,Youngstown St.,youngstown-state
+torvik,Abilene Christian,abilene-christian
+torvik,Air Force,air-force
+torvik,Akron,akron
+torvik,Alabama,alabama
+torvik,Alabama A&M,alabama-am
+torvik,Alabama St.,alabama-state
+torvik,Albany,ualbany
+torvik,Alcorn St.,alcorn-state
+torvik,American,american-university
+torvik,Appalachian St.,app-state
+torvik,Arizona,arizona
+torvik,Arizona St.,arizona-state
+torvik,Arkansas,arkansas
+torvik,Arkansas Pine Bluff,arkansas-pine-bluff
+torvik,Arkansas St.,arkansas-state
+torvik,Army,army
+torvik,Auburn,auburn
+torvik,Austin Peay,austin-peay
+torvik,BYU,byu
+torvik,Ball St.,ball-state
+torvik,Baylor,baylor
+torvik,Bellarmine,bellarmine
+torvik,Belmont,belmont
+torvik,Bethune Cookman,bethune-cookman
+torvik,Binghamton,binghamton
+torvik,Boise St.,boise-state
+torvik,Boston College,boston-college
+torvik,Boston University,boston-university
+torvik,Bowling Green,bowling-green
+torvik,Bradley,bradley
+torvik,Brown,brown
+torvik,Bryant,bryant
+torvik,Bucknell,bucknell
+torvik,Buffalo,buffalo
+torvik,Butler,butler
+torvik,Cal Baptist,california-baptist
+torvik,Cal Poly,cal-poly
+torvik,Cal St. Bakersfield,cal-state-bakersfield
+torvik,Cal St. Fullerton,cal-state-fullerton
+torvik,Cal St. Northridge,cal-state-northridge
+torvik,California,california
+torvik,Campbell,campbell
+torvik,Canisius,canisius
+torvik,Central Arkansas,central-arkansas
+torvik,Central Connecticut,central-connecticut
+torvik,Central Michigan,central-michigan
+torvik,Charleston,charleston
+torvik,Charleston Southern,charleston-southern
+torvik,Charlotte,charlotte
+torvik,Chattanooga,chattanooga
+torvik,Chicago St.,chicago-state
+torvik,Cincinnati,cincinnati
+torvik,Clemson,clemson
+torvik,Cleveland St.,cleveland-state
+torvik,Coastal Carolina,coastal-carolina
+torvik,Colgate,colgate
+torvik,Colorado,colorado
+torvik,Colorado St.,colorado-state
+torvik,Columbia,columbia
+torvik,Connecticut,uconn
+torvik,Coppin St.,coppin-state
+torvik,Cornell,cornell
+torvik,Creighton,creighton
+torvik,Dartmouth,dartmouth
+torvik,Davidson,davidson
+torvik,Dayton,dayton
+torvik,DePaul,depaul
+torvik,Delaware,delaware
+torvik,Delaware St.,delaware-state
+torvik,Denver,denver
+torvik,Detroit Mercy,detroit-mercy
+torvik,Drake,drake
+torvik,Drexel,drexel
+torvik,Duke,duke
+torvik,Duquesne,duquesne
+torvik,East Carolina,east-carolina
+torvik,East Tennessee St.,east-tennessee-state
+torvik,East Texas A&M,east-texas-am
+torvik,Eastern Illinois,eastern-illinois
+torvik,Eastern Kentucky,eastern-kentucky
+torvik,Eastern Michigan,eastern-michigan
+torvik,Eastern Washington,eastern-washington
+torvik,Elon,elon
+torvik,Evansville,evansville
+torvik,FIU,florida-international
+torvik,Fairfield,fairfield
+torvik,Fairleigh Dickinson,fairleigh-dickinson
+torvik,Florida,florida
+torvik,Florida A&M,florida-am
+torvik,Florida Atlantic,florida-atlantic
+torvik,Florida Gulf Coast,florida-gulf-coast
+torvik,Florida St.,florida-state
+torvik,Fordham,fordham
+torvik,Fresno St.,fresno-state
+torvik,Furman,furman
+torvik,Gardner Webb,gardner-webb
+torvik,George Mason,george-mason
+torvik,George Washington,george-washington
+torvik,Georgetown,georgetown
+torvik,Georgia,georgia
+torvik,Georgia Southern,georgia-southern
+torvik,Georgia St.,georgia-state
+torvik,Georgia Tech,georgia-tech
+torvik,Gonzaga,gonzaga
+torvik,Grambling St.,grambling
+torvik,Grand Canyon,grand-canyon
+torvik,Green Bay,green-bay
+torvik,Hampton,hampton
+torvik,Harvard,harvard
+torvik,Hawaii,hawaii
+torvik,High Point,high-point
+torvik,Hofstra,hofstra
+torvik,Holy Cross,holy-cross
+torvik,Houston,houston
+torvik,Houston Christian,houston-christian
+torvik,Howard,howard
+torvik,IU Indy,iu-indianapolis
+torvik,Idaho,idaho
+torvik,Idaho St.,idaho-state
+torvik,Illinois,illinois
+torvik,Illinois Chicago,uic
+torvik,Illinois St.,illinois-state
+torvik,Incarnate Word,incarnate-word
+torvik,Indiana,indiana
+torvik,Indiana St.,indiana-state
+torvik,Iona,iona
+torvik,Iowa,iowa
+torvik,Iowa St.,iowa-state
+torvik,Jackson St.,jackson-state
+torvik,Jacksonville,jacksonville
+torvik,Jacksonville St.,jacksonville-state
+torvik,James Madison,james-madison
+torvik,Kansas,kansas
+torvik,Kansas St.,kansas-state
+torvik,Kennesaw St.,kennesaw-state
+torvik,Kent St.,kent-state
+torvik,Kentucky,kentucky
+torvik,LIU,long-island-university
+torvik,LSU,lsu
+torvik,La Salle,la-salle
+torvik,Lafayette,lafayette
+torvik,Lamar,lamar
+torvik,Le Moyne,le-moyne
+torvik,Lehigh,lehigh
+torvik,Liberty,liberty
+torvik,Lindenwood,lindenwood
+torvik,Lipscomb,lipscomb
+torvik,Little Rock,little-rock
+torvik,Long Beach St.,long-beach-state
+torvik,Longwood,longwood
+torvik,Louisiana,louisiana
+torvik,Louisiana Monroe,ul-monroe
+torvik,Louisiana Tech,louisiana-tech
+torvik,Louisville,louisville
+torvik,Loyola Chicago,loyola-chicago
+torvik,Loyola MD,loyola-maryland
+torvik,Loyola Marymount,loyola-marymount
+torvik,Maine,maine
+torvik,Manhattan,manhattan
+torvik,Marist,marist
+torvik,Marquette,marquette
+torvik,Marshall,marshall
+torvik,Maryland,maryland
+torvik,Maryland Eastern Shore,maryland-eastern-shore
+torvik,Massachusetts,massachusetts
+torvik,McNeese St.,mcneese
+torvik,Memphis,memphis
+torvik,Mercer,mercer
+torvik,Mercyhurst,mercyhurst
+torvik,Merrimack,merrimack
+torvik,Miami FL,miami
+torvik,Miami OH,miami-oh
+torvik,Michigan,michigan
+torvik,Michigan St.,michigan-state
+torvik,Middle Tennessee,middle-tennessee
+torvik,Milwaukee,milwaukee
+torvik,Minnesota,minnesota
+torvik,Mississippi,ole-miss
+torvik,Mississippi St.,mississippi-state
+torvik,Mississippi Valley St.,mississippi-valley-state
+torvik,Missouri,missouri
+torvik,Missouri St.,missouri-state
+torvik,Monmouth,monmouth
+torvik,Montana,montana
+torvik,Montana St.,montana-state
+torvik,Morehead St.,morehead-state
+torvik,Morgan St.,morgan-state
+torvik,Mount St. Mary's,mount-st-marys
+torvik,Murray St.,murray-state
+torvik,N.C. State,nc-state
+torvik,NJIT,njit
+torvik,Navy,navy
+torvik,Nebraska,nebraska
+torvik,Nebraska Omaha,omaha
+torvik,Nevada,nevada
+torvik,New Hampshire,new-hampshire
+torvik,New Haven,new-haven
+torvik,New Mexico,new-mexico
+torvik,New Mexico St.,new-mexico-state
+torvik,New Orleans,lsu-new-orleans
+torvik,Niagara,niagara
+torvik,Nicholls St.,nicholls
+torvik,Norfolk St.,norfolk-state
+torvik,North Alabama,north-alabama
+torvik,North Carolina,north-carolina
+torvik,North Carolina A&T,north-carolina-at
+torvik,North Carolina Central,north-carolina-central
+torvik,North Dakota,north-dakota
+torvik,North Dakota St.,north-dakota-state
+torvik,North Florida,north-florida
+torvik,North Texas,north-texas
+torvik,Northeastern,northeastern
+torvik,Northern Arizona,northern-arizona
+torvik,Northern Colorado,northern-colorado
+torvik,Northern Illinois,northern-illinois
+torvik,Northern Iowa,northern-iowa
+torvik,Northern Kentucky,northern-kentucky
+torvik,Northwestern,northwestern
+torvik,Northwestern St.,northwestern-state
+torvik,Notre Dame,notre-dame
+torvik,Oakland,oakland
+torvik,Ohio,ohio
+torvik,Ohio St.,ohio-state
+torvik,Oklahoma,oklahoma
+torvik,Oklahoma St.,oklahoma-state
+torvik,Old Dominion,old-dominion
+torvik,Oral Roberts,oral-roberts
+torvik,Oregon,oregon
+torvik,Oregon St.,oregon-state
+torvik,Pacific,pacific
+torvik,Penn,pennsylvania
+torvik,Penn St.,penn-state
+torvik,Pepperdine,pepperdine
+torvik,Pittsburgh,pittsburgh
+torvik,Portland,portland
+torvik,Portland St.,portland-state
+torvik,Prairie View A&M,prairie-view-am
+torvik,Presbyterian,presbyterian
+torvik,Princeton,princeton
+torvik,Providence,providence
+torvik,Purdue,purdue
+torvik,Purdue Fort Wayne,purdue-fort-wayne
+torvik,Queens,queens-university
+torvik,Quinnipiac,quinnipiac
+torvik,Radford,radford
+torvik,Rhode Island,rhode-island
+torvik,Rice,rice
+torvik,Richmond,richmond
+torvik,Rider,rider
+torvik,Robert Morris,robert-morris
+torvik,Rutgers,rutgers
+torvik,SIU Edwardsville,siu-edwardsville
+torvik,SMU,smu
+torvik,Sacramento St.,sacramento-state
+torvik,Sacred Heart,sacred-heart
+torvik,Saint Joseph's,saint-josephs
+torvik,Saint Louis,saint-louis
+torvik,Saint Mary's,saint-marys
+torvik,Saint Peter's,saint-peters
+torvik,Sam Houston St.,sam-houston
+torvik,Samford,samford
+torvik,San Diego,san-diego
+torvik,San Diego St.,san-diego-state
+torvik,San Francisco,san-francisco
+torvik,San Jose St.,san-jose-state
+torvik,Santa Clara,santa-clara
+torvik,Seattle,seattle-u
+torvik,Seton Hall,seton-hall
+torvik,Siena,siena
+torvik,South Alabama,south-alabama
+torvik,South Carolina,south-carolina
+torvik,South Carolina St.,south-carolina-state
+torvik,South Dakota,south-dakota
+torvik,South Dakota St.,south-dakota-state
+torvik,South Florida,south-florida
+torvik,Southeast Missouri St.,southeast-missouri-state
+torvik,Southeastern Louisiana,se-louisiana
+torvik,Southern,southern
+torvik,Southern Illinois,southern-illinois
+torvik,Southern Indiana,southern-indiana
+torvik,Southern Miss,southern-miss
+torvik,Southern Utah,southern-utah
+torvik,St. Bonaventure,st-bonaventure
+torvik,St. John's,st-johns
+torvik,St. Thomas,st-thomas
+torvik,Stanford,stanford
+torvik,Stephen F. Austin,stephen-f-austin
+torvik,Stetson,stetson
+torvik,Stonehill,stonehill
+torvik,Stony Brook,stony-brook
+torvik,Syracuse,syracuse
+torvik,TCU,tcu
+torvik,Tarleton St.,tarleton-state
+torvik,Temple,temple
+torvik,Tennessee,tennessee
+torvik,Tennessee Martin,ut-martin
+torvik,Tennessee St.,tennessee-state
+torvik,Tennessee Tech,tennessee-tech
+torvik,Texas,texas
+torvik,Texas A&M,texas-am
+torvik,Texas A&M Corpus Chris,texas-am-corpus-christi
+torvik,Texas Southern,texas-southern
+torvik,Texas St.,texas-state
+torvik,Texas Tech,texas-tech
+torvik,The Citadel,the-citadel
+torvik,Toledo,toledo
+torvik,Towson,towson
+torvik,Troy,troy
+torvik,Tulane,tulane
+torvik,Tulsa,tulsa
+torvik,UAB,uab
+torvik,UC Davis,uc-davis
+torvik,UC Irvine,uc-irvine
+torvik,UC Riverside,uc-riverside
+torvik,UC San Diego,uc-san-diego
+torvik,UC Santa Barbara,uc-santa-barbara
+torvik,UCF,ucf
+torvik,UCLA,ucla
+torvik,UMBC,umbc
+torvik,UMKC,kansas-city
+torvik,UMass Lowell,umass-lowell
+torvik,UNC Asheville,unc-asheville
+torvik,UNC Greensboro,unc-greensboro
+torvik,UNC Wilmington,unc-wilmington
+torvik,UNLV,unlv
+torvik,USC,usc
+torvik,USC Upstate,south-carolina-upstate
+torvik,UT Arlington,ut-arlington
+torvik,UT Rio Grande Valley,ut-rio-grande-valley
+torvik,UTEP,utep
+torvik,UTSA,utsa
+torvik,Utah,utah
+torvik,Utah St.,utah-state
+torvik,Utah Tech,utah-tech
+torvik,Utah Valley,utah-valley
+torvik,VCU,vcu
+torvik,VMI,vmi
+torvik,Valparaiso,valparaiso
+torvik,Vanderbilt,vanderbilt
+torvik,Vermont,vermont
+torvik,Villanova,villanova
+torvik,Virginia,virginia
+torvik,Virginia Tech,virginia-tech
+torvik,Wagner,wagner
+torvik,Wake Forest,wake-forest
+torvik,Washington,washington
+torvik,Washington St.,washington-state
+torvik,Weber St.,weber-state
+torvik,West Florida,west-florida
+torvik,West Georgia,west-georgia
+torvik,West Virginia,west-virginia
+torvik,Western Carolina,western-carolina
+torvik,Western Illinois,western-illinois
+torvik,Western Kentucky,western-kentucky
+torvik,Western Michigan,western-michigan
+torvik,Wichita St.,wichita-state
+torvik,William & Mary,william-mary
+torvik,Winthrop,winthrop
+torvik,Wisconsin,wisconsin
+torvik,Wofford,wofford
+torvik,Wright St.,wright-state
+torvik,Wyoming,wyoming
+torvik,Xavier,xavier
+torvik,Yale,yale
+torvik,Youngstown St.,youngstown-state

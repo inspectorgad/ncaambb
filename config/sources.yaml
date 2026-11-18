@@ -1,0 +1,17 @@
+# Season is identified by its END year: 2027 = the 2026-27 season.
+season: 2027
+
+# The pipeline exits non-zero when this many sources (or more) fail in one run.
+max_failed_sources: 3
+
+sources:
+  torvik:
+    enabled: true
+    url: "https://barttorvik.com/{season}_team_results.csv"
+  haslametrics:
+    enabled: true
+    # ratings.xml always holds the current season (served Brotli-compressed).
+    url: "https://haslametrics.com/ratings.xml"
+  espn_bpi:
+    enabled: true
+    url: "https://site.web.api.espn.com/apis/fitt/v3/sports/basketball/mens-college-basketball/powerindex?limit=400"

@@ -96,7 +96,7 @@ This is the most fiddly part, so it gets its own step.
 | Source | Metric | Default weight |
 |---|---|---|
 | Torvik | AdjEM (`adjoe − adjde`) | 0.25 |
-| Haslametrics | Efficiency margin (`oe − de`) *(check against `ap` and `rk` in Phase 1; switch if `ap` tracks their ranking better)* | 0.25 |
+| Haslametrics | Efficiency margin (`oe − de`). Their rank follows All-Play % exactly, but that is capped at 1.0 with many ties at the top. The margin agrees with it at Spearman 0.994 and spreads teams out better for z-scores. | 0.25 |
 | ESPN BPI | BPI | 0.25 |
 | TeamRankings | Predictive rating | 0.25 |
 
@@ -194,7 +194,7 @@ jobs:
 
 | Phase | Deliverable | Done when |
 |---|---|---|
-| 1. Foundation | Project skeleton, `http.py`, schema, teams.csv from ESPN, Torvik, Haslametrics and BPI parsers, crosswalk for those three | `pytest` passes; 365/365 mapped for 3 sources |
+| 1. Foundation ✅ | Project skeleton, `http.py`, schema, teams.csv from ESPN, Torvik, Haslametrics and BPI parsers, crosswalk for those three | `pytest` passes; 365/365 mapped for 3 sources |
 | 2. Remaining sources + composite | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
 | 3. Front end | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
 | 4. Automation | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
