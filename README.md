@@ -20,6 +20,8 @@ Composite rankings for all 365 NCAA D1 men's basketball teams, built from free p
 
 ## Reading the dashboard
 
+This section is also published as the dashboard's **guide page** (`site/guide.html`, linked from "ⓘ What do these columns mean?"). After editing it, rebuild the page with `python -m ncaambb.tools.build_guide`; a test fails if the two drift apart.
+
 ### Rankings table
 
 Use the **Predictive / Resume** toggle to choose which composite the **#** column and default sort follow. Click any heading to sort, and click again to reverse. Hover over a heading for a short reminder of its meaning.
@@ -37,7 +39,7 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | **AdjD** | **Adjusted defense:** points *allowed* per 100 possessions against an average D1 offense. The small grey number is its rank. | **Lower** |
 | **Tempo** | Possessions per 40 minutes, i.e. how fast the team plays. A style measure, not good or bad (rank 1 = fastest). | – |
 | **SOS** | **Strength of schedule** rank, averaged from Torvik, Haslametrics and ESPN. 1 = toughest schedule played so far. | Lower = tougher |
-| **Agree** | How much the four predictive systems **disagree** about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution. | Lower = more agreement |
+| **Agree** | How much the five predictive systems **disagree** about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution. | Lower = more agreement |
 
 **Source columns:** tick this checkbox to show each site's own number next to the composites.
 

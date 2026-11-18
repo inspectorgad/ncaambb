@@ -22,13 +22,13 @@ const INPUT_LABELS = {
   "espn_bpi:sor_rank": "ESPN SOR",
   "torvik:wab": "Torvik WAB",
 };
-const GUIDE_URL = "https://github.com/inspectorgad/ncaambb/blob/main/README.md";
+const GUIDE_URL = "guide.html";
 const HELP = {
   table: `${GUIDE_URL}#rankings-table`,
   team: `${GUIDE_URL}#team-page`,
 };
 const helpLink = (href, text) =>
-  `<a class="help-link" href="${href}" target="_blank" rel="noopener">ⓘ ${text}</a>`;
+  `<a class="help-link" href="${href}">ⓘ ${text}</a>`;
 const STATUS_TEXT = {
   ok: "OK", stale: "Stale", failed: "Failed", not_current: "Not yet this season", not_configured: "No API key",
 };
