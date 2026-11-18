@@ -7,6 +7,8 @@ const SOURCE_LABELS = {
   haslametrics: "Haslametrics",
   espn_bpi: "ESPN BPI",
   teamrankings: "TeamRankings",
+  cbbd: "CBBD",
+  bracketmatrix: "Bracket Matrix",
   warrennolan: "Warren Nolan",
   ncaa_net: "NCAA NET",
 };
@@ -15,6 +17,7 @@ const INPUT_LABELS = {
   "haslametrics:rating": "Haslametrics",
   "espn_bpi:rating": "ESPN BPI",
   "teamrankings:rating": "TeamRankings",
+  "cbbd:rating": "CBBD",
   "ncaa_net/warrennolan:net_rank": "NET",
   "espn_bpi:sor_rank": "ESPN SOR",
   "torvik:wab": "Torvik WAB",
@@ -26,7 +29,9 @@ const HELP = {
 };
 const helpLink = (href, text) =>
   `<a class="help-link" href="${href}" target="_blank" rel="noopener">ⓘ ${text}</a>`;
-const STATUS_TEXT = { ok: "OK", stale: "Stale", failed: "Failed", not_current: "Not yet this season" };
+const STATUS_TEXT = {
+  ok: "OK", stale: "Stale", failed: "Failed", not_current: "Not yet this season", not_configured: "No API key",
+};
 
 const state = {
   latest: null,
@@ -103,6 +108,7 @@ function renderHeader() {
     const detail = s.status === "ok" ? `${s.teams} teams`
       : s.status === "stale" ? `using data from ${s.data_date}`
       : s.status === "not_current" ? `latest data ${s.data_date}`
+      : s.status === "not_configured" ? "add the API key as a GitHub Actions secret"
       : (s.error || "");
     return `<span class="badge" data-status="${s.status}" title="${esc(label)}: ${esc(STATUS_TEXT[s.status])} – ${esc(detail)}">
       <span class="dot" aria-hidden="true"></span>${esc(label)}<span class="muted">· ${esc(STATUS_TEXT[s.status] || s.status)}</span></span>`;
@@ -141,7 +147,7 @@ const COLUMNS = [
       const m = /^(\d+)-(\d+)$/.exec(t.record || ""); return m ? (+m[1] + 1) / (+m[1] + +m[2] + 2) : null;
     }, dir: -1, cell: (t) => esc(t.record || "–") },
   { key: "pred", label: "Pred", get: (t) => t.pred.rank, heat: (t) => t.pred.rank,
-    cell: (t) => fmtInt(t.pred.rank), title: "Predictive composite rank (Torvik, Haslametrics, BPI, TeamRankings)" },
+    cell: (t) => fmtInt(t.pred.rank), title: "Predictive composite rank (Torvik, Haslametrics, BPI, TeamRankings, CBBD)" },
   { key: "res", label: "Résumé", get: (t) => t.res.rank, heat: (t) => t.res.rank,
     cell: (t) => fmtInt(t.res.rank), title: "Résumé composite rank (NET, ESPN SOR, Torvik WAB)" },
   { key: "gap", label: "Gap", get: (t) => t.gap, dir: -1,
@@ -171,12 +177,21 @@ const COLUMNS = [
     cell: (t) => fmtInt(src(t, "espn_bpi", "rating_rank")), title: "ESPN BPI rank" },
   { key: "s_tr", label: "TR", src: true, get: (t) => src(t, "teamrankings", "rating_rank"),
     cell: (t) => fmtInt(src(t, "teamrankings", "rating_rank")), title: "TeamRankings predictive rank" },
+  { key: "s_cbbd", label: "CBBD", src: true, get: (t) => src(t, "cbbd", "rating_rank"),
+    cell: (t) => fmtInt(src(t, "cbbd", "rating_rank")), title: "CollegeBasketballData adjusted net rating rank" },
   { key: "s_net", label: "NET", src: true, get: (t) => src(t, "ncaa_net", "net_rank") ?? src(t, "warrennolan", "net_rank"),
     cell: (t) => fmtInt(src(t, "ncaa_net", "net_rank") ?? src(t, "warrennolan", "net_rank")), title: "NCAA NET rank (blank until published this season)" },
   { key: "s_sor", label: "SOR", src: true, get: (t) => src(t, "espn_bpi", "sor_rank"),
     cell: (t) => fmtInt(src(t, "espn_bpi", "sor_rank")), title: "ESPN strength of record rank" },
   { key: "s_wab", label: "WAB", src: true, get: (t) => src(t, "torvik", "wab"), dir: -1,
     cell: (t) => signed(src(t, "torvik", "wab"), 1), title: "Torvik wins above bubble" },
+  { key: "s_ap", label: "AP", src: true, get: (t) => src(t, "espn_bpi", "ap_rank"),
+    cell: (t) => fmtInt(src(t, "espn_bpi", "ap_rank")), title: "AP Top 25 rank (blank = unranked). Display only, not in the composite" },
+  { key: "s_coaches", label: "Coaches", src: true, get: (t) => src(t, "espn_bpi", "coaches_rank"),
+    cell: (t) => fmtInt(src(t, "espn_bpi", "coaches_rank")), title: "Coaches Poll rank (blank = unranked). Display only, not in the composite" },
+  { key: "s_seed", label: "Seed", src: true, get: (t) => src(t, "bracketmatrix", "avg_seed"),
+    cell: (t) => fmt(src(t, "bracketmatrix", "avg_seed"), 2),
+    title: "Bracket Matrix average projected NCAA tournament seed (blank = not in the projected field). Display only" },
 ];
 
 const ui = Object.assign(
@@ -237,7 +252,7 @@ function renderRankings() {
       </table>
     </div>
     <p class="legend-note">
-      <b>Pred</b> ranks how good a team is (Torvik, Haslametrics, ESPN BPI, TeamRankings).
+      <b>Pred</b> ranks how good a team is (Torvik, Haslametrics, ESPN BPI, TeamRankings, CBBD).
       <b>Résumé</b> ranks what it has earned (NET, ESPN strength of record, Torvik wins above bubble).
       <b>Gap</b>: ▲ results flattering the team, ▼ under-rewarded so far.
       Shading marks the top half of D1 on each column. Hover any heading for details; tap a team for its page.
@@ -364,11 +379,12 @@ function sourceTable(t) {
     ["haslametrics", (s) => [fmt(s.rating), fmtInt(s.rating_rank), fmt(s.adj_o), fmt(s.adj_d), fmt(s.tempo)]],
     ["espn_bpi", (s) => [fmt(s.rating), fmtInt(s.rating_rank), signed(s.bpi_off, 1), signed(s.bpi_def, 1), "–"]],
     ["teamrankings", (s) => [fmt(s.rating), fmtInt(s.rating_rank), "–", "–", "–"]],
+    ["cbbd", (s) => [fmt(s.rating), fmtInt(s.rating_rank), fmt(s.adj_o), fmt(s.adj_d), "–"]],
   ].filter(([k]) => t.sources[k]);
   if (!rows.length) return `<p class="empty">No source data.</p>`;
   return `<table class="plain"><thead><tr><th class="l">Source</th><th>Rating</th><th>Rank</th><th>Off</th><th>Def</th><th>Tempo</th></tr></thead>
     <tbody>${rows.map(([k, f]) => `<tr><td class="l">${SOURCE_LABELS[k]}</td>${f(t.sources[k]).map((v) => `<td>${v}</td>`).join("")}</tr>`).join("")}</tbody></table>
-    <p class="desc" style="margin-top:8px">Ratings: Torvik and Haslametrics = efficiency margin; BPI = points vs. average team; TeamRankings = predictive points. ESPN Off/Def are points above average.</p>`;
+    <p class="desc" style="margin-top:8px">Ratings: Torvik, Haslametrics and CBBD = efficiency margin; BPI = points vs. average team; TeamRankings = predictive points. ESPN Off/Def are points above average.</p>`;
 }
 
 function resumeTable(t) {
@@ -381,6 +397,11 @@ function resumeTable(t) {
     ["ESPN projected record", s.espn_bpi?.proj_wins == null ? "–" : `${fmt(s.espn_bpi.proj_wins, 1)}–${fmt(s.espn_bpi.proj_losses, 1)}`],
     ["ESPN projected seed", s.espn_bpi?.proj_seed ? fmtInt(s.espn_bpi.proj_seed) : "not published yet"],
     ["ESPN chance to make Final Four", s.espn_bpi?.final4_pct == null ? "not published yet" : `${fmt(s.espn_bpi.final4_pct, 1)}%`],
+    ["AP poll", s.espn_bpi?.ap_rank ? `#${fmtInt(s.espn_bpi.ap_rank)} (${fmtInt(s.espn_bpi.ap_points)} pts)` : "unranked"],
+    ["Coaches poll", s.espn_bpi?.coaches_rank ? `#${fmtInt(s.espn_bpi.coaches_rank)} (${fmtInt(s.espn_bpi.coaches_points)} pts)` : "unranked"],
+    ["Bracket Matrix seed", s.bracketmatrix
+      ? `${fmt(s.bracketmatrix.avg_seed, 2)} avg (in ${fmtInt(s.bracketmatrix.brackets)} brackets)`
+      : "not in projected field"],
     ["vs. top 25 / 26–50 / 51–100", s.teamrankings ? `${s.teamrankings.vs_top25} / ${s.teamrankings.vs_26_50} / ${s.teamrankings.vs_51_100}` : "–"],
   ];
   const q = t.quads;

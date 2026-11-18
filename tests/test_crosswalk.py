@@ -6,6 +6,7 @@ from ncaambb.crosswalk import Crosswalk
 from ncaambb.sources import REGISTRY
 
 SOURCES = ["torvik", "haslametrics", "espn_bpi", "teamrankings", "warrennolan"]
+PARTIAL = {"cbbd": 364, "bracketmatrix": 160}  # sources that list only some teams
 
 
 @pytest.fixture(scope="module")
@@ -30,7 +31,13 @@ def test_every_team_maps_exactly_once(source, raw, crosswalk):
     assert set(mapped["team_id"]) == set(crosswalk.teams["team_id"])
 
 
-@pytest.mark.parametrize("source", ["torvik", "haslametrics"])
+@pytest.mark.parametrize("source, count", PARTIAL.items())
+def test_partial_sources_map_cleanly(source, count, raw, crosswalk):
+    mapped, unmatched = crosswalk.apply(source, REGISTRY[source].parse(raw[source]))
+    assert unmatched == [] and len(mapped) == count
+
+
+@pytest.mark.parametrize("source", ["torvik", "haslametrics", "bracketmatrix"])
 def test_conferences_agree_with_espn(source, raw, crosswalk):
     """A wrong alias almost always puts a team in the wrong conference."""
     conf_map = pd.read_csv(DATA_DIR / "conferences.csv")

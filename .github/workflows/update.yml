@@ -56,6 +56,8 @@ jobs:
 
       - name: Run pipeline
         if: steps.season.outputs.active == 'true'
+        env:
+          CBBD_API_KEY: ${{ secrets.CBBD_API_KEY }}   # CollegeBasketballData; skipped if unset
         run: python -m ncaambb.pipeline
 
       - name: Save source cache

@@ -16,6 +16,8 @@ class Source(ABC):
     name: str = ""
     #: file extension used when saving the raw download
     raw_extension: str = "txt"
+    #: validation: fewer teams than this means the parse went wrong
+    min_teams: int = 360
 
     def __init__(self, url_template: str, season: int):
         self.url_template = url_template

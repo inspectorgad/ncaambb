@@ -107,7 +107,8 @@ header.top {
 .badge[data-status="ok"] .dot { background: var(--good); }
 .badge[data-status="stale"] .dot { background: var(--warning); }
 .badge[data-status="failed"] .dot { background: var(--critical); }
-.badge[data-status="not_current"] .dot { background: transparent; border: 1.5px solid var(--neutral); }
+.badge[data-status="not_current"] .dot,
+.badge[data-status="not_configured"] .dot { background: transparent; border: 1.5px solid var(--neutral); }
 
 /* ---------- controls ---------- */
 .controls {

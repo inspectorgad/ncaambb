@@ -37,6 +37,9 @@ FIELDS = {
 }
 
 
+POLL_COLUMNS = [f"{p}_{k}" for p in ("ap", "coaches") for k in ("rank", "points", "prev_rank")]
+
+
 class EspnBpi(Source):
     name = "espn_bpi"
     raw_extension = "json"
@@ -66,6 +69,14 @@ class EspnBpi(Source):
                 "espn_abbreviation": team["abbreviation"],
                 "conference": team["group"]["shortName"],
             }
+            # AP / Coaches polls (top 25 only; display, not used in the composite)
+            for item in team.get("ranks", {}).get("items", []):
+                key = {"ap": "ap", "usa": "coaches"}.get(item.get("type"))
+                rank = item.get("rank", {})
+                if key and rank.get("current"):
+                    row[f"{key}_rank"] = rank["current"]
+                    row[f"{key}_points"] = rank.get("points")
+                    row[f"{key}_prev_rank"] = rank.get("previous") or None
             values = {c["name"]: c["values"] for c in entry["categories"]}
             for cat, fields in FIELDS.items():
                 vals = values.get(cat, [])
@@ -75,7 +86,10 @@ class EspnBpi(Source):
             rows.append(row)
 
         out = pd.DataFrame(rows)
-        num = [m for f in FIELDS.values() for m in f.values()]
+        for col in POLL_COLUMNS:
+            if col not in out.columns:
+                out[col] = None
+        num = [m for f in FIELDS.values() for m in f.values()] + POLL_COLUMNS
         out[num] = out[num].apply(pd.to_numeric, errors="coerce")
         out["record"] = (
             out["wins"].astype("Int64").astype(str) + "-" + out["losses"].astype("Int64").astype(str)

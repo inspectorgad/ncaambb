@@ -22,6 +22,10 @@ class FetchError(RuntimeError):
     """Raised when a source cannot be downloaded or returns a bot-check page."""
 
 
+class NotConfigured(RuntimeError):
+    """Raised when a source needs setup (e.g. an API key) that is missing."""
+
+
 def make_session() -> requests.Session:
     session = requests.Session()
     session.headers.update({"User-Agent": USER_AGENT})
@@ -35,11 +39,15 @@ def make_session() -> requests.Session:
     return session
 
 
-def fetch_bytes(url: str, session: requests.Session | None = None) -> bytes:
+def fetch_bytes(
+    url: str,
+    session: requests.Session | None = None,
+    headers: dict[str, str] | None = None,
+) -> bytes:
     """GET a URL and return the decoded body, or raise FetchError."""
     session = session or make_session()
     try:
-        resp = session.get(url, timeout=TIMEOUT_SECONDS)
+        resp = session.get(url, timeout=TIMEOUT_SECONDS, headers=headers)
         resp.raise_for_status()
     except requests.RequestException as exc:
         raise FetchError(f"{url}: {exc}") from exc

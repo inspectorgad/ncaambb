@@ -17,7 +17,7 @@ import pandas as pd
 
 from . import DATA_DIR
 
-ID_SOURCES = {"espn_bpi": "espn_id"}  # sources matched by an id column in teams.csv
+ID_SOURCES = {"espn_bpi": "espn_id", "cbbd": "cbbd_id"}  # sources matched by an id column in teams.csv
 
 
 @dataclass
@@ -32,7 +32,9 @@ class Crosswalk:
         self.aliases = aliases
         self._maps: dict[str, dict[str, str]] = {}
         for source, col in ID_SOURCES.items():
-            self._maps[source] = dict(zip(teams[col].astype(str), teams["team_id"]))
+            if col in teams.columns:
+                ids = teams[teams[col].astype(str) != ""]
+                self._maps[source] = dict(zip(ids[col].astype(str), ids["team_id"]))
         for source, group in aliases.groupby("source"):
             self._maps.setdefault(source, {}).update(zip(group["source_name"], group["team_id"]))
 

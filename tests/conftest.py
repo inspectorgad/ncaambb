@@ -10,6 +10,8 @@ FILES = {
     "espn_bpi": "espn_bpi.json.gz",
     "teamrankings": "teamrankings_predictive.html.gz",
     "warrennolan": "warrennolan_2027_net.html.gz",
+    "cbbd": "cbbd_adjusted_2027.json.gz",
+    "bracketmatrix": "bracketmatrix.html.gz",
     "ncaa_net": "ncaa_net.html.gz",  # saved before the first 2026-27 NET: last season's final
 }
 

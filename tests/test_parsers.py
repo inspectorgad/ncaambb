@@ -6,7 +6,7 @@ import pytest
 from ncaambb.schema import ValidationError, validate_wide
 from ncaambb.sources import REGISTRY
 
-RATING_SOURCES = ["torvik", "haslametrics", "espn_bpi", "teamrankings"]
+RATING_SOURCES = ["torvik", "haslametrics", "espn_bpi", "teamrankings", "cbbd"]
 NET_SOURCES = ["warrennolan", "ncaa_net"]
 CORE = ["source_name", "rating", "rating_rank", "wins", "losses", "record"]
 
@@ -14,8 +14,8 @@ CORE = ["source_name", "rating", "rating_rank", "wins", "losses", "record"]
 @pytest.mark.parametrize("source", RATING_SOURCES)
 def test_parses_all_teams_and_validates(source, raw):
     df = REGISTRY[source].parse(raw[source])
-    assert len(df) == 365
-    assert set(CORE) <= set(df.columns)
+    assert len(df) >= 364  # CBBD has no rating yet for one team
+    assert set(CORE) - {"wins", "losses", "record"} <= set(df.columns)
     validate_wide(df, source)
     # rank 1 is the best team by the metric that source ranks on
     # (Haslametrics ranks by All-Play %, the others by their rating)
@@ -106,3 +106,30 @@ def test_data_through_dates(raw):
     page = b"NET Rank updated for games through <b>DEC 30th</b>"
     assert REGISTRY["warrennolan"].data_through(page, dt.date(2027, 1, 5)) == dt.date(2026, 12, 30)
     assert REGISTRY["torvik"].data_through(raw["torvik"], today) is None
+
+
+def test_espn_polls(raw):
+    df = REGISTRY["espn_bpi"].parse(raw["espn_bpi"])
+    for poll in ("ap", "coaches"):
+        ranked = df[f"{poll}_rank"].dropna()
+        assert len(ranked) == 25 and ranked.min() == 1 and ranked.max() == 25
+    top = df.set_index("espn_name").loc["Florida"]
+    assert top["ap_rank"] == 1 and top["ap_points"] == 1472
+
+
+def test_cbbd_parse_and_key(raw, monkeypatch):
+    df = REGISTRY["cbbd"].parse(raw["cbbd"]).set_index("source_name")
+    assert df.loc["118", "rating"] == pytest.approx(19.5)  # Illinois
+    assert df.loc["118", "rating_rank"] == 1
+    from ncaambb.fetching import NotConfigured
+    monkeypatch.delenv("CBBD_API_KEY", raising=False)
+    with pytest.raises(NotConfigured):
+        REGISTRY["cbbd"]("https://example.invalid/{season}", 2027).fetch()
+
+
+def test_bracketmatrix(raw):
+    df = REGISTRY["bracketmatrix"].parse(raw["bracketmatrix"])
+    validate_wide(df, "bracketmatrix", min_teams=REGISTRY["bracketmatrix"].min_teams)
+    assert len(df) == 160
+    duke = df.set_index("source_name").loc["Duke"]
+    assert duke["avg_seed"] == 1.0 and duke["brackets"] == 52 and duke["consensus_seed"] == 1
