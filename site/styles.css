@@ -207,6 +207,19 @@ svg .gridline { stroke: var(--grid); }
 .chart-legend .key { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 5px; border-radius: 2px; }
 .empty { color: var(--text-muted); padding: 18px 0; text-align: center; }
 
+/* ---------- guide page ---------- */
+.guide { max-width: 980px; padding-bottom: 24px; }
+.guide-nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 14px; font-size: 14px; }
+.guide-card { margin-bottom: 14px; scroll-margin-top: 12px; }
+.guide-card h2 { font-size: 18px; margin: 0 0 8px; }
+.guide-card p, .guide-card li { color: var(--text-primary); max-width: 75ch; }
+.guide-card p { margin: 8px 0; }
+.guide-card ul { margin: 6px 0 10px; padding-left: 20px; }
+.guide-card .plain-wrap { margin: 8px 0 12px; }
+.plain.guide-table th, .plain.guide-table td { white-space: normal; text-align: left; vertical-align: top; }
+.plain.guide-table td:first-child { white-space: nowrap; }
+.guide-card code { font-size: 12px; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; }
+
 /* ---------- tooltip ---------- */
 .tooltip {
   position: fixed; pointer-events: none; z-index: 50;

@@ -81,6 +81,15 @@ jobs:
             git push
           fi
 
+      # Give app.js / styles.css a new URL on every deploy so browsers fetch
+      # the new version instead of a cached copy (GitHub Pages caches ~10 min).
+      - name: Version asset URLs
+        if: steps.season.outputs.active == 'true'
+        run: |
+          V="${GITHUB_SHA::8}-${GITHUB_RUN_NUMBER}"
+          sed -i "s#href=\"styles.css\"#href=\"styles.css?v=$V\"#; s#src=\"app.js\"#src=\"app.js?v=$V\"#" site/index.html site/guide.html
+          grep -o '\(styles.css\|app.js\)?v=[^"]*' site/index.html site/guide.html
+
       - name: Upload site
         if: steps.season.outputs.active == 'true'
         uses: actions/upload-pages-artifact@v3

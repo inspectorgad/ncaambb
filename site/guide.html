@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Guide</title>
+  <meta name="description" content="What every column, card and badge on the D1 Composite Rankings dashboard means.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23eb6834'/><path d='M2 16h28M16 2v28M6 6c6 6 6 14 0 20M26 6c-6 6-6 14 0 20' stroke='%23111' stroke-width='2' fill='none'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Generated from README.md by `python -m ncaambb.tools.build_guide`. Edit the README, not this file. -->
+  <header class="top">
+    <div class="wrap">
+      <div class="top-row">
+        <h1><a href="./">D1 Composite Rankings</a></h1>
+        <span class="updated">Dashboard guide</span>
+      </div>
+    </div>
+  </header>
+  <main class="wrap guide">
+    <a class="back" href="./">← Back to rankings</a>
+    <nav class="guide-nav" aria-label="Sections">
+      <a href="#rankings-table">Rankings table</a>
+      <a href="#team-page">Team page</a>
+      <a href="#header-badges">Header badges</a>
+    </nav>
+<section class="card guide-card" id="rankings-table">
+<h2>Rankings table</h2>
+<p>Use the <strong>Predictive / Resume</strong> toggle to choose which composite the <strong>#</strong> column and default sort follow. Click any heading to sort, and click again to reverse. Hover over a heading for a short reminder of its meaning.</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Column</th>
+<th>What it means</th>
+<th>Better is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>#</strong></td>
+<td>Rank in the selected composite (Predictive or Resume).</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Team</strong></td>
+<td>School name, with its conference in grey. Click it to open the team page.</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>W-L</strong></td>
+<td>Wins and losses so far. Sorting uses win percentage, adjusted slightly so a 1-0 team doesn't outrank a 10-1 team.</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Pred</strong></td>
+<td><strong>Predictive composite rank:</strong> how good the team is, i.e. who would win on a neutral floor. It blends Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD.</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Resume</strong></td>
+<td><strong>Resume composite rank:</strong> what the team has <em>earned</em> with its results, the way the selection committee thinks. It blends NET, ESPN strength of record and Torvik wins above bubble. Before NET is published (early December), it uses the last two only.</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Gap</strong></td>
+<td>Pred rank minus Resume rank, showing where quality and results disagree. <strong>▲</strong> means the results look better than the quality ("lucky" or a soft schedule). <strong>▼</strong> means the team is better than its results ("unlucky" or a tough schedule). For example, a team 2nd in Pred and 109th in Resume shows ▼107.</td>
+<td>Near 0 = consistent</td>
+</tr>
+<tr>
+<td><strong>AdjEM</strong></td>
+<td><strong>Adjusted efficiency margin:</strong> points per 100 possessions the team outscores an average D1 opponent by, adjusted for opponent strength and game location. It is AdjO minus AdjD, and the best one-number summary of team strength. Averaged across sources.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>AdjO</strong></td>
+<td><strong>Adjusted offense:</strong> points scored per 100 possessions against an average D1 defense. The small grey number is its rank.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>AdjD</strong></td>
+<td><strong>Adjusted defense:</strong> points <em>allowed</em> per 100 possessions against an average D1 offense. The small grey number is its rank.</td>
+<td><strong>Lower</strong></td>
+</tr>
+<tr>
+<td><strong>Tempo</strong></td>
+<td>Possessions per 40 minutes, i.e. how fast the team plays. A style measure, not good or bad (rank 1 = fastest).</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>SOS</strong></td>
+<td><strong>Strength of schedule</strong> rank, averaged from Torvik, Haslametrics and ESPN. 1 = toughest schedule played so far.</td>
+<td>Lower = tougher</td>
+</tr>
+<tr>
+<td><strong>Agree</strong></td>
+<td>How much the five predictive systems <strong>disagree</strong> about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution.</td>
+<td>Lower = more agreement</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Source columns:</strong> tick this checkbox to show each site's own number next to the composites.</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Column</th>
+<th>Source</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Torvik</strong></td>
+<td>BartTorvik</td>
+<td>Torvik's overall rank</td>
+</tr>
+<tr>
+<td><strong>Hasla</strong></td>
+<td>Haslametrics</td>
+<td>Haslametrics' rank</td>
+</tr>
+<tr>
+<td><strong>BPI</strong></td>
+<td>ESPN</td>
+<td>Basketball Power Index rank</td>
+</tr>
+<tr>
+<td><strong>TR</strong></td>
+<td>TeamRankings</td>
+<td>Predictive rank</td>
+</tr>
+<tr>
+<td><strong>CBBD</strong></td>
+<td>CollegeBasketballData</td>
+<td>Adjusted net rating rank. Early in the season it uses only this season's games, so it can differ from the others more than they differ from each other.</td>
+</tr>
+<tr>
+<td><strong>NET</strong></td>
+<td>NCAA (Warren Nolan as backup)</td>
+<td>The official NCAA ranking used by the selection committee. Blank until published each season.</td>
+</tr>
+<tr>
+<td><strong>SOR</strong></td>
+<td>ESPN</td>
+<td><strong>Strength of record:</strong> how hard the team's record would be for an average top-25 team to match against the same schedule</td>
+</tr>
+<tr>
+<td><strong>WAB</strong></td>
+<td>Torvik</td>
+<td><strong>Wins above bubble:</strong> wins compared with what a bubble-level tournament team would have against the same schedule (+2.0 = two wins better)</td>
+</tr>
+<tr>
+<td><strong>AP</strong></td>
+<td>AP Top 25 (via ESPN)</td>
+<td>Media poll rank. Blank = unranked. Display only, not in either composite.</td>
+</tr>
+<tr>
+<td><strong>Coaches</strong></td>
+<td>Coaches Poll (via ESPN)</td>
+<td>Coaches' poll rank. Blank = unranked. Display only.</td>
+</tr>
+<tr>
+<td><strong>Seed</strong></td>
+<td>Bracket Matrix</td>
+<td>Average projected NCAA tournament seed across about 50–100 published brackets (1.00 = a 1-seed in every bracket). Blank = not in any projected field. Display only.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shading:</strong> a blue tint marks the <strong>top half of D1</strong> in that column; the darker the tint, the closer to #1. The bottom half is unshaded so strong teams stand out. Tempo and Agree are never shaded because neither is a good-or-bad measure.</p>
+<p><strong>Early season:</strong> Resume and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.</p>
+</section>
+<section class="card guide-card" id="team-page">
+<h2>Team page</h2>
+<p>Click any team name to open its page.</p>
+<p><strong>Header:</strong> team, conference and record. <strong>← All teams</strong> returns to the table with your sort and filters kept.</p>
+<p><strong>Summary tiles:</strong></p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Tile</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Predictive</strong></td>
+<td>Composite quality rank, with its z-score and how many sources fed it</td>
+</tr>
+<tr>
+<td><strong>Resume</strong></td>
+<td>Composite results rank, with z-score and source count (2 before NET is published, 3 after)</td>
+</tr>
+<tr>
+<td><strong>Gap</strong></td>
+<td>Predictive rank minus Resume rank. ▼ under-rewarded so far, ▲ results flattering the team.</td>
+</tr>
+<tr>
+<td><strong>AdjEM / AdjO / AdjD</strong></td>
+<td>Cross-source efficiency numbers and their D1 rank (AdjD: lower is better)</td>
+</tr>
+<tr>
+<td><strong>Tempo</strong></td>
+<td>Possessions per 40 minutes, ranked from fastest</td>
+</tr>
+<tr>
+<td><strong>Schedule</strong></td>
+<td>Strength-of-schedule rank, averaged across sources (1 = toughest)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>About z-scores:</strong> a z-score is how many standard deviations a team sits above the D1 average. 0 is an average D1 team, +1 is roughly top 15%, +2 roughly top 2–3% (about the top 10 teams), and +2.5 is elite.</p>
+<p><strong>Source agreement (dot chart):</strong> each system's opinion of the team on one shared z-score scale.
+- <strong>Blue dots (Predictive):</strong> Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD.
+- <strong>Orange dots (Resume):</strong> ESPN SOR, Torvik WAB, and NET once published.
+- <strong>Dashed line:</strong> the composite score for that group.
+- <strong>How to read it:</strong> dots bunched together mean the systems agree. A dot far from the others means that system sees the team differently; hover over it for the system's own number and rank.</p>
+<p><strong>Rank over the season (line chart):</strong> Predictive rank (blue) and Resume rank (orange) day by day. Rank 1 is at the top, so a rising line means improvement. Hover for a given day's ranks. It needs at least two days of history before it draws.</p>
+<p><strong>Four factors (table):</strong> the four stats that best explain winning, for offense (this team) and defense (what opponents do against it), each with its D1 rank (1 = best).</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Factor</th>
+<th>Meaning</th>
+<th>Better offense</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Effective FG %</strong></td>
+<td>Field-goal % with 3-pointers counted 1.5×, since they're worth more</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Turnover %</strong></td>
+<td>Share of possessions ending in a turnover</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Offensive rebound %</strong></td>
+<td>Share of the team's missed shots it rebounds</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Free throw rate</strong></td>
+<td>Free-throw attempts per 100 field-goal attempts</td>
+<td>Higher</td>
+</tr>
+</tbody>
+</table></div>
+<p>For defense, each is reversed: a low opponent eFG%, a high opponent turnover % and so on rank best.</p>
+<p><strong>Game log (table):</strong> every game so far with the result and score, plus games in the next week. "vs" is a home game, "@" an away game, and "(N)" a neutral site; "conf" marks a conference game. The grey number is the opponent's Predictive rank, and opponents link to their own pages. Hover over a row for the event name (e.g. a holiday tournament).</p>
+<p><strong>Season stats (table):</strong> points, shooting percentages (FG, 2-point, 3-point, free throw, true shooting), 3-point attempts, rebounds, offensive rebounds, assists, turnovers, steals and blocks. Values are per game except percentages. Each has a D1 rank for the team and for its <strong>opponents</strong> (what teams have done against it), where a low opponent figure ranks well.</p>
+<p>The four factors, game log and season stats come from CollegeBasketballData, so they need the <code>CBBD_API_KEY</code> secret.</p>
+<p><strong>Ratings by source (table):</strong> each system's raw numbers.</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rating</strong></td>
+<td>The system's own rating. Torvik and Haslametrics use efficiency margin, BPI is points better than an average team, TeamRankings uses predictive points. The scales differ, which is why the composite converts them to z-scores.</td>
+</tr>
+<tr>
+<td><strong>Rank</strong></td>
+<td>That system's own rank for the team</td>
+</tr>
+<tr>
+<td><strong>Off / Def</strong></td>
+<td>Offensive and defensive efficiency. For Torvik and Haslametrics these are points per 100 possessions (Def: lower is better). ESPN's are points above average (higher is better for both).</td>
+</tr>
+<tr>
+<td><strong>Tempo</strong></td>
+<td>Each system's pace estimate</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Resume (table):</strong></p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Row</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NET rank</strong></td>
+<td>The NCAA's official ranking used by the selection committee. "Not published yet" until early December.</td>
+</tr>
+<tr>
+<td><strong>ESPN strength of record</strong></td>
+<td>How hard the team's record would be for an average top-25 team to match against the same schedule</td>
+</tr>
+<tr>
+<td><strong>Torvik wins above bubble</strong></td>
+<td>Wins versus a bubble-level tournament team's expected wins against the same schedule, with its rank</td>
+</tr>
+<tr>
+<td><strong>ESPN projected record</strong></td>
+<td>ESPN's projected final regular-season record</td>
+</tr>
+<tr>
+<td><strong>AP poll / Coaches poll</strong></td>
+<td>Poll rank and voting points, or "unranked"</td>
+</tr>
+<tr>
+<td><strong>Bracket Matrix seed</strong></td>
+<td>Average projected tournament seed and how many brackets include the team, or "not in projected field"</td>
+</tr>
+<tr>
+<td><strong>ESPN projected seed / chance to make Final Four</strong></td>
+<td>ESPN's tournament projections. They appear later in the season.</td>
+</tr>
+<tr>
+<td><strong>vs. top 25 / 26–50 / 51–100</strong></td>
+<td>TeamRankings' record against teams in those ranking bands, a quick check on the quality of wins</td>
+</tr>
+<tr>
+<td><strong>Quadrant record</strong></td>
+<td>Wins and losses in the NCAA's four quadrants, which weigh each game by opponent quality <em>and</em> where it was played. Q1 is the hardest (e.g. a road game at a top-75 team) and Q4 the easiest. Q1 wins carry the most weight on Selection Sunday; Q3 and Q4 losses hurt the most. It comes from Haslametrics until NET is published, then from the official NCAA figures.</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section class="card guide-card" id="header-badges">
+<h2>Header badges</h2>
+<p>The badges under the title show each source's status on the latest run:
+- <strong>OK</strong> (green dot): downloaded today.
+- <strong>Stale</strong> (amber dot): today's download failed, so the last good data (up to 3 days old) is in use.
+- <strong>Failed</strong> (red dot): no usable data.
+- <strong>Not yet this season</strong> (hollow dot): the source still shows last season, e.g. NET before early December.
+- <strong>No API key</strong> (hollow dot): the source needs a key that isn't set up, e.g. CBBD without the <code>CBBD_API_KEY</code> secret.</p>
+<p>On a phone the badges fold into one summary line; tap it to expand.</p>
+</section>
+    <p class="legend-note"><a href="./">← Back to rankings</a></p>
+  </main>
+</body>
+</html>
