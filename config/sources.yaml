@@ -1,5 +1,12 @@
 # Season is identified by its END year: 2027 = the 2026-27 season.
-season: 2027
+# "auto" picks it from today's date (August onward counts as the next season).
+season: auto
+
+# The daily job only runs between these dates (MM-DD); the site keeps the
+# final rankings during the off-season. A manual run ignores this.
+active_window:
+  start: "11-01"
+  end: "04-15"
 
 # The pipeline exits non-zero when this many sources (or more) fail in one run.
 max_failed_sources: 3

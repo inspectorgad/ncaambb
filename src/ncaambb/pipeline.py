@@ -10,7 +10,9 @@ Per source, the outcome is one of:
   not_current  the source's data predates this season (e.g. NET before December)
 
 Writes data/latest/<source>.csv (last good rows per source) and
-site/data/{latest.json, meta.json, history/<date>.json}.
+site/data/{latest.json, meta.json, history/<date>.json}. Only the history
+snapshots are committed; the rest is rebuilt each run (GitHub Actions keeps
+data/latest in its cache for the stale-data fallback).
 """
 
 from __future__ import annotations
@@ -155,7 +157,7 @@ def run(
 ) -> tuple[pd.DataFrame, list[SourceStatus]]:
     paths = paths or Paths()
     today = today or dt.date.today()
-    cfg = load_sources_config()
+    cfg = load_sources_config(today=today)
     weights = composite.load_weights()
     crosswalk = Crosswalk.load()
 
