@@ -177,6 +177,7 @@ jobs:
 
 - A second workflow runs `pytest` on every push.
 - Off-season: the scrape is skipped from mid-April through October, but the site stays up with the final rankings.
+- **As built:** only `site/data/history/` is committed each day (about 13 KB). `latest.json` and `meta.json` are rebuilt in the job and deployed directly, and the per-source fallback data lives in the Actions cache. This keeps the repo from growing by about 1.7 MB a day.
 - **Pages setting:** Settings → Pages → Source: *GitHub Actions*. GitHub Pages is free only for public repos (private repos need GitHub Pro), and the site is publicly viewable either way. That's fine here, because only free public sources are used.
 
 ## 9. Testing
@@ -197,7 +198,7 @@ jobs:
 | 1. Foundation ✅ | Project skeleton, `http.py`, schema, teams.csv from ESPN, Torvik, Haslametrics and BPI parsers, crosswalk for those three | `pytest` passes; 365/365 mapped for 3 sources |
 | 2. Remaining sources + composite ✅ | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
 | 3. Front end ✅ | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
-| 4. Automation | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
+| 4. Automation ✅ | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
 | 5. Later (optional) | Trend charts once history builds up, Massey via headless browser, local-only KenPom/EvanMiya columns, tuning weights against game results | – |
 
 ## 11. Risks

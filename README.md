@@ -2,7 +2,7 @@
 
 Composite rankings for all 365 NCAA D1 men's basketball teams, built from free public rating systems. See [PLAN.md](PLAN.md) for the full design.
 
-**Status:** Phase 3 done. Six sources are read every run, the composites are computed, and the dashboard in `site/` displays them. Daily automation and GitHub Pages (Phase 4) come next.
+**Status:** Phases 1–4 done. A GitHub Actions job runs every morning in season, rebuilds the rankings and publishes the dashboard to GitHub Pages.
 
 | Source | Feeds | Notes |
 |---|---|---|
@@ -27,7 +27,7 @@ python -m ncaambb.pipeline                          # download today's data
 python -m ncaambb.pipeline --fixtures tests/fixtures  # offline, from saved files
 ```
 
-Output:
+Output (only the history snapshots are committed; the rest is rebuilt each run):
 - `site/data/latest.json`: every team's composite ranks, averaged stats and each source's numbers.
 - `site/data/history/YYYY-MM-DD.json`: a daily snapshot of ranks, for trend charts.
 - `site/data/meta.json`: when it ran, each source's status (`ok`, `stale`, `failed` or `not_current`) and the weights used.
@@ -35,9 +35,24 @@ Output:
 
 Composite weights live in `config/weights.yaml`, and the source URLs in `config/sources.yaml`.
 
+## Automation (GitHub Actions)
+
+- **`.github/workflows/update.yml`:** runs daily at 11:17 UTC (about 6:17 AM ET), between Nov 1 and Apr 15. It runs the pipeline, commits the day's history snapshot and deploys `site/` to GitHub Pages. GitHub's Actions cache keeps each source's last good data for the stale-data fallback. Outside the season window it does nothing, and the site keeps the final rankings.
+- **Run it by hand:** Actions → *Daily update* → *Run workflow*. A manual run works in the off-season too.
+- **`.github/workflows/tests.yml`:** runs the tests on every push.
+- **If a run fails** (three or more sources down, or a team-name problem), GitHub emails you and the previous site stays up.
+
+**One-time setup, after this code is on `main`:**
+1. Settings → Pages → *Build and deployment* → Source: **GitHub Actions**.
+2. Actions → *Daily update* → *Run workflow* for the first deploy.
+3. The site appears at `https://<your-username>.github.io/ncaambb/`.
+
+The season (e.g. 2027 = 2026-27) is worked out from the date, so nothing needs changing next year. When a source shows a new team name, add it to `data/aliases.csv` (see below).
+
 ## Preview the dashboard
 
 ```bash
+python -m ncaambb.pipeline          # builds site/data/latest.json first
 python -m http.server 8000 -d site
 ```
 
