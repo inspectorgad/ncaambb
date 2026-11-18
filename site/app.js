@@ -19,6 +19,13 @@ const INPUT_LABELS = {
   "espn_bpi:sor_rank": "ESPN SOR",
   "torvik:wab": "Torvik WAB",
 };
+const GUIDE_URL = "https://github.com/inspectorgad/ncaambb/blob/main/README.md";
+const HELP = {
+  table: `${GUIDE_URL}#rankings-table`,
+  team: `${GUIDE_URL}#team-page`,
+};
+const helpLink = (href, text) =>
+  `<a class="help-link" href="${href}" target="_blank" rel="noopener">ⓘ ${text}</a>`;
 const STATUS_TEXT = { ok: "OK", stale: "Stale", failed: "Failed", not_current: "Not yet this season" };
 
 const state = {
@@ -220,6 +227,7 @@ function renderRankings() {
       <label class="check"><input type="checkbox" id="sources" ${ui.sources ? "checked" : ""}> Source columns</label>
       <span class="count" id="count"></span>
     </div>
+    <div class="help-row">${helpLink(HELP.table, "What do these columns mean?")}</div>
     <div class="table-wrap ${ui.sources ? "show-sources" : ""}" id="table-wrap">
       <table class="rank">
         <thead><tr>${COLUMNS.map((c) => `<th scope="col" data-key="${c.key}"
@@ -286,7 +294,10 @@ async function renderTeam(id) {
   const gapNote = t.gap == null ? "" : t.gap > 0 ? "results ahead of quality" : t.gap < 0 ? "under-rewarded so far" : "in line";
 
   app.innerHTML = `
-    <a class="back" href="#/">← All teams</a>
+    <div class="nav-row">
+      <a class="back" href="#/">← All teams</a>
+      ${helpLink(HELP.team, "How to read this page")}
+    </div>
     <div class="team-head">
       <h2>${esc(t.name)}</h2>
       <span class="meta">${esc(t.conf)} · ${esc(t.record || "")}</span>
