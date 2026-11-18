@@ -2,7 +2,7 @@
 
 Composite rankings for all 365 NCAA D1 men's basketball teams, built from free public rating systems. See [PLAN.md](PLAN.md) for the full design.
 
-**Status:** Phase 2 done. Six sources are read every run, and the Predictive and Résumé composites are written as JSON for the site. The dashboard (Phase 3) comes next.
+**Status:** Phase 3 done. Six sources are read every run, the composites are computed, and the dashboard in `site/` displays them. Daily automation and GitHub Pages (Phase 4) come next.
 
 | Source | Feeds | Notes |
 |---|---|---|
@@ -34,6 +34,16 @@ Output:
 - `data/latest/<source>.csv`: the last good data from each source. If a source fails, this is reused for up to 3 days.
 
 Composite weights live in `config/weights.yaml`, and the source URLs in `config/sources.yaml`.
+
+## Preview the dashboard
+
+```bash
+python -m http.server 8000 -d site
+```
+
+Then open http://localhost:8000.
+- **Rankings:** a sortable table with Predictive/Résumé toggle, conference filter, search, top-N and optional per-source columns.
+- **Team page** (`#/team/<id>`): source agreement chart, rank trend, each source's ratings, résumé and quadrant records.
 
 ## Tests
 

@@ -135,7 +135,7 @@ Weights live in `config/weights.yaml`. Changing them needs no code change.
 
 ## 7. Front end (GitHub Pages, static)
 
-Plain HTML/JS with no build step. It uses Tabulator for the table and Chart.js for charts, both loaded from a pinned version on cdnjs.
+Plain HTML/JS with no build step and no libraries. The table, sorting and filters are hand-written, and the charts are small inline SVGs drawn at the screen's real width.
 
 - **Rankings view:**
   - A sortable table of 365 teams: Pred rank, Res rank, Gap, Record, Conf, AdjEM/AdjO/AdjD/Tempo/SOS (averaged), and per-source ranks in columns you can expand.
@@ -196,7 +196,7 @@ jobs:
 |---|---|---|
 | 1. Foundation ✅ | Project skeleton, `http.py`, schema, teams.csv from ESPN, Torvik, Haslametrics and BPI parsers, crosswalk for those three | `pytest` passes; 365/365 mapped for 3 sources |
 | 2. Remaining sources + composite ✅ | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
-| 3. Front end | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
+| 3. Front end ✅ | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
 | 4. Automation | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
 | 5. Later (optional) | Trend charts once history builds up, Massey via headless browser, local-only KenPom/EvanMiya columns, tuning weights against game results | – |
 
