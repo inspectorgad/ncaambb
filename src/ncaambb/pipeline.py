@@ -8,6 +8,7 @@ Per source, the outcome is one of:
   stale        failed today; using its last good data (<= stale_max_days old)
   failed       failed today and no recent good data
   not_current  the source's data predates this season (e.g. NET before December)
+  not_configured  the source needs setup that is missing (e.g. an API key)
 
 Writes data/latest/<source>.csv (last good rows per source) and
 site/data/{latest.json, meta.json, history/<date>.json}. Only the history
@@ -30,7 +31,7 @@ import pandas as pd
 from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite
 from .config import load_sources_config
 from .crosswalk import Crosswalk
-from .fetching import make_session
+from .fetching import NotConfigured, make_session
 from .schema import LONG_COLUMNS, to_long, validate_wide
 from .sources import REGISTRY
 from .sources.base import season_start
@@ -118,7 +119,7 @@ def collect(
                     log.info("%s: data is from %s, before this season; skipped", name, through)
                     continue
             wide = source.parse(raw)
-            validate_wide(wide, name)
+            validate_wide(wide, name, min_teams=source.min_teams)
             wide, unmatched = crosswalk.apply(name, wide)
             status.unmatched = unmatched
             if len(unmatched) > MAX_UNMATCHED:
@@ -134,6 +135,9 @@ def collect(
             if unmatched:
                 log.warning("%s: unmatched team names %s (add to data/aliases.csv)", name, unmatched)
             log.info("%s: %d teams", name, len(wide))
+        except NotConfigured as exc:
+            status.status, status.error = "not_configured", str(exc)
+            log.warning("%s skipped: %s", name, exc)
         except Exception as exc:  # one bad source must not stop the others
             status.error = f"{type(exc).__name__}: {exc}"
             cached = load_cached(paths.cache, name, today, max_days)

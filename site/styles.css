@@ -107,7 +107,8 @@ header.top {
 .badge[data-status="ok"] .dot { background: var(--good); }
 .badge[data-status="stale"] .dot { background: var(--warning); }
 .badge[data-status="failed"] .dot { background: var(--critical); }
-.badge[data-status="not_current"] .dot { background: transparent; border: 1.5px solid var(--neutral); }
+.badge[data-status="not_current"] .dot,
+.badge[data-status="not_configured"] .dot { background: transparent; border: 1.5px solid var(--neutral); }
 
 /* ---------- controls ---------- */
 .controls {
@@ -174,7 +175,12 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .legend-note { color: var(--text-muted); font-size: 12px; margin: 8px 2px 24px; }
 .legend-note b { color: var(--text-secondary); font-weight: 600; }
 
+/* ---------- help links ---------- */
+.help-link { font-size: 13px; white-space: nowrap; }
+.help-row { margin: -2px 0 10px; }
+
 /* ---------- team page ---------- */
+.nav-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
 .back { display: inline-block; margin: 14px 0 6px; }
 .team-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 12px; }
 .team-head h2 { margin: 0; font-size: 26px; letter-spacing: -0.01em; }

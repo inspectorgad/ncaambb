@@ -28,6 +28,10 @@ sources:
   teamrankings:
     enabled: true
     url: "https://www.teamrankings.com/ncaa-basketball/ranking/predictive-by-other"
+  cbbd:
+    enabled: true
+    # Needs the CBBD_API_KEY environment variable (a GitHub Actions secret).
+    url: "https://api.collegebasketballdata.com/ratings/adjusted?season={season}"
   warrennolan:
     enabled: true
     url: "https://www.warrennolan.com/basketball/{season}/net"
@@ -35,3 +39,7 @@ sources:
     enabled: true
     # Usually first published in early December; skipped until it covers this season.
     url: "https://www.ncaa.com/rankings/basketball-men/d1/ncaa-mens-basketball-net-rankings"
+  bracketmatrix:
+    enabled: true
+    # Consensus tournament seeds; display only (not in the composite).
+    url: "https://www.bracketmatrix.com/"

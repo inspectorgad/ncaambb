@@ -199,7 +199,8 @@ jobs:
 | 2. Remaining sources + composite ✅ | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
 | 3. Front end ✅ | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
 | 4. Automation ✅ | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
-| 5. Later (optional) | Trend charts once history builds up, Massey via headless browser, local-only KenPom/EvanMiya columns, tuning weights against game results | – |
+| 5. Additions ✅ (partly) | CBBD as a 5th predictive source; AP/Coaches polls and Bracket Matrix seeds as display columns. KPI and Massey were checked and left out: KPI is behind a login, and Massey blocks automated access. |
+| 6. Later (optional) | Trend charts once history builds up, Massey via headless browser, local-only KenPom/EvanMiya columns, tuning weights against game results | – |
 
 ## 11. Risks
 

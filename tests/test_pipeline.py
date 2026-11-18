@@ -29,18 +29,20 @@ def test_offline_run(fixtures_dir, tmp_path):
     status = {s.source: s.status for s in statuses}
     assert status == {
         "torvik": "ok", "haslametrics": "ok", "espn_bpi": "ok", "teamrankings": "ok",
+        "cbbd": "ok", "bracketmatrix": "ok",
         # saved NET pages are last season's: skipped, not failed
         "warrennolan": "not_current", "ncaa_net": "not_current",
     }
     assert len(table) == 365
-    assert (table["pred_n"] == 4).all() and (table["res_n"] == 2).all()
+    assert (table["pred_n"] >= 4).all() and (table["pred_n"] == 5).sum() == 364
+    assert (table["res_n"] == 2).all()
 
     latest = json.loads((paths.site_data / "latest.json").read_text())
     assert latest["as_of"] == "2026-11-18" and len(latest["teams"]) == 365
     top = latest["teams"][0]
     assert top["pred"]["rank"] == 1
     assert set(top["stats"]) == {"adj_em", "adj_o", "adj_d", "tempo", "sos"}
-    assert set(top["sources"]) == {"torvik", "haslametrics", "espn_bpi", "teamrankings"}
+    assert {"torvik", "haslametrics", "espn_bpi", "teamrankings", "cbbd", "bracketmatrix"} == set(top["sources"])
     assert not any(k.startswith("espn_") for t in latest["teams"] for k in t["sources"].get("espn_bpi", {}))
 
     meta = json.loads((paths.site_data / "meta.json").read_text())
@@ -87,7 +89,7 @@ def test_bot_check_page_is_a_fetch_error():
             pass
 
     class Session:
-        def get(self, url, timeout):
+        def get(self, url, timeout, headers=None):
             return Resp()
 
     with pytest.raises(FetchError, match="bot check"):
@@ -106,3 +108,18 @@ def test_to_long_keeps_rank_only_metrics():
 def test_live_sources(tmp_path):
     _, statuses = pipeline.run(paths=make_paths(tmp_path))
     assert [s.source for s in statuses if s.status not in ("ok", "not_current")] == []
+
+
+def test_missing_api_key_is_not_a_failure(fixtures_dir, tmp_path, monkeypatch):
+    """Live mode without CBBD_API_KEY: cbbd is 'not_configured', not 'failed'."""
+    from ncaambb.fetching import NotConfigured
+    from ncaambb.sources import REGISTRY
+
+    def no_key(self, session=None):
+        raise NotConfigured("CBBD_API_KEY is not set")
+
+    monkeypatch.setattr(REGISTRY["cbbd"], "fetch", no_key)
+    cfg = pipeline.load_sources_config(today=TODAY)
+    cfg["sources"] = {"cbbd": cfg["sources"]["cbbd"]}
+    _, statuses = pipeline.collect(cfg, pipeline.Crosswalk.load(), TODAY, make_paths(tmp_path))
+    assert statuses[0].status == "not_configured"

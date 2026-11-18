@@ -1,4 +1,164 @@
 source,source_name,team_id
+bracketmatrix,Akron,akron
+bracketmatrix,Alabama,alabama
+bracketmatrix,American,american-university
+bracketmatrix,Arizona,arizona
+bracketmatrix,Arizona State,arizona-state
+bracketmatrix,Arkansas,arkansas
+bracketmatrix,Arkansas State,arkansas-state
+bracketmatrix,Auburn,auburn
+bracketmatrix,Austin Peay,austin-peay
+bracketmatrix,BYU,byu
+bracketmatrix,Baylor,baylor
+bracketmatrix,Bellarmine,bellarmine
+bracketmatrix,Belmont,belmont
+bracketmatrix,Bethune-Cookman,bethune-cookman
+bracketmatrix,Boise State,boise-state
+bracketmatrix,Central Arkansas,central-arkansas
+bracketmatrix,Central Connecticut State,central-connecticut
+bracketmatrix,Central Florida,ucf
+bracketmatrix,Cincinnati,cincinnati
+bracketmatrix,Clemson,clemson
+bracketmatrix,Coastal Carolina,coastal-carolina
+bracketmatrix,Colgate,colgate
+bracketmatrix,College of Charleston,charleston
+bracketmatrix,Colorado State,colorado-state
+bracketmatrix,Connecticut,uconn
+bracketmatrix,Creighton,creighton
+bracketmatrix,DePaul,depaul
+bracketmatrix,Duke,duke
+bracketmatrix,E. Tennessee State,east-tennessee-state
+bracketmatrix,Eastern Washington,eastern-washington
+bracketmatrix,Fairfield,fairfield
+bracketmatrix,Florida,florida
+bracketmatrix,Florida A&M,florida-am
+bracketmatrix,Florida State,florida-state
+bracketmatrix,Furman,furman
+bracketmatrix,Georgetown,georgetown
+bracketmatrix,Georgia,georgia
+bracketmatrix,Gonzaga,gonzaga
+bracketmatrix,Grand Canyon,grand-canyon
+bracketmatrix,Green Bay,green-bay
+bracketmatrix,Harvard,harvard
+bracketmatrix,High Point,high-point
+bracketmatrix,Hofstra,hofstra
+bracketmatrix,Houston,houston
+bracketmatrix,Howard,howard
+bracketmatrix,Idaho,idaho
+bracketmatrix,Illinois,illinois
+bracketmatrix,Illinois State,illinois-state
+bracketmatrix,Illinois-Chicago,uic
+bracketmatrix,Indiana,indiana
+bracketmatrix,Iona,iona
+bracketmatrix,Iowa,iowa
+bracketmatrix,Iowa State,iowa-state
+bracketmatrix,Jacksonville,jacksonville
+bracketmatrix,James Madison,james-madison
+bracketmatrix,Kansas,kansas
+bracketmatrix,Kennesaw State,kennesaw-state
+bracketmatrix,Kent State,kent-state
+bracketmatrix,Kentucky,kentucky
+bracketmatrix,LSU,lsu
+bracketmatrix,Lehigh,lehigh
+bracketmatrix,Liberty,liberty
+bracketmatrix,Lipscomb,lipscomb
+bracketmatrix,Long Island,long-island-university
+bracketmatrix,Louisiana-Lafayette,louisiana
+bracketmatrix,Louisville,louisville
+bracketmatrix,Loyola-Maryland,loyola-maryland
+bracketmatrix,Marist,marist
+bracketmatrix,Marquette,marquette
+bracketmatrix,Maryland,maryland
+bracketmatrix,McNeese State,mcneese
+bracketmatrix,Memphis,memphis
+bracketmatrix,Mercer,mercer
+bracketmatrix,Merrimack,merrimack
+bracketmatrix,Miami (FLA.),miami
+bracketmatrix,Miami (Ohio),miami-oh
+bracketmatrix,Michigan,michigan
+bracketmatrix,Michigan State,michigan-state
+bracketmatrix,Minnesota,minnesota
+bracketmatrix,Mississippi,ole-miss
+bracketmatrix,Missouri,missouri
+bracketmatrix,Montana,montana
+bracketmatrix,Montana State,montana-state
+bracketmatrix,Morehead State,morehead-state
+bracketmatrix,Murray State,murray-state
+bracketmatrix,NC-Wilmington,unc-wilmington
+bracketmatrix,NJIT,njit
+bracketmatrix,Nebraska,nebraska
+bracketmatrix,Nevada,nevada
+bracketmatrix,New Mexico,new-mexico
+bracketmatrix,New Mexico State,new-mexico-state
+bracketmatrix,North Carolina,north-carolina
+bracketmatrix,North Carolina State,nc-state
+bracketmatrix,North Dakota State,north-dakota-state
+bracketmatrix,Northern Colorado,northern-colorado
+bracketmatrix,Northern Kentucky,northern-kentucky
+bracketmatrix,Notre Dame,notre-dame
+bracketmatrix,Ohio State,ohio-state
+bracketmatrix,Oklahoma,oklahoma
+bracketmatrix,Oklahoma State,oklahoma-state
+bracketmatrix,Oregon,oregon
+bracketmatrix,Pennsylvania,pennsylvania
+bracketmatrix,Portland State,portland-state
+bracketmatrix,Prairie View A&M,prairie-view-am
+bracketmatrix,Providence,providence
+bracketmatrix,Purdue,purdue
+bracketmatrix,Queens,queens-university
+bracketmatrix,Robert Morris,robert-morris
+bracketmatrix,SMU,smu
+bracketmatrix,Sacramento State,sacramento-state
+bracketmatrix,Saint Louis,saint-louis
+bracketmatrix,San Diego State,san-diego-state
+bracketmatrix,Santa Clara,santa-clara
+bracketmatrix,Seattle,seattle-u
+bracketmatrix,South Dakota State,south-dakota-state
+bracketmatrix,South Florida,south-florida
+bracketmatrix,Southeast Missouri State,southeast-missouri-state
+bracketmatrix,Southern,southern
+bracketmatrix,Southern Miss,southern-miss
+bracketmatrix,St. John's,st-johns
+bracketmatrix,St. Mary's (CA),saint-marys
+bracketmatrix,St. Thomas,st-thomas
+bracketmatrix,Stephen F. Austin,stephen-f-austin
+bracketmatrix,Stonehill,stonehill
+bracketmatrix,Syracuse,syracuse
+bracketmatrix,TCU,tcu
+bracketmatrix,Tarleton State,tarleton-state
+bracketmatrix,Tennessee,tennessee
+bracketmatrix,Tennessee State,tennessee-state
+bracketmatrix,Tennessee-Martin,ut-martin
+bracketmatrix,Texas,texas
+bracketmatrix,Texas A&M,texas-am
+bracketmatrix,Texas Tech,texas-tech
+bracketmatrix,Towson,towson
+bracketmatrix,Troy,troy
+bracketmatrix,Tulsa,tulsa
+bracketmatrix,UC Irvine,uc-irvine
+bracketmatrix,UC San Diego,uc-san-diego
+bracketmatrix,UC Santa Barbara,uc-santa-barbara
+bracketmatrix,UCLA,ucla
+bracketmatrix,UMBC,umbc
+bracketmatrix,UNLV,unlv
+bracketmatrix,USC,usc
+bracketmatrix,Utah State,utah-state
+bracketmatrix,Utah Valley,utah-valley
+bracketmatrix,VCU,vcu
+bracketmatrix,Vanderbilt,vanderbilt
+bracketmatrix,Vermont,vermont
+bracketmatrix,Villanova,villanova
+bracketmatrix,Virginia,virginia
+bracketmatrix,Virginia Tech,virginia-tech
+bracketmatrix,West Virginia,west-virginia
+bracketmatrix,Western Carolina,western-carolina
+bracketmatrix,Western Kentucky,western-kentucky
+bracketmatrix,Wichita State,wichita-state
+bracketmatrix,Winthrop,winthrop
+bracketmatrix,Wisconsin,wisconsin
+bracketmatrix,Wright State,wright-state
+bracketmatrix,Xavier,xavier
+bracketmatrix,Yale,yale
 haslametrics,AR-Pine Bluff,arkansas-pine-bluff
 haslametrics,Abil. Christian,abilene-christian
 haslametrics,Air Force,air-force
