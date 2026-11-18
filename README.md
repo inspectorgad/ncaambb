@@ -8,13 +8,13 @@ Composite rankings for all 365 NCAA D1 men's basketball teams, built from free p
 
 | Source | Feeds | Notes |
 |---|---|---|
-| BartTorvik | Predictive, Résumé (WAB), stats | CSV |
+| BartTorvik | Predictive, Resume (WAB), stats | CSV |
 | Haslametrics | Predictive, stats, quad records | XML |
-| ESPN BPI | Predictive, Résumé (SOR), stats | JSON |
+| ESPN BPI | Predictive, Resume (SOR), stats | JSON |
 | TeamRankings | Predictive | HTML |
 | CollegeBasketballData (CBBD) | Predictive, stats | JSON API; needs a free API key (see *Automation*) |
-| NCAA.com NET | Résumé | Skipped until the first NET of the season (usually early December) |
-| Warren Nolan NET | Résumé (backup for NCAA.com) | Skipped while it still shows last season |
+| NCAA.com NET | Resume | Skipped until the first NET of the season (usually early December) |
+| Warren Nolan NET | Resume (backup for NCAA.com) | Skipped while it still shows last season |
 | AP & Coaches polls | Display only | Read from the ESPN data |
 | Bracket Matrix | Display only | Consensus projected tournament seeds |
 
@@ -22,16 +22,16 @@ Composite rankings for all 365 NCAA D1 men's basketball teams, built from free p
 
 ### Rankings table
 
-Use the **Predictive / Résumé** toggle to choose which composite the **#** column and default sort follow. Click any heading to sort, and click again to reverse. Hover over a heading for a short reminder of its meaning.
+Use the **Predictive / Resume** toggle to choose which composite the **#** column and default sort follow. Click any heading to sort, and click again to reverse. Hover over a heading for a short reminder of its meaning.
 
 | Column | What it means | Better is |
 |---|---|---|
-| **#** | Rank in the selected composite (Predictive or Résumé). | Lower |
+| **#** | Rank in the selected composite (Predictive or Resume). | Lower |
 | **Team** | School name, with its conference in grey. Click it to open the team page. | – |
 | **W-L** | Wins and losses so far. Sorting uses win percentage, adjusted slightly so a 1-0 team doesn't outrank a 10-1 team. | – |
 | **Pred** | **Predictive composite rank:** how good the team is, i.e. who would win on a neutral floor. It blends Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD. | Lower |
-| **Résumé** | **Résumé composite rank:** what the team has *earned* with its results, the way the selection committee thinks. It blends NET, ESPN strength of record and Torvik wins above bubble. Before NET is published (early December), it uses the last two only. | Lower |
-| **Gap** | Pred rank minus Résumé rank, showing where quality and results disagree. **▲** means the results look better than the quality ("lucky" or a soft schedule). **▼** means the team is better than its results ("unlucky" or a tough schedule). For example, a team 2nd in Pred and 109th in Résumé shows ▼107. | Near 0 = consistent |
+| **Resume** | **Resume composite rank:** what the team has *earned* with its results, the way the selection committee thinks. It blends NET, ESPN strength of record and Torvik wins above bubble. Before NET is published (early December), it uses the last two only. | Lower |
+| **Gap** | Pred rank minus Resume rank, showing where quality and results disagree. **▲** means the results look better than the quality ("lucky" or a soft schedule). **▼** means the team is better than its results ("unlucky" or a tough schedule). For example, a team 2nd in Pred and 109th in Resume shows ▼107. | Near 0 = consistent |
 | **AdjEM** | **Adjusted efficiency margin:** points per 100 possessions the team outscores an average D1 opponent by, adjusted for opponent strength and game location. It is AdjO minus AdjD, and the best one-number summary of team strength. Averaged across sources. | Higher |
 | **AdjO** | **Adjusted offense:** points scored per 100 possessions against an average D1 defense. The small grey number is its rank. | Higher |
 | **AdjD** | **Adjusted defense:** points *allowed* per 100 possessions against an average D1 offense. The small grey number is its rank. | **Lower** |
@@ -57,7 +57,7 @@ Use the **Predictive / Résumé** toggle to choose which composite the **#** col
 
 **Shading:** a blue tint marks the **top half of D1** in that column; the darker the tint, the closer to #1. The bottom half is unshaded so strong teams stand out. Tempo and Agree are never shaded because neither is a good-or-bad measure.
 
-**Early season:** Résumé and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.
+**Early season:** Resume and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.
 
 ### Team page
 
@@ -70,8 +70,8 @@ Click any team name to open its page.
 | Tile | What it shows |
 |---|---|
 | **Predictive** | Composite quality rank, with its z-score and how many sources fed it |
-| **Résumé** | Composite results rank, with z-score and source count (2 before NET is published, 3 after) |
-| **Gap** | Predictive rank minus Résumé rank. ▼ under-rewarded so far, ▲ results flattering the team. |
+| **Resume** | Composite results rank, with z-score and source count (2 before NET is published, 3 after) |
+| **Gap** | Predictive rank minus Resume rank. ▼ under-rewarded so far, ▲ results flattering the team. |
 | **AdjEM / AdjO / AdjD** | Cross-source efficiency numbers and their D1 rank (AdjD: lower is better) |
 | **Tempo** | Possessions per 40 minutes, ranked from fastest |
 | **Schedule** | Strength-of-schedule rank, averaged across sources (1 = toughest) |
@@ -80,11 +80,11 @@ Click any team name to open its page.
 
 **Source agreement (dot chart):** each system's opinion of the team on one shared z-score scale.
 - **Blue dots (Predictive):** Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD.
-- **Orange dots (Résumé):** ESPN SOR, Torvik WAB, and NET once published.
+- **Orange dots (Resume):** ESPN SOR, Torvik WAB, and NET once published.
 - **Dashed line:** the composite score for that group.
 - **How to read it:** dots bunched together mean the systems agree. A dot far from the others means that system sees the team differently; hover over it for the system's own number and rank.
 
-**Rank over the season (line chart):** Predictive rank (blue) and Résumé rank (orange) day by day. Rank 1 is at the top, so a rising line means improvement. Hover for a given day's ranks. It needs at least two days of history before it draws.
+**Rank over the season (line chart):** Predictive rank (blue) and Resume rank (orange) day by day. Rank 1 is at the top, so a rising line means improvement. Hover for a given day's ranks. It needs at least two days of history before it draws.
 
 **Four factors (table):** the four stats that best explain winning, for offense (this team) and defense (what opponents do against it), each with its D1 rank (1 = best).
 
@@ -112,7 +112,7 @@ The four factors, game log and season stats come from CollegeBasketballData, so 
 | **Off / Def** | Offensive and defensive efficiency. For Torvik and Haslametrics these are points per 100 possessions (Def: lower is better). ESPN's are points above average (higher is better for both). |
 | **Tempo** | Each system's pace estimate |
 
-**Résumé (table):**
+**Resume (table):**
 
 | Row | Meaning |
 |---|---|
@@ -185,8 +185,8 @@ python -m http.server 8000 -d site
 ```
 
 Then open http://localhost:8000.
-- **Rankings:** a sortable table with Predictive/Résumé toggle, conference filter, search, top-N and optional per-source columns.
-- **Team page** (`#/team/<id>`): source agreement chart, rank trend, each source's ratings, résumé and quadrant records.
+- **Rankings:** a sortable table with Predictive/Resume toggle, conference filter, search, top-N and optional per-source columns.
+- **Team page** (`#/team/<id>`): source agreement chart, rank trend, each source's ratings, resume and quadrant records.
 
 ## Tests
 
