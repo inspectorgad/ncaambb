@@ -4,6 +4,9 @@ season: 2027
 # The pipeline exits non-zero when this many sources (or more) fail in one run.
 max_failed_sources: 3
 
+# A failed source falls back to its last good download for up to this many days.
+stale_max_days: 3
+
 sources:
   torvik:
     enabled: true
@@ -15,3 +18,13 @@ sources:
   espn_bpi:
     enabled: true
     url: "https://site.web.api.espn.com/apis/fitt/v3/sports/basketball/mens-college-basketball/powerindex?limit=400"
+  teamrankings:
+    enabled: true
+    url: "https://www.teamrankings.com/ncaa-basketball/ranking/predictive-by-other"
+  warrennolan:
+    enabled: true
+    url: "https://www.warrennolan.com/basketball/{season}/net"
+  ncaa_net:
+    enabled: true
+    # Usually first published in early December; skipped until it covers this season.
+    url: "https://www.ncaa.com/rankings/basketball-men/d1/ncaa-mens-basketball-net-rankings"

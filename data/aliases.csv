@@ -364,6 +364,735 @@ haslametrics,Wyoming,wyoming
 haslametrics,Xavier,xavier
 haslametrics,Yale,yale
 haslametrics,Youngstown St.,youngstown-state
+ncaa_net,A&M-Corpus Christi,texas-am-corpus-christi
+ncaa_net,Abilene Christian,abilene-christian
+ncaa_net,Air Force,air-force
+ncaa_net,Akron,akron
+ncaa_net,Alabama,alabama
+ncaa_net,Alabama A&M,alabama-am
+ncaa_net,Alabama St.,alabama-state
+ncaa_net,Alcorn,alcorn-state
+ncaa_net,American,american-university
+ncaa_net,App State,app-state
+ncaa_net,Arizona,arizona
+ncaa_net,Arizona St.,arizona-state
+ncaa_net,Ark.-Pine Bluff,arkansas-pine-bluff
+ncaa_net,Arkansas,arkansas
+ncaa_net,Arkansas St.,arkansas-state
+ncaa_net,Army West Point,army
+ncaa_net,Auburn,auburn
+ncaa_net,Austin Peay,austin-peay
+ncaa_net,BYU,byu
+ncaa_net,Ball St.,ball-state
+ncaa_net,Baylor,baylor
+ncaa_net,Bellarmine,bellarmine
+ncaa_net,Belmont,belmont
+ncaa_net,Bethune-Cookman,bethune-cookman
+ncaa_net,Binghamton,binghamton
+ncaa_net,Boise St.,boise-state
+ncaa_net,Boston College,boston-college
+ncaa_net,Boston U.,boston-university
+ncaa_net,Bowling Green,bowling-green
+ncaa_net,Bradley,bradley
+ncaa_net,Brown,brown
+ncaa_net,Bryant,bryant
+ncaa_net,Bucknell,bucknell
+ncaa_net,Buffalo,buffalo
+ncaa_net,Butler,butler
+ncaa_net,CSU Bakersfield,cal-state-bakersfield
+ncaa_net,CSUN,cal-state-northridge
+ncaa_net,Cal Poly,cal-poly
+ncaa_net,Cal St. Fullerton,cal-state-fullerton
+ncaa_net,California,california
+ncaa_net,California Baptist,california-baptist
+ncaa_net,Campbell,campbell
+ncaa_net,Canisius,canisius
+ncaa_net,Central Ark.,central-arkansas
+ncaa_net,Central Conn. St.,central-connecticut
+ncaa_net,Central Mich.,central-michigan
+ncaa_net,Charleston So.,charleston-southern
+ncaa_net,Charlotte,charlotte
+ncaa_net,Chattanooga,chattanooga
+ncaa_net,Chicago St.,chicago-state
+ncaa_net,Cincinnati,cincinnati
+ncaa_net,Clemson,clemson
+ncaa_net,Cleveland St.,cleveland-state
+ncaa_net,Coastal Carolina,coastal-carolina
+ncaa_net,Col. of Charleston,charleston
+ncaa_net,Colgate,colgate
+ncaa_net,Colorado,colorado
+ncaa_net,Colorado St.,colorado-state
+ncaa_net,Columbia,columbia
+ncaa_net,Coppin St.,coppin-state
+ncaa_net,Cornell,cornell
+ncaa_net,Creighton,creighton
+ncaa_net,Dartmouth,dartmouth
+ncaa_net,Davidson,davidson
+ncaa_net,Dayton,dayton
+ncaa_net,DePaul,depaul
+ncaa_net,Delaware,delaware
+ncaa_net,Delaware St.,delaware-state
+ncaa_net,Denver,denver
+ncaa_net,Detroit Mercy,detroit-mercy
+ncaa_net,Drake,drake
+ncaa_net,Drexel,drexel
+ncaa_net,Duke,duke
+ncaa_net,Duquesne,duquesne
+ncaa_net,ETSU,east-tennessee-state
+ncaa_net,East Carolina,east-carolina
+ncaa_net,East Texas A&M,east-texas-am
+ncaa_net,Eastern Ill.,eastern-illinois
+ncaa_net,Eastern Ky.,eastern-kentucky
+ncaa_net,Eastern Mich.,eastern-michigan
+ncaa_net,Eastern Wash.,eastern-washington
+ncaa_net,Elon,elon
+ncaa_net,Evansville,evansville
+ncaa_net,FDU,fairleigh-dickinson
+ncaa_net,FGCU,florida-gulf-coast
+ncaa_net,FIU,florida-international
+ncaa_net,Fairfield,fairfield
+ncaa_net,Fla. Atlantic,florida-atlantic
+ncaa_net,Florida,florida
+ncaa_net,Florida A&M,florida-am
+ncaa_net,Florida St.,florida-state
+ncaa_net,Fordham,fordham
+ncaa_net,Fresno St.,fresno-state
+ncaa_net,Furman,furman
+ncaa_net,Ga. Southern,georgia-southern
+ncaa_net,Gardner-Webb,gardner-webb
+ncaa_net,George Mason,george-mason
+ncaa_net,George Washington,george-washington
+ncaa_net,Georgetown,georgetown
+ncaa_net,Georgia,georgia
+ncaa_net,Georgia St.,georgia-state
+ncaa_net,Georgia Tech,georgia-tech
+ncaa_net,Gonzaga,gonzaga
+ncaa_net,Grambling,grambling
+ncaa_net,Grand Canyon,grand-canyon
+ncaa_net,Green Bay,green-bay
+ncaa_net,Hampton,hampton
+ncaa_net,Harvard,harvard
+ncaa_net,Hawaii,hawaii
+ncaa_net,High Point,high-point
+ncaa_net,Hofstra,hofstra
+ncaa_net,Holy Cross,holy-cross
+ncaa_net,Houston,houston
+ncaa_net,Houston Christian,houston-christian
+ncaa_net,Howard,howard
+ncaa_net,IU Indy,iu-indianapolis
+ncaa_net,Idaho,idaho
+ncaa_net,Idaho St.,idaho-state
+ncaa_net,Illinois,illinois
+ncaa_net,Illinois St.,illinois-state
+ncaa_net,Indiana,indiana
+ncaa_net,Indiana St.,indiana-state
+ncaa_net,Iona,iona
+ncaa_net,Iowa,iowa
+ncaa_net,Iowa St.,iowa-state
+ncaa_net,Jackson St.,jackson-state
+ncaa_net,Jacksonville,jacksonville
+ncaa_net,Jacksonville St.,jacksonville-state
+ncaa_net,James Madison,james-madison
+ncaa_net,Kansas,kansas
+ncaa_net,Kansas City,kansas-city
+ncaa_net,Kansas St.,kansas-state
+ncaa_net,Kennesaw St.,kennesaw-state
+ncaa_net,Kent St.,kent-state
+ncaa_net,Kentucky,kentucky
+ncaa_net,LIU,long-island-university
+ncaa_net,LMU (CA),loyola-marymount
+ncaa_net,LSU,lsu
+ncaa_net,La Salle,la-salle
+ncaa_net,Lafayette,lafayette
+ncaa_net,Lamar University,lamar
+ncaa_net,Le Moyne,le-moyne
+ncaa_net,Lehigh,lehigh
+ncaa_net,Liberty,liberty
+ncaa_net,Lindenwood,lindenwood
+ncaa_net,Lipscomb,lipscomb
+ncaa_net,Little Rock,little-rock
+ncaa_net,Long Beach St.,long-beach-state
+ncaa_net,Longwood,longwood
+ncaa_net,Louisiana,louisiana
+ncaa_net,Louisiana Tech,louisiana-tech
+ncaa_net,Louisville,louisville
+ncaa_net,Loyola Chicago,loyola-chicago
+ncaa_net,Loyola Maryland,loyola-maryland
+ncaa_net,Maine,maine
+ncaa_net,Manhattan,manhattan
+ncaa_net,Marist,marist
+ncaa_net,Marquette,marquette
+ncaa_net,Marshall,marshall
+ncaa_net,Maryland,maryland
+ncaa_net,Massachusetts,massachusetts
+ncaa_net,McNeese,mcneese
+ncaa_net,Memphis,memphis
+ncaa_net,Mercer,mercer
+ncaa_net,Mercyhurst,mercyhurst
+ncaa_net,Merrimack,merrimack
+ncaa_net,Miami (FL),miami
+ncaa_net,Miami (OH),miami-oh
+ncaa_net,Michigan,michigan
+ncaa_net,Michigan St.,michigan-state
+ncaa_net,Middle Tenn.,middle-tennessee
+ncaa_net,Milwaukee,milwaukee
+ncaa_net,Minnesota,minnesota
+ncaa_net,Mississippi St.,mississippi-state
+ncaa_net,Mississippi Val.,mississippi-valley-state
+ncaa_net,Missouri,missouri
+ncaa_net,Missouri St.,missouri-state
+ncaa_net,Monmouth,monmouth
+ncaa_net,Montana,montana
+ncaa_net,Montana St.,montana-state
+ncaa_net,Morehead St.,morehead-state
+ncaa_net,Morgan St.,morgan-state
+ncaa_net,Mount St. Mary's,mount-st-marys
+ncaa_net,Murray St.,murray-state
+ncaa_net,N.C. A&T,north-carolina-at
+ncaa_net,N.C. Central,north-carolina-central
+ncaa_net,NC State,nc-state
+ncaa_net,NIU,northern-illinois
+ncaa_net,NJIT,njit
+ncaa_net,Navy,navy
+ncaa_net,Nebraska,nebraska
+ncaa_net,Nevada,nevada
+ncaa_net,New Hampshire,new-hampshire
+ncaa_net,New Haven,new-haven
+ncaa_net,New Mexico,new-mexico
+ncaa_net,New Mexico St.,new-mexico-state
+ncaa_net,New Orleans,lsu-new-orleans
+ncaa_net,Niagara,niagara
+ncaa_net,Nicholls,nicholls
+ncaa_net,Norfolk St.,norfolk-state
+ncaa_net,North Ala.,north-alabama
+ncaa_net,North Carolina,north-carolina
+ncaa_net,North Dakota,north-dakota
+ncaa_net,North Dakota St.,north-dakota-state
+ncaa_net,North Florida,north-florida
+ncaa_net,North Texas,north-texas
+ncaa_net,Northeastern,northeastern
+ncaa_net,Northern Ariz.,northern-arizona
+ncaa_net,Northern Colo.,northern-colorado
+ncaa_net,Northern Ky.,northern-kentucky
+ncaa_net,Northwestern,northwestern
+ncaa_net,Northwestern St.,northwestern-state
+ncaa_net,Notre Dame,notre-dame
+ncaa_net,Oakland,oakland
+ncaa_net,Ohio,ohio
+ncaa_net,Ohio St.,ohio-state
+ncaa_net,Oklahoma,oklahoma
+ncaa_net,Oklahoma St.,oklahoma-state
+ncaa_net,Old Dominion,old-dominion
+ncaa_net,Ole Miss,ole-miss
+ncaa_net,Omaha,omaha
+ncaa_net,Oral Roberts,oral-roberts
+ncaa_net,Oregon,oregon
+ncaa_net,Oregon St.,oregon-state
+ncaa_net,Pacific,pacific
+ncaa_net,Penn,pennsylvania
+ncaa_net,Penn St.,penn-state
+ncaa_net,Pepperdine,pepperdine
+ncaa_net,Pittsburgh,pittsburgh
+ncaa_net,Portland,portland
+ncaa_net,Portland St.,portland-state
+ncaa_net,Prairie View,prairie-view-am
+ncaa_net,Presbyterian,presbyterian
+ncaa_net,Princeton,princeton
+ncaa_net,Providence,providence
+ncaa_net,Purdue,purdue
+ncaa_net,Purdue Fort Wayne,purdue-fort-wayne
+ncaa_net,Queens (NC),queens-university
+ncaa_net,Quinnipiac,quinnipiac
+ncaa_net,Radford,radford
+ncaa_net,Rhode Island,rhode-island
+ncaa_net,Rice,rice
+ncaa_net,Richmond,richmond
+ncaa_net,Rider,rider
+ncaa_net,Robert Morris,robert-morris
+ncaa_net,Rutgers,rutgers
+ncaa_net,SFA,stephen-f-austin
+ncaa_net,SIUE,siu-edwardsville
+ncaa_net,SMU,smu
+ncaa_net,Sacramento St.,sacramento-state
+ncaa_net,Sacred Heart,sacred-heart
+ncaa_net,Saint Joseph's,saint-josephs
+ncaa_net,Saint Louis,saint-louis
+ncaa_net,Saint Mary's (CA),saint-marys
+ncaa_net,Saint Peter's,saint-peters
+ncaa_net,Sam Houston,sam-houston
+ncaa_net,Samford,samford
+ncaa_net,San Diego,san-diego
+ncaa_net,San Diego St.,san-diego-state
+ncaa_net,San Francisco,san-francisco
+ncaa_net,San Jose St.,san-jose-state
+ncaa_net,Santa Clara,santa-clara
+ncaa_net,Seattle U,seattle-u
+ncaa_net,Seton Hall,seton-hall
+ncaa_net,Siena,siena
+ncaa_net,South Alabama,south-alabama
+ncaa_net,South Carolina,south-carolina
+ncaa_net,South Carolina St.,south-carolina-state
+ncaa_net,South Dakota,south-dakota
+ncaa_net,South Dakota St.,south-dakota-state
+ncaa_net,South Fla.,south-florida
+ncaa_net,Southeast Mo. St.,southeast-missouri-state
+ncaa_net,Southeastern La.,se-louisiana
+ncaa_net,Southern California,usc
+ncaa_net,Southern Ill.,southern-illinois
+ncaa_net,Southern Ind.,southern-indiana
+ncaa_net,Southern Miss.,southern-miss
+ncaa_net,Southern U.,southern
+ncaa_net,Southern Utah,southern-utah
+ncaa_net,St. Bonaventure,st-bonaventure
+ncaa_net,St. John's (NY),st-johns
+ncaa_net,St. Thomas (MN),st-thomas
+ncaa_net,Stanford,stanford
+ncaa_net,Stetson,stetson
+ncaa_net,Stonehill,stonehill
+ncaa_net,Stony Brook,stony-brook
+ncaa_net,Syracuse,syracuse
+ncaa_net,TCU,tcu
+ncaa_net,Tarleton St.,tarleton-state
+ncaa_net,Temple,temple
+ncaa_net,Tennessee,tennessee
+ncaa_net,Tennessee St.,tennessee-state
+ncaa_net,Tennessee Tech,tennessee-tech
+ncaa_net,Texas,texas
+ncaa_net,Texas A&M,texas-am
+ncaa_net,Texas Southern,texas-southern
+ncaa_net,Texas St.,texas-state
+ncaa_net,Texas Tech,texas-tech
+ncaa_net,The Citadel,the-citadel
+ncaa_net,Toledo,toledo
+ncaa_net,Towson,towson
+ncaa_net,Troy,troy
+ncaa_net,Tulane,tulane
+ncaa_net,Tulsa,tulsa
+ncaa_net,UAB,uab
+ncaa_net,UAlbany,ualbany
+ncaa_net,UC Davis,uc-davis
+ncaa_net,UC Irvine,uc-irvine
+ncaa_net,UC Riverside,uc-riverside
+ncaa_net,UC San Diego,uc-san-diego
+ncaa_net,UC Santa Barbara,uc-santa-barbara
+ncaa_net,UCF,ucf
+ncaa_net,UCLA,ucla
+ncaa_net,UConn,uconn
+ncaa_net,UIC,uic
+ncaa_net,UIW,incarnate-word
+ncaa_net,ULM,ul-monroe
+ncaa_net,UMBC,umbc
+ncaa_net,UMES,maryland-eastern-shore
+ncaa_net,UMass Lowell,umass-lowell
+ncaa_net,UNC Asheville,unc-asheville
+ncaa_net,UNC Greensboro,unc-greensboro
+ncaa_net,UNCW,unc-wilmington
+ncaa_net,UNI,northern-iowa
+ncaa_net,UNLV,unlv
+ncaa_net,USC Upstate,south-carolina-upstate
+ncaa_net,UT Arlington,ut-arlington
+ncaa_net,UT Martin,ut-martin
+ncaa_net,UTEP,utep
+ncaa_net,UTRGV,ut-rio-grande-valley
+ncaa_net,UTSA,utsa
+ncaa_net,Utah,utah
+ncaa_net,Utah St.,utah-state
+ncaa_net,Utah Tech,utah-tech
+ncaa_net,Utah Valley,utah-valley
+ncaa_net,VCU,vcu
+ncaa_net,VMI,vmi
+ncaa_net,Valparaiso,valparaiso
+ncaa_net,Vanderbilt,vanderbilt
+ncaa_net,Vermont,vermont
+ncaa_net,Villanova,villanova
+ncaa_net,Virginia,virginia
+ncaa_net,Virginia Tech,virginia-tech
+ncaa_net,Wagner,wagner
+ncaa_net,Wake Forest,wake-forest
+ncaa_net,Washington,washington
+ncaa_net,Washington St.,washington-state
+ncaa_net,Weber St.,weber-state
+ncaa_net,West Ga.,west-georgia
+ncaa_net,West Virginia,west-virginia
+ncaa_net,Western Caro.,western-carolina
+ncaa_net,Western Ill.,western-illinois
+ncaa_net,Western Ky.,western-kentucky
+ncaa_net,Western Mich.,western-michigan
+ncaa_net,Wichita St.,wichita-state
+ncaa_net,William & Mary,william-mary
+ncaa_net,Winthrop,winthrop
+ncaa_net,Wisconsin,wisconsin
+ncaa_net,Wofford,wofford
+ncaa_net,Wright St.,wright-state
+ncaa_net,Wyoming,wyoming
+ncaa_net,Xavier,xavier
+ncaa_net,Yale,yale
+ncaa_net,Youngstown St.,youngstown-state
+teamrankings,AR-Pine Bluff,arkansas-pine-bluff
+teamrankings,Abl Christian,abilene-christian
+teamrankings,Air Force,air-force
+teamrankings,Akron,akron
+teamrankings,Alabama,alabama
+teamrankings,Alabama A&M,alabama-am
+teamrankings,Alabama St,alabama-state
+teamrankings,Albany,ualbany
+teamrankings,Alcorn St,alcorn-state
+teamrankings,American,american-university
+teamrankings,App State,app-state
+teamrankings,Arizona,arizona
+teamrankings,Arizona St,arizona-state
+teamrankings,Arkansas,arkansas
+teamrankings,Arkansas St,arkansas-state
+teamrankings,Army,army
+teamrankings,Auburn,auburn
+teamrankings,Austin Peay,austin-peay
+teamrankings,BYU,byu
+teamrankings,Ball St,ball-state
+teamrankings,Baylor,baylor
+teamrankings,Bellarmine,bellarmine
+teamrankings,Belmont,belmont
+teamrankings,Bethune,bethune-cookman
+teamrankings,Binghamton,binghamton
+teamrankings,Boise St,boise-state
+teamrankings,Boston College,boston-college
+teamrankings,Boston U,boston-university
+teamrankings,Bowling Green,bowling-green
+teamrankings,Bradley,bradley
+teamrankings,Brown,brown
+teamrankings,Bryant,bryant
+teamrankings,Bucknell,bucknell
+teamrankings,Buffalo,buffalo
+teamrankings,Butler,butler
+teamrankings,C Arkansas,central-arkansas
+teamrankings,C Connecticut,central-connecticut
+teamrankings,C Michigan,central-michigan
+teamrankings,CS Bakersfield,cal-state-bakersfield
+teamrankings,CS Fullerton,cal-state-fullerton
+teamrankings,CS Northridge,cal-state-northridge
+teamrankings,Cal Baptist,california-baptist
+teamrankings,Cal Poly,cal-poly
+teamrankings,California,california
+teamrankings,Campbell,campbell
+teamrankings,Canisius,canisius
+teamrankings,Charleston,charleston
+teamrankings,Charleston So,charleston-southern
+teamrankings,Charlotte,charlotte
+teamrankings,Chattanooga,chattanooga
+teamrankings,Chicago St,chicago-state
+teamrankings,Cincinnati,cincinnati
+teamrankings,Clemson,clemson
+teamrankings,Cleveland St,cleveland-state
+teamrankings,Coastal Car,coastal-carolina
+teamrankings,Colgate,colgate
+teamrankings,Colorado,colorado
+teamrankings,Colorado St,colorado-state
+teamrankings,Columbia,columbia
+teamrankings,Coppin St,coppin-state
+teamrankings,Cornell,cornell
+teamrankings,Creighton,creighton
+teamrankings,Dartmouth,dartmouth
+teamrankings,Davidson,davidson
+teamrankings,Dayton,dayton
+teamrankings,DePaul,depaul
+teamrankings,Delaware,delaware
+teamrankings,Delaware St,delaware-state
+teamrankings,Denver,denver
+teamrankings,Detroit Mercy,detroit-mercy
+teamrankings,Drake,drake
+teamrankings,Drexel,drexel
+teamrankings,Duke,duke
+teamrankings,Duquesne,duquesne
+teamrankings,E Carolina,east-carolina
+teamrankings,E Illinois,eastern-illinois
+teamrankings,E Kentucky,eastern-kentucky
+teamrankings,E Michigan,eastern-michigan
+teamrankings,E Tennessee St,east-tennessee-state
+teamrankings,E Texas A&M,east-texas-am
+teamrankings,E Washington,eastern-washington
+teamrankings,Elon,elon
+teamrankings,Evansville,evansville
+teamrankings,F Dickinson,fairleigh-dickinson
+teamrankings,FGCU,florida-gulf-coast
+teamrankings,Fairfield,fairfield
+teamrankings,Florida,florida
+teamrankings,Florida A&M,florida-am
+teamrankings,Florida Atlantic,florida-atlantic
+teamrankings,Florida Intl,florida-international
+teamrankings,Florida St,florida-state
+teamrankings,Fordham,fordham
+teamrankings,Fresno St,fresno-state
+teamrankings,Furman,furman
+teamrankings,G Washington,george-washington
+teamrankings,Gardner-Webb,gardner-webb
+teamrankings,George Mason,george-mason
+teamrankings,Georgetown,georgetown
+teamrankings,Georgia,georgia
+teamrankings,Georgia So,georgia-southern
+teamrankings,Georgia St,georgia-state
+teamrankings,Georgia Tech,georgia-tech
+teamrankings,Gonzaga,gonzaga
+teamrankings,Grambling,grambling
+teamrankings,Grand Canyon,grand-canyon
+teamrankings,Green Bay,green-bay
+teamrankings,Hampton,hampton
+teamrankings,Harvard,harvard
+teamrankings,Hawai'i,hawaii
+teamrankings,High Point,high-point
+teamrankings,Hofstra,hofstra
+teamrankings,Holy Cross,holy-cross
+teamrankings,Hou Christian,houston-christian
+teamrankings,Houston,houston
+teamrankings,Howard,howard
+teamrankings,IU Indy,iu-indianapolis
+teamrankings,Idaho,idaho
+teamrankings,Idaho St,idaho-state
+teamrankings,Illinois,illinois
+teamrankings,Illinois Chicago,uic
+teamrankings,Illinois St,illinois-state
+teamrankings,Incarnate Word,incarnate-word
+teamrankings,Indiana,indiana
+teamrankings,Indiana St,indiana-state
+teamrankings,Iona,iona
+teamrankings,Iowa,iowa
+teamrankings,Iowa St,iowa-state
+teamrankings,J Madison,james-madison
+teamrankings,Jackson St,jackson-state
+teamrankings,Jacksonville,jacksonville
+teamrankings,Jacksonville St,jacksonville-state
+teamrankings,Kansas,kansas
+teamrankings,Kansas City,kansas-city
+teamrankings,Kansas St,kansas-state
+teamrankings,Kennesaw St,kennesaw-state
+teamrankings,Kent St,kent-state
+teamrankings,Kentucky,kentucky
+teamrankings,LIU,long-island-university
+teamrankings,LSU,lsu
+teamrankings,LSU New Orleans,lsu-new-orleans
+teamrankings,La Salle,la-salle
+teamrankings,Lafayette,lafayette
+teamrankings,Lamar,lamar
+teamrankings,Le Moyne,le-moyne
+teamrankings,Lehigh,lehigh
+teamrankings,Liberty,liberty
+teamrankings,Lindenwood,lindenwood
+teamrankings,Lipscomb,lipscomb
+teamrankings,Little Rock,little-rock
+teamrankings,Long Beach St,long-beach-state
+teamrankings,Longwood,longwood
+teamrankings,Louisiana,louisiana
+teamrankings,Louisiana Tech,louisiana-tech
+teamrankings,Louisville,louisville
+teamrankings,Loyola Chi,loyola-chicago
+teamrankings,Loyola MD,loyola-maryland
+teamrankings,Loyola Mymt,loyola-marymount
+teamrankings,Maine,maine
+teamrankings,Manhattan,manhattan
+teamrankings,Marist,marist
+teamrankings,Marquette,marquette
+teamrankings,Marshall,marshall
+teamrankings,Maryland,maryland
+teamrankings,Maryland ES,maryland-eastern-shore
+teamrankings,McNeese,mcneese
+teamrankings,Memphis,memphis
+teamrankings,Mercer,mercer
+teamrankings,Mercyhurst,mercyhurst
+teamrankings,Merrimack,merrimack
+teamrankings,Miami,miami
+teamrankings,Miami OH,miami-oh
+teamrankings,Michigan,michigan
+teamrankings,Michigan St,michigan-state
+teamrankings,Middle Tenn,middle-tennessee
+teamrankings,Milwaukee,milwaukee
+teamrankings,Minnesota,minnesota
+teamrankings,Miss Valley St,mississippi-valley-state
+teamrankings,Mississippi,ole-miss
+teamrankings,Mississippi St,mississippi-state
+teamrankings,Missouri,missouri
+teamrankings,Missouri St,missouri-state
+teamrankings,Monmouth,monmouth
+teamrankings,Montana,montana
+teamrankings,Montana St,montana-state
+teamrankings,Morehead St,morehead-state
+teamrankings,Morgan St,morgan-state
+teamrankings,Mt St Mary's,mount-st-marys
+teamrankings,Murray St,murray-state
+teamrankings,N Alabama,north-alabama
+teamrankings,N Arizona,northern-arizona
+teamrankings,N Colorado,northern-colorado
+teamrankings,N Dakota St,north-dakota-state
+teamrankings,N Florida,north-florida
+teamrankings,N Illinois,northern-illinois
+teamrankings,N Iowa,northern-iowa
+teamrankings,N Kentucky,northern-kentucky
+teamrankings,N Texas,north-texas
+teamrankings,NC A&T,north-carolina-at
+teamrankings,NC Asheville,unc-asheville
+teamrankings,NC Central,north-carolina-central
+teamrankings,NC Greensboro,unc-greensboro
+teamrankings,NC State,nc-state
+teamrankings,NC Wilmington,unc-wilmington
+teamrankings,NJIT,njit
+teamrankings,NW State,northwestern-state
+teamrankings,Navy,navy
+teamrankings,Nebraska,nebraska
+teamrankings,Nevada,nevada
+teamrankings,New Hampshire,new-hampshire
+teamrankings,New Haven,new-haven
+teamrankings,New Mexico,new-mexico
+teamrankings,New Mexico St,new-mexico-state
+teamrankings,Niagara,niagara
+teamrankings,Nicholls,nicholls
+teamrankings,Norfolk St,norfolk-state
+teamrankings,North Carolina,north-carolina
+teamrankings,North Dakota,north-dakota
+teamrankings,Northeastern,northeastern
+teamrankings,Northwestern,northwestern
+teamrankings,Notre Dame,notre-dame
+teamrankings,Oakland,oakland
+teamrankings,Ohio,ohio
+teamrankings,Ohio St,ohio-state
+teamrankings,Oklahoma,oklahoma
+teamrankings,Oklahoma St,oklahoma-state
+teamrankings,Old Dominion,old-dominion
+teamrankings,Omaha,omaha
+teamrankings,Oral Roberts,oral-roberts
+teamrankings,Oregon,oregon
+teamrankings,Oregon St,oregon-state
+teamrankings,Pacific,pacific
+teamrankings,Penn,pennsylvania
+teamrankings,Penn St,penn-state
+teamrankings,Pepperdine,pepperdine
+teamrankings,Pittsburgh,pittsburgh
+teamrankings,Portland,portland
+teamrankings,Portland St,portland-state
+teamrankings,Prairie View,prairie-view-am
+teamrankings,Presbyterian,presbyterian
+teamrankings,Princeton,princeton
+teamrankings,Providence,providence
+teamrankings,Purdue,purdue
+teamrankings,Purdue FW,purdue-fort-wayne
+teamrankings,Queens,queens-university
+teamrankings,Quinnipiac,quinnipiac
+teamrankings,Radford,radford
+teamrankings,Rhode Island,rhode-island
+teamrankings,Rice,rice
+teamrankings,Richmond,richmond
+teamrankings,Rider,rider
+teamrankings,Robert Morris,robert-morris
+teamrankings,Rutgers,rutgers
+teamrankings,S Alabama,south-alabama
+teamrankings,S Carolina St,south-carolina-state
+teamrankings,S Dakota St,south-dakota-state
+teamrankings,S Florida,south-florida
+teamrankings,S Illinois,southern-illinois
+teamrankings,S Indiana,southern-indiana
+teamrankings,S Utah,southern-utah
+teamrankings,SC Upstate,south-carolina-upstate
+teamrankings,SE Louisiana,se-louisiana
+teamrankings,SE Missouri St,southeast-missouri-state
+teamrankings,SF Austin,stephen-f-austin
+teamrankings,SIU Edward,siu-edwardsville
+teamrankings,SMU,smu
+teamrankings,Sacramento St,sacramento-state
+teamrankings,Sacred Heart,sacred-heart
+teamrankings,Saint Joseph's,saint-josephs
+teamrankings,Saint Louis,saint-louis
+teamrankings,Saint Mary's,saint-marys
+teamrankings,Saint Peter's,saint-peters
+teamrankings,Sam Houston,sam-houston
+teamrankings,Samford,samford
+teamrankings,San Diego,san-diego
+teamrankings,San Diego St,san-diego-state
+teamrankings,San Francisco,san-francisco
+teamrankings,San Jose St,san-jose-state
+teamrankings,Santa Clara,santa-clara
+teamrankings,Seattle,seattle-u
+teamrankings,Seton Hall,seton-hall
+teamrankings,Siena,siena
+teamrankings,South Carolina,south-carolina
+teamrankings,South Dakota,south-dakota
+teamrankings,Southern,southern
+teamrankings,Southern Miss,southern-miss
+teamrankings,St Bonaventure,st-bonaventure
+teamrankings,St John's,st-johns
+teamrankings,St Thomas,st-thomas
+teamrankings,Stanford,stanford
+teamrankings,Stetson,stetson
+teamrankings,Stonehill,stonehill
+teamrankings,Stony Brook,stony-brook
+teamrankings,Syracuse,syracuse
+teamrankings,TCU,tcu
+teamrankings,Tarleton St,tarleton-state
+teamrankings,Temple,temple
+teamrankings,Tenn Tech,tennessee-tech
+teamrankings,Tennessee,tennessee
+teamrankings,Tennessee St,tennessee-state
+teamrankings,Texas,texas
+teamrankings,Texas A&M,texas-am
+teamrankings,Texas A&M-CC,texas-am-corpus-christi
+teamrankings,Texas So,texas-southern
+teamrankings,Texas St,texas-state
+teamrankings,Texas Tech,texas-tech
+teamrankings,The Citadel,the-citadel
+teamrankings,Toledo,toledo
+teamrankings,Towson,towson
+teamrankings,Troy,troy
+teamrankings,Tulane,tulane
+teamrankings,Tulsa,tulsa
+teamrankings,UAB,uab
+teamrankings,UC Davis,uc-davis
+teamrankings,UC Irvine,uc-irvine
+teamrankings,UC Riverside,uc-riverside
+teamrankings,UCF,ucf
+teamrankings,UCLA,ucla
+teamrankings,UCSB,uc-santa-barbara
+teamrankings,UCSD,uc-san-diego
+teamrankings,UConn,uconn
+teamrankings,UL Monroe,ul-monroe
+teamrankings,UMBC,umbc
+teamrankings,UMass,massachusetts
+teamrankings,UMass Lowell,umass-lowell
+teamrankings,UNLV,unlv
+teamrankings,USC,usc
+teamrankings,UT Arlington,ut-arlington
+teamrankings,UT Martin,ut-martin
+teamrankings,UT Rio Grande,ut-rio-grande-valley
+teamrankings,UTEP,utep
+teamrankings,UTSA,utsa
+teamrankings,Utah,utah
+teamrankings,Utah St,utah-state
+teamrankings,Utah Tech,utah-tech
+teamrankings,Utah Valley,utah-valley
+teamrankings,VCU,vcu
+teamrankings,VMI,vmi
+teamrankings,Valparaiso,valparaiso
+teamrankings,Vanderbilt,vanderbilt
+teamrankings,Vermont,vermont
+teamrankings,Villanova,villanova
+teamrankings,Virginia,virginia
+teamrankings,Virginia Tech,virginia-tech
+teamrankings,W Carolina,western-carolina
+teamrankings,W Florida,west-florida
+teamrankings,W Georgia,west-georgia
+teamrankings,W Illinois,western-illinois
+teamrankings,W Kentucky,western-kentucky
+teamrankings,W Michigan,western-michigan
+teamrankings,Wagner,wagner
+teamrankings,Wake Forest,wake-forest
+teamrankings,Washington,washington
+teamrankings,Washington St,washington-state
+teamrankings,Weber St,weber-state
+teamrankings,West Virginia,west-virginia
+teamrankings,Wichita St,wichita-state
+teamrankings,William & Mary,william-mary
+teamrankings,Winthrop,winthrop
+teamrankings,Wisconsin,wisconsin
+teamrankings,Wofford,wofford
+teamrankings,Wright St,wright-state
+teamrankings,Wyoming,wyoming
+teamrankings,Xavier,xavier
+teamrankings,Yale,yale
+teamrankings,Youngstown St,youngstown-state
 torvik,Abilene Christian,abilene-christian
 torvik,Air Force,air-force
 torvik,Akron,akron
@@ -729,3 +1458,368 @@ torvik,Wyoming,wyoming
 torvik,Xavier,xavier
 torvik,Yale,yale
 torvik,Youngstown St.,youngstown-state
+warrennolan,Abilene Christian,abilene-christian
+warrennolan,Air Force,air-force
+warrennolan,Akron,akron
+warrennolan,Alabama,alabama
+warrennolan,Alabama A&M,alabama-am
+warrennolan,Alabama State,alabama-state
+warrennolan,Albany,ualbany
+warrennolan,Alcorn State,alcorn-state
+warrennolan,American,american-university
+warrennolan,Appalachian State,app-state
+warrennolan,Arizona,arizona
+warrennolan,Arizona State,arizona-state
+warrennolan,Arkansas,arkansas
+warrennolan,Arkansas State,arkansas-state
+warrennolan,Arkansas-Pine Bluff,arkansas-pine-bluff
+warrennolan,Army,army
+warrennolan,Auburn,auburn
+warrennolan,Austin Peay,austin-peay
+warrennolan,BYU,byu
+warrennolan,Ball State,ball-state
+warrennolan,Baylor,baylor
+warrennolan,Bellarmine,bellarmine
+warrennolan,Belmont,belmont
+warrennolan,Bethune-Cookman,bethune-cookman
+warrennolan,Binghamton,binghamton
+warrennolan,Boise State,boise-state
+warrennolan,Boston College,boston-college
+warrennolan,Boston University,boston-university
+warrennolan,Bowling Green,bowling-green
+warrennolan,Bradley,bradley
+warrennolan,Brown,brown
+warrennolan,Bryant,bryant
+warrennolan,Bucknell,bucknell
+warrennolan,Buffalo,buffalo
+warrennolan,Butler,butler
+warrennolan,Cal Poly,cal-poly
+warrennolan,Cal State Bakersfield,cal-state-bakersfield
+warrennolan,Cal State Fullerton,cal-state-fullerton
+warrennolan,Cal State Northridge,cal-state-northridge
+warrennolan,California,california
+warrennolan,California Baptist,california-baptist
+warrennolan,Campbell,campbell
+warrennolan,Canisius,canisius
+warrennolan,Central Arkansas,central-arkansas
+warrennolan,Central Connecticut,central-connecticut
+warrennolan,Central Michigan,central-michigan
+warrennolan,Charleston,charleston
+warrennolan,Charleston Southern,charleston-southern
+warrennolan,Charlotte,charlotte
+warrennolan,Chattanooga,chattanooga
+warrennolan,Chicago State,chicago-state
+warrennolan,Cincinnati,cincinnati
+warrennolan,Clemson,clemson
+warrennolan,Cleveland State,cleveland-state
+warrennolan,Coastal Carolina,coastal-carolina
+warrennolan,Colgate,colgate
+warrennolan,Colorado,colorado
+warrennolan,Colorado State,colorado-state
+warrennolan,Columbia,columbia
+warrennolan,Connecticut,uconn
+warrennolan,Coppin State,coppin-state
+warrennolan,Cornell,cornell
+warrennolan,Creighton,creighton
+warrennolan,Dartmouth,dartmouth
+warrennolan,Davidson,davidson
+warrennolan,Dayton,dayton
+warrennolan,DePaul,depaul
+warrennolan,Delaware,delaware
+warrennolan,Delaware State,delaware-state
+warrennolan,Denver,denver
+warrennolan,Detroit,detroit-mercy
+warrennolan,Drake,drake
+warrennolan,Drexel,drexel
+warrennolan,Duke,duke
+warrennolan,Duquesne,duquesne
+warrennolan,East Carolina,east-carolina
+warrennolan,East Tennessee State,east-tennessee-state
+warrennolan,East Texas A&M,east-texas-am
+warrennolan,Eastern Illinois,eastern-illinois
+warrennolan,Eastern Kentucky,eastern-kentucky
+warrennolan,Eastern Michigan,eastern-michigan
+warrennolan,Eastern Washington,eastern-washington
+warrennolan,Elon,elon
+warrennolan,Evansville,evansville
+warrennolan,FAU,florida-atlantic
+warrennolan,FGCU,florida-gulf-coast
+warrennolan,FIU,florida-international
+warrennolan,Fairfield,fairfield
+warrennolan,Fairleigh Dickinson,fairleigh-dickinson
+warrennolan,Florida,florida
+warrennolan,Florida A&M,florida-am
+warrennolan,Florida State,florida-state
+warrennolan,Fordham,fordham
+warrennolan,Fresno State,fresno-state
+warrennolan,Furman,furman
+warrennolan,Gardner-Webb,gardner-webb
+warrennolan,George Mason,george-mason
+warrennolan,George Washington,george-washington
+warrennolan,Georgetown,georgetown
+warrennolan,Georgia,georgia
+warrennolan,Georgia Southern,georgia-southern
+warrennolan,Georgia State,georgia-state
+warrennolan,Georgia Tech,georgia-tech
+warrennolan,Gonzaga,gonzaga
+warrennolan,Grambling State,grambling
+warrennolan,Grand Canyon,grand-canyon
+warrennolan,Green Bay,green-bay
+warrennolan,Hampton,hampton
+warrennolan,Harvard,harvard
+warrennolan,Hawaii,hawaii
+warrennolan,High Point,high-point
+warrennolan,Hofstra,hofstra
+warrennolan,Holy Cross,holy-cross
+warrennolan,Houston,houston
+warrennolan,Houston Christian,houston-christian
+warrennolan,Howard,howard
+warrennolan,IU Indianapolis,iu-indianapolis
+warrennolan,Idaho,idaho
+warrennolan,Idaho State,idaho-state
+warrennolan,Illinois,illinois
+warrennolan,Illinois State,illinois-state
+warrennolan,Incarnate Word,incarnate-word
+warrennolan,Indiana,indiana
+warrennolan,Indiana State,indiana-state
+warrennolan,Iona,iona
+warrennolan,Iowa,iowa
+warrennolan,Iowa State,iowa-state
+warrennolan,Jackson State,jackson-state
+warrennolan,Jacksonville,jacksonville
+warrennolan,Jacksonville State,jacksonville-state
+warrennolan,James Madison,james-madison
+warrennolan,Kansas,kansas
+warrennolan,Kansas State,kansas-state
+warrennolan,Kennesaw State,kennesaw-state
+warrennolan,Kent State,kent-state
+warrennolan,Kentucky,kentucky
+warrennolan,LSU,lsu
+warrennolan,LSU New Orleans,lsu-new-orleans
+warrennolan,La Salle,la-salle
+warrennolan,Lafayette,lafayette
+warrennolan,Lamar,lamar
+warrennolan,Le Moyne,le-moyne
+warrennolan,Lehigh,lehigh
+warrennolan,Liberty,liberty
+warrennolan,Lindenwood,lindenwood
+warrennolan,Lipscomb,lipscomb
+warrennolan,Little Rock,little-rock
+warrennolan,Long Beach State,long-beach-state
+warrennolan,Long Island,long-island-university
+warrennolan,Longwood,longwood
+warrennolan,Louisiana,louisiana
+warrennolan,Louisiana Tech,louisiana-tech
+warrennolan,Louisville,louisville
+warrennolan,Loyola-Chicago,loyola-chicago
+warrennolan,Loyola-Maryland,loyola-maryland
+warrennolan,Loyola-Marymount,loyola-marymount
+warrennolan,Maine,maine
+warrennolan,Manhattan,manhattan
+warrennolan,Marist,marist
+warrennolan,Marquette,marquette
+warrennolan,Marshall,marshall
+warrennolan,Maryland,maryland
+warrennolan,Maryland Eastern Shore,maryland-eastern-shore
+warrennolan,McNeese,mcneese
+warrennolan,Memphis,memphis
+warrennolan,Mercer,mercer
+warrennolan,Mercyhurst,mercyhurst
+warrennolan,Merrimack,merrimack
+warrennolan,Miami (FL),miami
+warrennolan,Miami (OH),miami-oh
+warrennolan,Michigan,michigan
+warrennolan,Michigan State,michigan-state
+warrennolan,Middle Tennessee,middle-tennessee
+warrennolan,Milwaukee,milwaukee
+warrennolan,Minnesota,minnesota
+warrennolan,Mississippi State,mississippi-state
+warrennolan,Mississippi Valley State,mississippi-valley-state
+warrennolan,Missouri,missouri
+warrennolan,Missouri State,missouri-state
+warrennolan,Monmouth,monmouth
+warrennolan,Montana,montana
+warrennolan,Montana State,montana-state
+warrennolan,Morehead State,morehead-state
+warrennolan,Morgan State,morgan-state
+warrennolan,Mount Saint Mary's,mount-st-marys
+warrennolan,Murray State,murray-state
+warrennolan,NJIT,njit
+warrennolan,Navy,navy
+warrennolan,Nebraska,nebraska
+warrennolan,Nevada,nevada
+warrennolan,New Hampshire,new-hampshire
+warrennolan,New Haven,new-haven
+warrennolan,New Mexico,new-mexico
+warrennolan,New Mexico State,new-mexico-state
+warrennolan,Niagara,niagara
+warrennolan,Nicholls,nicholls
+warrennolan,Norfolk State,norfolk-state
+warrennolan,North Alabama,north-alabama
+warrennolan,North Carolina,north-carolina
+warrennolan,North Carolina A&T,north-carolina-at
+warrennolan,North Carolina Central,north-carolina-central
+warrennolan,North Carolina State,nc-state
+warrennolan,North Dakota,north-dakota
+warrennolan,North Dakota State,north-dakota-state
+warrennolan,North Florida,north-florida
+warrennolan,North Texas,north-texas
+warrennolan,Northeastern,northeastern
+warrennolan,Northern Arizona,northern-arizona
+warrennolan,Northern Colorado,northern-colorado
+warrennolan,Northern Illinois,northern-illinois
+warrennolan,Northern Iowa,northern-iowa
+warrennolan,Northern Kentucky,northern-kentucky
+warrennolan,Northwestern,northwestern
+warrennolan,Northwestern State,northwestern-state
+warrennolan,Notre Dame,notre-dame
+warrennolan,Oakland,oakland
+warrennolan,Ohio,ohio
+warrennolan,Ohio State,ohio-state
+warrennolan,Oklahoma,oklahoma
+warrennolan,Oklahoma State,oklahoma-state
+warrennolan,Old Dominion,old-dominion
+warrennolan,Ole Miss,ole-miss
+warrennolan,Omaha,omaha
+warrennolan,Oral Roberts,oral-roberts
+warrennolan,Oregon,oregon
+warrennolan,Oregon State,oregon-state
+warrennolan,Pacific,pacific
+warrennolan,Penn,pennsylvania
+warrennolan,Penn State,penn-state
+warrennolan,Pepperdine,pepperdine
+warrennolan,Pittsburgh,pittsburgh
+warrennolan,Portland,portland
+warrennolan,Portland State,portland-state
+warrennolan,Prairie View A&M,prairie-view-am
+warrennolan,Presbyterian College,presbyterian
+warrennolan,Princeton,princeton
+warrennolan,Providence,providence
+warrennolan,Purdue,purdue
+warrennolan,Purdue Fort Wayne,purdue-fort-wayne
+warrennolan,Queens,queens-university
+warrennolan,Quinnipiac,quinnipiac
+warrennolan,Radford,radford
+warrennolan,Rhode Island,rhode-island
+warrennolan,Rice,rice
+warrennolan,Richmond,richmond
+warrennolan,Rider,rider
+warrennolan,Robert Morris,robert-morris
+warrennolan,Rutgers,rutgers
+warrennolan,SIUE,siu-edwardsville
+warrennolan,SMU,smu
+warrennolan,Sacramento State,sacramento-state
+warrennolan,Sacred Heart,sacred-heart
+warrennolan,Saint Bonaventure,st-bonaventure
+warrennolan,Saint John's,st-johns
+warrennolan,Saint Joseph's,saint-josephs
+warrennolan,Saint Louis,saint-louis
+warrennolan,Saint Mary's College,saint-marys
+warrennolan,Saint Peter's,saint-peters
+warrennolan,Saint Thomas,st-thomas
+warrennolan,Sam Houston State,sam-houston
+warrennolan,Samford,samford
+warrennolan,San Diego,san-diego
+warrennolan,San Diego State,san-diego-state
+warrennolan,San Francisco,san-francisco
+warrennolan,San Jose State,san-jose-state
+warrennolan,Santa Clara,santa-clara
+warrennolan,Seattle University,seattle-u
+warrennolan,Seton Hall,seton-hall
+warrennolan,Siena,siena
+warrennolan,South Alabama,south-alabama
+warrennolan,South Carolina,south-carolina
+warrennolan,South Carolina State,south-carolina-state
+warrennolan,South Carolina Upstate,south-carolina-upstate
+warrennolan,South Dakota,south-dakota
+warrennolan,South Dakota State,south-dakota-state
+warrennolan,South Florida,south-florida
+warrennolan,Southeast Missouri,southeast-missouri-state
+warrennolan,Southeastern Louisiana,se-louisiana
+warrennolan,Southern,southern
+warrennolan,Southern Illinois,southern-illinois
+warrennolan,Southern Indiana,southern-indiana
+warrennolan,Southern Miss,southern-miss
+warrennolan,Southern Utah,southern-utah
+warrennolan,Stanford,stanford
+warrennolan,Stephen F. Austin,stephen-f-austin
+warrennolan,Stetson,stetson
+warrennolan,Stonehill,stonehill
+warrennolan,Stony Brook,stony-brook
+warrennolan,Syracuse,syracuse
+warrennolan,TCU,tcu
+warrennolan,Tarleton State,tarleton-state
+warrennolan,Temple,temple
+warrennolan,Tennessee,tennessee
+warrennolan,Tennessee State,tennessee-state
+warrennolan,Tennessee Tech,tennessee-tech
+warrennolan,Tennessee-Martin,ut-martin
+warrennolan,Texas,texas
+warrennolan,Texas A&M,texas-am
+warrennolan,Texas A&M-Corpus Christi,texas-am-corpus-christi
+warrennolan,Texas Southern,texas-southern
+warrennolan,Texas State,texas-state
+warrennolan,Texas Tech,texas-tech
+warrennolan,The Citadel,the-citadel
+warrennolan,Toledo,toledo
+warrennolan,Towson,towson
+warrennolan,Troy,troy
+warrennolan,Tulane,tulane
+warrennolan,Tulsa,tulsa
+warrennolan,UAB,uab
+warrennolan,UC Davis,uc-davis
+warrennolan,UC Irvine,uc-irvine
+warrennolan,UC Riverside,uc-riverside
+warrennolan,UC San Diego,uc-san-diego
+warrennolan,UC Santa Barbara,uc-santa-barbara
+warrennolan,UCF,ucf
+warrennolan,UCLA,ucla
+warrennolan,UIC,uic
+warrennolan,ULM,ul-monroe
+warrennolan,UMBC,umbc
+warrennolan,UMKC,kansas-city
+warrennolan,UMass,massachusetts
+warrennolan,UMass-Lowell,umass-lowell
+warrennolan,UNC Asheville,unc-asheville
+warrennolan,UNCG,unc-greensboro
+warrennolan,UNCW,unc-wilmington
+warrennolan,UNLV,unlv
+warrennolan,USC,usc
+warrennolan,UTA,ut-arlington
+warrennolan,UTEP,utep
+warrennolan,UTRGV,ut-rio-grande-valley
+warrennolan,UTSA,utsa
+warrennolan,Utah,utah
+warrennolan,Utah State,utah-state
+warrennolan,Utah Tech,utah-tech
+warrennolan,Utah Valley,utah-valley
+warrennolan,VCU,vcu
+warrennolan,VMI,vmi
+warrennolan,Valparaiso,valparaiso
+warrennolan,Vanderbilt,vanderbilt
+warrennolan,Vermont,vermont
+warrennolan,Villanova,villanova
+warrennolan,Virginia,virginia
+warrennolan,Virginia Tech,virginia-tech
+warrennolan,Wagner,wagner
+warrennolan,Wake Forest,wake-forest
+warrennolan,Washington,washington
+warrennolan,Washington State,washington-state
+warrennolan,Weber State,weber-state
+warrennolan,West Florida,west-florida
+warrennolan,West Georgia,west-georgia
+warrennolan,West Virginia,west-virginia
+warrennolan,Western Carolina,western-carolina
+warrennolan,Western Illinois,western-illinois
+warrennolan,Western Kentucky,western-kentucky
+warrennolan,Western Michigan,western-michigan
+warrennolan,Wichita State,wichita-state
+warrennolan,William & Mary,william-mary
+warrennolan,Winthrop,winthrop
+warrennolan,Wisconsin,wisconsin
+warrennolan,Wofford,wofford
+warrennolan,Wright State,wright-state
+warrennolan,Wyoming,wyoming
+warrennolan,Xavier,xavier
+warrennolan,Yale,yale
+warrennolan,Youngstown State,youngstown-state

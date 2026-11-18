@@ -1,0 +1,199 @@
+{
+  "as_of": "2026-11-18",
+  "season": 2027,
+  "sources": [
+    {
+      "source": "torvik",
+      "status": "ok",
+      "teams": 365,
+      "data_date": "2026-11-18",
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "haslametrics",
+      "status": "ok",
+      "teams": 365,
+      "data_date": "2026-11-18",
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "espn_bpi",
+      "status": "ok",
+      "teams": 365,
+      "data_date": "2026-11-18",
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "teamrankings",
+      "status": "ok",
+      "teams": 365,
+      "data_date": "2026-11-18",
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "warrennolan",
+      "status": "not_current",
+      "teams": 0,
+      "data_date": "2026-03-15",
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "ncaa_net",
+      "status": "not_current",
+      "teams": 0,
+      "data_date": "2026-04-06",
+      "unmatched": [],
+      "error": null
+    }
+  ],
+  "weights": {
+    "trim_min_inputs": 4,
+    "predictive": [
+      {
+        "sources": [
+          "torvik"
+        ],
+        "metric": "rating",
+        "kind": "value",
+        "weight": 0.25
+      },
+      {
+        "sources": [
+          "haslametrics"
+        ],
+        "metric": "rating",
+        "kind": "value",
+        "weight": 0.25
+      },
+      {
+        "sources": [
+          "espn_bpi"
+        ],
+        "metric": "rating",
+        "kind": "value",
+        "weight": 0.25
+      },
+      {
+        "sources": [
+          "teamrankings"
+        ],
+        "metric": "rating",
+        "kind": "value",
+        "weight": 0.25
+      }
+    ],
+    "resume": [
+      {
+        "sources": [
+          "ncaa_net",
+          "warrennolan"
+        ],
+        "metric": "net_rank",
+        "kind": "rank",
+        "weight": 0.4
+      },
+      {
+        "sources": [
+          "espn_bpi"
+        ],
+        "metric": "sor_rank",
+        "kind": "rank",
+        "weight": 0.3
+      },
+      {
+        "sources": [
+          "torvik"
+        ],
+        "metric": "wab",
+        "kind": "value",
+        "weight": 0.3
+      }
+    ],
+    "stats": {
+      "adj_o": {
+        "inputs": [
+          [
+            "torvik",
+            "adj_o"
+          ],
+          [
+            "haslametrics",
+            "adj_o"
+          ],
+          [
+            "espn_bpi",
+            "bpi_off"
+          ]
+        ],
+        "scale_from": [
+          "torvik",
+          "haslametrics"
+        ],
+        "best": "high"
+      },
+      "adj_d": {
+        "inputs": [
+          [
+            "torvik",
+            "adj_d"
+          ],
+          [
+            "haslametrics",
+            "adj_d"
+          ],
+          [
+            "espn_bpi",
+            "bpi_def",
+            "invert"
+          ]
+        ],
+        "scale_from": [
+          "torvik",
+          "haslametrics"
+        ],
+        "best": "low"
+      },
+      "tempo": {
+        "inputs": [
+          [
+            "torvik",
+            "tempo"
+          ],
+          [
+            "haslametrics",
+            "tempo"
+          ]
+        ],
+        "scale_from": [
+          "torvik",
+          "haslametrics"
+        ],
+        "best": "high"
+      },
+      "sos": {
+        "inputs": [
+          [
+            "torvik",
+            "sos"
+          ],
+          [
+            "haslametrics",
+            "sos"
+          ],
+          [
+            "espn_bpi",
+            "sos_past_rank",
+            "rank"
+          ]
+        ],
+        "best": "high"
+      }
+    }
+  },
+  "generated_at": "2026-11-18T21:59:13+00:00"
+}

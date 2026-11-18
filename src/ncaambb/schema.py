@@ -3,7 +3,8 @@
 Each source parser returns a *wide* DataFrame: one row per team, a
 ``source_name`` column holding the team's name as that source spells it,
 and one column per metric. Optional ``<metric>_rank`` columns carry the
-source's own rank for that metric.
+source's own rank for that metric. A ``*_rank`` column whose base metric
+is absent (e.g. ``sor_rank``) is treated as a metric itself.
 
 After name resolution, :func:`to_long` turns it into the long format
 used downstream::
@@ -60,7 +61,9 @@ def validate_wide(df: pd.DataFrame, source: str, min_teams: int = MIN_TEAMS) -> 
 
 def to_long(wide: pd.DataFrame, source: str, as_of: str) -> pd.DataFrame:
     """Wide frame with a ``team_id`` column -> long rows."""
-    rank_cols = {c for c in wide.columns if c.endswith("_rank")}
+    # "<metric>_rank" is a rank *of* <metric> only when <metric> exists;
+    # otherwise (sor_rank, net_rank, ...) it is a metric in its own right.
+    rank_cols = {c for c in wide.columns if c.endswith("_rank") and c[: -len("_rank")] in wide.columns}
     metric_cols = [
         c for c in wide.columns if c not in rank_cols and c not in ("team_id", "source_name")
     ]

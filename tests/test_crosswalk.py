@@ -5,7 +5,7 @@ from ncaambb import DATA_DIR
 from ncaambb.crosswalk import Crosswalk
 from ncaambb.sources import REGISTRY
 
-SOURCES = ["torvik", "haslametrics", "espn_bpi"]
+SOURCES = ["torvik", "haslametrics", "espn_bpi", "teamrankings", "warrennolan"]
 
 
 @pytest.fixture(scope="module")
@@ -42,6 +42,14 @@ def test_conferences_agree_with_espn(source, raw, crosswalk):
     want = mapped["team_id"].map(espn_conf)
     wrong = mapped.loc[got != want, ["source_name", "conference", "team_id"]]
     assert wrong.empty, wrong.to_string()
+
+
+def test_ncaa_net_last_season_fixture(raw, crosswalk):
+    """Saved page is 2025-26: Saint Francis (PA) has since left D1 and
+    West Florida joined, so exactly one name is unmatched."""
+    mapped, unmatched = crosswalk.apply("ncaa_net", REGISTRY["ncaa_net"].parse(raw["ncaa_net"]))
+    assert unmatched == ["Saint Francis"]
+    assert len(mapped) == 364
 
 
 def test_unknown_names_are_reported_not_guessed(crosswalk):

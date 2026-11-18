@@ -1,14 +1,17 @@
+import datetime as dt
+
 import pandas as pd
 import pytest
 
 from ncaambb.schema import ValidationError, validate_wide
 from ncaambb.sources import REGISTRY
 
-SOURCES = ["torvik", "haslametrics", "espn_bpi"]
-CORE = ["source_name", "conference", "rating", "rating_rank", "wins", "losses", "record"]
+RATING_SOURCES = ["torvik", "haslametrics", "espn_bpi", "teamrankings"]
+NET_SOURCES = ["warrennolan", "ncaa_net"]
+CORE = ["source_name", "rating", "rating_rank", "wins", "losses", "record"]
 
 
-@pytest.mark.parametrize("source", SOURCES)
+@pytest.mark.parametrize("source", RATING_SOURCES)
 def test_parses_all_teams_and_validates(source, raw):
     df = REGISTRY[source].parse(raw[source])
     assert len(df) == 365
@@ -72,3 +75,34 @@ def test_validation_catches_bad_data(raw):
     dup = pd.concat([df, df.head(1)])
     with pytest.raises(ValidationError, match="duplicate"):
         validate_wide(dup, "torvik")
+
+
+@pytest.mark.parametrize("source", NET_SOURCES)
+def test_net_pages(source, raw):
+    df = REGISTRY[source].parse(raw[source])
+    validate_wide(df, source)
+    assert {"source_name", "net_rank", "record", "wins", "losses"} <= set(df.columns)
+    assert df["net_rank"].min() == 1
+
+
+def test_teamrankings_splits_name_and_record(raw):
+    df = REGISTRY["teamrankings"].parse(raw["teamrankings"]).set_index("source_name")
+    assert df.loc["Illinois", "record"] == "4-1"
+    assert df.loc["Illinois", "rating"] == pytest.approx(26.7)
+    assert not df.index.str.contains(r"\(").any()
+
+
+def test_ncaa_net_quads(raw):
+    df = REGISTRY["ncaa_net"].parse(raw["ncaa_net"]).set_index("source_name")
+    assert df.loc["Michigan", "net_rank"] == 1
+    assert df.loc["Michigan", "q1"] == "21-3"
+
+
+def test_data_through_dates(raw):
+    today = dt.date(2026, 11, 18)
+    assert REGISTRY["ncaa_net"].data_through(raw["ncaa_net"], today) == dt.date(2026, 4, 6)
+    assert REGISTRY["warrennolan"].data_through(raw["warrennolan"], today) == dt.date(2026, 3, 15)
+    # a December date seen in January belongs to the previous calendar year
+    page = b"NET Rank updated for games through <b>DEC 30th</b>"
+    assert REGISTRY["warrennolan"].data_through(page, dt.date(2027, 1, 5)) == dt.date(2026, 12, 30)
+    assert REGISTRY["torvik"].data_through(raw["torvik"], today) is None

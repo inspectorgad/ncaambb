@@ -115,7 +115,7 @@ This is the most fiddly part, so it gets its own step.
    - With 4 or more inputs, take a trimmed mean that drops the single highest and lowest z.
 4. **Rank** teams by composite z. Output: `pred_z`, `pred_rank`, `res_z`, `res_rank`.
 5. **Diagnostics:**
-   - `gap = pred_rank − res_rank` (positive means under-rewarded, negative means over-rewarded).
+   - `gap = pred_rank − res_rank`. Positive means the résumé ranks ahead of the team's quality (results flattering it). Negative means quality ranks ahead of résumé (under-rewarded so far).
    - `spread` = standard deviation of a team's z-scores across sources, i.e. how much the systems disagree about it.
    - A plain average of source ranks as a check column.
 6. **Combined averages of each stat**, e.g. AdjO = mean of Torvik `adjoe`, Haslametrics `oe` and BPI offense. Each source is converted to z-scores first, then put back on the mean source's scale for display. The same applies to AdjD, tempo and SOS.
@@ -195,7 +195,7 @@ jobs:
 | Phase | Deliverable | Done when |
 |---|---|---|
 | 1. Foundation ✅ | Project skeleton, `http.py`, schema, teams.csv from ESPN, Torvik, Haslametrics and BPI parsers, crosswalk for those three | `pytest` passes; 365/365 mapped for 3 sources |
-| 2. Remaining sources + composite | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
+| 2. Remaining sources + composite ✅ | TeamRankings, Warren Nolan and NCAA NET parsers; `composite.py`; JSON output | `latest.json` has Pred and Res ranks for all teams; top 25 looks sensible next to Torvik and BPI |
 | 3. Front end | Rankings table, team view, status badges | Works locally (`python -m http.server -d site`) on desktop and phone |
 | 4. Automation | Update and test workflows, Pages deploy | Manual trigger publishes the site; next scheduled run succeeds |
 | 5. Later (optional) | Trend charts once history builds up, Massey via headless browser, local-only KenPom/EvanMiya columns, tuning weights against game results | – |

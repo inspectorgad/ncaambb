@@ -22,6 +22,13 @@ from ..crosswalk import Crosswalk
 from ..sources import REGISTRY
 
 ABBREVIATIONS = [
+    (r"\bark\.", "arkansas"), (r"\bfla\.", "florida"), (r"\bcaro\.", "carolina"),
+    (r"\bmich\.", "michigan"), (r"\bill\.", "illinois"), (r"\bky\.", "kentucky"),
+    (r"\bwash\.", "washington"), (r"\bcolo\.", "colorado"), (r"\bariz\.", "arizona"),
+    (r"\bala\.", "alabama"), (r"\bga\.", "georgia"), (r"\bmo\.", "missouri"),
+    (r"\bconn\.", "connecticut"), (r"\btenn\.?", "tennessee"), (r"\bla\.", "louisiana"),
+    (r"\bind\.", "indiana"), (r"\bmiss\.", "mississippi"), (r"\bval\.", "valley"),
+    (r"\bcent\.", "central"), (r"\bintl\b", "international"), (r"\bcol\. of\b", ""),
     (r"\bst\.?$", "state"),
     (r"\bst\.?\s", "state "),  # mid-name 'St' is usually State...
     (r"\bn\.?\s", "north "),
@@ -39,12 +46,20 @@ def normalize(name: str) -> str:
     return re.sub(r"\s+", " ", n).strip()
 
 
-def suggest(source_names: list[str], teams: pd.DataFrame) -> pd.DataFrame:
+def build_choices(teams: pd.DataFrame) -> dict[str, str]:
     choices: dict[str, str] = {}
     for _, t in teams.iterrows():
         for col in ("name", "short_name"):
             choices[normalize(t[col])] = t["team_id"]
         choices[normalize(t["team_id"].replace("-", " "))] = t["team_id"]
+    return choices
+
+
+def suggest(source_names: list[str], teams: pd.DataFrame, aliases: pd.DataFrame) -> pd.DataFrame:
+    choices = build_choices(teams)
+    # spellings already confirmed for other sources are good evidence too
+    for name, team_id in zip(aliases["source_name"], aliases["team_id"]):
+        choices.setdefault(normalize(name), team_id)
     rows = []
     for name in source_names:
         match, score, _ = process.extractOne(normalize(name), list(choices), scorer=fuzz.WRatio)
@@ -59,7 +74,7 @@ def main(argv: list[str]) -> None:
     wide = REGISTRY[source].parse(raw)
     cw = Crosswalk.load()
     unmatched = cw.resolve(source, wide["source_name"]).unmatched
-    sugg = suggest(unmatched, cw.teams)
+    sugg = suggest(unmatched, cw.teams, cw.aliases)
     with pd.option_context("display.max_rows", None, "display.width", 200):
         print(sugg.to_string(index=False))
     if "--write" in flags and len(sugg):

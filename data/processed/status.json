@@ -1,0 +1,26 @@
+{
+  "as_of": "2026-11-18",
+  "sources": [
+    {
+      "source": "torvik",
+      "ok": true,
+      "teams": 365,
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "haslametrics",
+      "ok": true,
+      "teams": 365,
+      "unmatched": [],
+      "error": null
+    },
+    {
+      "source": "espn_bpi",
+      "ok": true,
+      "teams": 365,
+      "unmatched": [],
+      "error": null
+    }
+  ]
+}

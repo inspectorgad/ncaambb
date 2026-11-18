@@ -3,10 +3,15 @@
 from .base import Source
 from .espn_bpi import EspnBpi
 from .haslametrics import Haslametrics
+from .ncaa_net import NcaaNet
+from .teamrankings import TeamRankings
+from .warrennolan import WarrenNolan
 from .torvik import Torvik
 
 REGISTRY: dict[str, type[Source]] = {
-    cls.name: cls for cls in (Torvik, Haslametrics, EspnBpi)
+    cls.name: cls for cls in (Torvik, Haslametrics, EspnBpi, TeamRankings, WarrenNolan, NcaaNet)
 }
 
-__all__ = ["REGISTRY", "Source", "Torvik", "Haslametrics", "EspnBpi"]
+__all__ = [
+    "REGISTRY", "Source", "Torvik", "Haslametrics", "EspnBpi", "TeamRankings", "WarrenNolan", "NcaaNet",
+]
