@@ -341,6 +341,25 @@ async function renderTeam(id) {
     </div>
     <div class="grid2">
       <section class="card">
+        <h3>Four factors</h3>
+        <p class="desc">The four stats that best explain winning. Offense = this team; defense = what opponents do against it. Ranks are out of D1 (1 = best).</p>
+        <div class="plain-wrap" id="four-factors"><p class="empty">Loading stats…</p></div>
+      </section>
+      <section class="card">
+        <h3>Game log</h3>
+        <p class="desc">Results so far and games in the next week. Grey number = opponent's predictive rank; (N) = neutral site; hover a row for the event name.</p>
+        <div class="plain-wrap" id="game-log"><p class="empty">Loading games…</p></div>
+      </section>
+    </div>
+    <div class="grid2">
+      <section class="card">
+        <h3>Season stats</h3>
+        <p class="desc">Per game unless it's a percentage, with D1 ranks (1 = best). "Opponents" is what teams have done against this one, so a low opponent figure ranks well.</p>
+        <div class="plain-wrap" id="season-stats"><p class="empty">Loading stats…</p></div>
+      </section>
+    </div>
+    <div class="grid2">
+      <section class="card">
         <h3>Ratings by source</h3>
         <p class="desc">Each system's own numbers and rank.</p>
         <div class="plain-wrap">${sourceTable(t)}</div>
@@ -352,6 +371,11 @@ async function renderTeam(id) {
       </section>
     </div>`;
   drawAgreement($("#agree"), t);
+  loadTeamDetail(id).then(renderTeamDetail, () => {
+    for (const sel of ["#four-factors", "#game-log", "#season-stats"]) {
+      if ($(sel)) $(sel).innerHTML = `<p class="empty">Stats unavailable.</p>`;
+    }
+  });
   let series = null;
   try {
     series = await loadTeamHistory(id);
@@ -372,6 +396,59 @@ window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => redrawCharts && redrawCharts(), 150);
 });
+
+/* ---------- season stats, four factors, game log ---------- */
+
+async function loadTeamDetail(id) {
+  return getJSON(`data/team/${id}.json`);
+}
+
+const rankCell = (rank) => {
+  const style = heatStyle(rank);
+  return `<td class="rk-cell${style ? " heat" : ""}"${style}>${fmtInt(rank)}</td>`;
+};
+
+function renderTeamDetail(d) {
+  if (!$("#four-factors")) return; // user navigated away
+  // which values are percentages differs per table ("tov" is a rate in one, per game in the other)
+  const FF_PCT = new Set(["efg", "tov", "orb"]);
+  const STAT_PCT = new Set(["fg_pct", "two_pct", "three_pct", "ft_pct", "ts_pct"]);
+  const val = (pct, key, v) => v == null ? "–" : `${fmt(v, 1)}${pct.has(key) ? "%" : ""}`;
+
+  $("#four-factors").innerHTML = `<table class="plain">
+    <thead><tr><th class="l">Factor</th><th>Offense</th><th>Rank</th><th>Defense</th><th>Rank</th></tr></thead>
+    <tbody>${d.four_factors.map((f) => `<tr><td class="l">${esc(f.label)}</td>
+      <td>${val(FF_PCT, f.key, f.off)}</td>${rankCell(f.off_rank)}<td>${val(FF_PCT, f.key, f.def)}</td>${rankCell(f.def_rank)}</tr>`).join("")}
+    </tbody></table>
+    <p class="desc" style="margin-top:8px">Better offense: higher eFG%, OReb% and FT rate, lower turnover %. Defense is the reverse.
+    FT rate = free-throw attempts per 100 field-goal attempts.</p>`;
+
+  $("#season-stats").innerHTML = `<table class="plain">
+    <thead><tr><th class="l">Stat</th><th>Team</th><th>Rank</th><th>Opponents</th><th>Rank</th></tr></thead>
+    <tbody>${d.stats.map((s) => `<tr><td class="l">${esc(s.label)}</td>
+      <td>${val(STAT_PCT, s.key, s.team)}</td>${rankCell(s.team_rank)}<td>${val(STAT_PCT, s.key, s.opp)}</td>${rankCell(s.opp_rank)}</tr>`).join("")}
+    </tbody></table>
+    <p class="desc" style="margin-top:8px">${d.games_played ?? "–"} games played (as of ${esc(d.as_of)}). Source: CollegeBasketballData.</p>`;
+
+  const fmtDay = (iso) => new Date(iso + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" });
+  const siteText = { H: "vs", A: "@", N: "vs" };
+  const siteTitle = { H: "home", A: "away", N: "neutral site" };
+  const rows = d.games.map((g) => {
+    const opp = g.opp ? state.byId.get(g.opp) : null;
+    const name = opp ? `<a href="#/team/${opp.id}">${esc(opp.name)}</a><span class="sub">${fmtInt(opp.pred.rank)}</span>`
+      : `${esc(g.opp_name || "?")}<span class="sub">non-D1</span>`;
+    const where = `<span class="site" title="${siteTitle[g.site] || ""}">${siteText[g.site] || ""}</span>`;
+    const tags = (g.site === "N" ? '<span class="sub">(N)</span>' : "") + (g.conf ? '<span class="sub">conf</span>' : "");
+    const result = g.result ? `<b>${g.result}</b> ${esc(g.score)}`
+      : `<span class="muted">${g.status === "postponed" ? "postponed" : g.status === "in_progress" ? "live" : "next"}</span>`;
+    return `<tr${g.result ? "" : ' class="muted"'} title="${esc(g.note || "")}">
+      <td class="l">${fmtDay(g.date)}</td><td class="l opp-cell">${where} ${name}${tags}</td><td>${result}</td></tr>`;
+  });
+  $("#game-log").innerHTML = rows.length
+    ? `<table class="plain"><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Result</th></tr></thead>
+       <tbody>${rows.join("")}</tbody></table>`
+    : `<p class="empty">No games yet.</p>`;
+}
 
 function sourceTable(t) {
   const rows = [

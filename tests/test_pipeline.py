@@ -45,7 +45,12 @@ def test_offline_run(fixtures_dir, tmp_path):
     assert {"torvik", "haslametrics", "espn_bpi", "teamrankings", "cbbd", "bracketmatrix"} == set(top["sources"])
     assert not any(k.startswith("espn_") for t in latest["teams"] for k in t["sources"].get("espn_bpi", {}))
 
+    kansas = json.loads((paths.site_data / "team" / "kansas.json").read_text())
+    assert kansas["games_played"] == 4 and len(kansas["four_factors"]) == 4
+    assert len(list((paths.site_data / "team").glob("*.json"))) == 365
+
     meta = json.loads((paths.site_data / "meta.json").read_text())
+    assert meta["team_details"]["status"] == "ok"
     assert meta["weights"]["trim_min_inputs"] == 4
     history = json.loads((paths.site_data / "history" / "2026-11-18.json").read_text())
     assert history["fields"][0] == "pred_rank" and len(history["teams"]) == 365

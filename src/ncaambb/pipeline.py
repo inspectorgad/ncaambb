@@ -11,7 +11,8 @@ Per source, the outcome is one of:
   not_configured  the source needs setup that is missing (e.g. an API key)
 
 Writes data/latest/<source>.csv (last good rows per source) and
-site/data/{latest.json, meta.json, history/<date>.json}. Only the history
+site/data/{latest.json, meta.json, history/<date>.json} and per-team
+stats / game logs in site/data/team/<team_id>.json. Only the history
 snapshots are committed; the rest is rebuilt each run (GitHub Actions keeps
 data/latest in its cache for the stale-data fallback).
 """
@@ -28,7 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite
+from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, team_details
 from .config import load_sources_config
 from .crosswalk import Crosswalk
 from .fetching import NotConfigured, make_session
@@ -169,10 +170,15 @@ def run(
     if long.empty:
         raise RuntimeError("no usable sources")
     table = composite.build(long, weights)
+    details = team_details.run(
+        cfg["season"], today, crosswalk.teams,
+        out_dir=paths.site_data / "team", cache_dir=paths.cache, fixtures=fixtures,
+    )
     meta = {
         "as_of": today.isoformat(),
         "season": cfg["season"],
         "sources": [asdict(s) for s in statuses],
+        "team_details": details,
         "weights": weights,
     }
     build_site_data.write(paths.site_data, table, long, crosswalk.teams, meta)
