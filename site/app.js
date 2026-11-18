@@ -148,12 +148,12 @@ const COLUMNS = [
     }, dir: -1, cell: (t) => esc(t.record || "–") },
   { key: "pred", label: "Pred", get: (t) => t.pred.rank, heat: (t) => t.pred.rank,
     cell: (t) => fmtInt(t.pred.rank), title: "Predictive composite rank (Torvik, Haslametrics, BPI, TeamRankings, CBBD)" },
-  { key: "res", label: "Résumé", get: (t) => t.res.rank, heat: (t) => t.res.rank,
-    cell: (t) => fmtInt(t.res.rank), title: "Résumé composite rank (NET, ESPN SOR, Torvik WAB)" },
+  { key: "res", label: "Resume", get: (t) => t.res.rank, heat: (t) => t.res.rank,
+    cell: (t) => fmtInt(t.res.rank), title: "Resume composite rank (NET, ESPN SOR, Torvik WAB)" },
   { key: "gap", label: "Gap", get: (t) => t.gap, dir: -1,
     cell: (t) => t.gap == null ? "–" : t.gap === 0 ? "0"
       : `<span class="${t.gap > 0 ? "gap-up" : "gap-down"}">${Math.abs(t.gap)}</span>`,
-    title: "Pred rank − Résumé rank. ▲ résumé ahead of quality; ▼ quality ahead of résumé (under-rewarded)" },
+    title: "Pred rank − Resume rank. ▲ resume ahead of quality; ▼ quality ahead of resume (under-rewarded)" },
   { key: "adj_em", label: "AdjEM", get: (t) => t.stats.adj_em?.rank, heat: (t) => t.stats.adj_em?.rank,
     cell: (t) => fmt(t.stats.adj_em?.value), title: "Adjusted efficiency margin, averaged across sources" },
   { key: "adj_o", label: "AdjO", get: (t) => t.stats.adj_o?.rank, heat: (t) => t.stats.adj_o?.rank,
@@ -228,7 +228,7 @@ function renderRankings() {
     <div class="controls" role="search">
       <div class="seg" role="group" aria-label="Composite">
         <button type="button" data-mode="pred" aria-pressed="${ui.mode === "pred"}">Predictive</button>
-        <button type="button" data-mode="res" aria-pressed="${ui.mode === "res"}">Résumé</button>
+        <button type="button" data-mode="res" aria-pressed="${ui.mode === "res"}">Resume</button>
       </div>
       <input type="search" id="q" placeholder="Search teams" aria-label="Search teams">
       <select id="conf" aria-label="Conference">
@@ -253,7 +253,7 @@ function renderRankings() {
     </div>
     <p class="legend-note">
       <b>Pred</b> ranks how good a team is (Torvik, Haslametrics, ESPN BPI, TeamRankings, CBBD).
-      <b>Résumé</b> ranks what it has earned (NET, ESPN strength of record, Torvik wins above bubble).
+      <b>Resume</b> ranks what it has earned (NET, ESPN strength of record, Torvik wins above bubble).
       <b>Gap</b>: ▲ results flattering the team, ▼ under-rewarded so far.
       Shading marks the top half of D1 on each column. Hover any heading for details; tap a team for its page.
     </p>`;
@@ -319,7 +319,7 @@ async function renderTeam(id) {
     </div>
     <div class="tiles">
       ${tile("Predictive", ordinal(t.pred.rank), `z ${fmt(t.pred.z, 2)} · ${t.pred.n} sources`)}
-      ${tile("Résumé", ordinal(t.res.rank), `z ${fmt(t.res.z, 2)} · ${t.res.n} sources`)}
+      ${tile("Resume", ordinal(t.res.rank), `z ${fmt(t.res.z, 2)} · ${t.res.n} sources`)}
       ${tile("Gap", t.gap == null ? "–" : t.gap === 0 ? "0" : (t.gap > 0 ? "▲ " : "▼ ") + Math.abs(t.gap), gapNote)}
       ${tile("AdjEM", fmt(st.adj_em?.value), `${ordinal(st.adj_em?.rank)} of ${n}`)}
       ${tile("AdjO", fmt(st.adj_o?.value), `${ordinal(st.adj_o?.rank)} of ${n}`)}
@@ -365,7 +365,7 @@ async function renderTeam(id) {
         <div class="plain-wrap">${sourceTable(t)}</div>
       </section>
       <section class="card">
-        <h3>Résumé</h3>
+        <h3>Resume</h3>
         <p class="desc">${t.quads ? `Quadrant records from ${esc(SOURCE_LABELS[t.quads.source] || t.quads.source)}.` : ""}</p>
         <div class="plain-wrap">${resumeTable(t)}</div>
       </section>
@@ -492,7 +492,7 @@ function resumeTable(t) {
 function drawAgreement(el, t) {
   const groups = [
     { name: "Predictive", color: "var(--series-1)", z: t.z.predictive, composite: t.pred.z },
-    { name: "Résumé", color: "var(--series-2)", z: t.z.resume, composite: t.res.z },
+    { name: "Resume", color: "var(--series-2)", z: t.z.resume, composite: t.res.z },
   ].map((g) => ({ ...g, rows: Object.entries(g.z).filter(([, v]) => v != null) }))
    .filter((g) => g.rows.length);
   if (!groups.length) { el.innerHTML = `<p class="empty">No ratings.</p>`; return; }
@@ -579,7 +579,7 @@ function drawTrend(el, series) {
   const y = (r) => T + ((r - 1) / (maxRank - 1)) * (H - T - B);
   const lines = [
     { key: "pred", name: "Predictive", color: "var(--series-1)" },
-    { key: "res", name: "Résumé", color: "var(--series-2)" },
+    { key: "res", name: "Resume", color: "var(--series-2)" },
   ];
   let svg = "";
   const ticks = niceTicks(1, maxRank, 5);
@@ -610,7 +610,7 @@ function drawTrend(el, series) {
     const px = ((e.clientX - box.left) / box.width) * W;
     const p = series.reduce((best, q) => Math.abs(x(q.date) - px) < Math.abs(x(best.date) - px) ? q : best);
     xh.setAttribute("x1", x(p.date)); xh.setAttribute("x2", x(p.date)); xh.style.display = "";
-    tip.show(e, `<b>${fmtDate(p.date)}</b><br>Predictive ${p.pred ?? "–"}<br>Résumé ${p.res ?? "–"}`);
+    tip.show(e, `<b>${fmtDate(p.date)}</b><br>Predictive ${p.pred ?? "–"}<br>Resume ${p.res ?? "–"}`);
   });
   el.querySelector("#hit").addEventListener("pointerleave", () => { xh.style.display = "none"; tip.hide(); });
 }
