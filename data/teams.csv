@@ -1,366 +1,366 @@
-team_id,name,short_name,mascot,conference,espn_id,cbbd_id
-abilene-christian,Abilene Christian,Abilene Chrstn,Wildcats,UAC,2000,1
-air-force,Air Force,Air Force,Falcons,Mountain West,2005,2
-akron,Akron,Akron,Zips,MAC,2006,3
-alabama,Alabama,Alabama,Crimson Tide,SEC,333,5
-alabama-am,Alabama A&M,Alabama A&M,Bulldogs,SWAC,2010,4
-alabama-state,Alabama State,Alabama St,Hornets,SWAC,2011,6
-alcorn-state,Alcorn State,Alcorn St,Braves,SWAC,2016,7
-american-university,American University,American,Eagles,Patriot,44,8
-app-state,App State,App State,Mountaineers,Sun Belt,2026,9
-arizona,Arizona,Arizona,Wildcats,Big 12,12,11
-arizona-state,Arizona State,Arizona St,Sun Devils,Big 12,9,10
-arkansas,Arkansas,Arkansas,Razorbacks,SEC,8,12
-arkansas-pine-bluff,Arkansas-Pine Bluff,AR-Pine Bluff,Golden Lions,SWAC,2029,14
-arkansas-state,Arkansas State,Arkansas St,Red Wolves,Sun Belt,2032,13
-army,Army,Army,Black Knights,Patriot,349,15
-auburn,Auburn,Auburn,Tigers,SEC,2,16
-austin-peay,Austin Peay,Austin Peay,Governors,UAC,2046,17
-ball-state,Ball State,Ball State,Cardinals,MAC,2050,19
-baylor,Baylor,Baylor,Bears,Big 12,239,20
-bellarmine,Bellarmine,Bellarmine,Knights,Atlantic Sun,91,21
-belmont,Belmont,Belmont,Bruins,MVC,2057,22
-bethune-cookman,Bethune-Cookman,Bethune,Wildcats,SWAC,2065,23
-binghamton,Binghamton,Binghamton,Bearcats,Am. East,2066,24
-boise-state,Boise State,Boise St,Broncos,Pac-12,68,25
-boston-college,Boston College,Boston College,Eagles,ACC,103,26
-boston-university,Boston University,Boston U,Terriers,Patriot,104,27
-bowling-green,Bowling Green,Bowling Green,Falcons,MAC,189,28
-bradley,Bradley,Bradley,Braves,MVC,71,29
-brown,Brown,Brown,Bears,Ivy,225,30
-bryant,Bryant,Bryant,Bulldogs,Am. East,2803,31
-bucknell,Bucknell,Bucknell,Bison,Patriot,2083,32
-buffalo,Buffalo,Buffalo,Bulls,MAC,2084,33
-butler,Butler,Butler,Bulldogs,Big East,2086,34
-byu,BYU,BYU,Cougars,Big 12,252,18
-cal-poly,Cal Poly,Cal Poly,Mustangs,Big West,13,35
-cal-state-bakersfield,Cal State Bakersfield,Bakersfield,Roadrunners,Big West,2934,36
-cal-state-fullerton,Cal State Fullerton,Fullerton,Titans,Big West,2239,37
-cal-state-northridge,Cal State Northridge,CSU Northridge,Matadors,Big West,2463,38
-california,California,California,Golden Bears,ACC,25,40
-california-baptist,California Baptist,CA Baptist,Lancers,Big West,2856,39
-campbell,Campbell,Campbell,Fighting Camels,CAA,2097,41
-canisius,Canisius,Canisius,Golden Griffins,Metro,2099,42
-central-arkansas,Central Arkansas,C Arkansas,Bears,UAC,2110,43
-central-connecticut,Central Connecticut,C Connecticut,Blue Devils,NEC,2115,44
-central-michigan,Central Michigan,C Michigan,Chippewas,MAC,2117,45
-charleston,Charleston,Charleston,Cougars,CAA,232,46
-charleston-southern,Charleston Southern,Charleston So,Buccaneers,Big South,2127,47
-charlotte,Charlotte,Charlotte,49ers,American,2429,48
-chattanooga,Chattanooga,Chattanooga,Mocs,SoCon,236,49
-chicago-state,Chicago State,Chicago St,Cougars,NEC,2130,50
-cincinnati,Cincinnati,Cincinnati,Bearcats,Big 12,2132,51
-clemson,Clemson,Clemson,Tigers,ACC,228,52
-cleveland-state,Cleveland State,Cleveland St,Vikings,Horizon,325,53
-coastal-carolina,Coastal Carolina,Coastal,Chanticleers,Sun Belt,324,54
-colgate,Colgate,Colgate,Raiders,Patriot,2142,55
-colorado,Colorado,Colorado,Buffaloes,Big 12,38,56
-colorado-state,Colorado State,Colorado St,Rams,Pac-12,36,57
-columbia,Columbia,Columbia,Lions,Ivy,171,58
-coppin-state,Coppin State,Coppin St,Eagles,MEAC,2154,59
-cornell,Cornell,Cornell,Big Red,Ivy,172,60
-creighton,Creighton,Creighton,Bluejays,Big East,156,61
-dartmouth,Dartmouth,Dartmouth,Big Green,Ivy,159,62
-davidson,Davidson,Davidson,Wildcats,A-10,2166,63
-dayton,Dayton,Dayton,Flyers,A-10,2168,64
-delaware,Delaware,Delaware,Blue Hens,CUSA,48,66
-delaware-state,Delaware State,Delaware St,Hornets,MEAC,2169,67
-denver,Denver,Denver,Pioneers,WCC,2172,68
-depaul,DePaul,DePaul,Blue Demons,Big East,305,65
-detroit-mercy,Detroit Mercy,Detroit Mercy,Titans,Horizon,2174,69
-drake,Drake,Drake,Bulldogs,MVC,2181,70
-drexel,Drexel,Drexel,Dragons,CAA,2182,71
-duke,Duke,Duke,Blue Devils,ACC,150,72
-duquesne,Duquesne,Duquesne,Dukes,A-10,2184,73
-east-carolina,East Carolina,East Carolina,Pirates,American,151,74
-east-tennessee-state,East Tennessee State,ETSU,Buccaneers,SoCon,2193,75
-east-texas-am,East Texas A&M,East Texas A&M,Lions,Southland,2837,76
-eastern-illinois,Eastern Illinois,E Illinois,Panthers,OVC,2197,77
-eastern-kentucky,Eastern Kentucky,E Kentucky,Colonels,UAC,2198,78
-eastern-michigan,Eastern Michigan,E Michigan,Eagles,MAC,2199,79
-eastern-washington,Eastern Washington,E Washington,Eagles,Big Sky,331,80
-elon,Elon,Elon,Phoenix,CAA,2210,81
-evansville,Evansville,Evansville,Purple Aces,MVC,339,82
-fairfield,Fairfield,Fairfield,Stags,Metro,2217,83
-fairleigh-dickinson,Fairleigh Dickinson,FDU,Knights,NEC,161,84
-florida,Florida,Florida,Gators,SEC,57,87
-florida-am,Florida A&M,Florida A&M,Rattlers,SWAC,50,85
-florida-atlantic,Florida Atlantic,FAU,Owls,American,2226,86
-florida-gulf-coast,Florida Gulf Coast,FGCU,Eagles,Atlantic Sun,526,88
-florida-international,Florida International,FIU,Panthers,CUSA,2229,89
-florida-state,Florida State,Florida St,Seminoles,ACC,52,90
-fordham,Fordham,Fordham,Rams,A-10,2230,91
-fresno-state,Fresno State,Fresno St,Bulldogs,Pac-12,278,92
-furman,Furman,Furman,Paladins,SoCon,231,93
-gardner-webb,Gardner-Webb,Gardner-Webb,Runnin' Bulldogs,Big South,2241,94
-george-mason,George Mason,George Mason,Patriots,A-10,2244,95
-george-washington,George Washington,G Washington,Revolutionaries,A-10,45,96
-georgetown,Georgetown,Georgetown,Hoyas,Big East,46,97
-georgia,Georgia,Georgia,Bulldogs,SEC,61,98
-georgia-southern,Georgia Southern,GA Southern,Eagles,Sun Belt,290,99
-georgia-state,Georgia State,Georgia St,Panthers,Sun Belt,2247,100
-georgia-tech,Georgia Tech,Georgia Tech,Yellow Jackets,ACC,59,101
-gonzaga,Gonzaga,Gonzaga,Bulldogs,Pac-12,2250,102
-grambling,Grambling,Grambling,Tigers,SWAC,2755,103
-grand-canyon,Grand Canyon,Grand Canyon,Lopes,Mountain West,2253,104
-green-bay,Green Bay,Green Bay,Phoenix,Horizon,2739,105
-hampton,Hampton,Hampton,Pirates,CAA,2261,106
-harvard,Harvard,Harvard,Crimson,Ivy,108,107
-hawaii,Hawai'i,Hawai'i,Rainbow Warriors,Mountain West,62,108
-high-point,High Point,High Point,Panthers,Big South,2272,109
-hofstra,Hofstra,Hofstra,Pride,CAA,2275,110
-holy-cross,Holy Cross,Holy Cross,Crusaders,Patriot,107,111
-houston,Houston,Houston,Cougars,Big 12,248,113
-houston-christian,Houston Christian,Hou Christian,Huskies,Southland,2277,112
-howard,Howard,Howard,Bison,MEAC,47,114
-idaho,Idaho,Idaho,Vandals,Big Sky,70,117
-idaho-state,Idaho State,Idaho St,Bengals,Big Sky,304,116
-illinois,Illinois,Illinois,Fighting Illini,Big Ten,356,118
-illinois-state,Illinois State,Illinois St,Redbirds,MVC,2287,119
-incarnate-word,Incarnate Word,Incarnate Word,Cardinals,Southland,2916,120
-indiana,Indiana,Indiana,Hoosiers,Big Ten,84,121
-indiana-state,Indiana State,Indiana St,Sycamores,MVC,282,122
-iona,Iona,Iona,Gaels,Metro,314,123
-iowa,Iowa,Iowa,Hawkeyes,Big Ten,2294,124
-iowa-state,Iowa State,Iowa State,Cyclones,Big 12,66,125
-iu-indianapolis,IU Indianapolis,IU Indy,Jaguars,Horizon,85,115
-jackson-state,Jackson State,Jackson St,Tigers,SWAC,2296,126
-jacksonville,Jacksonville,Jacksonville,Dolphins,Atlantic Sun,294,127
-jacksonville-state,Jacksonville State,Jax State,Gamecocks,CUSA,55,128
-james-madison,James Madison,James Madison,Dukes,Sun Belt,256,129
-kansas,Kansas,Kansas,Jayhawks,Big 12,2305,131
-kansas-city,Kansas City,Kansas City,Roos,Summit,140,130
-kansas-state,Kansas State,Kansas St,Wildcats,Big 12,2306,132
-kennesaw-state,Kennesaw State,Kennesaw St,Owls,CUSA,338,133
-kent-state,Kent State,Kent State,Golden Flashes,MAC,2309,134
-kentucky,Kentucky,Kentucky,Wildcats,SEC,96,135
-la-salle,La Salle,La Salle,Explorers,A-10,2325,137
-lafayette,Lafayette,Lafayette,Leopards,Patriot,322,138
-lamar,Lamar,Lamar,Cardinals,Southland,2320,139
-le-moyne,Le Moyne,Le Moyne,Dolphins,NEC,2330,140
-lehigh,Lehigh,Lehigh,Mountain Hawks,Patriot,2329,141
-liberty,Liberty,Liberty,Flames,CUSA,2335,142
-lindenwood,Lindenwood,Lindenwood,Lions,OVC,2815,366
-lipscomb,Lipscomb,Lipscomb,Bisons,Atlantic Sun,288,143
-little-rock,Little Rock,Little Rock,Trojans,UAC,2031,144
-long-beach-state,Long Beach State,Long Beach St,Beach,Big West,299,145
-long-island-university,Long Island University,Long Island,Sharks,NEC,112358,146
-longwood,Longwood,Longwood,Lancers,Big South,2344,147
-louisiana,Louisiana,Louisiana,Ragin' Cajuns,Sun Belt,309,148
-louisiana-tech,Louisiana Tech,Louisiana Tech,Bulldogs,Sun Belt,2348,149
-louisville,Louisville,Louisville,Cardinals,ACC,97,150
-loyola-chicago,Loyola Chicago,Loyola Chicago,Ramblers,A-10,2350,151
-loyola-maryland,Loyola Maryland,Loyola MD,Greyhounds,Patriot,2352,152
-loyola-marymount,Loyola Marymount,LMU,Lions,WCC,2351,153
-lsu,LSU,LSU,Tigers,SEC,99,136
-lsu-new-orleans,LSU New Orleans,LSU N Orleans,Privateers,Southland,2443,193
-maine,Maine,Maine,Black Bears,Am. East,311,154
-manhattan,Manhattan,Manhattan,Jaspers,Metro,2363,155
-marist,Marist,Marist,Red Foxes,Metro,2368,156
-marquette,Marquette,Marquette,Golden Eagles,Big East,269,157
-marshall,Marshall,Marshall,Thundering Herd,Sun Belt,276,158
-maryland,Maryland,Maryland,Terrapins,Big Ten,120,160
-maryland-eastern-shore,Maryland Eastern Shore,MD Eastern,Hawks,MEAC,2379,159
-massachusetts,Massachusetts,UMass,Minutemen,MAC,113,161
-mcneese,McNeese,McNeese,Cowboys,Southland,2377,162
-memphis,Memphis,Memphis,Tigers,American,235,163
-mercer,Mercer,Mercer,Bears,SoCon,2382,164
-mercyhurst,Mercyhurst,Mercyhurst,Lakers,NEC,2385,165
-merrimack,Merrimack,Merrimack,Warriors,Metro,2771,166
-miami,Miami,Miami,Hurricanes,ACC,2390,168
-miami-oh,Miami (OH),Miami OH,RedHawks,MAC,193,167
-michigan,Michigan,Michigan,Wolverines,Big Ten,130,170
-michigan-state,Michigan State,Michigan St,Spartans,Big Ten,127,169
-middle-tennessee,Middle Tennessee,MTSU,Blue Raiders,CUSA,2393,171
-milwaukee,Milwaukee,Milwaukee,Panthers,Horizon,270,172
-minnesota,Minnesota,Minnesota,Golden Gophers,Big Ten,135,173
-mississippi-state,Mississippi State,Mississippi St,Bulldogs,SEC,344,174
-mississippi-valley-state,Mississippi Valley State,Miss Valley St,Delta Devils,SWAC,2400,175
-missouri,Missouri,Missouri,Tigers,SEC,142,177
-missouri-state,Missouri State,Missouri St,Bears,CUSA,2623,176
-monmouth,Monmouth,Monmouth,Hawks,CAA,2405,178
-montana,Montana,Montana,Grizzlies,Big Sky,149,179
-montana-state,Montana State,Montana St,Bobcats,Big Sky,147,180
-morehead-state,Morehead State,Morehead St,Eagles,OVC,2413,181
-morgan-state,Morgan State,Morgan St,Bears,MEAC,2415,182
-mount-st-marys,Mount St. Mary's,Mount St Marys,Mountaineers,Metro,116,183
-murray-state,Murray State,Murray St,Racers,MVC,93,184
-navy,Navy,Navy,Midshipmen,Patriot,2426,187
-nc-state,NC State,NC State,Wolfpack,ACC,152,185
-nebraska,Nebraska,Nebraska,Cornhuskers,Big Ten,158,188
-nevada,Nevada,Nevada,Wolf Pack,Mountain West,2440,189
-new-hampshire,New Hampshire,New Hampshire,Wildcats,Am. East,160,190
-new-haven,New Haven,New Haven,Chargers,NEC,2441,1507
-new-mexico,New Mexico,New Mexico,Lobos,Mountain West,167,191
-new-mexico-state,New Mexico State,New Mexico St,Aggies,CUSA,166,192
-niagara,Niagara,Niagara,Purple Eagles,Metro,315,194
-nicholls,Nicholls,Nicholls,Colonels,Southland,2447,195
-njit,NJIT,NJIT,Highlanders,Am. East,2885,186
-norfolk-state,Norfolk State,Norfolk St,Spartans,MEAC,2450,196
-north-alabama,North Alabama,North Alabama,Lions,UAC,2453,197
-north-carolina,North Carolina,North Carolina,Tar Heels,ACC,153,200
-north-carolina-at,North Carolina A&T,NC A&T,Aggies,CAA,2448,198
-north-carolina-central,North Carolina Central,NC Central,Eagles,MEAC,2428,199
-north-dakota,North Dakota,North Dakota,Fighting Hawks,Summit,155,201
-north-dakota-state,North Dakota State,N Dakota St,Bison,Summit,2449,202
-north-florida,North Florida,North Florida,Ospreys,Atlantic Sun,2454,203
-north-texas,North Texas,North Texas,Mean Green,American,249,204
-northeastern,Northeastern,Northeastern,Huskies,CAA,111,205
-northern-arizona,Northern Arizona,N Arizona,Lumberjacks,Big Sky,2464,206
-northern-colorado,Northern Colorado,N Colorado,Bears,Big Sky,2458,207
-northern-illinois,Northern Illinois,N Illinois,Huskies,Horizon,2459,208
-northern-iowa,Northern Iowa,Northern Iowa,Panthers,MVC,2460,209
-northern-kentucky,Northern Kentucky,N Kentucky,Norse,Horizon,94,210
-northwestern,Northwestern,Northwestern,Wildcats,Big Ten,77,212
-northwestern-state,Northwestern State,N'Western St,Demons,Southland,2466,211
-notre-dame,Notre Dame,Notre Dame,Fighting Irish,ACC,87,213
-oakland,Oakland,Oakland,Golden Grizzlies,Horizon,2473,214
-ohio,Ohio,Ohio,Bobcats,MAC,195,215
-ohio-state,Ohio State,Ohio State,Buckeyes,Big Ten,194,216
-oklahoma,Oklahoma,Oklahoma,Sooners,SEC,201,217
-oklahoma-state,Oklahoma State,Oklahoma St,Cowboys,Big 12,197,218
-old-dominion,Old Dominion,Old Dominion,Monarchs,Sun Belt,295,219
-ole-miss,Ole Miss,Ole Miss,Rebels,SEC,145,220
-omaha,Omaha,Omaha,Mavericks,Summit,2437,221
-oral-roberts,Oral Roberts,Oral Roberts,Golden Eagles,Summit,198,222
-oregon,Oregon,Oregon,Ducks,Big Ten,2483,223
-oregon-state,Oregon State,Oregon St,Beavers,Pac-12,204,224
-pacific,Pacific,Pacific,Tigers,WCC,279,225
-penn-state,Penn State,Penn State,Nittany Lions,Big Ten,213,226
-pennsylvania,Pennsylvania,Penn,Quakers,Ivy,219,227
-pepperdine,Pepperdine,Pepperdine,Waves,WCC,2492,228
-pittsburgh,Pittsburgh,Pitt,Panthers,ACC,221,229
-portland,Portland,Portland,Pilots,WCC,2501,230
-portland-state,Portland State,Portland St,Vikings,Big Sky,2502,231
-prairie-view-am,Prairie View A&M,Prairie View,Panthers,SWAC,2504,232
-presbyterian,Presbyterian,Presbyterian,Blue Hose,Big South,2506,233
-princeton,Princeton,Princeton,Tigers,Ivy,163,234
-providence,Providence,Providence,Friars,Big East,2507,235
-purdue,Purdue,Purdue,Boilermakers,Big Ten,2509,236
-purdue-fort-wayne,Purdue Fort Wayne,Purdue FW,Mastodons,Horizon,2870,237
-queens-university,Queens University,Queens,Royals,Atlantic Sun,2511,362
-quinnipiac,Quinnipiac,Quinnipiac,Bobcats,Metro,2514,238
-radford,Radford,Radford,Highlanders,Big South,2515,239
-rhode-island,Rhode Island,Rhode Island,Rams,A-10,227,240
-rice,Rice,Rice,Owls,American,242,241
-richmond,Richmond,Richmond,Spiders,A-10,257,242
-rider,Rider,Rider,Broncs,Metro,2520,243
-robert-morris,Robert Morris,Robert Morris,Colonials,Horizon,2523,244
-rutgers,Rutgers,Rutgers,Scarlet Knights,Big Ten,164,245
-sacramento-state,Sacramento State,Sacramento St,Hornets,Big West,16,249
-sacred-heart,Sacred Heart,Sacred Heart,Pioneers,Metro,2529,250
-saint-josephs,Saint Joseph's,Saint Joseph's,Hawks,A-10,2603,251
-saint-louis,Saint Louis,Saint Louis,Billikens,A-10,139,252
-saint-marys,Saint Mary's,Saint Mary's,Gaels,WCC,2608,253
-saint-peters,Saint Peter's,Saint Peter's,Peacocks,Metro,2612,254
-sam-houston,Sam Houston,Sam Houston,Bearkats,CUSA,2534,255
-samford,Samford,Samford,Bulldogs,SoCon,2535,256
-san-diego,San Diego,San Diego,Toreros,WCC,301,258
-san-diego-state,San Diego State,San Diego St,Aztecs,Pac-12,21,257
-san-francisco,San Francisco,San Francisco,Dons,WCC,2539,259
-san-jose-state,San José State,San José St,Spartans,Mountain West,23,260
-santa-clara,Santa Clara,Santa Clara,Broncos,WCC,2541,261
-se-louisiana,SE Louisiana,SE Louisiana,Lions,Southland,2545,246
-seattle-u,Seattle U,Seattle U,Redhawks,WCC,2547,262
-seton-hall,Seton Hall,Seton Hall,Pirates,Big East,2550,263
-siena,Siena,Siena,Saints,Metro,2561,264
-siu-edwardsville,SIU Edwardsville,SIUE,Cougars,OVC,2565,247
-smu,SMU,SMU,Mustangs,ACC,2567,248
-south-alabama,South Alabama,South Alabama,Jaguars,Sun Belt,6,265
-south-carolina,South Carolina,South Carolina,Gamecocks,SEC,2579,266
-south-carolina-state,South Carolina State,SC State,Bulldogs,MEAC,2569,267
-south-carolina-upstate,South Carolina Upstate,SC Upstate,Spartans,Big South,2908,268
-south-dakota,South Dakota,South Dakota,Coyotes,Summit,233,269
-south-dakota-state,South Dakota State,S Dakota St,Jackrabbits,Summit,2571,270
-south-florida,South Florida,South Florida,Bulls,American,58,271
-southeast-missouri-state,Southeast Missouri State,SE Missouri,Redhawks,OVC,2546,272
-southern,Southern,Southern,Jaguars,SWAC,2582,274
-southern-illinois,Southern Illinois,S Illinois,Salukis,MVC,79,273
-southern-indiana,Southern Indiana,S Indiana,Screaming Eagles,OVC,88,365
-southern-miss,Southern Miss,Southern Miss,Golden Eagles,Sun Belt,2572,275
-southern-utah,Southern Utah,Southern Utah,Thunderbirds,Big Sky,253,276
-st-bonaventure,St. Bonaventure,St Bonaventure,Bonnies,A-10,179,277
-st-johns,St. John's,St John's,Red Storm,Big East,2599,279
-st-thomas,St. Thomas,St Thomas,Tommies,Summit,2900,280
-stanford,Stanford,Stanford,Cardinal,ACC,24,281
-stephen-f-austin,Stephen F. Austin,SF Austin,Lumberjacks,Southland,2617,282
-stetson,Stetson,Stetson,Hatters,Atlantic Sun,56,283
-stonehill,Stonehill,Stonehill,Skyhawks,NEC,284,284
-stony-brook,Stony Brook,Stony Brook,Seawolves,CAA,2619,285
-syracuse,Syracuse,Syracuse,Orange,ACC,183,286
-tarleton-state,Tarleton State,Tarleton St,Texans,UAC,2627,288
-tcu,TCU,TCU,Horned Frogs,Big 12,2628,287
-temple,Temple,Temple,Owls,American,218,289
-tennessee,Tennessee,Tennessee,Volunteers,SEC,2633,292
-tennessee-state,Tennessee State,Tennessee St,Tigers,OVC,2634,290
-tennessee-tech,Tennessee Tech,Tennessee Tech,Golden Eagles,SoCon,2635,291
-texas,Texas,Texas,Longhorns,SEC,251,295
-texas-am,Texas A&M,Texas A&M,Aggies,SEC,245,293
-texas-am-corpus-christi,Texas A&M-Corpus Christi,Texas A&M-CC,Islanders,Southland,357,294
-texas-southern,Texas Southern,Texas Southern,Tigers,SWAC,2640,296
-texas-state,Texas State,Texas St,Bobcats,Pac-12,326,297
-texas-tech,Texas Tech,Texas Tech,Red Raiders,Big 12,2641,298
-the-citadel,The Citadel,The Citadel,Bulldogs,SoCon,2643,299
-toledo,Toledo,Toledo,Rockets,MAC,2649,300
-towson,Towson,Towson,Tigers,CAA,119,301
-troy,Troy,Troy,Trojans,Sun Belt,2653,302
-tulane,Tulane,Tulane,Green Wave,American,2655,303
-tulsa,Tulsa,Tulsa,Golden Hurricane,American,202,304
-uab,UAB,UAB,Blazers,American,5,305
-ualbany,UAlbany,UAlbany,Great Danes,Am. East,399,306
-uc-davis,UC Davis,UC Davis,Aggies,Mountain West,302,307
-uc-irvine,UC Irvine,UC Irvine,Anteaters,Big West,300,308
-uc-riverside,UC Riverside,UC Riverside,Highlanders,Big West,27,309
-uc-san-diego,UC San Diego,UC San Diego,Tritons,Big West,28,310
-uc-santa-barbara,UC Santa Barbara,Santa Barbara,Gauchos,Big West,2540,311
-ucf,UCF,UCF,Knights,Big 12,2116,312
-ucla,UCLA,UCLA,Bruins,Big Ten,26,313
-uconn,UConn,UConn,Huskies,Big East,41,314
-uic,UIC,UIC,Flames,MVC,82,315
-ul-monroe,UL Monroe,UL Monroe,Warhawks,Sun Belt,2433,316
-umass-lowell,UMass Lowell,UMass Lowell,River Hawks,Am. East,2349,318
-umbc,UMBC,UMBC,Retrievers,Am. East,2378,317
-unc-asheville,UNC Asheville,UNC Asheville,Bulldogs,Big South,2427,319
-unc-greensboro,UNC Greensboro,UNC Greensboro,Spartans,SoCon,2430,320
-unc-wilmington,UNC Wilmington,UNC Wilmington,Seahawks,CAA,350,321
-unlv,UNLV,UNLV,Rebels,Mountain West,2439,322
-usc,USC,USC,Trojans,Big Ten,30,323
-ut-arlington,UT Arlington,UT Arlington,Mavericks,UAC,250,324
-ut-martin,UT Martin,UT Martin,Skyhawks,OVC,2630,325
-ut-rio-grande-valley,UT Rio Grande Valley,UT Rio Grande,Vaqueros,Southland,292,326
-utah,Utah,Utah,Utes,Big 12,254,331
-utah-state,Utah State,Utah State,Aggies,Pac-12,328,329
-utah-tech,Utah Tech,Utah Tech,Trailblazers,Big Sky,3101,330
-utah-valley,Utah Valley,Utah Valley,Wolverines,Big West,3084,332
-utep,UTEP,UTEP,Miners,Mountain West,2638,327
-utsa,UTSA,UTSA,Roadrunners,American,2636,328
-valparaiso,Valparaiso,Valparaiso,Beacons,MVC,2674,335
-vanderbilt,Vanderbilt,Vanderbilt,Commodores,SEC,238,336
-vcu,VCU,VCU,Rams,A-10,2670,333
-vermont,Vermont,Vermont,Catamounts,Am. East,261,337
-villanova,Villanova,Villanova,Wildcats,Big East,222,338
-virginia,Virginia,Virginia,Cavaliers,ACC,258,339
-virginia-tech,Virginia Tech,Virginia Tech,Hokies,ACC,259,340
-vmi,VMI,VMI,Keydets,SoCon,2678,334
-wagner,Wagner,Wagner,Seahawks,NEC,2681,341
-wake-forest,Wake Forest,Wake Forest,Demon Deacons,ACC,154,342
-washington,Washington,Washington,Huskies,Big Ten,264,343
-washington-state,Washington State,Washington St,Cougars,Pac-12,265,344
-weber-state,Weber State,Weber St,Wildcats,Big Sky,2692,345
-west-florida,West Florida,West Florida,Argonauts,Atlantic Sun,2697,1073
-west-georgia,West Georgia,West Georgia,Wolves,UAC,2698,346
-west-virginia,West Virginia,West Virginia,Mountaineers,Big 12,277,347
-western-carolina,Western Carolina,W Carolina,Catamounts,SoCon,2717,348
-western-illinois,Western Illinois,W Illinois,Leathernecks,OVC,2710,349
-western-kentucky,Western Kentucky,Western KY,Hilltoppers,CUSA,98,350
-western-michigan,Western Michigan,W Michigan,Broncos,MAC,2711,351
-wichita-state,Wichita State,Wichita St,Shockers,American,2724,352
-william-mary,William & Mary,William & Mary,Tribe,CAA,2729,353
-winthrop,Winthrop,Winthrop,Eagles,Big South,2737,354
-wisconsin,Wisconsin,Wisconsin,Badgers,Big Ten,275,355
-wofford,Wofford,Wofford,Terriers,SoCon,2747,356
-wright-state,Wright State,Wright St,Raiders,Horizon,2750,357
-wyoming,Wyoming,Wyoming,Cowboys,Mountain West,2751,358
-xavier,Xavier,Xavier,Musketeers,Big East,2752,359
-yale,Yale,Yale,Bulldogs,Ivy,43,360
-youngstown-state,Youngstown State,Youngstown St,Penguins,Horizon,2754,361
+team_id,name,short_name,mascot,conference,espn_id,cbbd_id,color,alt_color
+abilene-christian,Abilene Christian,Abilene Chrstn,Wildcats,UAC,2000,1,592d82,b1b3b3
+air-force,Air Force,Air Force,Falcons,Mountain West,2005,2,004a7b,ffffff
+akron,Akron,Akron,Zips,MAC,2006,3,00285e,84754e
+alabama,Alabama,Alabama,Crimson Tide,SEC,333,5,9e1632,ffffff
+alabama-am,Alabama A&M,Alabama A&M,Bulldogs,SWAC,2010,4,790000,ffffff
+alabama-state,Alabama State,Alabama St,Hornets,SWAC,2011,6,e9a900,0a0a0a
+alcorn-state,Alcorn State,Alcorn St,Braves,SWAC,2016,7,4b0058,46166a
+american-university,American University,American,Eagles,Patriot,44,8,c41130,c8102e
+app-state,App State,App State,Mountaineers,Sun Belt,2026,9,000000,ffcd00
+arizona,Arizona,Arizona,Wildcats,Big 12,12,11,0c234b,ab0520
+arizona-state,Arizona State,Arizona St,Sun Devils,Big 12,9,10,8e0c3a,ffc72c
+arkansas,Arkansas,Arkansas,Razorbacks,SEC,8,12,a41f35,ffffff
+arkansas-pine-bluff,Arkansas-Pine Bluff,AR-Pine Bluff,Golden Lions,SWAC,2029,14,e0aa0f,eaaa00
+arkansas-state,Arkansas State,Arkansas St,Red Wolves,Sun Belt,2032,13,e81018,000000
+army,Army,Army,Black Knights,Patriot,349,15,ce9c00,231f20
+auburn,Auburn,Auburn,Tigers,SEC,2,16,002b5c,f26522
+austin-peay,Austin Peay,Austin Peay,Governors,UAC,2046,17,8e0b0b,
+ball-state,Ball State,Ball State,Cardinals,MAC,2050,19,da0000,ffffff
+baylor,Baylor,Baylor,Bears,Big 12,239,20,154734,ffb81c
+bellarmine,Bellarmine,Bellarmine,Knights,Atlantic Sun,91,21,000000,
+belmont,Belmont,Belmont,Bruins,MVC,2057,22,182142,c9262d
+bethune-cookman,Bethune-Cookman,Bethune,Wildcats,SWAC,2065,23,7b1831,e9aa12
+binghamton,Binghamton,Binghamton,Bearcats,Am. East,2066,24,00614a,f0f0f0
+boise-state,Boise State,Boise St,Broncos,Pac-12,68,25,0033a0,fa4616
+boston-college,Boston College,Boston College,Eagles,ACC,103,26,8c2232,dbcca6
+boston-university,Boston University,Boston U,Terriers,Patriot,104,27,cc0000,ffffff
+bowling-green,Bowling Green,Bowling Green,Falcons,MAC,189,28,2b1000,492000
+bradley,Bradley,Bradley,Braves,MVC,71,29,b70002,c0c0c0
+brown,Brown,Brown,Bears,Ivy,225,30,411e09,949300
+bryant,Bryant,Bryant,Bulldogs,Am. East,2803,31,000000,9f8343
+bucknell,Bucknell,Bucknell,Bison,Patriot,2083,32,000060,00316e
+buffalo,Buffalo,Buffalo,Bulls,MAC,2084,33,041a9b,ebebeb
+butler,Butler,Butler,Bulldogs,Big East,2086,34,0d1361,00a3e0
+byu,BYU,BYU,Cougars,Big 12,252,18,003da5,ffffff
+cal-poly,Cal Poly,Cal Poly,Mustangs,Big West,13,35,1e4d2b,eed897
+cal-state-bakersfield,Cal State Bakersfield,Bakersfield,Roadrunners,Big West,2934,36,003bab,
+cal-state-fullerton,Cal State Fullerton,Fullerton,Titans,Big West,2239,37,003767,ff8300
+cal-state-northridge,Cal State Northridge,CSU Northridge,Matadors,Big West,2463,38,b50000,
+california,California,California,Golden Bears,ACC,25,40,031522,ffc423
+california-baptist,California Baptist,CA Baptist,Lancers,Big West,2856,39,000080,
+campbell,Campbell,Campbell,Fighting Camels,CAA,2097,41,000000,
+canisius,Canisius,Canisius,Golden Griffins,Metro,2099,42,004a81,dda50f
+central-arkansas,Central Arkansas,C Arkansas,Bears,UAC,2110,43,a7a9ac,8e959a
+central-connecticut,Central Connecticut,C Connecticut,Blue Devils,NEC,2115,44,1b49a2,d1d5d8
+central-michigan,Central Michigan,C Michigan,Chippewas,MAC,2117,45,6a0032,ffc82e
+charleston,Charleston,Charleston,Cougars,CAA,232,46,7a2531,9e8959
+charleston-southern,Charleston Southern,Charleston So,Buccaneers,Big South,2127,47,2e3192,ded090
+charlotte,Charlotte,Charlotte,49ers,American,2429,48,ffffff,cfab7a
+chattanooga,Chattanooga,Chattanooga,Mocs,SoCon,236,49,00386b,dca71d
+chicago-state,Chicago State,Chicago St,Cougars,NEC,2130,50,006700,
+cincinnati,Cincinnati,Cincinnati,Bearcats,Big 12,2132,51,000000,717073
+clemson,Clemson,Clemson,Tigers,ACC,228,52,f56600,522d80
+cleveland-state,Cleveland State,Cleveland St,Vikings,Horizon,325,53,006633,231f20
+coastal-carolina,Coastal Carolina,Coastal,Chanticleers,Sun Belt,324,54,007073,876447
+colgate,Colgate,Colgate,Raiders,Patriot,2142,55,821019,ffffff
+colorado,Colorado,Colorado,Buffaloes,Big 12,38,56,000000,cfb87c
+colorado-state,Colorado State,Colorado St,Rams,Pac-12,36,57,1e4d2b,c8c372
+columbia,Columbia,Columbia,Lions,Ivy,171,58,174785,004b85
+coppin-state,Coppin State,Coppin St,Eagles,MEAC,2154,59,2e3192,ffd204
+cornell,Cornell,Cornell,Big Red,Ivy,172,60,d60027,101010
+creighton,Creighton,Creighton,Bluejays,Big East,156,61,005ca9,6cadde
+dartmouth,Dartmouth,Dartmouth,Big Green,Ivy,159,62,005730,000000
+davidson,Davidson,Davidson,Wildcats,A-10,2166,63,000000,e51837
+dayton,Dayton,Dayton,Flyers,A-10,2168,64,004b8d,ffffff
+delaware,Delaware,Delaware,Blue Hens,CUSA,48,66,033594,e8ce31
+delaware-state,Delaware State,Delaware St,Hornets,MEAC,2169,67,ff3630,009cdd
+denver,Denver,Denver,Pioneers,WCC,2172,68,98002e,a8996e
+depaul,DePaul,DePaul,Blue Demons,Big East,305,65,2d649c,ce1125
+detroit-mercy,Detroit Mercy,Detroit Mercy,Titans,Horizon,2174,69,165b9e,d31733
+drake,Drake,Drake,Bulldogs,MVC,2181,70,005596,bec0c2
+drexel,Drexel,Drexel,Dragons,CAA,2182,71,020260,ffd65a
+duke,Duke,Duke,Blue Devils,ACC,150,72,013088,ffffff
+duquesne,Duquesne,Duquesne,Dukes,A-10,2184,73,002d62,b90b2e
+east-carolina,East Carolina,East Carolina,Pirates,American,151,74,4b1869,f0907b
+east-tennessee-state,East Tennessee State,ETSU,Buccaneers,SoCon,2193,75,002d61,ffc423
+east-texas-am,East Texas A&M,East Texas A&M,Lions,Southland,2837,76,000000,
+eastern-illinois,Eastern Illinois,E Illinois,Panthers,OVC,2197,77,000000,bebab9
+eastern-kentucky,Eastern Kentucky,E Kentucky,Colonels,UAC,2198,78,660819,f0f0f0
+eastern-michigan,Eastern Michigan,E Michigan,Eagles,MAC,2199,79,00331b,f0f0f0
+eastern-washington,Eastern Washington,E Washington,Eagles,Big Sky,331,80,a10022,abb4bc
+elon,Elon,Elon,Phoenix,CAA,2210,81,020303,b59a57
+evansville,Evansville,Evansville,Purple Aces,MVC,339,82,663399,ef6f00
+fairfield,Fairfield,Fairfield,Stags,Metro,2217,83,000000,ebebeb
+fairleigh-dickinson,Fairleigh Dickinson,FDU,Knights,NEC,161,84,72293c,28334a
+florida,Florida,Florida,Gators,SEC,57,87,0021a5,fa4616
+florida-am,Florida A&M,Florida A&M,Rattlers,SWAC,50,85,f89728,00843d
+florida-atlantic,Florida Atlantic,FAU,Owls,American,2226,86,00447c,d31245
+florida-gulf-coast,Florida Gulf Coast,FGCU,Eagles,Atlantic Sun,526,88,00885a,076c3b
+florida-international,Florida International,FIU,Panthers,CUSA,2229,89,091731,c5960c
+florida-state,Florida State,Florida St,Seminoles,ACC,52,90,782f40,ceb888
+fordham,Fordham,Fordham,Rams,A-10,2230,91,830032,909090
+fresno-state,Fresno State,Fresno St,Bulldogs,Pac-12,278,92,c41230,13284c
+furman,Furman,Furman,Paladins,SoCon,231,93,582c83,ffffff
+gardner-webb,Gardner-Webb,Gardner-Webb,Runnin' Bulldogs,Big South,2241,94,c12535,909090
+george-mason,George Mason,George Mason,Patriots,A-10,2244,95,016600,ecb010
+george-washington,George Washington,G Washington,Revolutionaries,A-10,45,96,002843,e8d2a1
+georgetown,Georgetown,Georgetown,Hoyas,Big East,46,97,110e42,001c58
+georgia,Georgia,Georgia,Bulldogs,SEC,61,98,ba0c2f,ffffff
+georgia-southern,Georgia Southern,GA Southern,Eagles,Sun Belt,290,99,003775,f0f0f0
+georgia-state,Georgia State,Georgia St,Panthers,Sun Belt,2247,100,1e539a,ebebeb
+georgia-tech,Georgia Tech,Georgia Tech,Yellow Jackets,ACC,59,101,003057,b3a369
+gonzaga,Gonzaga,Gonzaga,Bulldogs,Pac-12,2250,102,041e42,c8102e
+grambling,Grambling,Grambling,Tigers,SWAC,2755,103,ee8601,ffd10a
+grand-canyon,Grand Canyon,Grand Canyon,Lopes,Mountain West,2253,104,522398,ffffff
+green-bay,Green Bay,Green Bay,Phoenix,Horizon,2739,105,006633,ffffff
+hampton,Hampton,Hampton,Pirates,CAA,2261,106,0067ac,
+harvard,Harvard,Harvard,Crimson,Ivy,108,107,990000,dbdbdb
+hawaii,Hawai'i,Hawai'i,Rainbow Warriors,Mountain West,62,108,003420,ffffff
+high-point,High Point,High Point,Panthers,Big South,2272,109,b0b7bc,ebebeb
+hofstra,Hofstra,Hofstra,Pride,CAA,2275,110,00337c,f6c934
+holy-cross,Holy Cross,Holy Cross,Crusaders,Patriot,107,111,0a0a0a,080808
+houston,Houston,Houston,Cougars,Big 12,248,113,c92a39,ffffff
+houston-christian,Houston Christian,Hou Christian,Huskies,Southland,2277,112,00539c,
+howard,Howard,Howard,Bison,MEAC,47,114,003a63,e51937
+idaho,Idaho,Idaho,Vandals,Big Sky,70,117,000000,8c6e4a
+idaho-state,Idaho State,Idaho St,Bengals,Big Sky,304,116,ef8c00,e9a126
+illinois,Illinois,Illinois,Fighting Illini,Big Ten,356,118,ff5f05,13294b
+illinois-state,Illinois State,Illinois St,Redbirds,MVC,2287,119,ce1126,ffe716
+incarnate-word,Incarnate Word,Incarnate Word,Cardinals,Southland,2916,120,000000,080808
+indiana,Indiana,Indiana,Hoosiers,Big Ten,84,121,990000,edebeb
+indiana-state,Indiana State,Indiana St,Sycamores,MVC,282,122,00669a,f0f0f0
+iona,Iona,Iona,Gaels,Metro,314,123,6f2c3e,f0ab00
+iowa,Iowa,Iowa,Hawkeyes,Big Ten,2294,124,000000,fcd116
+iowa-state,Iowa State,Iowa State,Cyclones,Big 12,66,125,822433,fdca2f
+iu-indianapolis,IU Indianapolis,IU Indy,Jaguars,Horizon,85,115,a81f30,d59f0f
+jackson-state,Jackson State,Jackson St,Tigers,SWAC,2296,126,123297,b5b7ba
+jacksonville,Jacksonville,Jacksonville,Dolphins,Atlantic Sun,294,127,00523e,
+jacksonville-state,Jacksonville State,Jax State,Gamecocks,CUSA,55,128,b50500,b5b7ba
+james-madison,James Madison,James Madison,Dukes,Sun Belt,256,129,450084,b5a068
+kansas,Kansas,Kansas,Jayhawks,Big 12,2305,131,0051ba,e8000d
+kansas-city,Kansas City,Kansas City,Roos,Summit,140,130,004b87,ffc72c
+kansas-state,Kansas State,Kansas St,Wildcats,Big 12,2306,132,3c0969,e2e3e4
+kennesaw-state,Kennesaw State,Kennesaw St,Owls,CUSA,338,133,fdbb30,000000
+kent-state,Kent State,Kent State,Golden Flashes,MAC,2309,134,003976,efab00
+kentucky,Kentucky,Kentucky,Wildcats,SEC,96,135,0033a0,ffffff
+la-salle,La Salle,La Salle,Explorers,A-10,2325,137,003356,ffce00
+lafayette,Lafayette,Lafayette,Leopards,Patriot,322,138,790000,a59474
+lamar,Lamar,Lamar,Cardinals,Southland,2320,139,000000,ebebeb
+le-moyne,Le Moyne,Le Moyne,Dolphins,NEC,2330,140,,
+lehigh,Lehigh,Lehigh,Mountain Hawks,Patriot,2329,141,6c2b2a,b69e70
+liberty,Liberty,Liberty,Flames,CUSA,2335,142,071740,a61f21
+lindenwood,Lindenwood,Lindenwood,Lions,OVC,2815,366,101820,b5a36a
+lipscomb,Lipscomb,Lipscomb,Bisons,Atlantic Sun,288,143,20366c,f6b734
+little-rock,Little Rock,Little Rock,Trojans,UAC,2031,144,ad0000,898d8f
+long-beach-state,Long Beach State,Long Beach St,Beach,Big West,299,145,000000,f1f2f3
+long-island-university,Long Island University,Long Island,Sharks,NEC,112358,146,50c9f7,ffbf00
+longwood,Longwood,Longwood,Lancers,Big South,2344,147,003273,9ea2a3
+louisiana,Louisiana,Louisiana,Ragin' Cajuns,Sun Belt,309,148,ce181e,ffffff
+louisiana-tech,Louisiana Tech,Louisiana Tech,Bulldogs,Sun Belt,2348,149,002d65,d3313a
+louisville,Louisville,Louisville,Cardinals,ACC,97,150,c9001f,000000
+loyola-chicago,Loyola Chicago,Loyola Chicago,Ramblers,A-10,2350,151,9d1244,
+loyola-maryland,Loyola Maryland,Loyola MD,Greyhounds,Patriot,2352,152,76a7a0,c9cbca
+loyola-marymount,Loyola Marymount,LMU,Lions,WCC,2351,153,880029,00345b
+lsu,LSU,LSU,Tigers,SEC,99,136,461d7c,fdd023
+lsu-new-orleans,LSU New Orleans,LSU N Orleans,Privateers,Southland,2443,193,005da6,a2a9ae
+maine,Maine,Maine,Black Bears,Am. East,311,154,127dbe,
+manhattan,Manhattan,Manhattan,Jaspers,Metro,2363,155,4f8537,b5b7ba
+marist,Marist,Marist,Red Foxes,Metro,2368,156,e53730,f0f0f0
+marquette,Marquette,Marquette,Golden Eagles,Big East,269,157,003366,ffcc00
+marshall,Marshall,Marshall,Thundering Herd,Sun Belt,276,158,00ae42,be854c
+maryland,Maryland,Maryland,Terrapins,Big Ten,120,160,d5002b,ffcd00
+maryland-eastern-shore,Maryland Eastern Shore,MD Eastern,Hawks,MEAC,2379,159,5c2301,b5b7ba
+massachusetts,Massachusetts,UMass,Minutemen,MAC,113,161,880007,
+mcneese,McNeese,McNeese,Cowboys,Southland,2377,162,00529c,
+memphis,Memphis,Memphis,Tigers,American,235,163,004991,8e908f
+mercer,Mercer,Mercer,Bears,SoCon,2382,164,ff7f29,080808
+mercyhurst,Mercyhurst,Mercyhurst,Lakers,NEC,2385,165,000000,
+merrimack,Merrimack,Merrimack,Warriors,Metro,2771,166,2f4f93,e8c535
+miami,Miami,Miami,Hurricanes,ACC,2390,168,005030,f47321
+miami-oh,Miami (OH),Miami OH,RedHawks,MAC,193,167,a4000c,f0f0f0
+michigan,Michigan,Michigan,Wolverines,Big Ten,130,170,00274c,ffcb05
+michigan-state,Michigan State,Michigan St,Spartans,Big Ten,127,169,18453b,ffffff
+middle-tennessee,Middle Tennessee,MTSU,Blue Raiders,CUSA,2393,171,006db6,ffffff
+milwaukee,Milwaukee,Milwaukee,Panthers,Horizon,270,172,000000,ffc20e
+minnesota,Minnesota,Minnesota,Golden Gophers,Big Ten,135,173,5e0a2f,fab41c
+mississippi-state,Mississippi State,Mississippi St,Bulldogs,SEC,344,174,5d1725,c1c6c8
+mississippi-valley-state,Mississippi Valley State,Miss Valley St,Delta Devils,SWAC,2400,175,005328,cf2d34
+missouri,Missouri,Missouri,Tigers,SEC,142,177,f1b82d,000000
+missouri-state,Missouri State,Missouri St,Bears,CUSA,2623,176,5f0000,e8e8e8
+monmouth,Monmouth,Monmouth,Hawks,CAA,2405,178,051844,
+montana,Montana,Montana,Grizzlies,Big Sky,149,179,751d4a,666666
+montana-state,Montana State,Montana St,Bobcats,Big Sky,147,180,00205c,bc955c
+morehead-state,Morehead State,Morehead St,Eagles,OVC,2413,181,094fa3,fed91a
+morgan-state,Morgan State,Morgan St,Bears,MEAC,2415,182,014786,f47937
+mount-st-marys,Mount St. Mary's,Mount St Marys,Mountaineers,Metro,116,183,005596,ebebeb
+murray-state,Murray State,Murray St,Racers,MVC,93,184,002148,000e00
+navy,Navy,Navy,Midshipmen,Patriot,2426,187,00225b,b5a67c
+nc-state,NC State,NC State,Wolfpack,ACC,152,185,cc0000,ffffff
+nebraska,Nebraska,Nebraska,Cornhuskers,Big Ten,158,188,d00000,ffffff
+nevada,Nevada,Nevada,Wolf Pack,Mountain West,2440,189,002d62,ffffff
+new-hampshire,New Hampshire,New Hampshire,Wildcats,Am. East,160,190,004990,c3c4c6
+new-haven,New Haven,New Haven,Chargers,NEC,2441,1507,000000,
+new-mexico,New Mexico,New Mexico,Lobos,Mountain West,167,191,000000,231f20
+new-mexico-state,New Mexico State,New Mexico St,Aggies,CUSA,166,192,891216,000000
+niagara,Niagara,Niagara,Purple Eagles,Metro,315,194,69207e,f0f0f0
+nicholls,Nicholls,Nicholls,Colonels,Southland,2447,195,c41230,f0f0f0
+njit,NJIT,NJIT,Highlanders,Am. East,2885,186,ee3024,df3e2e
+norfolk-state,Norfolk State,Norfolk St,Spartans,MEAC,2450,196,0c8968,fdb813
+north-alabama,North Alabama,North Alabama,Lions,UAC,2453,197,663399,
+north-carolina,North Carolina,North Carolina,Tar Heels,ACC,153,200,7bafd4,13294b
+north-carolina-at,North Carolina A&T,NC A&T,Aggies,CAA,2448,198,0505aa,004684
+north-carolina-central,North Carolina Central,NC Central,Eagles,MEAC,2428,199,880023,c2c3c0
+north-dakota,North Dakota,North Dakota,Fighting Hawks,Summit,155,201,00a26b,c2c3c0
+north-dakota-state,North Dakota State,N Dakota St,Bison,Summit,2449,202,01402a,ffffff
+north-florida,North Florida,North Florida,Ospreys,Atlantic Sun,2454,203,004b8d,babcbe
+north-texas,North Texas,North Texas,Mean Green,American,249,204,ffffff,000000
+northeastern,Northeastern,Northeastern,Huskies,CAA,111,205,cc0001,c2c3c0
+northern-arizona,Northern Arizona,N Arizona,Lumberjacks,Big Sky,2464,206,003976,1b3069
+northern-colorado,Northern Colorado,N Colorado,Bears,Big Sky,2458,207,13558d,ffc533
+northern-illinois,Northern Illinois,N Illinois,Huskies,Horizon,2459,208,f1122c,cc0000
+northern-iowa,Northern Iowa,Northern Iowa,Panthers,MVC,2460,209,473282,ffffff
+northern-kentucky,Northern Kentucky,N Kentucky,Norse,Horizon,94,210,ffc82e,000000
+northwestern,Northwestern,Northwestern,Wildcats,Big Ten,77,212,582c83,ffffff
+northwestern-state,Northwestern State,N'Western St,Demons,Southland,2466,211,492f91,ed6118
+notre-dame,Notre Dame,Notre Dame,Fighting Irish,ACC,87,213,0c2340,c99700
+oakland,Oakland,Oakland,Golden Grizzlies,Horizon,2473,214,04091c,bc955c
+ohio,Ohio,Ohio,Bobcats,MAC,195,215,295a29,e4bb85
+ohio-state,Ohio State,Ohio State,Buckeyes,Big Ten,194,216,ce1141,505056
+oklahoma,Oklahoma,Oklahoma,Sooners,SEC,201,217,a32036,ffffff
+oklahoma-state,Oklahoma State,Oklahoma St,Cowboys,Big 12,197,218,000000,dddddd
+old-dominion,Old Dominion,Old Dominion,Monarchs,Sun Belt,295,219,00507d,a1d2f1
+ole-miss,Ole Miss,Ole Miss,Rebels,SEC,145,220,13294b,c8102e
+omaha,Omaha,Omaha,Mavericks,Summit,2437,221,e3193e,
+oral-roberts,Oral Roberts,Oral Roberts,Golden Eagles,Summit,198,222,002462,dac792
+oregon,Oregon,Oregon,Ducks,Big Ten,2483,223,007030,fee11a
+oregon-state,Oregon State,Oregon St,Beavers,Pac-12,204,224,231f20,d73f09
+pacific,Pacific,Pacific,Tigers,WCC,279,225,f47820,c2c3c0
+penn-state,Penn State,Penn State,Nittany Lions,Big Ten,213,226,00265d,002e5c
+pennsylvania,Pennsylvania,Penn,Quakers,Ivy,219,227,082a74,a6163d
+pepperdine,Pepperdine,Pepperdine,Waves,WCC,2492,228,003a72,dc762f
+pittsburgh,Pittsburgh,Pitt,Panthers,ACC,221,229,003263,231f20
+portland,Portland,Portland,Pilots,WCC,2501,230,330072,a8b3ba
+portland-state,Portland State,Portland St,Vikings,Big Sky,2502,231,00311e,ebebeb
+prairie-view-am,Prairie View A&M,Prairie View,Panthers,SWAC,2504,232,4d0960,
+presbyterian,Presbyterian,Presbyterian,Blue Hose,Big South,2506,233,194896,990134
+princeton,Princeton,Princeton,Tigers,Ivy,163,234,000000,ff6000
+providence,Providence,Providence,Friars,Big East,2507,235,000000,a3a19e
+purdue,Purdue,Purdue,Boilermakers,Big Ten,2509,236,000000,cfb991
+purdue-fort-wayne,Purdue Fort Wayne,Purdue FW,Mastodons,Horizon,2870,237,00378a,f0f0f0
+queens-university,Queens University,Queens,Royals,Atlantic Sun,2511,362,192c66,857040
+quinnipiac,Quinnipiac,Quinnipiac,Bobcats,Metro,2514,238,041b43,
+radford,Radford,Radford,Highlanders,Big South,2515,239,bc1515,c2c3c0
+rhode-island,Rhode Island,Rhode Island,Rams,A-10,227,240,091f3f,5ab3e8
+rice,Rice,Rice,Owls,American,242,241,d1d5d8,ffffff
+richmond,Richmond,Richmond,Spiders,A-10,257,242,9e0712,b90b2e
+rider,Rider,Rider,Broncs,Metro,2520,243,a80532,ebebeb
+robert-morris,Robert Morris,Robert Morris,Colonials,Horizon,2523,244,00214d,a21d2b
+rutgers,Rutgers,Rutgers,Scarlet Knights,Big Ten,164,245,d21034,ffffff
+sacramento-state,Sacramento State,Sacramento St,Hornets,Big West,16,249,00573c,cdb97d
+sacred-heart,Sacred Heart,Sacred Heart,Pioneers,Metro,2529,250,a40012,c29472
+saint-josephs,Saint Joseph's,Saint Joseph's,Hawks,A-10,2603,251,c2071b,101010
+saint-louis,Saint Louis,Saint Louis,Billikens,A-10,139,252,00539c,ebebeb
+saint-marys,Saint Mary's,Saint Mary's,Gaels,WCC,2608,253,d80024,003057
+saint-peters,Saint Peter's,Saint Peter's,Peacocks,Metro,2612,254,004cc2,
+sam-houston,Sam Houston,Sam Houston,Bearkats,CUSA,2534,255,fe5000,000000
+samford,Samford,Samford,Bulldogs,SoCon,2535,256,005485,bc0023
+san-diego,San Diego,San Diego,Toreros,WCC,301,258,2f99d4,2f99d4
+san-diego-state,San Diego State,San Diego St,Aztecs,Pac-12,21,257,c41230,000000
+san-francisco,San Francisco,San Francisco,Dons,WCC,2539,259,22523f,fbcd3c
+san-jose-state,San José State,San José St,Spartans,Mountain West,23,260,005893,fdba31
+santa-clara,Santa Clara,Santa Clara,Broncos,WCC,2541,261,690b0b,101010
+se-louisiana,SE Louisiana,SE Louisiana,Lions,Southland,2545,246,215732,ffc72c
+seattle-u,Seattle U,Seattle U,Redhawks,WCC,2547,262,bf2e1a,c2c3c0
+seton-hall,Seton Hall,Seton Hall,Pirates,Big East,2550,263,0857b1,8a8d8f
+siena,Siena,Siena,Saints,Metro,2561,264,037961,eea60f
+siu-edwardsville,SIU Edwardsville,SIUE,Cougars,OVC,2565,247,eb1c23,080808
+smu,SMU,SMU,Mustangs,ACC,2567,248,354ca1,cc0035
+south-alabama,South Alabama,South Alabama,Jaguars,Sun Belt,6,265,003e7e,
+south-carolina,South Carolina,South Carolina,Gamecocks,SEC,2579,266,73000a,ffffff
+south-carolina-state,South Carolina State,SC State,Bulldogs,MEAC,2569,267,7d1315,104897
+south-carolina-upstate,South Carolina Upstate,SC Upstate,Spartans,Big South,2908,268,008545,000000
+south-dakota,South Dakota,South Dakota,Coyotes,Summit,233,269,cd1241,f0f0f0
+south-dakota-state,South Dakota State,S Dakota St,Jackrabbits,Summit,2571,270,0033a0,ffd100
+south-florida,South Florida,South Florida,Bulls,American,58,271,004a36,231f20
+southeast-missouri-state,Southeast Missouri State,SE Missouri,Redhawks,OVC,2546,272,c8102e,000000
+southern,Southern,Southern,Jaguars,SWAC,2582,274,004b97,ffc82d
+southern-illinois,Southern Illinois,S Illinois,Salukis,MVC,79,273,85283d,c2c3c0
+southern-indiana,Southern Indiana,S Indiana,Screaming Eagles,OVC,88,365,cf102d,002d5d
+southern-miss,Southern Miss,Southern Miss,Golden Eagles,Sun Belt,2572,275,ffaa3c,ffc423
+southern-utah,Southern Utah,Southern Utah,Thunderbirds,Big Sky,253,276,c72026,000000
+st-bonaventure,St. Bonaventure,St Bonaventure,Bonnies,A-10,179,277,70261d,
+st-johns,St. John's,St John's,Red Storm,Big East,2599,279,d10000,101010
+st-thomas,St. Thomas,St Thomas,Tommies,Summit,2900,280,000000,
+stanford,Stanford,Stanford,Cardinal,ACC,24,281,8c1515,ffffff
+stephen-f-austin,Stephen F. Austin,SF Austin,Lumberjacks,Southland,2617,282,393996,bec0c2
+stetson,Stetson,Stetson,Hatters,Atlantic Sun,56,283,0a5640,56854e
+stonehill,Stonehill,Stonehill,Skyhawks,NEC,284,284,000000,
+stony-brook,Stony Brook,Stony Brook,Seawolves,CAA,2619,285,990000,
+syracuse,Syracuse,Syracuse,Orange,ACC,183,286,ff6500,000e54
+tarleton-state,Tarleton State,Tarleton St,Texans,UAC,2627,288,000000,
+tcu,TCU,TCU,Horned Frogs,Big 12,2628,287,4d1979,f1f2f3
+temple,Temple,Temple,Owls,American,218,289,a80532,a7a9ac
+tennessee,Tennessee,Tennessee,Volunteers,SEC,2633,292,ff8200,58595b
+tennessee-state,Tennessee State,Tennessee St,Tigers,OVC,2634,290,171796,f0f0f0
+tennessee-tech,Tennessee Tech,Tennessee Tech,Golden Eagles,SoCon,2635,291,5a4099,ffde00
+texas,Texas,Texas,Longhorns,SEC,251,295,c15d26,ffffff
+texas-am,Texas A&M,Texas A&M,Aggies,SEC,245,293,500000,ffffff
+texas-am-corpus-christi,Texas A&M-Corpus Christi,Texas A&M-CC,Islanders,Southland,357,294,0067c5,007f3e
+texas-southern,Texas Southern,Texas Southern,Tigers,SWAC,2640,296,860038,ffffff
+texas-state,Texas State,Texas St,Bobcats,Pac-12,326,297,4e1719,b4975a
+texas-tech,Texas Tech,Texas Tech,Red Raiders,Big 12,2641,298,000000,da291c
+the-citadel,The Citadel,The Citadel,Bulldogs,SoCon,2643,299,002b5c,f0f0f0
+toledo,Toledo,Toledo,Rockets,MAC,2649,300,0a2240,ffcd00
+towson,Towson,Towson,Tigers,CAA,119,301,ffc229,
+troy,Troy,Troy,Trojans,Sun Belt,2653,302,ae0210,88898c
+tulane,Tulane,Tulane,Green Wave,American,2655,303,006547,468ac9
+tulsa,Tulsa,Tulsa,Golden Hurricane,American,202,304,003595,d0b787
+uab,UAB,UAB,Blazers,American,5,305,054338,ffc845
+ualbany,UAlbany,UAlbany,Great Danes,Am. East,399,306,3d2777,ffffff
+uc-davis,UC Davis,UC Davis,Aggies,Mountain West,302,307,002855,c3c4c6
+uc-irvine,UC Irvine,UC Irvine,Anteaters,Big West,300,308,002b5c,fec52e
+uc-riverside,UC Riverside,UC Riverside,Highlanders,Big West,27,309,14234f,
+uc-san-diego,UC San Diego,UC San Diego,Tritons,Big West,28,310,182b49,ffcd00
+uc-santa-barbara,UC Santa Barbara,Santa Barbara,Gauchos,Big West,2540,311,1e1840,febc11
+ucf,UCF,UCF,Knights,Big 12,2116,312,000000,b4a269
+ucla,UCLA,UCLA,Bruins,Big Ten,26,313,2774ae,f2a900
+uconn,UConn,UConn,Huskies,Big East,41,314,0c2340,f1f2f3
+uic,UIC,UIC,Flames,MVC,82,315,001e62,d50032
+ul-monroe,UL Monroe,UL Monroe,Warhawks,Sun Belt,2433,316,231f20,b18445
+umass-lowell,UMass Lowell,UMass Lowell,River Hawks,Am. East,2349,318,00529c,cf1f2f
+umbc,UMBC,UMBC,Retrievers,Am. East,2378,317,000000,ad860a
+unc-asheville,UNC Asheville,UNC Asheville,Bulldogs,Big South,2427,319,003da5,ffffff
+unc-greensboro,UNC Greensboro,UNC Greensboro,Spartans,SoCon,2430,320,003559,ffd90a
+unc-wilmington,UNC Wilmington,UNC Wilmington,Seahawks,CAA,350,321,00665e,ffda00
+unlv,UNLV,UNLV,Rebels,Mountain West,2439,322,b10202,ffffff
+usc,USC,USC,Trojans,Big Ten,30,323,9e2237,ffcc00
+ut-arlington,UT Arlington,UT Arlington,Mavericks,UAC,250,324,004b7c,f58024
+ut-martin,UT Martin,UT Martin,Skyhawks,OVC,2630,325,ff6700,102a5c
+ut-rio-grande-valley,UT Rio Grande Valley,UT Rio Grande,Vaqueros,Southland,292,326,dc6000,e1732d
+utah,Utah,Utah,Utes,Big 12,254,331,ea002a,ffffff
+utah-state,Utah State,Utah State,Aggies,Pac-12,328,329,00263a,949ca1
+utah-tech,Utah Tech,Utah Tech,Trailblazers,Big Sky,3101,330,000000,
+utah-valley,Utah Valley,Utah Valley,Wolverines,Big West,3084,332,004812,e1c736
+utep,UTEP,UTEP,Miners,Mountain West,2638,327,ff8200,041e42
+utsa,UTSA,UTSA,Roadrunners,American,2636,328,002a5c,f47321
+valparaiso,Valparaiso,Valparaiso,Beacons,MVC,2674,335,794500,
+vanderbilt,Vanderbilt,Vanderbilt,Commodores,SEC,238,336,000000,231f20
+vcu,VCU,VCU,Rams,A-10,2670,333,ffaf00,000000
+vermont,Vermont,Vermont,Catamounts,Am. East,261,337,154734,ffc72c
+villanova,Villanova,Villanova,Wildcats,Big East,222,338,00205b,13b5ea
+virginia,Virginia,Virginia,Cavaliers,ACC,258,339,232d4b,f84c1e
+virginia-tech,Virginia Tech,Virginia Tech,Hokies,ACC,259,340,630031,cf4520
+vmi,VMI,VMI,Keydets,SoCon,2678,334,ae122a,ffd619
+wagner,Wagner,Wagner,Seahawks,NEC,2681,341,00483a,ffffff
+wake-forest,Wake Forest,Wake Forest,Demon Deacons,ACC,154,342,000000,ceb888
+washington,Washington,Washington,Huskies,Big Ten,264,343,33006f,e8d3a2
+washington-state,Washington State,Washington St,Cougars,Pac-12,265,344,981e32,ffffff
+weber-state,Weber State,Weber St,Wildcats,Big Sky,2692,345,18005a,ebebeb
+west-florida,West Florida,West Florida,Argonauts,Atlantic Sun,2697,1073,087dc2,03b186
+west-georgia,West Georgia,West Georgia,Wolves,UAC,2698,346,0033a1,db1a21
+west-virginia,West Virginia,West Virginia,Mountaineers,Big 12,277,347,002855,eaaa00
+western-carolina,Western Carolina,W Carolina,Catamounts,SoCon,2717,348,492f91,bf9e70
+western-illinois,Western Illinois,W Illinois,Leathernecks,OVC,2710,349,4e1e8a,ffc90a
+western-kentucky,Western Kentucky,Western KY,Hilltoppers,CUSA,98,350,f32026,b3b5b8
+western-michigan,Western Michigan,W Michigan,Broncos,MAC,2711,351,532e1f,8b7f79
+wichita-state,Wichita State,Wichita St,Shockers,American,2724,352,0d0a03,ffc41e
+william-mary,William & Mary,William & Mary,Tribe,CAA,2729,353,103217,f6b220
+winthrop,Winthrop,Winthrop,Eagles,Big South,2737,354,9e0b0e,fdb41e
+wisconsin,Wisconsin,Wisconsin,Badgers,Big Ten,275,355,c4012f,ffffff
+wofford,Wofford,Wofford,Terriers,SoCon,2747,356,533b22,f0f0f0
+wright-state,Wright State,Wright St,Raiders,Horizon,2750,357,cba052,cba052
+wyoming,Wyoming,Wyoming,Cowboys,Mountain West,2751,358,492f24,ffc425
+xavier,Xavier,Xavier,Musketeers,Big East,2752,359,21304e,a5a7a8
+yale,Yale,Yale,Bulldogs,Ivy,43,360,004a81,286dc0
+youngstown-state,Youngstown State,Youngstown St,Penguins,Horizon,2754,361,e51935,690717

@@ -128,3 +128,12 @@ def test_missing_api_key_is_not_a_failure(fixtures_dir, tmp_path, monkeypatch):
     cfg["sources"] = {"cbbd": cfg["sources"]["cbbd"]}
     _, statuses = pipeline.collect(cfg, pipeline.Crosswalk.load(), TODAY, make_paths(tmp_path))
     assert statuses[0].status == "not_configured"
+
+
+def test_history_index_lists_only_dates_across_runs(fixtures_dir, tmp_path):
+    """Regression: the second run used to add "index" itself to index.json."""
+    paths = make_paths(tmp_path)
+    pipeline.run(fixtures=fixtures_dir, paths=paths, today=TODAY)
+    pipeline.run(fixtures=fixtures_dir, paths=paths, today=TODAY + dt.timedelta(days=1))
+    index = json.loads((paths.site_data / "history" / "index.json").read_text())
+    assert index == ["2026-11-18", "2026-11-19"]

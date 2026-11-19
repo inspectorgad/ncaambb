@@ -20,6 +20,7 @@
   --grid: #e6e5e1;
   --tooltip-bg: #0b0b0b;
   --tooltip-text: #fcfcfb;
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -82,7 +83,10 @@ header.top {
   padding: 14px 0 10px;
 }
 .top-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
-.top h1 { font-size: 20px; margin: 0; letter-spacing: -0.01em; }
+.top h1 {
+  font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 1.1;
+  margin: 0; letter-spacing: 0.02em; text-transform: uppercase;
+}
 .top h1 a { color: inherit; }
 .updated { color: var(--text-secondary); font-size: 13px; order: 3; flex-basis: 100%; }
 @media (min-width: 720px) { .updated { order: 0; flex-basis: auto; } }
@@ -146,7 +150,7 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .rank thead th[aria-sort="ascending"]::after { content: " ▲"; font-size: 9px; }
 .rank thead th[aria-sort="descending"]::after { content: " ▼"; font-size: 9px; }
 .rank thead th.group { cursor: default; text-align: center; font-size: 11px; color: var(--text-muted); }
-.rank tbody tr:nth-child(even) td { background: color-mix(in oklab, var(--surface-2) 45%, var(--surface-1)); }
+.rank tbody tr.team-row:nth-child(even of .team-row) td { background: color-mix(in oklab, var(--surface-2) 45%, var(--surface-1)); }
 .rank tbody tr:hover td { background: var(--surface-2); }
 .rank td { border-bottom: 1px solid var(--grid); }
 .rank .l { text-align: left; }
@@ -154,10 +158,18 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .rank thead .sticky { z-index: 3; background: var(--surface-2); }
 .rank .sticky2 { position: sticky; left: 44px; z-index: 1; background: var(--surface-1); box-shadow: 1px 0 0 var(--border); }
 .rank thead .sticky2 { z-index: 3; background: var(--surface-2); }
-.rank tbody tr:nth-child(even) td.sticky, .rank tbody tr:nth-child(even) td.sticky2 {
+.rank tbody tr.team-row:nth-child(even of .team-row) td.sticky, .rank tbody tr.team-row:nth-child(even of .team-row) td.sticky2 {
   background: color-mix(in oklab, var(--surface-2) 45%, var(--surface-1));
 }
-.rank td.rk { width: 44px; min-width: 44px; font-weight: 600; }
+.rank td.rk { width: 44px; min-width: 44px; font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.rank tr.top25 td.rk { color: var(--accent); }
+.team-link { display: inline-flex; align-items: center; gap: 8px; vertical-align: middle; }
+.logo { flex: none; object-fit: contain; }
+.rank tr.landmark td {
+  padding: 3px 8px; background: transparent; border-bottom: 2px solid var(--accent);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+}
+.rank tr.landmark td span { position: sticky; left: 8px; }
 .team-cell a { color: var(--text-primary); font-weight: 600; }
 .team-cell .conf { color: var(--text-muted); font-size: 12px; margin-left: 6px; font-weight: 400; }
 /* inset fill leaves a 2px surface gap between neighbouring shaded cells */
@@ -180,6 +192,23 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .help-row { margin: -2px 0 10px; }
 
 /* ---------- team page ---------- */
+.team-band {
+  display: flex; align-items: center; gap: 16px; padding: 16px 18px; margin: 4px 0 14px;
+  border-radius: 10px; background: var(--band-bg); color: var(--band-fg);
+  border-bottom: 5px solid var(--band-accent, transparent);
+}
+.team-band.plain-band { background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--border); }
+.band-logo {
+  flex: none; width: 84px; height: 84px; border-radius: 50%; background: #fff;
+  display: grid; place-items: center; box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+}
+.band-text { min-width: 0; }
+.team-band h2 {
+  margin: 0; font-family: var(--font-display); font-size: 38px; font-weight: 700;
+  line-height: 1.05; letter-spacing: 0.01em; color: inherit;
+}
+.team-band .ap-rank { font-size: 0.62em; opacity: 0.85; vertical-align: 0.18em; }
+.team-band .meta { opacity: 0.9; margin-top: 2px; }
 .nav-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; }
 .back { display: inline-block; margin: 14px 0 6px; }
 .team-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 12px; }
@@ -188,11 +217,14 @@ table.rank { border-collapse: separate; border-spacing: 0; width: 100%; min-widt
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
 .tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
 .tile .label { color: var(--text-secondary); font-size: 12px; }
-.tile .value { font-size: 24px; font-weight: 650; line-height: 1.2; }
+.tile .value { font-family: var(--font-display); font-size: 32px; font-weight: 700; line-height: 1.1; }
 .tile .note { color: var(--text-muted); font-size: 12px; }
 .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 14px; margin-bottom: 14px; }
 .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; min-width: 0; }
-.card h3 { margin: 0 0 2px; font-size: 15px; }
+.card h3 {
+  margin: 0 0 2px; font-family: var(--font-display); font-size: 19px; font-weight: 700;
+  letter-spacing: 0.03em; text-transform: uppercase;
+}
 .card .desc { color: var(--text-muted); font-size: 12px; margin: 0 0 10px; }
 table.plain { border-collapse: collapse; width: 100%; }
 .plain th, .plain td { padding: 5px 6px; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
@@ -211,7 +243,10 @@ svg .gridline { stroke: var(--grid); }
 .guide { max-width: 980px; padding-bottom: 24px; }
 .guide-nav { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 4px 0 14px; font-size: 14px; }
 .guide-card { margin-bottom: 14px; scroll-margin-top: 12px; }
-.guide-card h2 { font-size: 18px; margin: 0 0 8px; }
+.guide-card h2 {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  letter-spacing: 0.03em; text-transform: uppercase; margin: 0 0 8px;
+}
 .guide-card p, .guide-card li { color: var(--text-primary); max-width: 75ch; }
 .guide-card p { margin: 8px 0; }
 .guide-card ul { margin: 6px 0 10px; padding-left: 20px; }
@@ -239,6 +274,9 @@ svg .gridline { stroke: var(--grid); }
   .team-cell { max-width: 128px; overflow: hidden; text-overflow: ellipsis; }
   .team-cell .conf { display: none; }
   .tile { padding: 8px 10px; }
-  .team-head h2 { font-size: 22px; }
+  .team-band { gap: 12px; padding: 12px; }
+  .band-logo { width: 60px; height: 60px; }
+  .band-logo .logo { width: 46px; height: 46px; }
+  .team-band h2 { font-size: 28px; }
   .tile .value { font-size: 20px; }
 }
