@@ -130,6 +130,33 @@ The four factors, game log and season stats come from CollegeBasketballData, so 
 | **vs. top 25 / 26–50 / 51–100** | TeamRankings' record against teams in those ranking bands, a quick check on the quality of wins |
 | **Quadrant record** | Wins and losses in the NCAA's four quadrants, which weigh each game by opponent quality *and* where it was played. Q1 is the hardest (e.g. a road game at a top-75 team) and Q4 the easiest. Q1 wins carry the most weight on Selection Sunday; Q3 and Q4 losses hurt the most. It comes from Haslametrics until NET is published, then from the official NCAA figures. |
 
+### Offense vs Defense
+
+Every D1 team as a point: **adjusted offense** across (further right = scores more per 100 possessions) and **adjusted defense** up (higher = allows fewer points). The values are averaged across sources.
+
+- **Quadrants:** the solid lines are the D1 averages. Top-right teams are above average at both ends ("Strong both ends"), top-left are defense-first, bottom-right are offense-first, and bottom-left are below average at both.
+- **Dashed diagonals** connect teams with the same efficiency margin (EM = offense − defense). Moving toward the top-right corner crosses into higher margins.
+- **Highlight** picks which teams show as logos: the Predictive top 25, the top 50, or one conference. Everyone else is a grey dot.
+- Hover over a team for its record, ranks and efficiency numbers; click or tap to open its page.
+
+### Conferences
+
+Conferences ranked by their teams' **average AdjEM**.
+
+| Column | Meaning |
+|---|---|
+| **Avg AdjEM** | Average adjusted efficiency margin of the conference's teams |
+| **Field** | How many of its teams are on a consensus seed line in the Bracket Matrix (the projected NCAA field) |
+| **Strip** | Each dot is one team, on the same scale for every conference. Blue = in the projected field, grey = not. The black line is the conference average. |
+
+Hover over a dot for the team; click or tap to open its page.
+
+### Bracket
+
+The projected NCAA tournament field from the **Bracket Matrix**, the consensus of every bracket it tracks, laid out by seed line 1–16. Each team shows its **average projected seed**, how many brackets include it (e.g. 52/52), and its Predictive rank here. Lines with more than four teams include play-in (First Four) spots.
+
+**Bubble** lists teams that appear in some brackets but not on a consensus seed line, most-included first.
+
 ### Header badges
 
 The badges under the title show each source's status on the latest run:

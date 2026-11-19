@@ -26,6 +26,9 @@ const GUIDE_URL = "guide.html";
 const HELP = {
   table: `${GUIDE_URL}#rankings-table`,
   team: `${GUIDE_URL}#team-page`,
+  scatter: `${GUIDE_URL}#offense-vs-defense`,
+  conferences: `${GUIDE_URL}#conferences`,
+  bracket: `${GUIDE_URL}#bracket`,
 };
 const helpLink = (href, text) =>
   `<a class="help-link" href="${href}">ⓘ ${text}</a>`;
@@ -74,11 +77,15 @@ function isDark() {
 }
 
 /** ESPN team logo, resized by ESPN's image service. `onDark` picks the dark-background version. */
-function logo(t, size, onDark = isDark()) {
-  if (!t?.espn_id) return "";
+function logoUrl(t, size, onDark = isDark()) {
   const variant = onDark ? "500-dark" : "500";
   const px = size * 2; // crisp on high-density screens
-  const src = `https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/${variant}/${t.espn_id}.png&h=${px}&w=${px}`;
+  return `https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/${variant}/${t.espn_id}.png&h=${px}&w=${px}`;
+}
+
+function logo(t, size, onDark = isDark()) {
+  if (!t?.espn_id) return "";
+  const src = logoUrl(t, size, onDark);
   return `<img class="logo" src="${src}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async"
     onerror="this.style.visibility='hidden'">`;
 }
@@ -685,14 +692,235 @@ function niceTicks(lo, hi, count) {
   return out;
 }
 
+
+/* ================= Phase B views ================= */
+
+const goTeam = (id) => { location.hash = `#/team/${id}`; };
+const stat = (t, k) => t.stats?.[k]?.value;
+const median = (xs) => { const s = xs.slice().sort((a, b) => a - b); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+
+/** Nearest-point hover for SVG charts: points = [{x, y, t}], in viewBox units. */
+function attachNearest(svg, points, W, onHover, onLeave, radius = 18) {
+  const hit = (e) => {
+    const box = svg.getBoundingClientRect();
+    const scale = W / box.width;
+    const px = (e.clientX - box.left) * scale, py = (e.clientY - box.top) * scale;
+    let best = null, bestD = (radius * scale) ** 2;
+    for (const p of points) {
+      const d = (p.x - px) ** 2 + (p.y - py) ** 2;
+      if (d < bestD) { bestD = d; best = p; }
+    }
+    return best;
+  };
+  svg.addEventListener("pointermove", (e) => { const p = hit(e); svg.style.cursor = p ? "pointer" : ""; p ? onHover(e, p) : onLeave(); });
+  svg.addEventListener("pointerleave", onLeave);
+  svg.addEventListener("click", (e) => { const p = hit(e); if (p) goTeam(p.t.id); });
+}
+
+const teamTip = (t, extra = "") => `<b>${esc(t.name)}</b> <span style="opacity:.7">${esc(t.conf)} · ${esc(t.record || "")}</span><br>
+  Predictive ${fmtInt(t.pred.rank)} · Resume ${fmtInt(t.res.rank)}<br>
+  AdjO ${fmt(stat(t, "adj_o"))} (${ordinal(t.stats.adj_o?.rank)}) · AdjD ${fmt(stat(t, "adj_d"))} (${ordinal(t.stats.adj_d?.rank)})${extra}`;
+
+/* ---------- offense vs defense scatter ---------- */
+
+const scatterUi = { highlight: "top25" };
+
+function renderScatter() {
+  const confs = [...new Set(state.latest.teams.map((t) => t.conf))].sort();
+  $("#app").innerHTML = `
+    <div class="view-head">
+      <h2 class="view-title">Offense vs Defense</h2>
+      <div class="help-row">${helpLink(HELP.scatter, "How to read this chart")}</div>
+      <p class="desc">Every D1 team by adjusted offense (across) and adjusted defense (up = fewer points allowed).
+      Up and to the right is better at both ends. Dashed diagonals are equal efficiency margin (EM = offense − defense). Hover a team for details; click or tap to open it.</p>
+      <div class="controls">
+        <label class="check">Highlight
+          <select id="hl" aria-label="Highlight teams">
+            <option value="top25">Top 25 (Predictive)</option>
+            <option value="top50">Top 50 (Predictive)</option>
+            ${confs.map((c) => `<option value="conf:${esc(c)}">${esc(c)}</option>`).join("")}
+          </select></label>
+      </div>
+    </div>
+    <section class="card"><div id="scatter"></div></section>`;
+  $("#hl").value = scatterUi.highlight;
+  $("#hl").addEventListener("change", (e) => { scatterUi.highlight = e.target.value; drawScatter($("#scatter")); });
+  drawScatter($("#scatter"));
+  redrawCharts = () => $("#scatter") && drawScatter($("#scatter"));
+}
+
+function drawScatter(el) {
+  const teams = state.latest.teams.filter((t) => stat(t, "adj_o") != null && stat(t, "adj_d") != null);
+  const W = Math.max(320, el.clientWidth || 900);
+  const H = Math.round(Math.min(640, Math.max(380, W * 0.62)));
+  const M = { l: 46, r: 16, t: 14, b: 40 };
+  const xs = teams.map((t) => stat(t, "adj_o")), ys = teams.map((t) => stat(t, "adj_d"));
+  const pad = 2;
+  const x0 = Math.floor(Math.min(...xs) - pad), x1 = Math.ceil(Math.max(...xs) + pad);
+  const y0 = Math.floor(Math.min(...ys) - pad), y1 = Math.ceil(Math.max(...ys) + pad);
+  const x = (v) => M.l + ((v - x0) / (x1 - x0)) * (W - M.l - M.r);
+  const y = (v) => M.t + ((v - y0) / (y1 - y0)) * (H - M.t - M.b); // low AdjD (good) at top
+  const hl = scatterUi.highlight;
+  const isHl = (t) => hl === "top25" ? t.pred.rank <= 25 : hl === "top50" ? t.pred.rank <= 50 : t.conf === hl.slice(5);
+
+  let svg = `<defs><clipPath id="plot"><rect x="${M.l}" y="${M.t}" width="${W - M.l - M.r}" height="${H - M.t - M.b}"/></clipPath></defs>`;
+  const step = (x1 - x0) > 40 ? 10 : 5;
+  for (let v = Math.ceil(x0 / step) * step; v <= x1; v += step) {
+    svg += `<line class="gridline" x1="${x(v)}" x2="${x(v)}" y1="${M.t}" y2="${H - M.b}"/><text x="${x(v)}" y="${H - M.b + 16}" text-anchor="middle">${v}</text>`;
+  }
+  for (let v = Math.ceil(y0 / step) * step; v <= y1; v += step) {
+    svg += `<line class="gridline" x1="${M.l}" x2="${W - M.r}" y1="${y(v)}" y2="${y(v)}"/><text x="${M.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  }
+  svg += `<text x="${(M.l + W - M.r) / 2}" y="${H - 6}" text-anchor="middle" class="axis-label">Adjusted offense (points per 100 possessions) →</text>`;
+  svg += `<text transform="translate(12 ${(M.t + H - M.b) / 2}) rotate(-90)" text-anchor="middle" class="axis-label">← Adjusted defense (points allowed per 100)</text>`;
+  // equal-margin diagonals: AdjEM = O - D
+  svg += `<g clip-path="url(#plot)">`;
+  for (const k of [-20, -10, 0, 10, 20, 30, 40]) {
+    svg += `<line class="iso" x1="${x(x0)}" y1="${y(x0 - k)}" x2="${x(x1)}" y2="${y(x1 - k)}"/>`;
+    const lx = Math.min(x1, y1 + k) - 0.6, ly = lx - k;
+    if (W >= 640 && lx > x0 + 2 && ly > y0 + 1 && ly < y1 - 1) {
+      svg += `<text class="iso-label" x="${x(lx)}" y="${y(ly) - 4}" text-anchor="end">EM ${k > 0 ? "+" : ""}${k}</text>`;
+    }
+  }
+  // D1 averages split the plot into quadrants
+  const mo = mean(xs), md = mean(ys);
+  svg += `<line class="avg" x1="${x(mo)}" x2="${x(mo)}" y1="${M.t}" y2="${H - M.b}"/><line class="avg" x1="${M.l}" x2="${W - M.r}" y1="${y(md)}" y2="${y(md)}"/>`;
+  svg += `</g>`;
+  const q = (tx, ty, anchor, label) => `<text class="quad" x="${tx}" y="${ty}" text-anchor="${anchor}">${label}</text>`;
+  svg += q(W - M.r - 6, M.t + 14, "end", "Strong both ends") + q(M.l + 6, M.t + 14, "start", "Defense-first")
+       + q(W - M.r - 6, H - M.b - 8, "end", "Offense-first") + q(M.l + 6, H - M.b - 8, "start", "Below average");
+
+  const pts = teams.map((t) => ({ t, x: x(stat(t, "adj_o")), y: y(stat(t, "adj_d")), hl: isHl(t) }));
+  svg += pts.filter((p) => !p.hl).map((p) => `<circle class="dot" cx="${p.x}" cy="${p.y}" r="3.5"/>`).join("");
+  const size = W < 520 ? 18 : 24;
+  svg += pts.filter((p) => p.hl).sort((a, b) => b.t.pred.rank - a.t.pred.rank).map((p) => p.t.espn_id
+    ? `<circle class="logo-ring" cx="${p.x}" cy="${p.y}" r="${size / 2 + 3}"/><image href="${logoUrl(p.t, size, false)}" x="${p.x - size / 2}" y="${p.y - size / 2}" width="${size}" height="${size}"/>`
+    : `<circle class="dot hl" cx="${p.x}" cy="${p.y}" r="5"/>`).join("");
+  el.innerHTML = `<svg class="chart scatter" viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter plot of adjusted offense versus adjusted defense for all D1 teams">${svg}</svg>
+    <p class="desc" style="margin-top:6px">${pts.filter((p) => p.hl).length} highlighted · ${teams.length} teams · values averaged across sources.</p>`;
+  const svgEl = el.querySelector("svg");
+  // highlighted teams win ties in hit-testing by being listed first
+  const order = pts.filter((p) => p.hl).concat(pts.filter((p) => !p.hl));
+  attachNearest(svgEl, order, W, (e, p) => tip.show(e, teamTip(p.t)), () => tip.hide());
+}
+
+/* ---------- conferences ---------- */
+
+function projectedField() {
+  const bm = state.latest.teams.map((t) => t.sources.bracketmatrix).filter(Boolean);
+  const maxB = bm.length ? Math.max(...bm.map((b) => b.brackets || 0)) : 0;
+  return { maxB, inField: (t) => !!t.sources.bracketmatrix?.consensus_seed };
+}
+
+function renderConferences() {
+  const { maxB, inField } = projectedField();
+  const groups = {};
+  for (const t of state.latest.teams) (groups[t.conf] ||= []).push(t);
+  const confs = Object.entries(groups).map(([name, ts]) => {
+    const em = ts.map((t) => stat(t, "adj_em")).filter((v) => v != null);
+    return { name, teams: ts.sort((a, b) => a.pred.rank - b.pred.rank), avg: mean(em), med: median(em),
+      bids: ts.filter(inField).length, best: ts[0] };
+  }).sort((a, b) => b.avg - a.avg);
+  const all = state.latest.teams.map((t) => stat(t, "adj_em")).filter((v) => v != null);
+  const lo = Math.floor(Math.min(...all) / 5) * 5, hi = Math.ceil(Math.max(...all) / 5) * 5;
+
+  $("#app").innerHTML = `
+    <div class="view-head">
+      <h2 class="view-title">Conferences</h2>
+      <div class="help-row">${helpLink(HELP.conferences, "How to read this page")}</div>
+      <p class="desc">Conferences ranked by their teams' average adjusted efficiency margin (AdjEM). Each dot is a team, placed on the same scale for every conference;
+      the line marks the conference average. "Field" counts teams on a consensus seed line in the Bracket Matrix${maxB ? ` (${maxB} brackets)` : ""}. Hover a dot for the team; click or tap to open it.
+      <span style="white-space:nowrap"><span class="legend-dot" style="background:var(--series-1)"></span>in projected field<span class="legend-dot" style="background:var(--neutral)"></span>other</span></p>
+    </div>
+    <section class="card conf-card">
+      <div class="conf-row conf-header"><span>#</span><span>Conference</span><span class="num">Avg AdjEM</span><span class="num">Field</span><span class="strip-head" id="strip-axis"></span></div>
+      ${confs.map((c, i) => `<div class="conf-row" data-conf="${esc(c.name)}">
+        <span class="rk">${i + 1}</span>
+        <span class="conf-name"><b>${esc(c.name)}</b><span class="sub">${c.teams.length} teams · best: ${esc(c.best.short)} (${fmtInt(c.best.pred.rank)})</span></span>
+        <span class="num">${signed(c.avg, 1)}</span>
+        <span class="num">${c.bids || "–"}</span>
+        <span class="strip"></span></div>`).join("")}
+    </section>`;
+  const draw = () => {
+    const strips = [...document.querySelectorAll(".conf-row .strip")];
+    if (!strips.length) return;
+    const W = Math.max(220, strips[0].clientWidth || 400), H = 26, pad = 8;
+    const x = (v) => pad + ((v - lo) / (hi - lo)) * (W - 2 * pad);
+    const ticks = []; for (let v = lo; v <= hi; v += 10) ticks.push(v);
+    $("#strip-axis").innerHTML = `<svg class="chart" viewBox="0 0 ${W} 18">${ticks.map((v) =>
+      `<text x="${x(v)}" y="13" text-anchor="middle">${v > 0 ? "+" : ""}${v}</text>`).join("")}</svg>`;
+    strips.forEach((el, i) => {
+      const c = confs[i];
+      const pts = c.teams.filter((t) => stat(t, "adj_em") != null).map((t) => ({ t, x: x(stat(t, "adj_em")), y: H / 2 }));
+      el.innerHTML = `<svg class="chart" viewBox="0 0 ${W} ${H}">
+        ${ticks.map((v) => `<line class="gridline" x1="${x(v)}" x2="${x(v)}" y1="2" y2="${H - 2}"${v === 0 ? ' style="stroke:var(--border)"' : ""}/>`).join("")}
+        <line class="conf-avg" x1="${x(c.avg)}" x2="${x(c.avg)}" y1="3" y2="${H - 3}"/>
+        ${pts.map((p) => `<circle class="conf-dot${inField(p.t) ? " in-field" : ""}" cx="${p.x}" cy="${p.y}" r="5"/>`).join("")}
+      </svg>`;
+      attachNearest(el.querySelector("svg"), pts, W, (e, p) => tip.show(e, teamTip(p.t,
+        inField(p.t) ? `<br>Projected ${fmtInt(p.t.sources.bracketmatrix.consensus_seed)} seed` : "")), () => tip.hide(), 10);
+    });
+  };
+  draw();
+  redrawCharts = draw;
+}
+
+/* ---------- bracket (seed lines) ---------- */
+
+function renderBracket() {
+  const { maxB } = projectedField();
+  const withBm = state.latest.teams.filter((t) => t.sources.bracketmatrix);
+  if (!withBm.length) { $("#app").innerHTML = `<p class="empty">No Bracket Matrix data yet.</p>`; return; }
+  const lines = {};
+  for (const t of withBm) {
+    const s = t.sources.bracketmatrix.consensus_seed;
+    if (s) (lines[s] ||= []).push(t);
+  }
+  const bubble = withBm.filter((t) => !t.sources.bracketmatrix.consensus_seed)
+    .sort((a, b) => b.sources.bracketmatrix.brackets - a.sources.bracketmatrix.brackets).slice(0, 12);
+  const chip = (t) => {
+    const b = t.sources.bracketmatrix;
+    return `<a class="seed-chip" href="#/team/${t.id}" title="${esc(t.name)}: average seed ${fmt(b.avg_seed, 2)} in ${fmtInt(b.brackets)} of ${maxB} brackets">
+      ${logo(t, 26)}<span class="chip-text"><b>${esc(t.short)}</b><span class="sub">${fmt(b.avg_seed, 2)} · ${fmtInt(b.brackets)}/${maxB} · Pred ${fmtInt(t.pred.rank)}</span></span></a>`;
+  };
+  $("#app").innerHTML = `
+    <div class="view-head">
+      <h2 class="view-title">Bracket</h2>
+      <div class="help-row">${helpLink(HELP.bracket, "How to read this page")}</div>
+      <p class="desc">Projected NCAA tournament field from the Bracket Matrix: the consensus of ${maxB} published brackets.
+      Each team shows its average projected seed, how many brackets include it, and its Predictive rank here. Lines with more than four teams include play-in (First Four) spots.</p>
+    </div>
+    <section class="card seed-lines">
+      ${Array.from({ length: 16 }, (_, i) => i + 1).map((s) => `<div class="seed-line">
+        <div class="seed-num">${s}</div>
+        <div class="seed-teams">${(lines[s] || []).sort((a, b) => a.sources.bracketmatrix.avg_seed - b.sources.bracketmatrix.avg_seed).map(chip).join("")}</div>
+      </div>`).join("")}
+    </section>
+    <section class="card">
+      <h3>Bubble</h3>
+      <p class="desc">In some brackets but not on a consensus seed line, most-included first.</p>
+      <div class="seed-teams">${bubble.map(chip).join("") || '<span class="muted">None</span>'}</div>
+    </section>`;
+}
+
 /* ================= routing ================= */
 
 function route() {
   tip.hide();
   redrawCharts = null;
   const m = /^#\/team\/([a-z0-9-]+)/.exec(location.hash);
-  if (m) renderTeam(m[1]);
-  else { document.title = "D1 Composite Rankings"; renderRankings(); }
+  const view = m ? "team" : (/^#\/(charts|conferences|bracket)/.exec(location.hash)?.[1] || "rankings");
+  document.querySelectorAll("#tabs a").forEach((a) => {
+    a.toggleAttribute("aria-current", a.dataset.view === view || (view === "team" && a.dataset.view === "rankings"));
+  });
+  const titles = { charts: "Offense vs Defense", conferences: "Conferences", bracket: "Bracket" };
+  document.title = titles[view] ? `${titles[view]} · D1 Composite Rankings` : "D1 Composite Rankings";
+  if (view === "team") renderTeam(m[1]);
+  else if (view === "charts") renderScatter();
+  else if (view === "conferences") renderConferences();
+  else if (view === "bracket") renderBracket();
+  else renderRankings();
   window.scrollTo(0, 0);
 }
 
