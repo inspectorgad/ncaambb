@@ -33,6 +33,7 @@
       <a href="#offense-vs-defense">Offense vs Defense</a>
       <a href="#conferences">Conferences</a>
       <a href="#bracket">Bracket</a>
+      <a href="#players">Players</a>
       <a href="#header-badges">Header badges</a>
     </nav>
 <section class="card guide-card" id="rankings-table">
@@ -453,6 +454,43 @@
 <h2>Bracket</h2>
 <p>The projected NCAA tournament field from the <strong>Bracket Matrix</strong>, the consensus of every bracket it tracks, laid out by seed line 1–16. Each team shows its <strong>average projected seed</strong>, how many brackets include it (e.g. 52/52), and its Predictive rank here. Lines with more than four teams include play-in (First Four) spots.</p>
 <p><strong>Bubble</strong> lists teams that appear in some brackets but not on a consensus seed line, most-included first.</p>
+</section>
+<section class="card guide-card" id="players">
+<h2>Players</h2>
+<p><strong>Top 50 players</strong> by our own composite rating. EvanMiya-style player ratings are proprietary, so this one is built only from free, public metrics, the same way as the team composite:</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Metric</th>
+<th>Meaning</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Win shares / 40</strong></td>
+<td>Wins a player adds per 40 minutes, offense plus defense. It measures impact per minute.</td>
+<td>CollegeBasketballData</td>
+</tr>
+<tr>
+<td><strong>PORPAG</strong></td>
+<td>Points over a replacement-level player, per game. It rewards doing a lot, and doing it well.</td>
+<td>CollegeBasketballData</td>
+</tr>
+<tr>
+<td><strong>Box plus/minus (BPM)</strong></td>
+<td>Points per 100 possessions better than an average player, estimated from the box score (split into offense and defense)</td>
+<td>BartTorvik</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Score:</strong> each metric becomes a z-score among <strong>eligible</strong> players (0 = an average eligible player, +2 is excellent), and the score is their average. If Torvik is unavailable on a given day, its last good file (up to 3 days old) is used; after that the score runs on the other two metrics, and the page says so.</li>
+<li><strong>Eligible</strong> means at least <strong>40% of the team's minutes</strong>, so short-sample flukes stay off the list. Early in the season the list still moves a lot.</li>
+<li><strong>Table columns:</strong> Min% (share of team minutes), points, rebounds and assists per game, TS% (true shooting, which counts threes and free throws), USG (usage: share of team possessions the player finishes), the three metrics and the score. Shading marks how high each metric ranks among eligible players. Click any heading to sort.</li>
+<li><strong>Player page:</strong> click a player for their page, which shows their rank among eligible players, every metric with its value, rank and z-score, the BPM offense/defense split, per-game stats and shooting.</li>
+<li><strong>Team rosters:</strong> each team page has a <strong>Roster</strong> card listing its players by minutes, with their D1 player rank. Players under 40% of minutes appear in grey without a rank.</li>
+</ul>
 </section>
 <section class="card guide-card" id="header-badges">
 <h2>Header badges</h2>
