@@ -96,6 +96,16 @@ function logo(t, size, onDark = isDark()) {
 
 const shortDate = (iso) => iso ? new Date(iso + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" }) : "";
 
+/** A game's date in the viewer's time zone, from its exact UTC start; falls back to the Eastern date. */
+function gameDay(g) {
+  const t = g.start ? new Date(g.start) : null;
+  return t && !isNaN(t) ? t.toLocaleDateString([], { month: "short", day: "numeric" }) : shortDate(g.date);
+}
+function gameTime(g) {
+  const t = g.start ? new Date(g.start) : null;
+  return t && !isNaN(t) ? t.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "";
+}
+
 function moveBadge(v, since) {
   if (v == null) return `<span class="muted" title="No earlier update to compare yet">–</span>`;
   if (v === 0) return `<span class="move flat" title="No change since ${shortDate(since)}">0</span>`;
@@ -474,7 +484,7 @@ async function renderTeam(id) {
       </section>
       <section class="card">
         <h3>Game log</h3>
-        <p class="desc">Results so far and games in the next week. Grey number = opponent's predictive rank; (N) = neutral site; hover a row for the event name.</p>
+        <p class="desc">Results so far and games in the next week, with dates and tip-off times in your time zone. Grey number = opponent's predictive rank; (N) = neutral site; hover a row for the event name.</p>
         <div class="plain-wrap" id="game-log"><p class="empty">Loading games…</p></div>
       </section>
     </div>
@@ -549,7 +559,7 @@ function renderTeamDetail(d) {
   if (last5.length && $("#band-form")) {
     $("#band-form").innerHTML = `<span class="form-label">Last ${last5.length}</span>` + last5.map((g) => {
       const opp = g.opp ? state.byId.get(g.opp) : null;
-      return `<span class="form-chip ${g.result === "W" ? "w" : "l"}" title="${esc(`${shortDate(g.date)} ${g.result} ${g.score} vs ${opp ? opp.name : g.opp_name}`)}">${g.result}</span>`;
+      return `<span class="form-chip ${g.result === "W" ? "w" : "l"}" title="${esc(`${gameDay(g)} ${g.result} ${g.score} vs ${opp ? opp.name : g.opp_name}`)}">${g.result}</span>`;
     }).join("");
   }
   // which values are percentages differs per table ("tov" is a rate in one, per game in the other)
@@ -572,7 +582,6 @@ function renderTeamDetail(d) {
     </tbody></table>
     <p class="desc" style="margin-top:8px">${d.games_played ?? "–"} games played (as of ${esc(d.as_of)}). Source: CollegeBasketballData.</p>`;
 
-  const fmtDay = (iso) => new Date(iso + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" });
   const siteText = { H: "vs", A: "@", N: "vs" };
   const siteTitle = { H: "home", A: "away", N: "neutral site" };
   const rows = d.games.map((g) => {
@@ -584,7 +593,7 @@ function renderTeamDetail(d) {
     const result = g.result ? `<b>${g.result}</b> ${esc(g.score)}`
       : `<span class="muted">${g.status === "postponed" ? "postponed" : g.status === "in_progress" ? "live" : "next"}</span>`;
     return `<tr${g.result ? "" : ' class="muted"'} title="${esc(g.note || "")}">
-      <td class="l">${fmtDay(g.date)}</td><td class="l opp-cell">${where} ${name}${tags}</td><td>${result}</td></tr>`;
+      <td class="l">${gameDay(g)}${g.result ? "" : `<span class="sub">${gameTime(g)}</span>`}</td><td class="l opp-cell">${where} ${name}${tags}</td><td>${result}</td></tr>`;
   });
   $("#game-log").innerHTML = rows.length
     ? `<table class="plain"><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Result</th></tr></thead>

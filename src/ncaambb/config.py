@@ -8,7 +8,7 @@ from typing import Any
 
 import yaml
 
-from . import CONFIG_DIR
+from . import CONFIG_DIR, today_eastern
 
 
 def season_for(today: dt.date) -> int:
@@ -21,7 +21,7 @@ def load_sources_config(path: Path | None = None, today: dt.date | None = None) 
     with open(path, encoding="utf-8") as fh:
         cfg = yaml.safe_load(fh)
     if cfg.get("season", "auto") == "auto":
-        cfg["season"] = season_for(today or dt.date.today())
+        cfg["season"] = season_for(today or today_eastern())
     cfg["season"] = int(cfg["season"])
     return cfg
 

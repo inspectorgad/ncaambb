@@ -13,6 +13,7 @@ import datetime as dt
 import os
 import sys
 
+from . import today_eastern
 from .config import in_active_window, load_sources_config
 
 
@@ -21,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--date", type=dt.date.fromisoformat, default=None)
     parser.add_argument("--github-output", action="store_true")
     args = parser.parse_args(argv)
-    today = args.date or dt.date.today()
+    today = args.date or today_eastern()
     cfg = load_sources_config(today=today)
     line = f"active={'true' if in_active_window(cfg, today) else 'false'}"
     print(f"{line} (season {cfg['season']}, {today})")
