@@ -25,6 +25,7 @@ const INPUT_LABELS = {
 const GUIDE_URL = "guide.html";
 const HELP = {
   table: `${GUIDE_URL}#rankings-table`,
+  stories: `${GUIDE_URL}#story-cards-and-trends`,
   team: `${GUIDE_URL}#team-page`,
   scatter: `${GUIDE_URL}#offense-vs-defense`,
   conferences: `${GUIDE_URL}#conferences`,
@@ -374,7 +375,8 @@ function storyCards() {
     </section>`;
   const arrow = (v) => moveBadge(v, st.since);
   const fieldItems = st.new_in_field.concat(st.left_field.map((i) => ({ ...i, left: true })));
-  return `<div class="stories" aria-label="Today's story">
+  return `<div class="help-row stories-help">${helpLink(HELP.stories, "About these cards and the ± / Trend columns")}</div>
+  <div class="stories" aria-label="Today's story">
     ${card("Rising", `Biggest Predictive gains in the top 100 ${since}`, st.risers, (i) => arrow(i.value), since ? "No risers today." : waiting)}
     ${card("Falling", `Biggest Predictive drops in the top 100 ${since}`, st.fallers, (i) => arrow(i.value), since ? "No fallers today." : waiting)}
     ${card("Under-rewarded", "Top-50 teams whose resume trails their quality most", st.under_rewarded,

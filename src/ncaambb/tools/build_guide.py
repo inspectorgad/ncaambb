@@ -59,6 +59,22 @@ TEMPLATE = """<!doctype html>
 """
 
 
+def loosen_lists(md: str) -> str:
+    """Insert a blank line before a list that directly follows a text line.
+
+    GitHub renders such lists, but Python-Markdown needs the blank line.
+    """
+    out: list[str] = []
+    for line in md.split("\n"):
+        is_item = re.match(r"\s*([-*+]|\d+\.)\s", line) is not None
+        prev = out[-1] if out else ""
+        prev_is_item = re.match(r"\s*([-*+]|\d+\.)\s", prev) is not None
+        if is_item and prev.strip() and not prev_is_item and not prev.lstrip().startswith("|"):
+            out.append("")
+        out.append(line)
+    return "\n".join(out)
+
+
 def slugify(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
@@ -75,7 +91,7 @@ def render(readme_text: str) -> str:
         title, body = part.split("\n", 1)
         title = title.strip()
         slug = slugify(title)
-        html = markdown.markdown(body, extensions=["tables"])
+        html = markdown.markdown(loosen_lists(body), extensions=["tables"])
         html = html.replace("<table>", '<div class="plain-wrap"><table class="plain guide-table">')
         html = html.replace("</table>", "</table></div>")
         nav.append(f'      <a href="#{slug}">{title}</a>')

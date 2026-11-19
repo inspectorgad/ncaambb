@@ -28,6 +28,7 @@
     <a class="back" href="./">← Back to rankings</a>
     <nav class="guide-nav" aria-label="Sections">
       <a href="#rankings-table">Rankings table</a>
+      <a href="#story-cards-and-trends">Story cards and trends</a>
       <a href="#team-page">Team page</a>
       <a href="#offense-vs-defense">Offense vs Defense</a>
       <a href="#conferences">Conferences</a>
@@ -53,7 +54,7 @@
 </tr>
 <tr>
 <td><strong>±</strong></td>
-<td>Rank change since the previous daily update, for the selected composite. ▲ moved up, ▼ moved down, – no earlier update to compare yet.</td>
+<td>Rank change since the previous daily update, for the selected composite (see <em>Story cards and trends</em>).</td>
 <td>▲</td>
 </tr>
 <tr>
@@ -108,7 +109,7 @@
 </tr>
 <tr>
 <td><strong>Trend</strong></td>
-<td>A small line of the team's Predictive rank over the last two weeks (higher = better; the dot is today). It appears once there are three days of history. Sorting by it uses the 7-day change.</td>
+<td>A small line of the team's Predictive rank over the last two weeks (see <em>Story cards and trends</em>).</td>
 <td>Rising</td>
 </tr>
 <tr>
@@ -118,34 +119,7 @@
 </tr>
 </tbody>
 </table></div>
-<p><strong>Today's story</strong> cards sit above the table:</p>
-<div class="plain-wrap"><table class="plain guide-table">
-<thead>
-<tr>
-<th>Card</th>
-<th>What it shows</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Rising / Falling</strong></td>
-<td>The biggest Predictive rank gains and drops since the previous update, among teams in the top 100</td>
-</tr>
-<tr>
-<td><strong>Under-rewarded</strong></td>
-<td>Top-50 teams whose Resume rank trails their Predictive rank by the most</td>
-</tr>
-<tr>
-<td><strong>Systems disagree</strong></td>
-<td>Top-50 teams with the biggest spread between the rating systems</td>
-</tr>
-<tr>
-<td><strong>Projected field</strong></td>
-<td>Teams entering (+) or leaving (−) the Bracket Matrix projected field since the previous update</td>
-</tr>
-</tbody>
-</table></div>
-<p>Cards that compare with the previous day fill in after the next daily update.</p>
+<p>The <strong>Today's story</strong> cards above the table, and the <strong>±</strong> and <strong>Trend</strong> columns, are explained in detail under <em>Story cards and trends</em> below.</p>
 <p><strong>Source columns:</strong> tick this checkbox to show each site's own number next to the composites.</p>
 <div class="plain-wrap"><table class="plain guide-table">
 <thead>
@@ -217,6 +191,68 @@
 <p><strong>Shading:</strong> a blue tint marks the <strong>top half of D1</strong> in that column; the darker the tint, the closer to #1. The bottom half is unshaded so strong teams stand out. Tempo and Agree are never shaded because neither is a good-or-bad measure.</p>
 <p><strong>Early season:</strong> Resume and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.</p>
 </section>
+<section class="card guide-card" id="story-cards-and-trends">
+<h2>Story cards and trends</h2>
+<p><strong>Today's story cards</strong> sit above the rankings table and pick out what's notable today, so you don't have to scan 365 rows. Each row shows the team's logo and name, its current Predictive rank in grey (e.g. #53), and the card's key number on the right. Click a team to open its page.</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Card</th>
+<th>What it shows</th>
+<th>How teams are picked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rising</strong></td>
+<td>Teams climbing fastest</td>
+<td>Biggest Predictive rank gains since the previous daily update (▲7 = up seven places), among teams in the top 100. The cutoff keeps a jump from #300 to #250 off the card.</td>
+</tr>
+<tr>
+<td><strong>Falling</strong></td>
+<td>Teams dropping fastest</td>
+<td>Biggest Predictive drops since the previous update (▼12), among teams that were in the top 100</td>
+</tr>
+<tr>
+<td><strong>Under-rewarded</strong></td>
+<td>Good teams whose results haven't caught up</td>
+<td>Top-50 Predictive teams with the largest gap between quality and resume. "▼122" means the Resume rank is 122 places worse than the Predictive rank, often from a tough early schedule or close losses. Their resume will likely improve if they keep playing this well.</td>
+</tr>
+<tr>
+<td><strong>Systems disagree</strong></td>
+<td>Teams the rating systems can't agree on</td>
+<td>Top-50 teams with the biggest spread between Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD. "Spread 0.65" is high; under about 0.10 means near-consensus. Treat these teams' ranks with the most caution.</td>
+</tr>
+<tr>
+<td><strong>Projected field</strong></td>
+<td>Movement in and out of the projected NCAA tournament</td>
+<td>Teams that joined (+ in) or dropped out of (− out) the Bracket Matrix consensus field since the previous update</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>When they fill in:</strong></p>
+<ul>
+<li><strong>Under-rewarded</strong> and <strong>Systems disagree</strong> use only today's data, so they always show.</li>
+<li><strong>Rising</strong>, <strong>Falling</strong> and <strong>Projected field</strong> compare against the previous daily update. They fill in once a normal day's games have been played between two updates.</li>
+<li>An empty card says when it will fill in.</li>
+</ul>
+<p><strong>The ± column</strong> is the rank change since the previous daily update, for whichever composite the Predictive/Resume toggle shows:</p>
+<ul>
+<li><strong>▲3</strong> means up three places; <strong>▼2</strong> means down two; <strong>0</strong> means no change.</li>
+<li><strong>–</strong> means there's no earlier update to compare with, for example a team missing from the previous day's data.</li>
+<li>Click the heading to sort, and the biggest risers go to the top.</li>
+</ul>
+<p><strong>The Trend column</strong> is a small line chart of each team's <strong>Predictive rank over the last two weeks</strong>:</p>
+<ul>
+<li><strong>Up means better.</strong> Rank 1 sits at the top, so a line climbing to the right means the team is improving.</li>
+<li><strong>The dot is today</strong>, at the right end.</li>
+<li><strong>Hover over the line</strong> to see the exact rank on each date.</li>
+<li><strong>Small wiggles are flattened:</strong> every line is drawn on at least a 5-place scale, so a team moving between #3 and #4 doesn't look like it's swinging wildly.</li>
+<li><strong>Sorting</strong> by Trend orders teams by their 7-day change.</li>
+<li><strong>When it shows:</strong> it needs three daily updates of history and shows "–" until then. After that it grows by one point a day, up to two weeks.</li>
+</ul>
+<p><strong>Reading the ± and Trend columns together:</strong> ± is today's move, and Trend shows whether it's part of a pattern. A ▲5 on a steadily rising line means something different from a ▲5 on a line that's been bouncing up and down. A team page's <em>Rank over the season</em> chart shows the full history at a larger size.</p>
+</section>
 <section class="card guide-card" id="team-page">
 <h2>Team page</h2>
 <p>Click any team name to open its page.</p>
@@ -257,11 +293,13 @@
 </tbody>
 </table></div>
 <p><strong>About z-scores:</strong> a z-score is how many standard deviations a team sits above the D1 average. 0 is an average D1 team, +1 is roughly top 15%, +2 roughly top 2–3% (about the top 10 teams), and +2.5 is elite.</p>
-<p><strong>Source agreement (dot chart):</strong> each system's opinion of the team on one shared z-score scale.
-- <strong>Blue dots (Predictive):</strong> Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD.
-- <strong>Orange dots (Resume):</strong> ESPN SOR, Torvik WAB, and NET once published.
-- <strong>Dashed line:</strong> the composite score for that group.
-- <strong>How to read it:</strong> dots bunched together mean the systems agree. A dot far from the others means that system sees the team differently; hover over it for the system's own number and rank.</p>
+<p><strong>Source agreement (dot chart):</strong> each system's opinion of the team on one shared z-score scale.</p>
+<ul>
+<li><strong>Blue dots (Predictive):</strong> Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD.</li>
+<li><strong>Orange dots (Resume):</strong> ESPN SOR, Torvik WAB, and NET once published.</li>
+<li><strong>Dashed line:</strong> the composite score for that group.</li>
+<li><strong>How to read it:</strong> dots bunched together mean the systems agree. A dot far from the others means that system sees the team differently; hover over it for the system's own number and rank.</li>
+</ul>
 <p><strong>Rank over the season (line chart):</strong> Predictive rank (blue) and Resume rank (orange) day by day. Rank 1 is at the top, so a rising line means improvement. Hover for a given day's ranks. It needs at least two days of history before it draws.</p>
 <p><strong>Four factors (table):</strong> the four stats that best explain winning, for offense (this team) and defense (what opponents do against it), each with its D1 rank (1 = best).</p>
 <div class="plain-wrap"><table class="plain guide-table">
@@ -418,12 +456,14 @@
 </section>
 <section class="card guide-card" id="header-badges">
 <h2>Header badges</h2>
-<p>The badges under the title show each source's status on the latest run:
-- <strong>OK</strong> (green dot): downloaded today.
-- <strong>Stale</strong> (amber dot): today's download failed, so the last good data (up to 3 days old) is in use.
-- <strong>Failed</strong> (red dot): no usable data.
-- <strong>Not yet this season</strong> (hollow dot): the source still shows last season, e.g. NET before early December.
-- <strong>No API key</strong> (hollow dot): the source needs a key that isn't set up, e.g. CBBD without the <code>CBBD_API_KEY</code> secret.</p>
+<p>The badges under the title show each source's status on the latest run:</p>
+<ul>
+<li><strong>OK</strong> (green dot): downloaded today.</li>
+<li><strong>Stale</strong> (amber dot): today's download failed, so the last good data (up to 3 days old) is in use.</li>
+<li><strong>Failed</strong> (red dot): no usable data.</li>
+<li><strong>Not yet this season</strong> (hollow dot): the source still shows last season, e.g. NET before early December.</li>
+<li><strong>No API key</strong> (hollow dot): the source needs a key that isn't set up, e.g. CBBD without the <code>CBBD_API_KEY</code> secret.</li>
+</ul>
 <p>On a phone the badges fold into one summary line; tap it to expand.</p>
 </section>
     <p class="legend-note"><a href="./">← Back to rankings</a></p>
