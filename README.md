@@ -29,6 +29,7 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | Column | What it means | Better is |
 |---|---|---|
 | **#** | Rank in the selected composite (Predictive or Resume). | Lower |
+| **±** | Rank change since the previous daily update, for the selected composite. ▲ moved up, ▼ moved down, – no earlier update to compare yet. | ▲ |
 | **Team** | School name, with its conference in grey. Click it to open the team page. | – |
 | **W-L** | Wins and losses so far. Sorting uses win percentage, adjusted slightly so a 1-0 team doesn't outrank a 10-1 team. | – |
 | **Pred** | **Predictive composite rank:** how good the team is, i.e. who would win on a neutral floor. It blends Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD. | Lower |
@@ -39,7 +40,19 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | **AdjD** | **Adjusted defense:** points *allowed* per 100 possessions against an average D1 offense. The small grey number is its rank. | **Lower** |
 | **Tempo** | Possessions per 40 minutes, i.e. how fast the team plays. A style measure, not good or bad (rank 1 = fastest). | – |
 | **SOS** | **Strength of schedule** rank, averaged from Torvik, Haslametrics and ESPN. 1 = toughest schedule played so far. | Lower = tougher |
+| **Trend** | A small line of the team's Predictive rank over the last two weeks (higher = better; the dot is today). It appears once there are three days of history. Sorting by it uses the 7-day change. | Rising |
 | **Agree** | How much the five predictive systems **disagree** about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution. | Lower = more agreement |
+
+**Today's story** cards sit above the table:
+
+| Card | What it shows |
+|---|---|
+| **Rising / Falling** | The biggest Predictive rank gains and drops since the previous update, among teams in the top 100 |
+| **Under-rewarded** | Top-50 teams whose Resume rank trails their Predictive rank by the most |
+| **Systems disagree** | Top-50 teams with the biggest spread between the rating systems |
+| **Projected field** | Teams entering (+) or leaving (−) the Bracket Matrix projected field since the previous update |
+
+Cards that compare with the previous day fill in after the next daily update.
 
 **Source columns:** tick this checkbox to show each site's own number next to the composites.
 
@@ -67,13 +80,13 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 
 Click any team name to open its page.
 
-**Header:** a band in the school's colors with its logo, AP rank (if ranked), mascot, conference and record. **← All teams** returns to the table with your sort and filters kept.
+**Header:** a band in the school's colors with its logo, AP rank (if ranked), mascot, conference and record, plus a **Last 5** strip of recent results (W/L; hover a box for the date, score and opponent). **← All teams** returns to the table with your sort and filters kept.
 
 **Summary tiles:**
 
 | Tile | What it shows |
 |---|---|
-| **Predictive** | Composite quality rank, with its z-score and how many sources fed it |
+| **Predictive** | Composite quality rank with its change since the previous update (▲/▼), its z-score and how many sources fed it |
 | **Resume** | Composite results rank, with z-score and source count (2 before NET is published, 3 after) |
 | **Gap** | Predictive rank minus Resume rank. ▼ under-rewarded so far, ▲ results flattering the team. |
 | **AdjEM / AdjO / AdjD** | Cross-source efficiency numbers and their D1 rank (AdjD: lower is better) |

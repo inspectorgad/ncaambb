@@ -52,6 +52,11 @@
 <td>Lower</td>
 </tr>
 <tr>
+<td><strong>±</strong></td>
+<td>Rank change since the previous daily update, for the selected composite. ▲ moved up, ▼ moved down, – no earlier update to compare yet.</td>
+<td>▲</td>
+</tr>
+<tr>
 <td><strong>Team</strong></td>
 <td>School name, with its conference in grey. Click it to open the team page.</td>
 <td>–</td>
@@ -102,12 +107,45 @@
 <td>Lower = tougher</td>
 </tr>
 <tr>
+<td><strong>Trend</strong></td>
+<td>A small line of the team's Predictive rank over the last two weeks (higher = better; the dot is today). It appears once there are three days of history. Sorting by it uses the 7-day change.</td>
+<td>Rising</td>
+</tr>
+<tr>
 <td><strong>Agree</strong></td>
 <td>How much the five predictive systems <strong>disagree</strong> about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution.</td>
 <td>Lower = more agreement</td>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Today's story</strong> cards sit above the table:</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Card</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Rising / Falling</strong></td>
+<td>The biggest Predictive rank gains and drops since the previous update, among teams in the top 100</td>
+</tr>
+<tr>
+<td><strong>Under-rewarded</strong></td>
+<td>Top-50 teams whose Resume rank trails their Predictive rank by the most</td>
+</tr>
+<tr>
+<td><strong>Systems disagree</strong></td>
+<td>Top-50 teams with the biggest spread between the rating systems</td>
+</tr>
+<tr>
+<td><strong>Projected field</strong></td>
+<td>Teams entering (+) or leaving (−) the Bracket Matrix projected field since the previous update</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cards that compare with the previous day fill in after the next daily update.</p>
 <p><strong>Source columns:</strong> tick this checkbox to show each site's own number next to the composites.</p>
 <div class="plain-wrap"><table class="plain guide-table">
 <thead>
@@ -182,7 +220,7 @@
 <section class="card guide-card" id="team-page">
 <h2>Team page</h2>
 <p>Click any team name to open its page.</p>
-<p><strong>Header:</strong> a band in the school's colors with its logo, AP rank (if ranked), mascot, conference and record. <strong>← All teams</strong> returns to the table with your sort and filters kept.</p>
+<p><strong>Header:</strong> a band in the school's colors with its logo, AP rank (if ranked), mascot, conference and record, plus a <strong>Last 5</strong> strip of recent results (W/L; hover a box for the date, score and opponent). <strong>← All teams</strong> returns to the table with your sort and filters kept.</p>
 <p><strong>Summary tiles:</strong></p>
 <div class="plain-wrap"><table class="plain guide-table">
 <thead>
@@ -194,7 +232,7 @@
 <tbody>
 <tr>
 <td><strong>Predictive</strong></td>
-<td>Composite quality rank, with its z-score and how many sources fed it</td>
+<td>Composite quality rank with its change since the previous update (▲/▼), its z-score and how many sources fed it</td>
 </tr>
 <tr>
 <td><strong>Resume</strong></td>
