@@ -35,3 +35,24 @@ def test_season_cli_writes_github_output(tmp_path, monkeypatch, capsys):
     season.main(["--date", "2027-07-01", "--github-output"])
     assert out.read_text() == "active=false\n"
     assert "season 2027" in capsys.readouterr().out
+
+
+def test_eastern_dates():
+    from ncaambb import eastern_date
+    assert eastern_date("2026-11-19T00:30:00.000Z") == "2026-11-18"   # 7:30 PM ET
+    assert eastern_date("2026-11-19T17:00:00Z") == "2026-11-19"       # noon ET
+    assert eastern_date("2026-03-09T03:30:00Z") == "2026-03-08"       # across the DST change
+    assert eastern_date("") == ""
+
+
+def test_today_is_the_eastern_date(monkeypatch):
+    import ncaambb
+    real = dt.datetime
+
+    class Late(real):  # 01:00 UTC on Nov 19 is still Nov 18 in New York
+        @classmethod
+        def now(cls, tz=None):
+            return real(2026, 11, 19, 1, 0, tzinfo=dt.timezone.utc).astimezone(tz)
+
+    monkeypatch.setattr(ncaambb._dt, "datetime", Late)
+    assert ncaambb.today_eastern() == dt.date(2026, 11, 18)

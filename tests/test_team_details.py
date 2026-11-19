@@ -43,9 +43,13 @@ def test_game_log(built):
     final = [g for g in games if g["result"]]
     assert [g["result"] for g in final] == ["W"] * 4
     assert final[0] == {
-        "date": "2026-11-03", "opp": "fordham", "opp_name": "Fordham", "site": "H", "conf": False,
+        # 8 PM ET on Nov 2 is 01:00 UTC on Nov 3: the date must be the Eastern one
+        "date": "2026-11-02", "start": "2026-11-03T01:00:00.000Z",
+        "opp": "fordham", "opp_name": "Fordham", "site": "H", "conf": False,
         "status": "final", "result": "W", "score": "95-65", "note": None,
     }
+    wvu = next(g for g in games if g["opp"] == "west-virginia")
+    assert wvu["date"] == "2026-11-18"  # 7:30 PM ET tip-off, 00:30 UTC Nov 19
     assert games == sorted(games, key=lambda g: g["date"])
 
 

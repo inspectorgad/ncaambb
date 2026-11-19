@@ -22,6 +22,7 @@ from typing import Any
 import pandas as pd
 import requests
 
+from . import eastern_date
 from .fetching import NotConfigured, fetch_bytes
 from .sources.base import season_start
 
@@ -189,7 +190,8 @@ def build(stats: list[dict], games: list[dict], teams: pd.DataFrame) -> dict[str
             final = g.get("status") == "final" and pts is not None and opp_pts is not None
             out[team_id]["games"].append(
                 {
-                    "date": (g.get("startDate") or "")[:10],
+                    "date": eastern_date(g.get("startDate") or ""),  # Eastern calendar date
+                    "start": g.get("startDate"),                       # exact tip-off (UTC)
                     "opp": by_cbbd.get(str(g.get(f"{other}TeamId"))),  # None = non-D1
                     "opp_name": g.get(f"{other}Team"),
                     "site": "N" if g.get("neutralSite") else ("H" if side == "home" else "A"),

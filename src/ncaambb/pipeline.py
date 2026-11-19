@@ -29,7 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, players, team_details
+from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, players, team_details, today_eastern
 from .config import load_sources_config
 from .crosswalk import Crosswalk
 from .fetching import NotConfigured, make_session
@@ -161,7 +161,7 @@ def run(
     today: dt.date | None = None,
 ) -> tuple[pd.DataFrame, list[SourceStatus]]:
     paths = paths or Paths()
-    today = today or dt.date.today()
+    today = today or today_eastern()
     cfg = load_sources_config(today=today)
     weights = composite.load_weights()
     crosswalk = Crosswalk.load()
