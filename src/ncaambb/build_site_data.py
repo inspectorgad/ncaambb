@@ -10,6 +10,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -74,8 +75,11 @@ def team_records(composite: pd.DataFrame, long: pd.DataFrame, teams: pd.DataFram
                 "id": team_id,
                 "name": info.at[team_id, "name"],
                 "short": info.at[team_id, "short_name"],
+                "mascot": info.at[team_id, "mascot"] if "mascot" in info.columns else "",
                 "conf": info.at[team_id, "conference"],
                 "espn_id": info.at[team_id, "espn_id"],
+                "color": info.at[team_id, "color"] if "color" in info.columns else "",
+                "alt_color": info.at[team_id, "alt_color"] if "alt_color" in info.columns else "",
                 "record": first_text(src, RECORD_SOURCES, "record"),
                 "pred": {"rank": clean(row["pred_rank"]), "z": clean(row["pred_z"]), "n": clean(row["pred_n"])},
                 "res": {"rank": clean(row["res_rank"]), "z": clean(row["res_z"]), "n": clean(row["res_n"])},
@@ -119,7 +123,10 @@ def write(
         "teams": {tid: [clean(row[f]) for f in HISTORY_FIELDS] for tid, row in composite.iterrows()},
     }
     (site_data / "history" / f"{as_of}.json").write_text(json.dumps(history, separators=(",", ":")))
-    index = sorted(p.stem for p in (site_data / "history").glob("*.json"))
+    # only dated snapshots (not index.json itself)
+    index = sorted(
+        p.stem for p in (site_data / "history").glob("*.json") if re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.stem)
+    )
     (site_data / "history" / "index.json").write_text(json.dumps(index))
     meta = {**meta, "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
     (site_data / "meta.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False))

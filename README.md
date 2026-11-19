@@ -57,6 +57,8 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | **Coaches** | Coaches Poll (via ESPN) | Coaches' poll rank. Blank = unranked. Display only. |
 | **Seed** | Bracket Matrix | Average projected NCAA tournament seed across about 50–100 published brackets (1.00 = a 1-seed in every bracket). Blank = not in any projected field. Display only. |
 
+**Divider lines:** when the table is sorted by rank, lines mark the **Top 25** and **Top 50**, and the top-25 rank numbers are highlighted. Team logos come from ESPN.
+
 **Shading:** a blue tint marks the **top half of D1** in that column; the darker the tint, the closer to #1. The bottom half is unshaded so strong teams stand out. Tempo and Agree are never shaded because neither is a good-or-bad measure.
 
 **Early season:** Resume and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.
@@ -65,7 +67,7 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 
 Click any team name to open its page.
 
-**Header:** team, conference and record. **← All teams** returns to the table with your sort and filters kept.
+**Header:** a band in the school's colors with its logo, AP rank (if ranked), mascot, conference and record. **← All teams** returns to the table with your sort and filters kept.
 
 **Summary tiles:**
 

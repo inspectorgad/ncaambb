@@ -66,6 +66,42 @@ const store = {
 };
 const N_TEAMS = () => state.latest?.teams.length || 365;
 
+/* ---------- logos & team colors ---------- */
+
+function isDark() {
+  const t = document.documentElement.dataset.theme;
+  return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+/** ESPN team logo, resized by ESPN's image service. `onDark` picks the dark-background version. */
+function logo(t, size, onDark = isDark()) {
+  if (!t?.espn_id) return "";
+  const variant = onDark ? "500-dark" : "500";
+  const px = size * 2; // crisp on high-density screens
+  const src = `https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/${variant}/${t.espn_id}.png&h=${px}&w=${px}`;
+  return `<img class="logo" src="${src}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async"
+    onerror="this.style.visibility='hidden'">`;
+}
+
+/** WCAG relative luminance of a 6-digit hex color. */
+function luminance(hex) {
+  const c = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+
+/** Team band colors: background, readable text color, and whether it counts as dark. */
+function teamBand(t) {
+  const hex = /^[0-9a-f]{6}$/i.test(t.color || "") ? t.color : null;
+  if (!hex) return null;
+  const L = luminance(hex);
+  // pick whichever text color has the higher contrast ratio against the band
+  const whiteContrast = 1.05 / (L + 0.05), blackContrast = (L + 0.05) / 0.05;
+  const dark = whiteContrast >= blackContrast;
+  return { bg: `#${hex}`, fg: dark ? "#ffffff" : "#111111", dark,
+    accent: /^[0-9a-f]{6}$/i.test(t.alt_color || "") ? `#${t.alt_color}` : null };
+}
+
 /** Inline style tinting a cell by rank: rank 1 strongest, bottom half unshaded. */
 function heatStyle(rank) {
   if (rank == null) return "";
@@ -142,7 +178,7 @@ const COLUMNS = [
   { key: "rank", label: "#", cls: "rk sticky", get: (t, ui) => ui.mode === "res" ? t.res.rank : t.pred.rank,
     cell: (t, ui) => fmtInt(ui.mode === "res" ? t.res.rank : t.pred.rank), title: "Rank in the selected composite" },
   { key: "team", label: "Team", cls: "l sticky2 team-cell", get: (t) => t.name, dir: 1,
-    cell: (t) => `<a href="#/team/${t.id}">${esc(t.name)}</a><span class="conf">${esc(t.conf)}</span>` },
+    cell: (t) => `<a class="team-link" href="#/team/${t.id}">${logo(t, 22)}<span class="tname">${esc(t.name)}</span></a><span class="conf">${esc(t.conf)}</span>` },
   { key: "record", label: "W-L", get: (t) => {
       const m = /^(\d+)-(\d+)$/.exec(t.record || ""); return m ? (+m[1] + 1) / (+m[1] + +m[2] + 2) : null;
     }, dir: -1, cell: (t) => esc(t.record || "–") },
@@ -280,10 +316,27 @@ function renderRankings() {
 
 function renderRows() {
   const teams = filteredTeams();
-  $("#tbody").innerHTML = teams.map((t) => `<tr>${COLUMNS.map((c) => {
-    const style = c.heat ? heatStyle(c.heat(t)) : "";
-    return `<td class="${c.cls || ""} ${c.src ? "src-col" : ""}${style ? " heat" : ""}"${style}>${c.cell(t, ui)}</td>`;
-  }).join("")}</tr>`).join("") || `<tr><td colspan="${COLUMNS.length}" class="empty">No teams match.</td></tr>`;
+  // landmark rows ("Top 25", "Top 50") only make sense in rank order
+  const rankOrder = ui.sort === "rank" && ui.dir === 1;
+  const rankOf = (t) => (ui.mode === "res" ? t.res.rank : t.pred.rank);
+  const LANDMARKS = [25, 50];
+  const rows = [];
+  teams.forEach((t, i) => {
+    const top25 = rankOf(t) <= 25 ? " top25" : "";
+    rows.push(`<tr class="team-row${top25}">${COLUMNS.map((c) => {
+      const style = c.heat ? heatStyle(c.heat(t)) : "";
+      return `<td class="${c.cls || ""} ${c.src ? "src-col" : ""}${style ? " heat" : ""}"${style}>${c.cell(t, ui)}</td>`;
+    }).join("")}</tr>`);
+    const next = teams[i + 1];
+    if (rankOrder && next) {
+      for (const n of LANDMARKS) {
+        if (rankOf(t) <= n && rankOf(next) > n) {
+          rows.push(`<tr class="landmark"><td colspan="${COLUMNS.length}"><span>▲ Top ${n}</span></td></tr>`);
+        }
+      }
+    }
+  });
+  $("#tbody").innerHTML = rows.join("") || `<tr><td colspan="${COLUMNS.length}" class="empty">No teams match.</td></tr>`;
   document.querySelectorAll("thead th[data-key]").forEach((th) => {
     th.setAttribute("aria-sort", th.dataset.key === ui.sort ? (ui.dir === 1 ? "ascending" : "descending") : "none");
   });
@@ -313,10 +366,7 @@ async function renderTeam(id) {
       <a class="back" href="#/">← All teams</a>
       ${helpLink(HELP.team, "How to read this page")}
     </div>
-    <div class="team-head">
-      <h2>${esc(t.name)}</h2>
-      <span class="meta">${esc(t.conf)} · ${esc(t.record || "")}</span>
-    </div>
+    ${teamHeader(t)}
     <div class="tiles">
       ${tile("Predictive", ordinal(t.pred.rank), `z ${fmt(t.pred.z, 2)} · ${t.pred.n} sources`)}
       ${tile("Resume", ordinal(t.res.rank), `z ${fmt(t.res.z, 2)} · ${t.res.n} sources`)}
@@ -435,7 +485,7 @@ function renderTeamDetail(d) {
   const siteTitle = { H: "home", A: "away", N: "neutral site" };
   const rows = d.games.map((g) => {
     const opp = g.opp ? state.byId.get(g.opp) : null;
-    const name = opp ? `<a href="#/team/${opp.id}">${esc(opp.name)}</a><span class="sub">${fmtInt(opp.pred.rank)}</span>`
+    const name = opp ? `<a class="team-link" href="#/team/${opp.id}">${logo(opp, 16)}<span>${esc(opp.name)}</span></a><span class="sub">${fmtInt(opp.pred.rank)}</span>`
       : `${esc(g.opp_name || "?")}<span class="sub">non-D1</span>`;
     const where = `<span class="site" title="${siteTitle[g.site] || ""}">${siteText[g.site] || ""}</span>`;
     const tags = (g.site === "N" ? '<span class="sub">(N)</span>' : "") + (g.conf ? '<span class="sub">conf</span>' : "");
@@ -448,6 +498,19 @@ function renderTeamDetail(d) {
     ? `<table class="plain"><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Result</th></tr></thead>
        <tbody>${rows.join("")}</tbody></table>`
     : `<p class="empty">No games yet.</p>`;
+}
+
+function teamHeader(t) {
+  const band = teamBand(t);
+  const style = band ? ` style="--band-bg:${band.bg};--band-fg:${band.fg}${band.accent ? `;--band-accent:${band.accent}` : ""}"` : "";
+  const ap = t.sources?.espn_bpi?.ap_rank;
+  return `<div class="team-band${band ? "" : " plain-band"}"${style}>
+      <div class="band-logo">${logo(t, 64, false)}</div>
+      <div class="band-text">
+        <h2>${ap ? `<span class="ap-rank">#${fmtInt(ap)}</span> ` : ""}${esc(t.name)}</h2>
+        <div class="meta">${esc(t.mascot || "")}${t.mascot ? " · " : ""}${esc(t.conf)} · ${esc(t.record || "")}</div>
+      </div>
+    </div>`;
 }
 
 function sourceTable(t) {
@@ -553,11 +616,11 @@ function sourceDetail(t, key) {
 
 async function loadTeamHistory(id) {
   state.historyIndex ||= await getJSON("data/history/index.json");
-  const dates = state.historyIndex.slice(-150);
+  const dates = state.historyIndex.filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).slice(-150);
   await Promise.all(dates.filter((d) => !state.history.has(d)).map(async (d) => {
     try { state.history.set(d, await getJSON(`data/history/${d}.json`)); } catch (e) { /* skip a bad day */ }
   }));
-  return dates.filter((d) => state.history.get(d)?.teams[id]).map((d) => {
+  return dates.filter((d) => state.history.get(d)?.teams?.[id]).map((d) => {
     const snap = state.history.get(d);
     const row = snap.teams[id];
     const rec = Object.fromEntries(snap.fields.map((f, i) => [f, row[i]]));

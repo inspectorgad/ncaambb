@@ -28,6 +28,9 @@ TEMPLATE = """<!doctype html>
   <title>Dashboard Guide</title>
   <meta name="description" content="What every column, card and badge on the D1 Composite Rankings dashboard means.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23eb6834'/><path d='M2 16h28M16 2v28M6 6c6 6 6 14 0 20M26 6c-6 6-6 14 0 20' stroke='%23111' stroke-width='2' fill='none'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap">
   <link rel="stylesheet" href="styles.css">
   <script>
     try {{ const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; }} catch (e) {{}}
