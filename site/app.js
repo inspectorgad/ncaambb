@@ -90,6 +90,33 @@ function logo(t, size, onDark = isDark()) {
     onerror="this.style.visibility='hidden'">`;
 }
 
+/* ---------- movement ---------- */
+
+const shortDate = (iso) => iso ? new Date(iso + "T12:00:00").toLocaleDateString([], { month: "short", day: "numeric" }) : "";
+
+function moveBadge(v, since) {
+  if (v == null) return `<span class="muted" title="No earlier update to compare yet">–</span>`;
+  if (v === 0) return `<span class="move flat" title="No change since ${shortDate(since)}">0</span>`;
+  const up = v > 0;
+  return `<span class="move ${up ? "up" : "down"}" title="${up ? "Up" : "Down"} ${Math.abs(v)} since ${shortDate(since)}">${up ? "▲" : "▼"}${Math.abs(v)}</span>`;
+}
+
+/** Tiny rank line: rank 1 at the top. Needs at least three points. */
+function sparkline(trend, w = 64, h = 18) {
+  const pts = (trend?.pred || []).map((r, i) => [i, r]).filter(([, r]) => r != null);
+  if (pts.length < 3) return `<span class="muted" title="Needs three days of history">–</span>`;
+  const n = trend.pred.length - 1 || 1;
+  const rs = pts.map(([, r]) => r), lo = Math.min(...rs), hi = Math.max(...rs);
+  const span = Math.max(hi - lo, 5); // don't magnify tiny wiggles
+  const x = (i) => 2 + (i / n) * (w - 4);
+  const y = (r) => 2 + ((r - lo) / span) * (h - 4);
+  const path = pts.map(([i, r]) => `${x(i).toFixed(1)},${y(r).toFixed(1)}`).join(" ");
+  const [li, lr] = pts[pts.length - 1];
+  const label = pts.map(([i, r]) => `${shortDate(trend.dates[i])}: ${r}`).join(" · ");
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Predictive rank trend">
+    <title>${esc(label)}</title><polyline points="${path}"/><circle cx="${x(li).toFixed(1)}" cy="${y(lr).toFixed(1)}" r="2.2"/></svg>`;
+}
+
 /** WCAG relative luminance of a 6-digit hex color. */
 function luminance(hex) {
   const c = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
@@ -186,6 +213,10 @@ const COLUMNS = [
     cell: (t, ui) => fmtInt(ui.mode === "res" ? t.res.rank : t.pred.rank), title: "Rank in the selected composite" },
   { key: "team", label: "Team", cls: "l sticky2 team-cell", get: (t) => t.name, dir: 1,
     cell: (t) => `<a class="team-link" href="#/team/${t.id}">${logo(t, 22)}<span class="tname">${esc(t.name)}</span></a><span class="conf">${esc(t.conf)}</span>` },
+  { key: "move", label: "±", dir: -1,
+    get: (t, ui) => (ui.mode === "res" ? t.move?.res : t.move?.pred),
+    cell: (t, ui) => moveBadge(ui.mode === "res" ? t.move?.res : t.move?.pred, t.move?.since),
+    title: "Rank change since the previous daily update (for the selected composite)" },
   { key: "record", label: "W-L", get: (t) => {
       const m = /^(\d+)-(\d+)$/.exec(t.record || ""); return m ? (+m[1] + 1) / (+m[1] + +m[2] + 2) : null;
     }, dir: -1, cell: (t) => esc(t.record || "–") },
@@ -212,6 +243,8 @@ const COLUMNS = [
     cell: (t) => fmtInt(t.stats.sos?.rank), title: "Strength of schedule rank (1 = toughest), averaged across sources" },
   { key: "spread", label: "Agree", get: (t) => t.spread,
     cell: (t) => fmt(t.spread, 2), title: "How much the predictive sources disagree (std. dev. of z-scores). Lower = more agreement" },
+  { key: "trend", label: "Trend", get: (t) => t.move?.pred_7d ?? t.move?.pred,  dir: -1,
+    cell: (t) => sparkline(t.trend), title: "Predictive rank over the last two weeks (higher = better); appears after three days of history" },
   { key: "s_torvik", label: "Torvik", src: true, get: (t) => src(t, "torvik", "rating_rank"),
     cell: (t) => fmtInt(src(t, "torvik", "rating_rank")), title: "Torvik's own rank" },
   { key: "s_hasla", label: "Hasla", src: true, get: (t) => src(t, "haslametrics", "rating_rank"),
@@ -268,6 +301,7 @@ function renderRankings() {
   const confs = [...new Set(state.latest.teams.map((t) => t.conf))].sort();
   const app = $("#app");
   app.innerHTML = `
+    ${storyCards()}
     <div class="controls" role="search">
       <div class="seg" role="group" aria-label="Composite">
         <button type="button" data-mode="pred" aria-pressed="${ui.mode === "pred"}">Predictive</button>
@@ -319,6 +353,37 @@ function renderRankings() {
     save(); renderRows();
   }));
   renderRows();
+}
+
+/* ---------- "Today's story" cards ---------- */
+
+function storyCards() {
+  const st = state.latest.stories;
+  if (!st) return "";
+  const since = st.since ? `since ${shortDate(st.since)}` : "";
+  const waiting = "Appears after the next daily update.";
+  const row = (item, valueHtml) => {
+    const t = state.byId.get(item.id);
+    if (!t) return "";
+    return `<li><a class="team-link" href="#/team/${t.id}">${logo(t, 20)}<span>${esc(t.short)}</span></a>
+      <span class="story-meta">${fmtInt(t.pred.rank)}</span><span class="story-val">${valueHtml}</span></li>`;
+  };
+  const card = (title, sub, items, valueFn, empty) => `<section class="story">
+      <h3>${title}</h3><p class="story-sub">${sub}</p>
+      ${items.length ? `<ul>${items.map((i) => row(i, valueFn(i))).join("")}</ul>` : `<p class="story-empty">${empty}</p>`}
+    </section>`;
+  const arrow = (v) => moveBadge(v, st.since);
+  const fieldItems = st.new_in_field.concat(st.left_field.map((i) => ({ ...i, left: true })));
+  return `<div class="stories" aria-label="Today's story">
+    ${card("Rising", `Biggest Predictive gains in the top 100 ${since}`, st.risers, (i) => arrow(i.value), since ? "No risers today." : waiting)}
+    ${card("Falling", `Biggest Predictive drops in the top 100 ${since}`, st.fallers, (i) => arrow(i.value), since ? "No fallers today." : waiting)}
+    ${card("Under-rewarded", "Top-50 teams whose resume trails their quality most", st.under_rewarded,
+      (i) => `<span class="gap-down">${Math.abs(i.value)}</span>`, "None right now.")}
+    ${card("Systems disagree", "Top-50 teams the rating systems see most differently", st.disputed,
+      (i) => `spread ${fmt(i.value, 2)}`, "None right now.")}
+    ${card("Projected field", st.field_tracked ? `Teams entering (+) or leaving (−) the Bracket Matrix field ${since}` : "Changes to the Bracket Matrix field",
+      fieldItems.slice(0, 5), (i) => (i.left ? "− out" : "+ in"), st.field_tracked ? "No changes." : "Tracking starts with today's update.")}
+  </div>`;
 }
 
 function renderRows() {
@@ -375,8 +440,10 @@ async function renderTeam(id) {
     </div>
     ${teamHeader(t)}
     <div class="tiles">
-      ${tile("Predictive", ordinal(t.pred.rank), `z ${fmt(t.pred.z, 2)} · ${t.pred.n} sources`)}
-      ${tile("Resume", ordinal(t.res.rank), `z ${fmt(t.res.z, 2)} · ${t.res.n} sources`)}
+      ${tile("Predictive", `${ordinal(t.pred.rank)} <span class="tile-move">${moveBadge(t.move?.pred, t.move?.since)}</span>`,
+        `z ${fmt(t.pred.z, 2)} · ${t.pred.n} sources${t.move?.since ? ` · vs ${shortDate(t.move.since)}` : ""}`)}
+      ${tile("Resume", `${ordinal(t.res.rank)} <span class="tile-move">${moveBadge(t.move?.res, t.move?.since)}</span>`,
+        `z ${fmt(t.res.z, 2)} · ${t.res.n} sources${t.move?.since ? ` · vs ${shortDate(t.move.since)}` : ""}`)}
       ${tile("Gap", t.gap == null ? "–" : t.gap === 0 ? "0" : (t.gap > 0 ? "▲ " : "▼ ") + Math.abs(t.gap), gapNote)}
       ${tile("AdjEM", fmt(st.adj_em?.value), `${ordinal(st.adj_em?.rank)} of ${n}`)}
       ${tile("AdjO", fmt(st.adj_o?.value), `${ordinal(st.adj_o?.rank)} of ${n}`)}
@@ -467,6 +534,13 @@ const rankCell = (rank) => {
 
 function renderTeamDetail(d) {
   if (!$("#four-factors")) return; // user navigated away
+  const last5 = d.games.filter((g) => g.result).slice(-5);
+  if (last5.length && $("#band-form")) {
+    $("#band-form").innerHTML = `<span class="form-label">Last ${last5.length}</span>` + last5.map((g) => {
+      const opp = g.opp ? state.byId.get(g.opp) : null;
+      return `<span class="form-chip ${g.result === "W" ? "w" : "l"}" title="${esc(`${shortDate(g.date)} ${g.result} ${g.score} vs ${opp ? opp.name : g.opp_name}`)}">${g.result}</span>`;
+    }).join("");
+  }
   // which values are percentages differs per table ("tov" is a rate in one, per game in the other)
   const FF_PCT = new Set(["efg", "tov", "orb"]);
   const STAT_PCT = new Set(["fg_pct", "two_pct", "three_pct", "ft_pct", "ts_pct"]);
@@ -516,6 +590,7 @@ function teamHeader(t) {
       <div class="band-text">
         <h2>${ap ? `<span class="ap-rank">#${fmtInt(ap)}</span> ` : ""}${esc(t.name)}</h2>
         <div class="meta">${esc(t.mascot || "")}${t.mascot ? " · " : ""}${esc(t.conf)} · ${esc(t.record || "")}</div>
+        <div class="form" id="band-form" aria-label="Last five games"></div>
       </div>
     </div>`;
 }

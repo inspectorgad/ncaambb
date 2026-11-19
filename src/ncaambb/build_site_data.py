@@ -16,6 +16,8 @@ from typing import Any
 
 import pandas as pd
 
+from . import movement
+
 HISTORY_FIELDS = ["pred_rank", "res_rank", "pred_z", "res_z"]
 QUAD_SOURCES = ["ncaa_net", "haslametrics"]  # first one with quad records wins
 RECORD_SOURCES = ["espn_bpi", "torvik", "haslametrics", "teamrankings"]
@@ -115,12 +117,20 @@ def write(
     (site_data / "history").mkdir(exist_ok=True)
     as_of = meta["as_of"]
     records = team_records(composite, long, teams)
-    latest = {"as_of": as_of, "season": meta["season"], "teams": records}
+    history_before = movement.load_history(site_data / "history", before=as_of)
+    movement.add_movement(records, history_before, as_of)
+    latest = {
+        "as_of": as_of,
+        "season": meta["season"],
+        "stories": movement.stories(records, history_before),
+        "teams": records,
+    }
     (site_data / "latest.json").write_text(json.dumps(latest, separators=(",", ":"), ensure_ascii=False))
     history = {
         "as_of": as_of,
         "fields": HISTORY_FIELDS,
         "teams": {tid: [clean(row[f]) for f in HISTORY_FIELDS] for tid, row in composite.iterrows()},
+        "field": movement.field_ids(records),  # projected NCAA field, for "new in field" stories
     }
     (site_data / "history" / f"{as_of}.json").write_text(json.dumps(history, separators=(",", ":")))
     # only dated snapshots (not index.json itself)
