@@ -16,7 +16,7 @@ def test_guide_matches_readme():
 def test_guide_has_the_sections_the_help_links_use():
     html = build_guide.GUIDE.read_text(encoding="utf-8")
     for anchor in ("rankings-table", "story-cards-and-trends", "team-page", "offense-vs-defense", "conferences",
-                   "bracket", "header-badges"):
+                   "bracket", "players", "header-badges"):
         assert f'id="{anchor}"' in html
 
 

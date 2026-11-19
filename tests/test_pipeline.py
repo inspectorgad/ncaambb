@@ -51,6 +51,9 @@ def test_offline_run(fixtures_dir, tmp_path):
 
     meta = json.loads((paths.site_data / "meta.json").read_text())
     assert meta["team_details"]["status"] == "ok"
+    assert meta["players"]["status"] == "ok" and meta["players"]["torvik"] == "ok"
+    assert len(json.loads((paths.site_data / "players.json").read_text())["top"]) == 50
+    assert "players" in json.loads((paths.site_data / "team" / "kansas.json").read_text())
     assert meta["weights"]["trim_min_inputs"] == 4
     history = json.loads((paths.site_data / "history" / "2026-11-18.json").read_text())
     assert history["fields"][0] == "pred_rank" and len(history["teams"]) == 365

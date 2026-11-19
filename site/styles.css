@@ -283,6 +283,11 @@ svg.spark circle { fill: var(--series-1); }
 .form-chip.w { border-bottom-color: var(--good); }
 .form-chip.l { border-bottom-color: var(--critical); }
 
+/* ---------- players ---------- */
+.players-table { min-width: 900px; }
+.plain.wrap-first td:first-child { white-space: normal; min-width: 160px; }
+.band-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
 /* ---------- view tabs ---------- */
 .tabs { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; scrollbar-width: none; }
 .tabs a {

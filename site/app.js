@@ -30,6 +30,7 @@ const HELP = {
   scatter: `${GUIDE_URL}#offense-vs-defense`,
   conferences: `${GUIDE_URL}#conferences`,
   bracket: `${GUIDE_URL}#bracket`,
+  players: `${GUIDE_URL}#players`,
 };
 const helpLink = (href, text) =>
   `<a class="help-link" href="${href}">ⓘ ${text}</a>`;
@@ -486,6 +487,13 @@ async function renderTeam(id) {
     </div>
     <div class="grid2">
       <section class="card">
+        <h3>Roster</h3>
+        <p class="desc">Players by share of team minutes. "Rank" is the player rating among all D1 players with at least 40% of their team's minutes; click a player for the breakdown.</p>
+        <div class="plain-wrap" id="roster"><p class="empty">Loading roster…</p></div>
+      </section>
+    </div>
+    <div class="grid2">
+      <section class="card">
         <h3>Ratings by source</h3>
         <p class="desc">Each system's own numbers and rank.</p>
         <div class="plain-wrap">${sourceTable(t)}</div>
@@ -536,6 +544,7 @@ const rankCell = (rank) => {
 
 function renderTeamDetail(d) {
   if (!$("#four-factors")) return; // user navigated away
+  renderRoster(d);
   const last5 = d.games.filter((g) => g.result).slice(-5);
   if (last5.length && $("#band-form")) {
     $("#band-form").innerHTML = `<span class="form-label">Last ${last5.length}</span>` + last5.map((g) => {
@@ -981,22 +990,183 @@ function renderBracket() {
     </section>`;
 }
 
+
+/* ================= players ================= */
+
+async function loadPlayers() {
+  state.players ||= await getJSON("data/players.json");
+  return state.players;
+}
+
+const yrHt = (p) => [p.role || p.pos, p.yr, p.ht].filter(Boolean).join(" · ");
+const playerHref = (p) => `#/player/${p.team_id}/${p.id}`;
+
+/** Shade by rank among eligible players (top half shaded, like the team table). */
+function heatStyleN(rank, n) {
+  if (rank == null || !n) return "";
+  const strength = Math.max(0, 1 - (rank - 1) / (n / 2));
+  return strength > 0 ? ` style="--h: color-mix(in oklab, var(--heat) calc(var(--heat-max) * ${strength.toFixed(3)}), transparent)"` : "";
+}
+
+const PLAYER_COLS = [
+  { key: "rank", label: "#", get: (p) => p.rank, cls: "rk sticky", cell: (p) => fmtInt(p.rank) },
+  { key: "name", label: "Player", get: (p) => p.name, dir: 1, cls: "l sticky2 team-cell",
+    cell: (p) => { const t = state.byId.get(p.team_id);
+      return `<a class="team-link" href="${playerHref(p)}">${t ? logo(t, 22) : ""}<span class="tname">${esc(p.name)}</span></a>
+        <span class="conf">${esc(t ? t.short : "")}${p.yr ? ` · ${esc(p.yr)}` : ""}</span>`; } },
+  { key: "role", label: "Role", get: (p) => p.role || p.pos, dir: 1, cls: "l muted", cell: (p) => esc(p.role || p.pos || "–") },
+  { key: "min_pct", label: "Min%", get: (p) => p.min_pct, dir: -1, cell: (p) => fmt(p.min_pct, 1) },
+  { key: "pts", label: "PTS", get: (p) => p.pts, dir: -1, cell: (p) => fmt(p.pts, 1) },
+  { key: "reb", label: "REB", get: (p) => p.reb, dir: -1, cell: (p) => fmt(p.reb, 1) },
+  { key: "ast", label: "AST", get: (p) => p.ast, dir: -1, cell: (p) => fmt(p.ast, 1) },
+  { key: "ts", label: "TS%", get: (p) => p.ts, dir: -1, cell: (p) => fmt(p.ts, 1) },
+  { key: "usage", label: "USG", get: (p) => p.usage, dir: -1, cell: (p) => fmt(p.usage, 1) },
+  { key: "ws40", label: "WS/40", get: (p) => p.metrics.ws40.value, dir: -1, metric: "ws40", cell: (p) => fmt(p.metrics.ws40.value, 3) },
+  { key: "porpag", label: "PORPAG", get: (p) => p.metrics.porpag.value, dir: -1, metric: "porpag", cell: (p) => fmt(p.metrics.porpag.value, 1) },
+  { key: "bpm", label: "BPM", get: (p) => p.metrics.bpm.value, dir: -1, metric: "bpm", cell: (p) => signed(p.metrics.bpm.value, 1) },
+  { key: "score", label: "Score", get: (p) => p.score, dir: -1, cell: (p) => `<b>${fmt(p.score, 2)}</b>` },
+];
+const playersUi = { sort: "rank", dir: 1 };
+
+async function renderPlayers() {
+  $("#app").innerHTML = `<p class="empty">Loading players…</p>`;
+  let doc;
+  try { doc = await loadPlayers(); } catch (e) {
+    $("#app").innerHTML = `<p class="empty">Player ratings aren't available yet.</p>`; return;
+  }
+  if (!location.hash.startsWith("#/players")) return;
+  const tv = doc.sources?.torvik || "";
+  const note = tv === "ok" ? "" : tv.startsWith("stale")
+    ? ` Box plus/minus is from Torvik's last good file (${esc(tv.replace(/^stale \(|\)$/g, ""))}).`
+    : " Torvik is unavailable today, so box plus/minus is left out.";
+  $("#app").innerHTML = `
+    <div class="view-head">
+      <h2 class="view-title">Top 50 Players</h2>
+      <div class="help-row">${helpLink(HELP.players, "How players are rated")}</div>
+      <p class="desc">Our own composite player rating: <b>win shares per 40</b>, <b>PORPAG</b> (points over replacement per game) and
+      <b>box plus/minus</b>, each turned into a z-score among the ${fmtInt(doc.eligible)} D1 players with at least
+      ${Math.round(doc.min_share * 100)}% of their team's minutes, then averaged. Early-season numbers move a lot.${note}
+      Click a player for the breakdown.</p>
+    </div>
+    <div class="table-wrap"><table class="rank players-table">
+      <thead><tr>${PLAYER_COLS.map((c) => `<th scope="col" data-key="${c.key}" class="${c.cls?.includes("l") ? "l " : ""}${c.cls?.includes("sticky2") ? "sticky2" : c.cls?.includes("sticky") ? "sticky" : ""}"
+        title="${esc(c.metric ? doc.metrics.find((m) => m.key === c.metric)?.desc || "" : "")}">${esc(c.label)}</th>`).join("")}</tr></thead>
+      <tbody id="ptbody"></tbody></table></div>
+    <p class="legend-note">Shading marks how high each metric ranks among eligible players. Sources: CollegeBasketballData (box stats, win shares, PORPAG) and BartTorvik (box plus/minus, class, height, role).</p>`;
+  const draw = () => {
+    const col = PLAYER_COLS.find((c) => c.key === playersUi.sort);
+    const rows = doc.top.slice().sort((a, b) => {
+      const va = col.get(a), vb = col.get(b);
+      if (va == null) return 1; if (vb == null) return -1;
+      return (typeof va === "string" ? va.localeCompare(vb) : va - vb) * playersUi.dir || a.rank - b.rank;
+    });
+    $("#ptbody").innerHTML = rows.map((p) => `<tr class="team-row">${PLAYER_COLS.map((c) => {
+      const style = c.metric ? heatStyleN(p.metrics[c.metric].rank, doc.eligible) : "";
+      return `<td class="${c.cls || ""}${style ? " heat" : ""}"${style}>${c.cell(p)}</td>`;
+    }).join("")}</tr>`).join("");
+    document.querySelectorAll(".players-table thead th").forEach((th) => th.setAttribute("aria-sort",
+      th.dataset.key === playersUi.sort ? (playersUi.dir === 1 ? "ascending" : "descending") : "none"));
+  };
+  document.querySelectorAll(".players-table thead th").forEach((th) => th.addEventListener("click", () => {
+    const c = PLAYER_COLS.find((x) => x.key === th.dataset.key);
+    if (playersUi.sort === c.key) playersUi.dir = -playersUi.dir; else { playersUi.sort = c.key; playersUi.dir = c.dir || 1; }
+    draw();
+  }));
+  draw();
+}
+
+function renderRoster(d) {
+  const el = $("#roster");
+  if (!el) return;
+  const roster = d.players || [];
+  if (!roster.length) { el.innerHTML = `<p class="empty">No player data.</p>`; return; }
+  el.innerHTML = `<table class="plain"><thead><tr><th class="l">Player</th><th class="l">Role</th><th>Min%</th><th>PTS</th><th>REB</th><th>AST</th><th>Rank</th></tr></thead>
+    <tbody>${roster.map((p) => `<tr${p.eligible ? "" : ' class="muted"'}>
+      <td class="l"><a href="${playerHref(p)}">${esc(p.name)}</a>${p.num ? `<span class="sub">#${esc(p.num)}</span>` : ""}</td>
+      <td class="l">${esc([p.role || p.pos, p.yr].filter(Boolean).join(" · ") || "–")}</td>
+      <td>${fmt(p.min_pct, 1)}</td><td>${fmt(p.pts, 1)}</td><td>${fmt(p.reb, 1)}</td><td>${fmt(p.ast, 1)}</td>
+      <td>${p.rank ? fmtInt(p.rank) : '<span title="Below 40% of team minutes">–</span>'}</td></tr>`).join("")}</tbody></table>`;
+}
+
+async function renderPlayer(teamId, playerId) {
+  const t = state.byId.get(teamId);
+  $("#app").innerHTML = `<p class="empty">Loading player…</p>`;
+  let d, doc;
+  try { [d, doc] = await Promise.all([loadTeamDetail(teamId), loadPlayers().catch(() => null)]); } catch (e) { d = null; }
+  const p = d?.players?.find((x) => x.id === playerId);
+  if (!t || !p) { $("#app").innerHTML = `<a class="back" href="#/players">← Top 50 players</a><p class="empty">Player not found.</p>`; return; }
+  document.title = `${p.name} · D1 Composite Rankings`;
+  const band = teamBand(t);
+  const style = band ? ` style="--band-bg:${band.bg};--band-fg:${band.fg}${band.accent ? `;--band-accent:${band.accent}` : ""}"` : "";
+  const n = doc?.eligible;
+  const metrics = doc?.metrics || Object.keys(p.metrics).map((k) => ({ key: k, label: k, desc: "", source: "" }));
+  const tile = (label, value, note) => `<div class="tile"><div class="label">${label}</div><div class="value">${value}</div><div class="note">${note}</div></div>`;
+  $("#app").innerHTML = `
+    <div class="nav-row"><a class="back" href="#/team/${t.id}">← ${esc(t.name)}</a>${helpLink(HELP.players, "How players are rated")}</div>
+    <div class="team-band${band ? "" : " plain-band"}"${style}>
+      <div class="band-logo">${logo(t, 64, false)}</div>
+      <div class="band-text">
+        <h2>${p.num ? `<span class="ap-rank">#${esc(p.num)}</span> ` : ""}${esc(p.name)}</h2>
+        <div class="meta">${esc(yrHt(p) || "")}${yrHt(p) ? " · " : ""}<a class="band-link" href="#/team/${t.id}">${esc(t.name)}</a> · ${esc(t.conf)}</div>
+      </div>
+    </div>
+    <div class="tiles">
+      ${tile("Player rank", p.rank ? ordinal(p.rank) : "–", p.rank && n ? `of ${fmtInt(n)} eligible` : "below 40% of team minutes")}
+      ${tile("Score", fmt(p.score, 2), p.score != null ? `z-score · ${p.n_metrics} metrics` : "not rated")}
+      ${tile("Minutes", `${fmt(p.min_pct, 0)}%`, `${fmt(p.mpg, 1)} per game · ${fmtInt(p.games)} games`)}
+      ${tile("Points", fmt(p.pts, 1), "per game")}
+      ${tile("Rebounds", fmt(p.reb, 1), "per game")}
+      ${tile("Assists", fmt(p.ast, 1), "per game")}
+      ${tile("True shooting", `${fmt(p.ts, 1)}%`, `usage ${fmt(p.usage, 1)}%`)}
+      ${tile("Off / Def rating", `${fmt(p.ortg, 0)} / ${fmt(p.drtg, 0)}`, "points per 100 possessions")}
+    </div>
+    <div class="grid2">
+      <section class="card">
+        <h3>Metrics behind the score</h3>
+        <p class="desc">Each metric as a value, its rank among eligible D1 players, and its z-score (0 = average eligible player). The score is the average of the z-scores.</p>
+        <div class="plain-wrap"><table class="plain wrap-first">
+          <thead><tr><th class="l">Metric</th><th>Value</th><th>Rank</th><th>z</th><th class="l">Source</th></tr></thead>
+          <tbody>${metrics.map((m) => { const v = p.metrics[m.key] || {};
+            return `<tr title="${esc(m.desc)}"><td class="l">${esc(m.label)}<div class="sub" style="margin-left:0">${esc(m.desc)}</div></td>
+              <td>${v.value == null ? "–" : m.key === "bpm" ? signed(v.value, 1) : fmt(v.value, m.key === "ws40" ? 3 : 1)}</td>
+              <td>${v.rank ? fmtInt(v.rank) : "–"}</td><td>${v.z == null ? "–" : signed(v.z, 2)}</td><td class="l">${esc(m.source)}</td></tr>`; }).join("")}
+          </tbody></table></div>
+        ${p.obpm != null ? `<p class="desc" style="margin-top:8px">Box plus/minus split: offense ${signed(p.obpm, 1)}, defense ${signed(p.dbpm, 1)}.</p>` : ""}
+      </section>
+      <section class="card">
+        <h3>Per game & shooting</h3>
+        <p class="desc">Season to date.</p>
+        <div class="plain-wrap"><table class="plain"><tbody>
+          ${[["Minutes", fmt(p.mpg, 1)], ["Points", fmt(p.pts, 1)], ["Rebounds", fmt(p.reb, 1)], ["Assists", fmt(p.ast, 1)],
+             ["Steals", fmt(p.stl, 1)], ["Blocks", fmt(p.blk, 1)], ["Turnovers", fmt(p.tov, 1)],
+             ["Effective FG %", `${fmt(p.efg, 1)}%`], ["3-point %", `${fmt(p.fg3, 1)}% (${fmt(p.fg3a, 1)} att.)`],
+             ["Free throw %", `${fmt(p.ft, 1)}%`], ["Win shares (total)", fmt(p.ws, 2)], ["Starts", fmtInt(p.starts)]]
+            .map(([k, v]) => `<tr><td class="l">${k}</td><td>${v}</td></tr>`).join("")}
+        </tbody></table></div>
+      </section>
+    </div>`;
+}
+
 /* ================= routing ================= */
 
 function route() {
   tip.hide();
   redrawCharts = null;
   const m = /^#\/team\/([a-z0-9-]+)/.exec(location.hash);
-  const view = m ? "team" : (/^#\/(charts|conferences|bracket)/.exec(location.hash)?.[1] || "rankings");
+  const pm = /^#\/player\/([a-z0-9-]+)\/(\w+)/.exec(location.hash);
+  const view = m ? "team" : pm ? "player" : (/^#\/(charts|conferences|bracket|players)/.exec(location.hash)?.[1] || "rankings");
   document.querySelectorAll("#tabs a").forEach((a) => {
-    a.toggleAttribute("aria-current", a.dataset.view === view || (view === "team" && a.dataset.view === "rankings"));
+    a.toggleAttribute("aria-current", a.dataset.view === view || (view === "team" && a.dataset.view === "rankings")
+      || (view === "player" && a.dataset.view === "players"));
   });
-  const titles = { charts: "Offense vs Defense", conferences: "Conferences", bracket: "Bracket" };
+  const titles = { charts: "Offense vs Defense", conferences: "Conferences", bracket: "Bracket", players: "Top 50 Players" };
   document.title = titles[view] ? `${titles[view]} · D1 Composite Rankings` : "D1 Composite Rankings";
   if (view === "team") renderTeam(m[1]);
   else if (view === "charts") renderScatter();
   else if (view === "conferences") renderConferences();
   else if (view === "bracket") renderBracket();
+  else if (view === "players") renderPlayers();
+  else if (view === "player") renderPlayer(pm[1], pm[2]);
   else renderRankings();
   window.scrollTo(0, 0);
 }

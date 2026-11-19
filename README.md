@@ -193,6 +193,22 @@ The projected NCAA tournament field from the **Bracket Matrix**, the consensus o
 
 **Bubble** lists teams that appear in some brackets but not on a consensus seed line, most-included first.
 
+### Players
+
+**Top 50 players** by our own composite rating. EvanMiya-style player ratings are proprietary, so this one is built only from free, public metrics, the same way as the team composite:
+
+| Metric | Meaning | Source |
+|---|---|---|
+| **Win shares / 40** | Wins a player adds per 40 minutes, offense plus defense. It measures impact per minute. | CollegeBasketballData |
+| **PORPAG** | Points over a replacement-level player, per game. It rewards doing a lot, and doing it well. | CollegeBasketballData |
+| **Box plus/minus (BPM)** | Points per 100 possessions better than an average player, estimated from the box score (split into offense and defense) | BartTorvik |
+
+- **Score:** each metric becomes a z-score among **eligible** players (0 = an average eligible player, +2 is excellent), and the score is their average. If Torvik is unavailable on a given day, its last good file (up to 3 days old) is used; after that the score runs on the other two metrics, and the page says so.
+- **Eligible** means at least **40% of the team's minutes**, so short-sample flukes stay off the list. Early in the season the list still moves a lot.
+- **Table columns:** Min% (share of team minutes), points, rebounds and assists per game, TS% (true shooting, which counts threes and free throws), USG (usage: share of team possessions the player finishes), the three metrics and the score. Shading marks how high each metric ranks among eligible players. Click any heading to sort.
+- **Player page:** click a player for their page, which shows their rank among eligible players, every metric with its value, rank and z-score, the BPM offense/defense split, per-game stats and shooting.
+- **Team rosters:** each team page has a **Roster** card listing its players by minutes, with their D1 player rank. Players under 40% of minutes appear in grey without a rank.
+
 ### Header badges
 
 The badges under the title show each source's status on the latest run:

@@ -29,7 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, team_details
+from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, players, team_details
 from .config import load_sources_config
 from .crosswalk import Crosswalk
 from .fetching import NotConfigured, make_session
@@ -174,11 +174,15 @@ def run(
         cfg["season"], today, crosswalk.teams,
         out_dir=paths.site_data / "team", cache_dir=paths.cache, fixtures=fixtures,
     )
+    player_status = players.run(
+        cfg["season"], today, crosswalk, site_data=paths.site_data, cache_dir=paths.cache, fixtures=fixtures,
+    )
     meta = {
         "as_of": today.isoformat(),
         "season": cfg["season"],
         "sources": [asdict(s) for s in statuses],
         "team_details": details,
+        "players": player_status,
         "weights": weights,
     }
     build_site_data.write(paths.site_data, table, long, crosswalk.teams, meta)
