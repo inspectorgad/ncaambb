@@ -487,7 +487,77 @@
 <ul>
 <li><strong>Score:</strong> each metric becomes a z-score among <strong>eligible</strong> players (0 = an average eligible player, +2 is excellent), and the score is their average. If Torvik is unavailable on a given day, its last good file (up to 3 days old) is used; after that the score runs on the other two metrics, and the page says so.</li>
 <li><strong>Eligible</strong> means at least <strong>40% of the team's minutes</strong>, so short-sample flukes stay off the list. Early in the season the list still moves a lot.</li>
-<li><strong>Table columns:</strong> Min% (share of team minutes), points, rebounds and assists per game, TS% (true shooting, which counts threes and free throws), USG (usage: share of team possessions the player finishes), the three metrics and the score. Shading marks how high each metric ranks among eligible players. Click any heading to sort.</li>
+<li><strong>Sorting and shading:</strong> click any heading to sort. Shading on the three metric columns marks how high each ranks among eligible players; the darker the tint, the closer to the top.
+<strong>Players table columns:</strong></li>
+</ul>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Column</th>
+<th>What it means</th>
+<th>Better is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>#</strong></td>
+<td>Rank by the composite <strong>Score</strong> among all eligible D1 players</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Player</strong></td>
+<td>Name, with team logo, team and class (Fr, So, Jr, Sr). Click it for the player page.</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Role</strong></td>
+<td>Torvik's role label from how the player is used, e.g. <em>Pure PG</em> (pass-first point guard), <em>Scoring PG</em>, <em>Combo G</em>, <em>Wing G</em>, <em>Wing F</em>, <em>Stretch 4</em> (forward who shoots threes), <em>PF/C</em>, <em>C</em>. When Torvik has no match, the basic position (G, F, C) is shown.</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Min%</strong></td>
+<td>Share of the team's total minutes the player has been on the floor. 75% means about 30 of 40 minutes a game. Eligibility needs 40% or more.</td>
+<td>Higher = bigger role</td>
+</tr>
+<tr>
+<td><strong>PTS / REB / AST</strong></td>
+<td>Points, rebounds and assists per game</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>TS%</strong></td>
+<td>True shooting percentage: scoring efficiency that counts threes as worth more and includes free throws. About 55% is average for D1, 60%+ is very good, 65%+ is elite.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>USG</strong></td>
+<td>Usage rate: the share of team possessions the player finishes, with a shot, free throws or a turnover, while on the floor. About 20% is average, 28%+ is a primary option. A high usage with a high TS% is the rarest, most valuable combination.</td>
+<td>Context</td>
+</tr>
+<tr>
+<td><strong>WS/40</strong></td>
+<td>Win shares per 40 minutes: estimated wins the player adds per 40 minutes, offense plus defense. About 0.100 is average for a regular, 0.200 is very good, 0.300+ is star level.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>PORPAG</strong></td>
+<td>Points over replacement per adjusted game: points per game the player adds compared with a replacement-level player. It combines efficiency with volume, so a heavy-minutes, efficient scorer ranks well. Around 2 is a solid starter, 5+ is excellent.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>BPM</strong></td>
+<td>Box plus/minus: points per 100 possessions the player is better than an average D1 player, estimated from the box score. 0 is average, +5 is very good, +10 is All-American level. Blank if Torvik had no match.</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Score</strong></td>
+<td>The composite: the average of the player's z-scores on WS/40, PORPAG and BPM among eligible players. 0 is an average eligible player, +1 is roughly top 15%, +2 is roughly top 2–3%.</td>
+<td>Higher</td>
+</tr>
+</tbody>
+</table></div>
+<p>Early in the season the benchmark ranges above run higher and swing more, because a few games can produce extreme numbers.</p>
+<ul>
 <li><strong>Player page:</strong> click a player for their page, which shows their rank among eligible players, every metric with its value, rank and z-score, the BPM offense/defense split, per-game stats and shooting.</li>
 <li><strong>Team rosters:</strong> each team page has a <strong>Roster</strong> card listing its players by minutes, with their D1 player rank. Players under 40% of minutes appear in grey without a rank.</li>
 </ul>
