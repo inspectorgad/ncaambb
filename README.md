@@ -29,7 +29,7 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | Column | What it means | Better is |
 |---|---|---|
 | **#** | Rank in the selected composite (Predictive or Resume). | Lower |
-| **±** | Rank change since the previous daily update, for the selected composite. ▲ moved up, ▼ moved down, – no earlier update to compare yet. | ▲ |
+| **±** | Rank change since the previous daily update, for the selected composite (see *Story cards and trends*). | ▲ |
 | **Team** | School name, with its conference in grey. Click it to open the team page. | – |
 | **W-L** | Wins and losses so far. Sorting uses win percentage, adjusted slightly so a 1-0 team doesn't outrank a 10-1 team. | – |
 | **Pred** | **Predictive composite rank:** how good the team is, i.e. who would win on a neutral floor. It blends Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD. | Lower |
@@ -40,19 +40,10 @@ Use the **Predictive / Resume** toggle to choose which composite the **#** colum
 | **AdjD** | **Adjusted defense:** points *allowed* per 100 possessions against an average D1 offense. The small grey number is its rank. | **Lower** |
 | **Tempo** | Possessions per 40 minutes, i.e. how fast the team plays. A style measure, not good or bad (rank 1 = fastest). | – |
 | **SOS** | **Strength of schedule** rank, averaged from Torvik, Haslametrics and ESPN. 1 = toughest schedule played so far. | Lower = tougher |
-| **Trend** | A small line of the team's Predictive rank over the last two weeks (higher = better; the dot is today). It appears once there are three days of history. Sorting by it uses the 7-day change. | Rising |
+| **Trend** | A small line of the team's Predictive rank over the last two weeks (see *Story cards and trends*). | Rising |
 | **Agree** | How much the five predictive systems **disagree** about the team: the spread of their ratings, in standard deviations. Below about 0.10 means they broadly agree; around 0.20 or more means they see the team quite differently, so treat its rank with more caution. | Lower = more agreement |
 
-**Today's story** cards sit above the table:
-
-| Card | What it shows |
-|---|---|
-| **Rising / Falling** | The biggest Predictive rank gains and drops since the previous update, among teams in the top 100 |
-| **Under-rewarded** | Top-50 teams whose Resume rank trails their Predictive rank by the most |
-| **Systems disagree** | Top-50 teams with the biggest spread between the rating systems |
-| **Projected field** | Teams entering (+) or leaving (−) the Bracket Matrix projected field since the previous update |
-
-Cards that compare with the previous day fill in after the next daily update.
+The **Today's story** cards above the table, and the **±** and **Trend** columns, are explained in detail under *Story cards and trends* below.
 
 **Source columns:** tick this checkbox to show each site's own number next to the composites.
 
@@ -75,6 +66,38 @@ Cards that compare with the previous day fill in after the next daily update.
 **Shading:** a blue tint marks the **top half of D1** in that column; the darker the tint, the closer to #1. The bottom half is unshaded so strong teams stand out. Tempo and Agree are never shaded because neither is a good-or-bad measure.
 
 **Early season:** Resume and Gap swing a lot while teams have played only a handful of games. Pred is more stable, because these systems carry over preseason expectations.
+
+### Story cards and trends
+
+**Today's story cards** sit above the rankings table and pick out what's notable today, so you don't have to scan 365 rows. Each row shows the team's logo and name, its current Predictive rank in grey (e.g. #53), and the card's key number on the right. Click a team to open its page.
+
+| Card | What it shows | How teams are picked |
+|---|---|---|
+| **Rising** | Teams climbing fastest | Biggest Predictive rank gains since the previous daily update (▲7 = up seven places), among teams in the top 100. The cutoff keeps a jump from #300 to #250 off the card. |
+| **Falling** | Teams dropping fastest | Biggest Predictive drops since the previous update (▼12), among teams that were in the top 100 |
+| **Under-rewarded** | Good teams whose results haven't caught up | Top-50 Predictive teams with the largest gap between quality and resume. "▼122" means the Resume rank is 122 places worse than the Predictive rank, often from a tough early schedule or close losses. Their resume will likely improve if they keep playing this well. |
+| **Systems disagree** | Teams the rating systems can't agree on | Top-50 teams with the biggest spread between Torvik, Haslametrics, ESPN BPI, TeamRankings and CBBD. "Spread 0.65" is high; under about 0.10 means near-consensus. Treat these teams' ranks with the most caution. |
+| **Projected field** | Movement in and out of the projected NCAA tournament | Teams that joined (+ in) or dropped out of (− out) the Bracket Matrix consensus field since the previous update |
+
+**When they fill in:**
+- **Under-rewarded** and **Systems disagree** use only today's data, so they always show.
+- **Rising**, **Falling** and **Projected field** compare against the previous daily update. They fill in once a normal day's games have been played between two updates.
+- An empty card says when it will fill in.
+
+**The ± column** is the rank change since the previous daily update, for whichever composite the Predictive/Resume toggle shows:
+- **▲3** means up three places; **▼2** means down two; **0** means no change.
+- **–** means there's no earlier update to compare with, for example a team missing from the previous day's data.
+- Click the heading to sort, and the biggest risers go to the top.
+
+**The Trend column** is a small line chart of each team's **Predictive rank over the last two weeks**:
+- **Up means better.** Rank 1 sits at the top, so a line climbing to the right means the team is improving.
+- **The dot is today**, at the right end.
+- **Hover over the line** to see the exact rank on each date.
+- **Small wiggles are flattened:** every line is drawn on at least a 5-place scale, so a team moving between #3 and #4 doesn't look like it's swinging wildly.
+- **Sorting** by Trend orders teams by their 7-day change.
+- **When it shows:** it needs three daily updates of history and shows "–" until then. After that it grows by one point a day, up to two weeks.
+
+**Reading the ± and Trend columns together:** ± is today's move, and Trend shows whether it's part of a pattern. A ▲5 on a steadily rising line means something different from a ▲5 on a line that's been bouncing up and down. A team page's *Rank over the season* chart shows the full history at a larger size.
 
 ### Team page
 

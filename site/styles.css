@@ -271,6 +271,7 @@ svg.spark circle { fill: var(--series-1); }
 .story-meta::before { content: "#"; }
 .story-val { text-align: right; font-size: 12px; white-space: nowrap; }
 .story-empty { color: var(--text-muted); font-size: 12px; margin: 6px 0 2px; }
+.stories-help { margin: 12px 0 -6px; }
 
 .team-band .form { display: flex; align-items: center; gap: 4px; margin-top: 6px; }
 .form-label { font-size: 12px; opacity: 0.85; margin-right: 2px; }
