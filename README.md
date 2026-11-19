@@ -205,7 +205,25 @@ The projected NCAA tournament field from the **Bracket Matrix**, the consensus o
 
 - **Score:** each metric becomes a z-score among **eligible** players (0 = an average eligible player, +2 is excellent), and the score is their average. If Torvik is unavailable on a given day, its last good file (up to 3 days old) is used; after that the score runs on the other two metrics, and the page says so.
 - **Eligible** means at least **40% of the team's minutes**, so short-sample flukes stay off the list. Early in the season the list still moves a lot.
-- **Table columns:** Min% (share of team minutes), points, rebounds and assists per game, TS% (true shooting, which counts threes and free throws), USG (usage: share of team possessions the player finishes), the three metrics and the score. Shading marks how high each metric ranks among eligible players. Click any heading to sort.
+- **Sorting and shading:** click any heading to sort. Shading on the three metric columns marks how high each ranks among eligible players; the darker the tint, the closer to the top.
+**Players table columns:**
+
+| Column | What it means | Better is |
+|---|---|---|
+| **#** | Rank by the composite **Score** among all eligible D1 players | Lower |
+| **Player** | Name, with team logo, team and class (Fr, So, Jr, Sr). Click it for the player page. | – |
+| **Role** | Torvik's role label from how the player is used, e.g. *Pure PG* (pass-first point guard), *Scoring PG*, *Combo G*, *Wing G*, *Wing F*, *Stretch 4* (forward who shoots threes), *PF/C*, *C*. When Torvik has no match, the basic position (G, F, C) is shown. | – |
+| **Min%** | Share of the team's total minutes the player has been on the floor. 75% means about 30 of 40 minutes a game. Eligibility needs 40% or more. | Higher = bigger role |
+| **PTS / REB / AST** | Points, rebounds and assists per game | Higher |
+| **TS%** | True shooting percentage: scoring efficiency that counts threes as worth more and includes free throws. About 55% is average for D1, 60%+ is very good, 65%+ is elite. | Higher |
+| **USG** | Usage rate: the share of team possessions the player finishes, with a shot, free throws or a turnover, while on the floor. About 20% is average, 28%+ is a primary option. A high usage with a high TS% is the rarest, most valuable combination. | Context |
+| **WS/40** | Win shares per 40 minutes: estimated wins the player adds per 40 minutes, offense plus defense. About 0.100 is average for a regular, 0.200 is very good, 0.300+ is star level. | Higher |
+| **PORPAG** | Points over replacement per adjusted game: points per game the player adds compared with a replacement-level player. It combines efficiency with volume, so a heavy-minutes, efficient scorer ranks well. Around 2 is a solid starter, 5+ is excellent. | Higher |
+| **BPM** | Box plus/minus: points per 100 possessions the player is better than an average D1 player, estimated from the box score. 0 is average, +5 is very good, +10 is All-American level. Blank if Torvik had no match. | Higher |
+| **Score** | The composite: the average of the player's z-scores on WS/40, PORPAG and BPM among eligible players. 0 is an average eligible player, +1 is roughly top 15%, +2 is roughly top 2–3%. | Higher |
+
+Early in the season the benchmark ranges above run higher and swing more, because a few games can produce extreme numbers.
+
 - **Player page:** click a player for their page, which shows their rank among eligible players, every metric with its value, rank and z-score, the BPM offense/defense split, per-game stats and shooting.
 - **Team rosters:** each team page has a **Roster** card listing its players by minutes, with their D1 player rank. Players under 40% of minutes appear in grey without a rank.
 

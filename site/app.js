@@ -1009,22 +1009,22 @@ function heatStyleN(rank, n) {
 }
 
 const PLAYER_COLS = [
-  { key: "rank", label: "#", get: (p) => p.rank, cls: "rk sticky", cell: (p) => fmtInt(p.rank) },
-  { key: "name", label: "Player", get: (p) => p.name, dir: 1, cls: "l sticky2 team-cell",
+  { key: "rank", label: "#", title: "Rank by the composite Score among eligible D1 players", get: (p) => p.rank, cls: "rk sticky", cell: (p) => fmtInt(p.rank) },
+  { key: "name", label: "Player", title: "Name, team and class. Click for the player page", get: (p) => p.name, dir: 1, cls: "l sticky2 team-cell",
     cell: (p) => { const t = state.byId.get(p.team_id);
       return `<a class="team-link" href="${playerHref(p)}">${t ? logo(t, 22) : ""}<span class="tname">${esc(p.name)}</span></a>
         <span class="conf">${esc(t ? t.short : "")}${p.yr ? ` · ${esc(p.yr)}` : ""}</span>`; } },
-  { key: "role", label: "Role", get: (p) => p.role || p.pos, dir: 1, cls: "l muted", cell: (p) => esc(p.role || p.pos || "–") },
-  { key: "min_pct", label: "Min%", get: (p) => p.min_pct, dir: -1, cell: (p) => fmt(p.min_pct, 1) },
-  { key: "pts", label: "PTS", get: (p) => p.pts, dir: -1, cell: (p) => fmt(p.pts, 1) },
-  { key: "reb", label: "REB", get: (p) => p.reb, dir: -1, cell: (p) => fmt(p.reb, 1) },
-  { key: "ast", label: "AST", get: (p) => p.ast, dir: -1, cell: (p) => fmt(p.ast, 1) },
-  { key: "ts", label: "TS%", get: (p) => p.ts, dir: -1, cell: (p) => fmt(p.ts, 1) },
-  { key: "usage", label: "USG", get: (p) => p.usage, dir: -1, cell: (p) => fmt(p.usage, 1) },
+  { key: "role", label: "Role", title: "Torvik's role label (e.g. Pure PG, Wing F, Stretch 4); basic position if no match", get: (p) => p.role || p.pos, dir: 1, cls: "l muted", cell: (p) => esc(p.role || p.pos || "–") },
+  { key: "min_pct", label: "Min%", title: "Share of the team's minutes played (eligibility needs 40%+)", get: (p) => p.min_pct, dir: -1, cell: (p) => fmt(p.min_pct, 1) },
+  { key: "pts", label: "PTS", title: "Points per game", get: (p) => p.pts, dir: -1, cell: (p) => fmt(p.pts, 1) },
+  { key: "reb", label: "REB", title: "Rebounds per game", get: (p) => p.reb, dir: -1, cell: (p) => fmt(p.reb, 1) },
+  { key: "ast", label: "AST", title: "Assists per game", get: (p) => p.ast, dir: -1, cell: (p) => fmt(p.ast, 1) },
+  { key: "ts", label: "TS%", title: "True shooting %: efficiency counting threes and free throws (~55% average, 65%+ elite)", get: (p) => p.ts, dir: -1, cell: (p) => fmt(p.ts, 1) },
+  { key: "usage", label: "USG", title: "Usage %: share of team possessions the player finishes while on the floor (~20% average)", get: (p) => p.usage, dir: -1, cell: (p) => fmt(p.usage, 1) },
   { key: "ws40", label: "WS/40", get: (p) => p.metrics.ws40.value, dir: -1, metric: "ws40", cell: (p) => fmt(p.metrics.ws40.value, 3) },
   { key: "porpag", label: "PORPAG", get: (p) => p.metrics.porpag.value, dir: -1, metric: "porpag", cell: (p) => fmt(p.metrics.porpag.value, 1) },
   { key: "bpm", label: "BPM", get: (p) => p.metrics.bpm.value, dir: -1, metric: "bpm", cell: (p) => signed(p.metrics.bpm.value, 1) },
-  { key: "score", label: "Score", get: (p) => p.score, dir: -1, cell: (p) => `<b>${fmt(p.score, 2)}</b>` },
+  { key: "score", label: "Score", title: "Composite: average z-score of WS/40, PORPAG and BPM (0 = average eligible player)", get: (p) => p.score, dir: -1, cell: (p) => `<b>${fmt(p.score, 2)}</b>` },
 ];
 const playersUi = { sort: "rank", dir: 1 };
 
@@ -1050,7 +1050,7 @@ async function renderPlayers() {
     </div>
     <div class="table-wrap"><table class="rank players-table">
       <thead><tr>${PLAYER_COLS.map((c) => `<th scope="col" data-key="${c.key}" class="${c.cls?.includes("l") ? "l " : ""}${c.cls?.includes("sticky2") ? "sticky2" : c.cls?.includes("sticky") ? "sticky" : ""}"
-        title="${esc(c.metric ? doc.metrics.find((m) => m.key === c.metric)?.desc || "" : "")}">${esc(c.label)}</th>`).join("")}</tr></thead>
+        title="${esc(c.metric ? doc.metrics.find((m) => m.key === c.metric)?.desc || "" : c.title || "")}">${esc(c.label)}</th>`).join("")}</tr></thead>
       <tbody id="ptbody"></tbody></table></div>
     <p class="legend-note">Shading marks how high each metric ranks among eligible players. Sources: CollegeBasketballData (box stats, win shares, PORPAG) and BartTorvik (box plus/minus, class, height, role).</p>`;
   const draw = () => {
