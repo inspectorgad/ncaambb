@@ -246,6 +246,40 @@ The **Games** tab shows every scheduled game involving a D1 team, one day at a t
 - **Win %:** comes from the predicted margin, assuming the real margin typically misses by about 11 points. A 4-point favorite wins about 64% of the time, and a 10-point favorite about 82%.
 - **Updates and locking:** predictions are refreshed with each update until tip-off, then **locked**. The record counts only locked predictions, made before the game started.
 
+**How the win % works:**
+
+The win % answers one question: given the predicted margin, how often does that team actually win? Real games scatter around the prediction. A team predicted to win by 6 sometimes wins by 20 and sometimes loses by 5. Across many games, the real margin misses the predicted one by about **11 points** for a typical game, in a bell-shaped pattern: small misses are common and big ones are rare. About two of every three games finish within 11 points of the predicted margin.
+
+So the win % is the share of that bell curve where the team still comes out ahead:
+- **Predicted margin 0:** a coin flip, 50% each.
+- **Bigger predicted margin:** the curve shifts further past zero, so the favorite wins more often.
+- **The two teams always add up to 100%.**
+
+| Predicted margin | Favorite's win % |
+|---|---|
+| 0 points | 50% |
+| 2 | 57% |
+| 4 | 64% |
+| 6 | 71% |
+| 8 | 77% |
+| 10 | 82% |
+| 12 | 86% |
+| 15 | 91% |
+| 20 | 97% |
+| 25+ | 99% or more (shown as ">99%") |
+
+**Worked example:** Team A (offense 115, defense 98, tempo 70) hosts Team B (offense 108, defense 104, tempo 68). Assume D1 averages of 108 points per 100 possessions and a tempo of 69.6.
+1. **Possessions:** 70 × 68 ÷ 69.6 = 68.4.
+2. **Team A's points:** 115 × 104 ÷ 108 × 68.4 ÷ 100 = 75.7, plus 1.5 for home court = **77.2**.
+3. **Team B's points:** 108 × 98 ÷ 108 × 68.4 ÷ 100 = 67.0, minus 1.5 = **65.5**.
+4. **Margin:** 77.2 − 65.5 = 11.7 points for Team A.
+5. **Win %:** with an 11-point typical miss, Team A wins about **86%** of the time and Team B about **14%**. The card shows 86% and 14%, with a predicted score of 77–66 (rounded).
+
+**What the win % does and doesn't mean:**
+- **An 80% favorite is supposed to lose 1 time in 5.** An upset doesn't mean the prediction was wrong. Only a pattern over many games does.
+- **The calibration table checks the percentages.** In the "Are the win percentages honest?" table, if 80–90% favorites win about 85% of the time, the percentages are honest. If they win much more often, the 11-point spread is too wide. If they win much less often, it's too narrow.
+- **It covers only what the ratings know.** Injuries, suspensions, rest and travel aren't included, and early-season ratings still lean on preseason expectations, so they move more.
+
 **Record (tiles at the top):**
 - **Picks right, season / Last 7 days:** how often the favorite won. Good public models usually land around 70–75% over a full season. Early-season results run higher, because November has many mismatches.
 - **Avg miss, margin:** average points between the predicted and actual margin. About 8–9 is typical.

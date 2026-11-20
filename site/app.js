@@ -1211,7 +1211,7 @@ function gameCard(g) {
     : `<span class="g-verdict ${res ? "ok" : "miss"}">${res ? "✓ Pick right" : "✗ Pick wrong"}</span>`;
   return `<article class="g-card${g.score ? " done" : ""}">
     <header><span class="g-when">${esc(when)}</span><span class="g-tags">${esc(tags)}</span>${verdict}</header>
-    <div class="g-cols"><span></span><span>Win %</span><span>Pred</span><span>${g.score ? "Final" : ""}</span></div>
+    <div class="g-cols"><span></span><span title="Chance to win: the share of games a team with this predicted margin wins, given that real margins typically miss by about 11 points">Win %</span><span>Pred</span><span>${g.score ? "Final" : ""}</span></div>
     ${gameSide(g, "away")}
     ${gameSide(g, "home")}
   </article>`;
