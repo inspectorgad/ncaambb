@@ -3,6 +3,10 @@ name: Daily update
 on:
   schedule:
     - cron: "17 11 * * *"   # 11:17 UTC ≈ 6:17 AM ET, after the overnight rating updates
+    # Backup slot: GitHub sometimes delays or skips scheduled runs. A second
+    # run is harmless (same-day snapshot is just refreshed) and gives a failed
+    # source such as Torvik another chance the same day.
+    - cron: "43 16 * * *"   # 16:43 UTC ≈ 11:43 AM ET
   workflow_dispatch:
     inputs:
       force:
