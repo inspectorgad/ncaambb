@@ -29,7 +29,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from . import DATA_DIR, PROJECT_ROOT, build_site_data, composite, players, team_details, today_eastern
+from . import DATA_DIR, EASTERN, PROJECT_ROOT, build_site_data, composite, players, team_details, today_eastern
 from .config import load_sources_config
 from .crosswalk import Crosswalk
 from .fetching import NotConfigured, make_session
@@ -159,6 +159,7 @@ def run(
     fixtures: Path | None = None,
     paths: Paths | None = None,
     today: dt.date | None = None,
+    now: dt.datetime | None = None,
 ) -> tuple[pd.DataFrame, list[SourceStatus]]:
     paths = paths or Paths()
     today = today or today_eastern()
@@ -170,9 +171,14 @@ def run(
     if long.empty:
         raise RuntimeError("no usable sources")
     table = composite.build(long, weights)
+    if now is None:
+        now = dt.datetime.now(dt.timezone.utc)
+        if today != today_eastern():  # a run for another date (--date, fixtures): 6 AM ET that day
+            now = dt.datetime.combine(today, dt.time(6), EASTERN).astimezone(dt.timezone.utc)
     details = team_details.run(
         cfg["season"], today, crosswalk.teams,
         out_dir=paths.site_data / "team", cache_dir=paths.cache, fixtures=fixtures,
+        table=table, now=now, prediction_settings=weights.get("predictions"),
     )
     player_status = players.run(
         cfg["season"], today, crosswalk, site_data=paths.site_data, cache_dir=paths.cache, fixtures=fixtures,

@@ -22,7 +22,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-from . import eastern_date
+from . import eastern_date, predictions
 from .fetching import NotConfigured, fetch_bytes
 from .sources.base import season_start
 
@@ -127,8 +127,15 @@ def _rank(values: pd.Series, higher_is_better: bool) -> pd.Series:
     return values.rank(ascending=not higher_is_better, method="min")
 
 
-def build(stats: list[dict], games: list[dict], teams: pd.DataFrame) -> dict[str, dict]:
-    """CBBD rows -> {team_id: {"stats": ..., "four_factors": ..., "games": [...]}}."""
+def build(
+    stats: list[dict], games: list[dict], teams: pd.DataFrame,
+    preds: dict[str, dict[str, dict]] | None = None,
+) -> dict[str, dict]:
+    """CBBD rows -> {team_id: {"stats": ..., "four_factors": ..., "games": [...]}}.
+
+    preds: team_id -> game id -> that team's prediction (from predictions.team_view).
+    """
+    preds = preds or {}
     by_cbbd = {str(r.cbbd_id): r.team_id for r in teams.itertuples() if str(r.cbbd_id)}
     d1 = [s for s in stats if str(s.get("teamId")) in by_cbbd]
 
@@ -190,6 +197,7 @@ def build(stats: list[dict], games: list[dict], teams: pd.DataFrame) -> dict[str
             final = g.get("status") == "final" and pts is not None and opp_pts is not None
             out[team_id]["games"].append(
                 {
+                    "id": g.get("id"),
                     "date": eastern_date(g.get("startDate") or ""),  # Eastern calendar date
                     "start": g.get("startDate"),                       # exact tip-off (UTC)
                     "opp": by_cbbd.get(str(g.get(f"{other}TeamId"))),  # None = non-D1
@@ -200,6 +208,7 @@ def build(stats: list[dict], games: list[dict], teams: pd.DataFrame) -> dict[str
                     "result": ("W" if pts > opp_pts else "L") if final else None,
                     "score": f"{pts}-{opp_pts}" if final else None,
                     "note": g.get("gameNotes") or None,
+                    "pred": preds.get(team_id, {}).get(str(g.get("id"))),
                 }
             )
     return out
@@ -228,8 +237,16 @@ def run(
     cache_dir: Path,
     session: requests.Session | None = None,
     fixtures: Path | None = None,
+    table: pd.DataFrame | None = None,
+    now: dt.datetime | None = None,
+    prediction_settings: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Build and write the per-team files; returns a status dict for meta.json."""
+    """Build and write the per-team files; returns a status dict for meta.json.
+
+    With the composite `table`, also runs the game predictions (games.json);
+    their status is returned under "predictions".
+    """
+    pred_status: dict[str, Any] = {"status": "not_run"}
     try:
         if fixtures:
             stats = _read_fixture(next(fixtures.glob("cbbd_team_stats*")))
@@ -237,14 +254,24 @@ def run(
         else:
             stats = _get(session, "stats/team/season", season=season)
             games = fetch_games(session, season, today, cache_dir / "cbbd_games.json")
-        details = build(stats, games, teams)
+        team_preds = None
+        if table is not None:
+            try:
+                pred_status, team_preds = predictions.run(
+                    season, today, now or dt.datetime.now(dt.timezone.utc), games, table, teams,
+                    site_data=out_dir.parent, settings=prediction_settings,
+                )
+            except Exception as exc:  # predictions are extras too
+                log.error("predictions failed: %s: %s", type(exc).__name__, exc)
+                pred_status = {"status": "failed", "error": f"{type(exc).__name__}: {exc}"}
+        details = build(stats, games, teams, team_preds)
         write(details, out_dir, today.isoformat())
         n_games = sum(1 for g in games if g.get("status") == "final")
         log.info("team details: %d teams, %d final games", len(details), n_games)
-        return {"status": "ok", "teams": len(details), "final_games": n_games}
+        return {"status": "ok", "teams": len(details), "final_games": n_games, "predictions": pred_status}
     except NotConfigured as exc:
         log.warning("team details skipped: %s", exc)
-        return {"status": "not_configured", "error": str(exc)}
+        return {"status": "not_configured", "error": str(exc), "predictions": pred_status}
     except Exception as exc:  # never fail the daily run over extras
         log.error("team details failed: %s: %s", type(exc).__name__, exc)
-        return {"status": "failed", "error": f"{type(exc).__name__}: {exc}"}
+        return {"status": "failed", "error": f"{type(exc).__name__}: {exc}", "predictions": pred_status}

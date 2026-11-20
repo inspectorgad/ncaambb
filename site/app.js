@@ -31,6 +31,7 @@ const HELP = {
   conferences: `${GUIDE_URL}#conferences`,
   bracket: `${GUIDE_URL}#bracket`,
   players: `${GUIDE_URL}#players`,
+  games: `${GUIDE_URL}#games`,
 };
 const helpLink = (href, text) =>
   `<a class="help-link" href="${href}">ⓘ ${text}</a>`;
@@ -592,12 +593,20 @@ function renderTeamDetail(d) {
     const tags = (g.site === "N" ? '<span class="sub">(N)</span>' : "") + (g.conf ? '<span class="sub">conf</span>' : "");
     const result = g.result ? `<b>${g.result}</b> ${esc(g.score)}`
       : `<span class="muted">${g.status === "postponed" ? "postponed" : g.status === "in_progress" ? "live" : "next"}</span>`;
-    return `<tr${g.result ? "" : ' class="muted"'} title="${esc(g.note || "")}">
-      <td class="l">${gameDay(g)}${g.result ? "" : `<span class="sub">${gameTime(g)}</span>`}</td><td class="l opp-cell">${where} ${name}${tags}</td><td>${result}</td></tr>`;
+    const pr = g.pred;
+    const predCell = pr
+      ? `${pct(pr.win)}<span class="sub">${esc(pr.score)}</span>${pr.correct == null ? ""
+        : `<span class="g-verdict ${pr.correct ? "ok" : "miss"}" title="${pr.correct ? "Pick was right" : "Pick was wrong"}">${pr.correct ? "✓" : "✗"}</span>`}`
+      : `<span class="muted">–</span>`;
+    return `<tr${g.result ? "" : ' class="muted-row"'} title="${esc(g.note || "")}">
+      <td class="l">${gameDay(g)}${g.result ? "" : `<span class="sub">${gameTime(g)}</span>`}</td><td class="l opp-cell">${where} ${name}${tags}</td>
+      <td class="pred-cell">${predCell}</td><td>${result}</td></tr>`;
   });
   $("#game-log").innerHTML = rows.length
-    ? `<table class="plain"><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Result</th></tr></thead>
-       <tbody>${rows.join("")}</tbody></table>`
+    ? `<div class="plain-wrap"><table class="plain"><thead><tr><th class="l">Date</th><th class="l">Opponent</th>
+       <th title="Our win chance and predicted score, made before tip-off (✓/✗ once played)">Pred</th><th>Result</th></tr></thead>
+       <tbody>${rows.join("")}</tbody></table></div>
+       <p class="desc" style="margin-top:8px">Pred: our win chance and predicted score, locked at tip-off. ${helpLink("#/games", "All games")}</p>`
     : `<p class="empty">No games yet.</p>`;
 }
 
@@ -1156,6 +1165,146 @@ async function renderPlayer(teamId, playerId) {
     </div>`;
 }
 
+
+/* ================= games: predictions & record ================= */
+
+async function loadGames() {
+  state.games ||= await getJSON("data/games.json");
+  return state.games;
+}
+
+const pct = (p) => p == null ? "–" : p >= 0.995 ? ">99%" : p > 0 && p < 0.005 ? "<1%" : `${Math.round(p * 100)}%`;
+const gamesUi = Object.assign({ filter: "all" }, store.get("gamesUi", {}));
+
+/** Did the favorite win? null when not graded. */
+function pickResult(g) {
+  if (!g.pred || !g.score || g.score[0] === g.score[1]) return null;
+  return (g.pred.p >= 0.5) === (g.score[0] > g.score[1]);
+}
+
+function gameSide(g, side) {
+  const id = g[side];
+  const t = id ? state.byId.get(id) : null;
+  const p = g.pred ? (side === "home" ? g.pred.p : 1 - g.pred.p) : null;
+  const pts = g.pred ? (side === "home" ? g.pred.h : g.pred.a) : null;
+  const actual = g.score ? (side === "home" ? g.score[0] : g.score[1]) : null;
+  const other = g.score ? (side === "home" ? g.score[1] : g.score[0]) : null;
+  const name = t
+    ? `<a class="team-link" href="#/team/${t.id}">${logo(t, 22)}<span>${esc(t.short || t.name)}</span></a><span class="sub">${fmtInt(t.pred.rank)}</span>`
+    : `<span class="team-link"><span>${esc(g[`${side}_name`] || "?")}</span></span><span class="sub">non-D1</span>`;
+  const fav = p != null && p > 0.5;
+  return `<div class="g-team${fav ? " fav" : ""}${actual != null && actual > other ? " won" : ""}">
+    <div class="g-name">${name}</div>
+    <div class="g-pct">${p == null ? "" : `<span class="g-bar"><i style="width:${Math.round(p * 100)}%"></i></span>${pct(p)}`}</div>
+    <div class="g-pts" title="Predicted points">${pts == null ? "" : Math.round(pts)}</div>
+    <div class="g-final" title="Final score">${actual == null ? "" : actual}</div>
+  </div>`;
+}
+
+function gameCard(g) {
+  const res = pickResult(g);
+  const when = g.status === "final" ? "Final"
+    : g.status === "in_progress" ? "Live" : g.status === "postponed" ? "Postponed"
+    : g.tbd ? "Time TBD" : gameTime(g);
+  const tags = [g.neutral ? "Neutral site" : "", g.conf ? "Conference" : "", g.note || ""].filter(Boolean).join(" · ");
+  const verdict = res == null ? (g.pred ? "" : `<span class="muted" title="Predicted only before tip-off, from the day tracking started">No prediction</span>`)
+    : `<span class="g-verdict ${res ? "ok" : "miss"}">${res ? "✓ Pick right" : "✗ Pick wrong"}</span>`;
+  return `<article class="g-card${g.score ? " done" : ""}">
+    <header><span class="g-when">${esc(when)}</span><span class="g-tags">${esc(tags)}</span>${verdict}</header>
+    <div class="g-cols"><span></span><span>Win %</span><span>Pred</span><span>${g.score ? "Final" : ""}</span></div>
+    ${gameSide(g, "away")}
+    ${gameSide(g, "home")}
+  </article>`;
+}
+
+function recordTiles(rec) {
+  const o = rec.overall, w = rec.last_7_days;
+  const line = (r) => r.games ? `${r.correct}–${r.games - r.correct}` : "–";
+  return `<div class="tiles">
+    <div class="tile"><div class="label">Picks right, season</div><div class="value">${o.games ? pct(o.pct) : "–"}</div>
+      <div class="note">${o.games ? `${line(o)} in ${o.games} games` : "Starts with the first graded game"}</div></div>
+    <div class="tile"><div class="label">Last 7 days</div><div class="value">${w.games ? pct(w.pct) : "–"}</div>
+      <div class="note">${w.games ? `${line(w)}` : "No graded games yet"}</div></div>
+    <div class="tile"><div class="label">Avg miss, margin</div><div class="value">${rec.margin_error ?? "–"}</div>
+      <div class="note">points per game</div></div>
+    <div class="tile"><div class="label">Avg miss, total</div><div class="value">${rec.total_error ?? "–"}</div>
+      <div class="note">combined points</div></div>
+  </div>`;
+}
+
+function calibrationTable(rec) {
+  return `<details class="card calib"><summary><b>Are the win percentages honest?</b>
+    <span class="muted">When we give the favorite 70%, it should win about 70% of the time.</span></summary>
+    <table class="plain"><thead><tr><th class="l">Favorite's win %</th><th>Games</th><th>Expected</th><th>Favorite won</th></tr></thead>
+    <tbody>${rec.calibration.map((c) => `<tr><td class="l">${esc(c.range)}</td><td>${c.games}</td>
+      <td>${pct(c.expected)}</td><td>${pct(c.actual)}</td></tr>`).join("")}</tbody></table></details>`;
+}
+
+function gameFilter(g) {
+  const ts = [g.home, g.away].map((id) => id && state.byId.get(id)).filter(Boolean);
+  if (gamesUi.filter === "top25") return ts.some((t) => t.pred.rank <= 25);
+  if (gamesUi.filter === "close") return g.pred && Math.abs(g.pred.p - 0.5) <= 0.15;
+  if (gamesUi.filter === "conf") return g.conf;
+  return true;
+}
+
+async function renderGames(day) {
+  $("#app").innerHTML = `<p class="empty">Loading games…</p>`;
+  let doc;
+  try { doc = await loadGames(); } catch (e) {
+    $("#app").innerHTML = `<p class="empty">Game predictions aren't available yet.</p>`; return;
+  }
+  if (!location.hash.startsWith("#/games")) return;
+  const dates = [...new Set(doc.games.map((g) => g.date))].sort();
+  if (!dates.length) { $("#app").innerHTML = `<p class="empty">No games scheduled.</p>`; return; }
+  // default: the data's date, or the next day with games after it
+  const target = day || doc.as_of;
+  const date = dates.includes(target) ? target : (dates.find((d) => d >= target) || dates[dates.length - 1]);
+  const i = dates.indexOf(date);
+  const prev = dates[i - 1], next = dates[i + 1];
+  const dayObj = new Date(date + "T12:00:00");
+  const long = dayObj.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
+  const short = dayObj.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" });
+  const m = doc.model;
+
+  $("#app").innerHTML = `
+    <div class="view-head">
+      <h2 class="view-title">Games</h2>
+      <div class="help-row">${helpLink(HELP.games, "How games are predicted")}</div>
+      <p class="desc">Every D1 game's predicted winner, <b>win %</b> and <b>score</b>, from the composite's offense, defense and tempo
+      (home court worth ${fmt(m.home_court, 1)} points). Predictions update each morning until tip-off, then lock;
+      the record below only counts locked predictions.</p>
+    </div>
+    ${recordTiles(doc.record)}
+    ${calibrationTable(doc.record)}
+    <div class="controls day-nav">
+      <a class="btn${prev ? "" : " off"}" ${prev ? `href="#/games/${prev}"` : ""} aria-label="Previous day">‹</a>
+      <span class="day-label"><span class="long">${esc(long)}</span><span class="short">${esc(short)}</span></span>
+      <a class="btn${next ? "" : " off"}" ${next ? `href="#/games/${next}"` : ""} aria-label="Next day">›</a>
+      ${date !== doc.as_of && dates.includes(doc.as_of) ? `<a class="btn" href="#/games/${doc.as_of}">Today</a>` : ""}
+      <select id="g-filter" aria-label="Filter games">
+        ${[["all", "All games"], ["top25", "A Top 25 team"], ["close", "Close (40–60%)"], ["conf", "Conference games"]]
+          .map(([v, l]) => `<option value="${v}"${gamesUi.filter === v ? " selected" : ""}>${l}</option>`).join("")}
+      </select>
+      <span class="count" id="g-count"></span>
+    </div>
+    <div class="g-grid" id="g-grid"></div>
+    <p class="legend-note">Times are in your time zone; days follow US Eastern time. Ranks are the composite Predictive rank.
+    Games against non-D1 teams aren't predicted. Source: CollegeBasketballData schedule and scores.</p>`;
+
+  const draw = () => {
+    const games = doc.games.filter((g) => g.date === date && gameFilter(g));
+    const graded = games.map(pickResult).filter((r) => r != null);
+    $("#g-grid").innerHTML = games.length ? games.map(gameCard).join("") : `<p class="empty">No games match.</p>`;
+    $("#g-count").textContent = `${games.length} game${games.length === 1 ? "" : "s"}`
+      + (graded.length ? ` · picks ${graded.filter(Boolean).length}–${graded.filter((r) => !r).length}` : "");
+  };
+  $("#g-filter").addEventListener("change", (e) => {
+    gamesUi.filter = e.target.value; store.set("gamesUi", gamesUi); draw();
+  });
+  draw();
+}
+
 /* ================= routing ================= */
 
 function route() {
@@ -1163,12 +1312,14 @@ function route() {
   redrawCharts = null;
   const m = /^#\/team\/([a-z0-9-]+)/.exec(location.hash);
   const pm = /^#\/player\/([a-z0-9-]+)\/(\w+)/.exec(location.hash);
-  const view = m ? "team" : pm ? "player" : (/^#\/(charts|conferences|bracket|players)/.exec(location.hash)?.[1] || "rankings");
+  const gm = /^#\/games(?:\/(\d{4}-\d{2}-\d{2}))?/.exec(location.hash);
+  const view = m ? "team" : pm ? "player" : gm ? "games"
+    : (/^#\/(charts|conferences|bracket|players)/.exec(location.hash)?.[1] || "rankings");
   document.querySelectorAll("#tabs a").forEach((a) => {
     a.toggleAttribute("aria-current", a.dataset.view === view || (view === "team" && a.dataset.view === "rankings")
       || (view === "player" && a.dataset.view === "players"));
   });
-  const titles = { charts: "Offense vs Defense", conferences: "Conferences", bracket: "Bracket", players: "Top 50 Players" };
+  const titles = { charts: "Offense vs Defense", conferences: "Conferences", bracket: "Bracket", players: "Top 50 Players", games: "Games" };
   document.title = titles[view] ? `${titles[view]} · D1 Composite Rankings` : "D1 Composite Rankings";
   if (view === "team") renderTeam(m[1]);
   else if (view === "charts") renderScatter();
@@ -1176,6 +1327,7 @@ function route() {
   else if (view === "bracket") renderBracket();
   else if (view === "players") renderPlayers();
   else if (view === "player") renderPlayer(pm[1], pm[2]);
+  else if (view === "games") renderGames(gm[1]);
   else renderRankings();
   window.scrollTo(0, 0);
 }
