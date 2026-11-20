@@ -263,7 +263,7 @@ Composite weights live in `config/weights.yaml`, and the source URLs in `config/
 
 ## Automation (GitHub Actions)
 
-- **`.github/workflows/update.yml`:** runs daily at 11:17 UTC (about 6:17 AM ET), between Nov 1 and Apr 15. It runs the pipeline, commits the day's history snapshot and deploys `site/` to GitHub Pages. GitHub's Actions cache keeps each source's last good data for the stale-data fallback. Outside the season window it does nothing, and the site keeps the final rankings.
+- **`.github/workflows/update.yml`:** runs daily at 11:17 UTC (about 6:17 AM ET), with a backup run at 16:43 UTC (about 11:43 AM ET) in case GitHub delays or skips the first one, between Nov 1 and Apr 15. The backup also gives a source that failed in the morning a second chance that day. It runs the pipeline, commits the day's history snapshot and deploys `site/` to GitHub Pages. GitHub's Actions cache keeps each source's last good data for the stale-data fallback. Outside the season window it does nothing, and the site keeps the final rankings.
 - **Cache-busting:** each deploy gives `app.js` and `styles.css` a new versioned address (`app.js?v=<commit>-<run>`), so a normal reload shows a new deploy instead of a cached copy.
 - **Run it by hand:** Actions → *Daily update* → *Run workflow*. A manual run works in the off-season too.
 - **`.github/workflows/tests.yml`:** runs the tests on every push.
