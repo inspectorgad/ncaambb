@@ -42,7 +42,8 @@ def test_game_log(built):
     games = built["kansas"]["games"]
     final = [g for g in games if g["result"]]
     assert [g["result"] for g in final] == ["W"] * 4
-    assert final[0] == {
+    first = {k: v for k, v in final[0].items() if k not in ("id", "pred")}
+    assert first == {
         # 8 PM ET on Nov 2 is 01:00 UTC on Nov 3: the date must be the Eastern one
         "date": "2026-11-02", "start": "2026-11-03T01:00:00.000Z",
         "opp": "fordham", "opp_name": "Fordham", "site": "H", "conf": False,

@@ -43,3 +43,10 @@ stats:
   sos:
     inputs: [[torvik, sos], [haslametrics, sos], [espn_bpi, sos_past_rank, rank]]
     best: high          # rank 1 = toughest schedule
+
+# Game predictions (Games tab). Points come from the composite offense,
+# defense and tempo above; the home team gets +home_court/2 and the away
+# team -home_court/2 (not at neutral sites). Win % = Phi(margin / margin_sd).
+predictions:
+  home_court: 3.0     # points
+  margin_sd: 11.0     # typical miss on the final margin, in points

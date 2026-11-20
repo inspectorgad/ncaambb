@@ -34,6 +34,7 @@
       <a href="#conferences">Conferences</a>
       <a href="#bracket">Bracket</a>
       <a href="#players">Players</a>
+      <a href="#games">Games</a>
       <a href="#header-badges">Header badges</a>
     </nav>
 <section class="card guide-card" id="rankings-table">
@@ -335,7 +336,7 @@
 </tbody>
 </table></div>
 <p>For defense, each is reversed: a low opponent eFG%, a high opponent turnover % and so on rank best.</p>
-<p><strong>Game log (table):</strong> every game so far with the result and score, plus games in the next week. "vs" is a home game, "@" an away game, and "(N)" a neutral site; "conf" marks a conference game. The grey number is the opponent's Predictive rank, and opponents link to their own pages. Hover over a row for the event name (e.g. a holiday tournament).</p>
+<p><strong>Game log (table):</strong> every game so far with the result and score, plus games in the next week. <strong>Pred</strong> is our win chance and predicted score for that game, locked at tip-off, with ✓ or ✗ once it's played (see <a href="#games">Games</a>). "vs" is a home game, "@" an away game, and "(N)" a neutral site; "conf" marks a conference game. The grey number is the opponent's Predictive rank, and opponents link to their own pages. Hover over a row for the event name (e.g. a holiday tournament).</p>
 <p><strong>Season stats (table):</strong> points, shooting percentages (FG, 2-point, 3-point, free throw, true shooting), 3-point attempts, rebounds, offensive rebounds, assists, turnovers, steals and blocks. Values are per game except percentages. Each has a D1 rank for the team and for its <strong>opponents</strong> (what teams have done against it), where a low opponent figure ranks well.</p>
 <p>The four factors, game log and season stats come from CollegeBasketballData, so they need the <code>CBBD_API_KEY</code> secret.</p>
 <p><strong>Ratings by source (table):</strong> each system's raw numbers.</p>
@@ -561,6 +562,50 @@
 <li><strong>Player page:</strong> click a player for their page, which shows their rank among eligible players, every metric with its value, rank and z-score, the BPM offense/defense split, per-game stats and shooting.</li>
 <li><strong>Team rosters:</strong> each team page has a <strong>Roster</strong> card listing its players by minutes, with their D1 player rank. Players under 40% of minutes appear in grey without a rank.</li>
 </ul>
+</section>
+<section class="card guide-card" id="games">
+<h2>Games</h2>
+<p>The <strong>Games</strong> tab shows every scheduled game involving a D1 team, one day at a time. Use <strong>‹ ›</strong> to change the day and <strong>Today</strong> to jump back. Each card shows both teams with their Predictive rank, then:</p>
+<div class="plain-wrap"><table class="plain guide-table">
+<thead>
+<tr>
+<th>Column</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Win %</strong></td>
+<td>Our chance that the team wins. The favorite's name is bold and its bar is blue.</td>
+</tr>
+<tr>
+<td><strong>Pred</strong></td>
+<td>Predicted points for each team</td>
+</tr>
+<tr>
+<td><strong>Final</strong></td>
+<td>The final score, once the game is over. The winner's score is bold.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>✓ Pick right / ✗ Pick wrong</strong> shows whether the favorite won. "No prediction" means the game had tipped off before a prediction was made. That covers games from before tracking started, and games against non-D1 teams, which have no ratings. The filter shows all games, games with a Top 25 team, close games (the favorite between 40% and 60%) or conference games.</p>
+<p><strong>How predictions are made:</strong></p>
+<ul>
+<li><strong>Pace:</strong> possessions = the two teams' tempos multiplied, divided by the D1 average tempo.</li>
+<li><strong>Points:</strong> each team's points = its offense × the opponent's defense ÷ the D1 average, scaled to those possessions. Offense, defense and tempo are the composite's cross-source averages (the AdjO, AdjD and Tempo columns).</li>
+<li><strong>Home court:</strong> worth 3 points, so the home team gets +1.5 and the visitor −1.5. Nothing is added at neutral sites.</li>
+<li><strong>Win %:</strong> comes from the predicted margin, assuming the real margin typically misses by about 11 points. A 4-point favorite wins about 64% of the time, and a 10-point favorite about 82%.</li>
+<li><strong>Updates and locking:</strong> predictions are refreshed with each update until tip-off, then <strong>locked</strong>. The record counts only locked predictions, made before the game started.</li>
+</ul>
+<p><strong>Record (tiles at the top):</strong></p>
+<ul>
+<li><strong>Picks right, season / Last 7 days:</strong> how often the favorite won. Good public models usually land around 70–75% over a full season. Early-season results run higher, because November has many mismatches.</li>
+<li><strong>Avg miss, margin:</strong> average points between the predicted and actual margin. About 8–9 is typical.</li>
+<li><strong>Avg miss, total:</strong> average points between the predicted and actual combined score.</li>
+<li><strong>Are the win percentages honest?</strong> Open it to see the predictions grouped by the favorite's win %. When we say 70–80%, the favorite should win about 75% of the time. If it wins much more or less often, the percentages are too cautious or too confident.</li>
+</ul>
+<p>On each <strong>team page</strong>, the game log has a <strong>Pred</strong> column with the team's win % and predicted score. Played games show ✓ or ✗.</p>
+<p>The home-court value and the 11-point typical miss are set in <code>config/weights.yaml</code> under <code>predictions</code>.</p>
 </section>
 <section class="card guide-card" id="header-badges">
 <h2>Header badges</h2>
