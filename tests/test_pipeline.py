@@ -104,6 +104,55 @@ def test_bot_check_page_is_a_fetch_error():
         fetch_bytes("https://example.com", Session())
 
 
+def _status_session(codes):
+    """Fake session returning the given HTTP status codes in order."""
+    import requests
+
+    class Resp:
+        def __init__(self, code):
+            self.status_code, self.content = code, b"ok"
+
+        def raise_for_status(self):
+            if self.status_code >= 400:
+                raise requests.HTTPError(f"{self.status_code} Client Error", response=self)
+
+    class Session:
+        calls = 0
+
+        def get(self, url, timeout, headers=None):
+            Session.calls += 1
+            return Resp(codes.pop(0))
+
+    return Session()
+
+
+def test_torvik_403_is_retried(monkeypatch):
+    from ncaambb import fetching
+    waits = []
+    monkeypatch.setattr(fetching, "_sleep", waits.append)
+    session = _status_session([403, 403, 200])
+    assert fetch_bytes("https://barttorvik.com/2027_team_results.csv", session) == b"ok"
+    assert waits == list(fetching.FORBIDDEN_RETRY_DELAYS)
+
+
+def test_torvik_403_gives_up_after_retries(monkeypatch):
+    from ncaambb import fetching
+    monkeypatch.setattr(fetching, "_sleep", lambda s: None)
+    session = _status_session([403, 403, 403, 200])
+    with pytest.raises(FetchError, match="403"):
+        fetch_bytes("https://barttorvik.com/x.csv", session)
+    assert session.calls == 3
+
+
+def test_403_elsewhere_is_not_retried(monkeypatch):
+    from ncaambb import fetching
+    monkeypatch.setattr(fetching, "_sleep", lambda s: pytest.fail("should not wait"))
+    session = _status_session([403, 200])
+    with pytest.raises(FetchError, match="403"):
+        fetch_bytes("https://example.com/x", session)
+    assert session.calls == 1
+
+
 def test_to_long_keeps_rank_only_metrics():
     wide = pd.DataFrame({"team_id": ["a"], "source_name": ["A"], "rating": [5.0],
                          "rating_rank": [1], "sor_rank": [7]})
